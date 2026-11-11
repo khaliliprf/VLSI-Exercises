@@ -1,0 +1,58 @@
+% !TeX root = ../2/main.tex
+% Shared title page for every assignment.
+% Change only \AssignmentNumber and \AssignmentDate in each main document.
+
+\newcommand{\AssignmentNumber}[1]{\gdef\assignmentnumber{#1}}
+\newcommand{\AssignmentDate}[1]{\gdef\assignmentdate{#1}}
+
+\newcommand{\assignmentnumber}{---}
+\newcommand{\assignmentdate}{---}
+
+% Stable course metadata
+\newcommand{\universityname}{دانشگاه صنعتی امیرکبیر}
+\newcommand{\universityalias}{پلی‌تکنیک تهران}
+\newcommand{\facultyname}{دانشکده مهندسی کامپیوتر}
+\newcommand{\coursename}{طراحی مدارهای مجتمع پرتراکم پیشرفته}
+\newcommand{\studentname}{محمد خلیلی اصل}
+\newcommand{\instructorname}{دکتر مهدی صدیقی}
+
+\newcommand{\MakeAssignmentCover}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+    \linespread{1}\selectfont
+
+    \vspace*{0mm}
+    \includegraphics[width=44mm]{assets/aut-logo-black.png}\par
+    \vspace{3mm}
+
+    {\Large\bfseries \universityname\par}
+    \vspace{1mm}
+    {\large (\universityalias)\par}
+    \vspace{1mm}
+    {\large \facultyname\par}
+
+    \vspace{8mm}
+    {\Large\bfseries درس \coursename\par}
+
+    \vspace{12mm}
+    {\large عنوان\par}
+    \vspace{2mm}
+    {\LARGE\bfseries تمرین شماره \assignmentnumber\par}
+
+    \vspace{10mm}
+    {\large تهیه‌کننده\par}
+    \vspace{2mm}
+    {\Large\bfseries \studentname\par}
+
+    \vspace{10mm}
+    {\large استاد درس\par}
+    \vspace{2mm}
+    {\Large\bfseries \instructorname\par}
+
+    \vspace{10mm}
+    {\Large \assignmentdate\par}
+    \vfill
+  \end{titlepage}
+  \setcounter{page}{1}%
+}

@@ -1,0 +1,16 @@
+{
+  "files.encoding": "utf8",
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "project-xelatex",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "%WORKSPACE_FOLDER%/build.ps1", "-Document", "%DOC%"]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {"name": "Project XeLaTeX (two passes)", "tools": ["project-xelatex"]}
+  ],
+  "latex-workshop.view.pdf.viewer": "tab"
+}

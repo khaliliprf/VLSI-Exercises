@@ -1,0 +1,35 @@
+% !TeX program = xelatex
+\documentclass[12pt,a4paper]{article}
+\input{tex/preamble}
+\begin{document}
+\begin{center}
+{\Large بررسی حروف‌چینی تمرین‌های درس \lr{VLSI}}
+\end{center}
+این سند برای بررسی فونت بی‌نازنین، نیم‌فاصله، متن فارسی و اصطلاحات
+\lr{MOSFET} و \lr{Shockley model} تهیه شده است.
+
+\exercise{2.2}
+این بخش صرفاً برای آزمایش حروف‌چینی است. فرمول درون‌خطی
+\(V_{GS}>V_t\) و مقدار \SI{1.2}{\volt} باید خوانا باشند.
+\begin{equation}
+ I_{DS}=\mu C_{\mathrm{ox}}\frac{W}{L}
+ \left[(V_{GS}-V_t)V_{DS}-\frac{V_{DS}^{2}}{2}\right]
+ \label{eq:sample}
+\end{equation}
+ارجاع به فرمول \eqref{eq:sample} باید بدون علامت سؤال نمایش داده شود.
+\begin{align*}
+ V_{GS}&=V_G-V_S,\\
+ V_{DS}&=V_D-V_S.
+\end{align*}
+\[
+ I_{DS}=0\qquad\text{\rl{در حالت قطع}}
+\]
+\begin{center}
+\begin{circuitikz}
+\draw (0,0) node[nmos] (M) {};
+\draw (M.G) -- ++(-1,0) node[left] {$V_G$};
+\draw (M.D) -- ++(0,0.6) node[above] {$V_D$};
+\draw (M.S) -- ++(0,-0.6) node[ground] {};
+\end{circuitikz}
+\end{center}
+\end{document}

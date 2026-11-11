@@ -1,0 +1,27 @@
+% !TeX root = ../2/main.tex
+\usepackage[a4paper,margin=25mm,headheight=16pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage[unicode,hidelinks]{hyperref}
+\usepackage{xepersian}
+% Only the regular B Nazanin file is installed; synthesize bold explicitly.
+\settextfont[Path=C:/Windows/Fonts/,AutoFakeBold=2,AutoFakeSlant=0.2]{B-NAZANIN.TTF}
+% B Nazanin lacks U+066A (Arabic percent), required by xepersian's digit setup.
+% Arial covers the complete required digit/punctuation set; Persian prose remains B Nazanin.
+\setdigitfont[Path=C:/Windows/Fonts/,BoldFont=arialbd.ttf,ItalicFont=ariali.ttf,BoldItalicFont=arialbi.ttf]{arial.ttf}
+\setmathdigitfont[Path=C:/Windows/Fonts/,BoldFont=arialbd.ttf,ItalicFont=ariali.ttf,BoldItalicFont=arialbi.ttf]{arial.ttf}
+\setlatintextfont{TeX Gyre Termes}
+% B Nazanin does not contain the default itemize bullet and dash glyphs.
+\renewcommand{\labelitemi}{\(\bullet\)}
+\renewcommand{\labelitemii}{\(\circ\)}
+\renewcommand{\labelitemiii}{\(\diamond\)}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\linespread{1.25}
+\newcommand{\exercise}[1]{\section*{تمرین #1}}
+\input{tex/cover-page}

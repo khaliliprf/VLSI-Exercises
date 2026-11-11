@@ -1,0 +1,4 @@
+/build/
+/.setup/
+*.synctex.gz
+/debug.log
