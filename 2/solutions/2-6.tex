@@ -1,107 +1,92 @@
-% Generated from 2/2-6.md; technical content preserved.
+% !TeX root = ../main.tex
 \exercise{۲.۶}
-صورت \textbf{\lr{Exercise 2.6}} در کتاب درسی به شرح زیر است:
+\subsection*{صورت مسئله و مدل مورد استفاده}
+رابطه \exnum{۲.۲۷} کتاب را برای ولتاژ شروع اشباع، \(V_{\mathrm{dsat}}\)، اثبات کنید
+\cite[تمرین \exnum{۲.۶}، صفحه چاپی ۹۶]{weste}.
+هدف، اثبات رابطه
+\(V_{\mathrm{dsat}}=V_{GT}V_c/(V_{GT}+V_c)\)
+در مدل \lr{Velocity Saturation} کتاب است.
 
-\begin{quote}
-\textbf{صورت مسئله:}
+در این مدل، قدرمطلق سرعت رانش حامل‌ها \(v\) برحسب قدرمطلق میدان جانبی محلی \(E\) به‌صورت قطعه‌ای بیان می‌شود
+\cite[روابط \exnum{۲.۲۴} و \exnum{۲.۲۵}، صفحه چاپی ۷۶]{weste}\cite[اسلاید ۹]{nonideal}:
+\begin{equation}
+ v(E)=
+ \begin{cases}
+ \dfrac{\mu_{\mathrm{eff}}E}{1+E/E_c},&0\le E<E_c,\\[4pt]
+ v_{\mathrm{sat}},&E\ge E_c,
+ \end{cases}
+ \qquad E_c=\frac{2v_{\mathrm{sat}}}{\mu_{\mathrm{eff}}}.
+ \label{eq:velocity-piecewise}
+\end{equation}
+در اینجا \(\mu_{\mathrm{eff}}\) تحرک مؤثر، \(v_{\mathrm{sat}}\) سرعت اشباع و \(E_c\) میدان بحرانی است.
+رابطه \(E_c=2v_{\mathrm{sat}}/\mu_{\mathrm{eff}}\) از پیوستگی سرعت در \(E=E_c\) حاصل می‌شود.
+میدان محلی در امتداد کانال تغییر می‌کند؛ \(V_{DS}/L\) تنها میدان متوسط است و نباید در همه نقاط جایگزین \(E\) شود.
+شاخه نخست رابطه \eqref{eq:velocity-piecewise} نیز فقط برای میدان‌های کمتر از \(E_c\) به کار می‌رود.
 
-رابطه (2.27) کتاب را اثبات کنید:
+ولتاژ اضافه گیت \(V_{GT}=V_{GS}-V_t>0\) و ولتاژ بحرانی \(V_c\) را به‌صورت زیر تعریف می‌کنیم:
+\begin{equation}
+ V_c=E_cL=\frac{2v_{\mathrm{sat}}L}{\mu_{\mathrm{eff}}}>0,
+ \qquad v_{\mathrm{sat}}=\frac{\mu_{\mathrm{eff}}V_c}{2L}.
+ \label{eq:velocity-critical-voltage}
+\end{equation}
+با استفاده از این مدل سرعت، رابطه جریان کتاب دو شاخه دارد
+\cite[رابطه \exnum{۲.۲۶}، صفحه چاپی ۷۷]{weste}:
+\begin{align}
+ I_{\mathrm{lin}}&=\frac{\mu_{\mathrm{eff}}C_{\mathrm{ox}}W}{L}
+ \frac{(V_{GT}-V_{DS}/2)V_{DS}}{1+V_{DS}/V_c},
+ &&0\le V_{DS}<V_{\mathrm{dsat}},
+ \label{eq:velocity-linear}\\
+ I_{\mathrm{sat}}&=C_{\mathrm{ox}}W(V_{GT}-V_{\mathrm{dsat}})v_{\mathrm{sat}},
+ &&V_{DS}\ge V_{\mathrm{dsat}}.
+ \label{eq:velocity-saturation}
+\end{align}
+کمیت \(q'_{\mathrm{inv,d}}=C_{\mathrm{ox}}W(V_{GT}-V_{\mathrm{dsat}})\)، قدرمطلق بار وارونگی بر واحد طول در انتهای درین است.
+واحد آن \(\unit{\coulomb\per\metre}\) است؛ ضرب آن در سرعت \(v_{\mathrm{sat}}\) جریان را با واحد \(\unit{\ampere}\) می‌دهد.
+بنابراین این کمیت، بار کل کانال نیست.
 
-\[V_{dsat} = \frac{V_{GT} V_c}{V_{GT} + V_c} = V_{GT} \parallel V_c\]
+\subsection*{پیوستگی جریان و استخراج ولتاژ اشباع}
+برای اختصار، \(A=V_{GT}\) و \(s=V_{\mathrm{dsat}}\) می‌گذاریم.
+پیوستگی دو شاخه جریان در \(V_{DS}=s\)، با جایگذاری رابطه \eqref{eq:velocity-critical-voltage}، می‌دهد
+\begin{equation}
+ \frac{\mu_{\mathrm{eff}}C_{\mathrm{ox}}W}{L}
+ \frac{(A-s/2)s}{1+s/V_c}
+ =C_{\mathrm{ox}}W(A-s)\frac{\mu_{\mathrm{eff}}V_c}{2L}.
+ \label{eq:velocity-continuity}
+\end{equation}
+با حذف عوامل مشترک مثبت و ضرب در \(2(1+s/V_c)\)، رابطه ساده می‌شود:
+\begin{align}
+ 2\left(A-\frac{s}{2}\right)s&=(A-s)(V_c+s),\notag\\
+ 2As-s^2&=AV_c+As-V_cs-s^2,\notag\\
+ (A+V_c)s&=AV_c.
+ \label{eq:velocity-algebra}
+\end{align}
+جمله‌های درجه‌دو از دو طرف حذف شده‌اند؛ چون \(A+V_c>0\)، نتیجه یکتا است:
+\begin{equation}
+ \boxed{V_{\mathrm{dsat}}=\frac{V_{GT}V_c}{V_{GT}+V_c}
+ =V_{GT}\parallel V_c.}
+ \label{eq:velocity-result}
+\end{equation}
+نماد \(a\parallel b=ab/(a+b)\) در اینجا فقط تشابه جبری با فرمول مقاومت‌های موازی را نشان می‌دهد.
+برای پارامترهای مثبت، نتیجه \eqref{eq:velocity-result} شرط
+\(0<V_{\mathrm{dsat}}<\min(V_{GT},V_c)\) را برآورده می‌کند.
 
-\end{quote}
-این رابطه، ولتاژ اشباع درین (\(V_{dsat}\)) را با در نظر گرفتن هم‌زمان پدیده \textbf{\lr{Velocity Saturation}} (اشباع سرعت حامل‌ها) و اثر مرتبه اول ترانزیستور (\lr{Shockley Pinch-off}) توصیف می‌کند.
+\subsection*{کنترل رفتار حدی و دامنه اعتبار}
+با جایگذاری رابطه \eqref{eq:velocity-result} در جریان اشباع داریم
+\cite[رابطه \exnum{۲.۲۸}]{weste}
+\begin{equation}
+ I_{\mathrm{sat}}=C_{\mathrm{ox}}Wv_{\mathrm{sat}}
+ \frac{V_{GT}^2}{V_{GT}+V_c}.
+ \label{eq:velocity-final-current}
+\end{equation}
+در حد \(V_c\gg V_{GT}\)، ولتاژ شروع اشباع به \(V_{GT}\) نزدیک می‌شود.
+با توجه به رابطه \eqref{eq:velocity-critical-voltage}، جریان \eqref{eq:velocity-final-current} در این حد به
+\(I_{\mathrm{sat}}\approx\mu_{\mathrm{eff}}C_{\mathrm{ox}}(W/L)V_{GT}^2/2\)
+تبدیل می‌شود و مدل مربعی کانال بلند بازیابی می‌شود.
 
-\subsection*{۱. تعاریف و معادلات پایه (\lr{Givens \& Governing Equations})}
-
-\begin{enumerate}
-\item \textbf{مدل سرعت حامل‌ها (\lr{Carrier Drift Velocity Model}):}
-با افزایش میدان الکتریکی جانبی (\(E = V_{ds}/L\))، سرعت حرکت الکترون‌ها به دلیل برخورد با فونون‌های شبکه دچار اشباع می‌شود. مدل تقریب سرعت طبق رابطه (2.24) کتاب عبارت است از:
-\[v = \frac{\mu_{eff} E}{1 + \frac{E}{E_c}} = \frac{\mu_{eff} \frac{V_{ds}}{L}}{1 + \frac{V_{ds}}{E_c L}} = \frac{\mu_{eff} \frac{V_{ds}}{L}}{1 + \frac{V_{ds}}{V_c}}\]
-که در آن \(E_c\) میدان الکتریکی بحرانی (\lr{Critical Electric Field}) و \(V_c = E_c L\) ولتاژ بحرانی (\lr{Critical Voltage}) است. با توجه به شرط پیوستگی سرعت در \(E = E_c\) که سرعت به \(v_{sat}\) می‌رسد، داریم:
-\[E_c = \frac{2 v_{sat}}{\mu_{eff}} \implies V_c = E_c L = \frac{2 v_{sat} L}{\mu_{eff}} \implies v_{sat} = \frac{\mu_{eff} V_c}{2L}\]
-
-\item \textbf{جریان در ناحیه خطی (\lr{Linear Region Current}):}
-با جایگذاری رابطه سرعت فوق در انتگرال بار کانال، رابطه جریان در ناحیه خطی به‌صورت زیر اصلاح می‌شود:
-\[I_{ds} = \frac{\mu_{eff}}{1 + \frac{V_{ds}}{V_c}} C_{ox} \frac{W}{L} \left( V_{GT} - \frac{V_{ds}}{2} \right) V_{ds} \quad (V_{ds} < V_{dsat})\]
-که در آن \(V_{GT} = V_{gs} - V_t\) معرف \lr{Overdrive Voltage} گیت است.
-
-\item \textbf{جریان در نقطه اشباع (\lr{Saturation Region Current}):}
-در نقطه شروع اشباع (\(V_{ds} = V_{dsat}\))، سرعت حامل‌ها در لبه درین به \(v_{sat}\) می‌رسد و بار وارونگی درین برابر \(Q_{channel} = C_{ox} W (V_{GT} - V_{dsat})\) است. در نتیجه جریان اشباع برابر است با:
-\[I_{dsat} = C_{ox} W (V_{GT} - V_{dsat}) v_{sat} \quad (V_{ds} \ge V_{dsat})\]
-
-\end{enumerate}
-
-\subsection*{۲. اثبات گام‌به‌گام (\lr{Step-by-Step Derivation})}
-
-طبق تعریف فیزیکی و پیوستگی مشخصه جریان-ولتاژ (\lr{I-V})، در مرز ناحیه خطی و اشباع یعنی در \(V_{ds} = V_{dsat}\)، جریان رابطه ناحیه خطی باید با جریان رابطه ناحیه اشباع برابر باشد:
-
-\[\left. I_{ds,linear} \right|_{V_{ds} = V_{dsat}} = I_{dsat}\]
-
-با قرار دادن فرمول‌های طرفین:
-\[\frac{\mu_{eff}}{1 + \frac{V_{dsat}}{V_c}} C_{ox} \frac{W}{L} \left( V_{GT} - \frac{V_{dsat}}{2} \right) V_{dsat} = C_{ox} W (V_{GT} - V_{dsat}) v_{sat}\]
-
-\subsubsection*{گام اول: ساده‌سازی جملات مشترک}
-عبارت ثابت \(C_{ox} W\) را از طرفین معادله حذف می‌کنیم:
-\[\frac{\mu_{eff}}{L} \frac{1}{1 + \frac{V_{dsat}}{V_c}} \left( V_{GT} - \frac{V_{dsat}}{2} \right) V_{dsat} = (V_{GT} - V_{dsat}) v_{sat}\]
-
-\subsubsection*{گام دوم: جایگذاری سرعت اشباع (\(v_{sat}\))}
-با استفاده از رابطه \(v_{sat} = \frac{\mu_{eff} V_c}{2L}\) در سمت راست:
-\[\frac{\mu_{eff}}{L} \frac{1}{1 + \frac{V_{dsat}}{V_c}} \left( V_{GT} - \frac{V_{dsat}}{2} \right) V_{dsat} = (V_{GT} - V_{dsat}) \left( \frac{\mu_{eff} V_c}{2L} \right)\]
-
-ضریب مشترک \(\frac{\mu_{eff}}{L}\) از دو طرف معادله ساده می‌شود:
-\[\frac{1}{1 + \frac{V_{dsat}}{V_c}} \left( V_{GT} - \frac{V_{dsat}}{2} \right) V_{dsat} = (V_{GT} - V_{dsat}) \frac{V_c}{2}\]
-
-\subsubsection*{گام سوم: حذف مخرج و ساده‌سازی جبری}
-مخرج سمت چپ را به‌صورت یک کسر مشترک می‌نویسیم:
-\[1 + \frac{V_{dsat}}{V_c} = \frac{V_c + V_{dsat}}{V_c}\]
-
-با جایگذاری در معادله:
-\[\frac{V_c}{V_c + V_{dsat}} \left( V_{GT} - \frac{V_{dsat}}{2} \right) V_{dsat} = (V_{GT} - V_{dsat}) \frac{V_c}{2}\]
-
-با حذف \(V_c\) از دو طرف و ضرب طرفین در \(2 (V_c + V_{dsat})\):
-\[2 \left( V_{GT} - \frac{V_{dsat}}{2} \right) V_{dsat} = (V_{GT} - V_{dsat})(V_c + V_{dsat})\]
-
-\subsubsection*{گام چهارم: بسط دو طرف معادله}
-سمت چپ معادله:
-\[2 V_{GT} V_{dsat} - V_{dsat}^2\]
-
-سمت راست معادله:
-\[(V_{GT} - V_{dsat})(V_c + V_{dsat}) = V_{GT} V_c + V_{GT} V_{dsat} - V_c V_{dsat} - V_{dsat}^2\]
-
-معادله حاصل به‌صورت زیر درمی‌آید:
-\[2 V_{GT} V_{dsat} - V_{dsat}^2 = V_{GT} V_c + V_{GT} V_{dsat} - V_c V_{dsat} - V_{dsat}^2\]
-
-جمله درجه دوم \(- V_{dsat}^2\) از دو طرف حذف می‌شود:
-\[2 V_{GT} V_{dsat} = V_{GT} V_c + V_{GT} V_{dsat} - V_c V_{dsat}\]
-
-\subsubsection*{گام پنجم: جداسازی \(V_{dsat}\)}
-با انتقال \(V_{GT} V_{dsat}\) و \(-V_c V_{dsat}\) به سمت چپ:
-\[2 V_{GT} V_{dsat} - V_{GT} V_{dsat} + V_c V_{dsat} = V_{GT} V_c\]
-\[V_{GT} V_{dsat} + V_c V_{dsat} = V_{GT} V_c\]
-
-فاکتورگیری از \(V_{dsat}\):
-\[V_{dsat} (V_{GT} + V_c) = V_{GT} V_c\]
-
-در نهایت:
-\[V_{dsat} = \frac{V_{GT} V_c}{V_{GT} + V_c}\]
-
-\subsection*{۳. تحلیل فیزیکی و رفتارهای حدی (\lr{Limiting Cases})}
-
-این فرمول ساختاری کاملاً مشابه با فرمول مقاومت‌های موازی دارد (\(V_{dsat} = V_{GT} \parallel V_c\)):
-
-\begin{enumerate}
-\item \textbf{حالت کانال بلند (\lr{Long-Channel Regime}):}
-اگر طول کانال بزرگ باشد یا میدان ضعیف باشد (\(V_c \gg V_{GT}\))، اشباع سرعت رخ نمی‌دهد. در این حالت:
-\[V_{dsat} \approx V_{GT} = V_{gs} - V_t\]
-که همان ولتاژ اشباع مرسوم \lr{Shockley} در اثر \lr{Pinch-off} است.
-
-\item \textbf{حالت اشباع سرعت شدید (\lr{Velocity-Saturated Regime}):}
-اگر طول کانال بسیار کوتاه باشد یا \(V_c \ll V_{GT}\)، حامل‌ها خیلی سریع پیش از پینچ‌آف شدن به حداکثر سرعت ممکن می‌رسند:
-\[V_{dsat} \approx V_c\]
-در این شرایط ولتاژ اشباع مستقل از ولتاژ گیت بوده و جریان اشباع به‌جای رابطه مربعی، رابطه‌ای خطی با ولتاژ گیت پیدا می‌کند.
-
-\item \textbf{نتیجه کلی:}
-در تمام ترانزیستورهای عملی نانومتری، مقدار \(V_{dsat}\) همواره از هر دو مقدار \(V_{GT}\) و \(V_c\) کوچک‌تر است:
-\[V_{dsat} < \min(V_{GT}, V_c)\]
-\end{enumerate}
+در حد \(V_{GT}\gg V_c\)، داریم
+\(V_{\mathrm{dsat}}\approx V_c\) و
+\(I_{\mathrm{sat}}\approx C_{\mathrm{ox}}Wv_{\mathrm{sat}}V_{GT}\).
+بنابراین، با ثابت گرفتن پارامترهای مدل، جریان در این حد تقریباً با \(V_{GT}\) متناسب است.
+این نتیجه درباره حد مدل است؛ استقلال کامل ولتاژ اشباع از گیت یا اعتبار یکسان آن برای همه فناوری‌ها را ثابت نمی‌کند.
+خود \(\mu_{\mathrm{eff}}\) می‌تواند با ولتاژ گیت تغییر کند و در نتیجه \(V_c\) نیز لزوماً ثابت نیست
+\cite[صفحه چاپی ۷۷]{weste}.

@@ -1,112 +1,98 @@
-% Generated from 2/2-7.md; technical content preserved.
+% !TeX root = ../main.tex
 \exercise{۲.۷}
-صورت \textbf{\lr{Exercise 2.7}} در انتهای فصل دوم کتاب درسی به شرح زیر است:
+\subsection*{صورت مسئله، داده‌ها و قرارداد محاسبه}
+یک ترانزیستور \lr{nMOS} در فرایند \(\qty{0.6}{\micro\metre}\) دارای ضخامت اکسید
+\(t_{\mathrm{ox}}=\qty{10}{\nano\metre}\)، معادل صد آنگستروم،
+غلظت ناخالصی پذیرنده \(N_A=\qty{2e17}{\per\cubic\centi\metre}\)
+و آستانه بایاس صفر \(V_{t0}=\qty{0.7}{\volt}\) است.
+بدنه به زمین متصل است. اگر ولتاژ سورس از صفر به \(\qty{4}{\volt}\) برسد،
+ولتاژ آستانه در دمای اتاق چقدر تغییر می‌کند
+\cite[تمرین \exnum{۲.۷}، صفحه چاپی ۹۶]{weste}؟
 
-\begin{quote}
-\textbf{صورت مسئله:}
+برای سازگاری با ثابت‌ها و تقریب‌های مثال \exnum{۲.۵} کتاب، دمای اتاق را \(T=\qty{300}{\kelvin}\)
+و ولتاژ حرارتی را \(v_T=kT/q\approx\qty{26}{\milli\volt}\) در نظر می‌گیریم؛
+\(k\) ثابت بولتزمن و \(q\) قدرمطلق بار الکترون است.
+ثابت‌های مورد استفاده عبارت‌اند از
+\cite[صفحات چاپی ۶۵، ۷۹ و ۸۰]{weste}
+\begin{align*}
+ n_i&=\qty{1.45e10}{\per\cubic\centi\metre},
+ &q&\approx\qty{1.6e-19}{\coulomb},\\
+ \varepsilon_0&\approx\qty{8.85e-14}{\farad\per\centi\metre},
+ &\varepsilon_{\mathrm{ox}}&=3.9\varepsilon_0,
+ &\varepsilon_{\mathrm{si}}&=11.7\varepsilon_0.
+\end{align*}
+در این روابط، \(n_i\) غلظت ذاتی حامل‌ها، \(\varepsilon_0\) گذردهی خلأ،
+\(\varepsilon_{\mathrm{ox}}\) گذردهی اکسید و \(\varepsilon_{\mathrm{si}}\) گذردهی سیلیکون است.
+محاسبات میانی با ارقام بیشتر نگه داشته می‌شوند و نتیجه نهایی گرد می‌شود.
 
-یک ترانزیستور \lr{nMOS} را در یک فرآیند 0.6 میکرومتر با ضخامت اکسید گیت \(t_{ox} = 100\text{\lr{ \AA}}\) در نظر بگیرید. غلظت ناخالصی بدنه برابر با \(N_A = 2 \times 10^{17}\text{\lr{ cm}}^{-3}\) و ولتاژ آستانه نامی \(V_{t0} = 0.7\text{\lr{ V}}\) است. بدنه (\lr{Substrate/Body}) از طریق اتصال سابستریت به زمین وصل شده است. اگر پتانسیل سورس به‌جای \(0\text{\lr{ V}}\) برابر با \(4\text{\lr{ V}}\) باشد، مقدار ولتاژ آستانه در دمای اتاق چقدر تغییر می‌کند؟
+\subsection*{محاسبه پارامترهای اثر بدنه و تغییر آستانه}
+از اتصال بدنه به زمین، \(V_{SB}=V_S-V_B=\qty{4}{\volt}\) به دست می‌آید.
+رابطه کامل اثر بدنه همان رابطه \eqref{eq:body-threshold} است.
+پتانسیل سطحی و ضریب اثر بدنه از روابط کتاب محاسبه می‌شوند
+\cite[روابط \exnum{۲.۳۶} و \exnum{۲.۳۷}]{weste}\cite[اسلایدهای ۱۶ و ۱۷]{nonideal}:
+\begin{equation}
+ \phi_s=2v_T\ln\!\left(\frac{N_A}{n_i}\right),\qquad
+ C_{\mathrm{ox}}=\frac{\varepsilon_{\mathrm{ox}}}{t_{\mathrm{ox}}},\qquad
+ \gamma=\frac{\sqrt{2q\varepsilon_{\mathrm{si}}N_A}}{C_{\mathrm{ox}}}.
+ \label{eq:numeric-body-parameters}
+\end{equation}
+با \(t_{\mathrm{ox}}=\qty{1e-6}{\centi\metre}\)، پتانسیل سطحی و ظرفیت اکسید بر واحد سطح عبارت‌اند از
+\begin{align}
+ \phi_s&=2(\qty{0.026}{\volt})
+ \ln\!\left(\frac{2\times10^{17}}{1.45\times10^{10}}\right)
+ \approx\qty{0.85486}{\volt},\label{eq:numeric-phi}\\
+ C_{\mathrm{ox}}&=\frac{\qty{3.4515e-13}{\farad\per\centi\metre}}
+ {\qty{1e-6}{\centi\metre}}
+ =\qty{3.4515e-7}{\farad\per\square\centi\metre}.
+ \label{eq:numeric-cox}
+\end{align}
+برای کنترل واحدها، ضریب صورت رابطه \(\gamma\) را \(B_Q\) می‌نامیم.
+واحد آن از \(\unit{\farad}=\unit{\coulomb\per\volt}\) به دست می‌آید:
+\begin{align}
+ B_Q&\equiv\sqrt{2q\varepsilon_{\mathrm{si}}N_A}
+ \approx\qty{2.57427e-7}{\coulomb\per\square\centi\metre\per\volt\tothe{0.5}},
+ \label{eq:numeric-charge-coefficient}\\
+ [B_Q]&=\sqrt{\unit{\coulomb}\,
+ \unit{\farad\per\centi\metre}\,
+ \unit{\per\cubic\centi\metre}}
+ =\unit{\coulomb\per\square\centi\metre\per\volt\tothe{0.5}}.
+ \label{eq:numeric-dimension}
+\end{align}
+پس \(B_Q\) به‌تنهایی بار بر واحد سطح نیست؛ ضرب آن در ریشه یک ولتاژ، واحد بار سطحی می‌دهد.
+تقسیم آن بر \(C_{\mathrm{ox}}\)، ضریب اثر بدنه را با واحد ریشه ولتاژ تعیین می‌کند:
+\begin{equation}
+ \gamma=\frac{B_Q}{C_{\mathrm{ox}}}
+ \approx\qty{0.74584}{\volt\tothe{0.5}}.
+ \label{eq:numeric-gamma}
+\end{equation}
+اکنون با جایگذاری روابط \eqref{eq:numeric-phi} و \eqref{eq:numeric-gamma} در رابطه \eqref{eq:body-threshold} داریم
+\begin{align}
+ \Delta V_t&\equiv V_t-V_{t0}
+ =\gamma\left(\sqrt{\phi_s+\qty{4}{\volt}}-\sqrt{\phi_s}\right)
+ \approx\qty{0.95377}{\volt},\label{eq:numeric-threshold-shift}\\
+ V_t&=\qty{0.7}{\volt}+\Delta V_t
+ \approx\qty{1.65377}{\volt}.
+ \label{eq:numeric-threshold-new}
+\end{align}
+ارقام بیشتر در این دو رابطه برای بازتولید محاسبه‌اند.
+با گرد کردن متناسب با دقت تقریبی داده‌ها، پاسخ نهایی چنین است:
+\begin{equation}
+ \boxed{\Delta V_t\approx\qty{0.95}{\volt},\qquad V_t\approx\qty{1.65}{\volt}.}
+ \label{eq:numeric-body-result}
+\end{equation}
+بنابراین آستانه افزایش می‌یابد.
+این آستانه، ولتاژ گیت نسبت به سورس در شروع وارونگی است؛ افزایش خود ولتاژ سورس نباید دوباره به \(\Delta V_t\) اضافه شود.
 
-\end{quote}
-
-\subsection*{۱. داده‌ها، مجهولات و ثوابت فیزیکی (\lr{Givens, Unknowns \& Physical Constants})}
-
-\begin{itemize}
-\item \textbf{داده‌های مسئله (\lr{Givens}):}
-\begin{itemize}
-\item فناوری ساخت: \(0.6\ \mu\text{\lr{m}}\)
-\item ضخامت اکسید گیت:
-\[t_{ox} = 100\text{\lr{ \AA}} = 100 \times 10^{-8}\text{\lr{ cm}} = 10^{-6}\text{\lr{ cm}} = 10\text{\lr{ nm}}\]
-\item غلظت ناخالصی زمینه (\lr{Substrate Doping}): \(N_A = 2 \times 10^{17}\text{\lr{ cm}}^{-3}\)
-\item ولتاژ آستانه در بایاس صفر (\lr{Nominal Threshold Voltage}): \(V_{t0} = 0.7\text{\lr{ V}}\)
-\item ولتاژ بدنه: \(V_B = 0\text{\lr{ V}}\)
-\item ولتاژ سورس: \(V_S = 4\text{\lr{ V}}\)
-\item ولتاژ سورس-بدنه (\lr{Source-to-Body Voltage}):
-\[V_{SB} = V_S - V_B = 4 - 0 = 4\text{\lr{ V}}\]
-
-\end{itemize}
-\item \textbf{ثوابت فیزیکی در دمای اتاق (\(T = 300\text{\lr{ K}}\)):}
-\begin{itemize}
-\item ولتاژ حرارتی (\lr{Thermal Voltage}): \(v_T = \frac{kT}{q} \approx 26\text{\lr{ mV}} = 0.026\text{\lr{ V}}\)
-\item غلظت ذاتی حامل‌ها در سیلیکون (\lr{Intrinsic Carrier Concentration}): \(n_i = 1.45 \times 10^{10}\text{\lr{ cm}}^{-3}\)
-\item بار الکترون: \(q = 1.6 \times 10^{-19}\text{\lr{ C}}\)
-\item گذردهی خلأ: \(\varepsilon_0 = 8.85 \times 10^{-14}\text{\lr{ F/cm}}\)
-\item ضریب دی‌الکتریک اکسید سیلیسیم (\(\text{\lr{SiO}}_2\)): \(k_{ox} = 3.9 \implies \varepsilon_{ox} = 3.9 \times \varepsilon_0 \approx 3.45 \times 10^{-13}\text{\lr{ F/cm}}\)
-\item ضریب دی‌الکتریک سیلیسیم: \(k_{si} = 11.7 \implies \varepsilon_{si} = 11.7 \times \varepsilon_0 \approx 1.035 \times 10^{-12}\text{\lr{ F/cm}}\)
-
-\end{itemize}
-\item \textbf{مجهول مسئله (\lr{Unknown}):}
-\begin{itemize}
-\item میزان تغییر ولتاژ آستانه: \(\Delta V_t = V_t(V_{SB} = 4\text{\lr{ V}}) - V_{t0}\)
-
-\end{itemize}
-\end{itemize}
-
-\subsection*{۲. روابط حاکم (\lr{Governing Equations})}
-
-پدیده \textbf{\lr{Body Effect}} که ناشی از افزایش بار ناحیه تخلیه با افزایش ولتاژ معکوس سورس-بدنه است، با معادلات زیر توصیف می‌شود:
-
-\begin{enumerate}
-\item \textbf{معادله تغییر ولتاژ آستانه:}
-\[V_t = V_{t0} + \gamma \left( \sqrt{\phi_s + V_{SB}} - \sqrt{\phi_s} \right)\]
-\[\Delta V_t = \gamma \left( \sqrt{\phi_s + V_{SB}} - \sqrt{\phi_s} \right)\]
-
-\item \textbf{پتانسیل سطحی در آستانه وارونگی قوی (\lr{Surface Potential}):}
-\[\phi_s = 2 \phi_F = 2 v_T \ln \left( \frac{N_A}{n_i} \right)\]
-
-\item \textbf{ضریب اثر بدنه (\lr{Body Effect Coefficient}):}
-\[\gamma = \frac{t_{ox}}{\varepsilon_{ox}} \sqrt{2 q \varepsilon_{si} N_A} = \frac{\sqrt{2 q \varepsilon_{si} N_A}}{C_{ox}}\]
-که در آن \(C_{ox} = \frac{\varepsilon_{ox}}{t_{ox}}\) ظرفیت خازنی اکسید گیت در واحد سطح است.
-
-\end{enumerate}
-
-\subsection*{۳. محاسبات عددی گام‌به‌گام (\lr{Step-by-Step Derivations})}
-
-\subsubsection*{گام اول: محاسبه پتانسیل سطحی (\(\phi_s\))}
-مقادیر \(N_A\) و \(n_i\) را در رابطه پتانسیل سطحی قرار می‌دهیم:
-\[\frac{N_A}{n_i} = \frac{2 \times 10^{17}}{1.45 \times 10^{10}} \approx 1.3793 \times 10^7\]
-\[\ln \left( 1.3793 \times 10^7 \right) \approx 16.4398\]
-\[\phi_s = 2 \times 0.026\text{\lr{ V}} \times 16.4398 \approx \mathbf{0.855\text{\lr{ V}}}\]
-
-\subsubsection*{گام دوم: محاسبه ظرفیت خازنی اکسید گیت (\(C_{ox}\)) و ضریب اثر بدنه (\(\gamma\))}
-ظرفیت خازنی در واحد سطح برابر است با:
-\[C_{ox} = \frac{\varepsilon_{ox}}{t_{ox}} = \frac{3.9 \times 8.85 \times 10^{-14}\text{\lr{ F/cm}}}{100 \times 10^{-8}\text{\lr{ cm}}} = \frac{3.4515 \times 10^{-13}}{10^{-6}} \approx 3.4515 \times 10^{-7}\text{\lr{ F/cm}}^2\]
-
-ترم رادیکالی بار تخلیه بر واحد سطح به ازای پتانسیل یک ولت:
-\[\sqrt{2 q \varepsilon_{si} N_A} = \sqrt{2 \times (1.6 \times 10^{-19}\text{\lr{ C}}) \times (11.7 \times 8.85 \times 10^{-14}\text{\lr{ F/cm}}) \times (2 \times 10^{17}\text{\lr{ cm}}^{-3})}\]
-{\small \[= \sqrt{3.2 \times 10^{-19} \times 1.0354 \times 10^{-12} \times 2 \times 10^{17}} = \sqrt{6.6269 \times 10^{-14}} \approx 2.5743 \times 10^{-7}\text{\lr{ C/cm}}^2\]}
-
-بنابراین ضریب اثر بدنه \(\gamma\) به دست می‌آید:
-\[\gamma = \frac{\sqrt{2 q \varepsilon_{si} N_A}}{C_{ox}} = \frac{2.5743 \times 10^{-7}}{3.4515 \times 10^{-7}} \approx \mathbf{0.746\text{\lr{ V}}^{1/2}}\]
-\emph{(این مقدار دقیقاً در بازه متداول \(0.4\) تا \(1\text{\lr{ V}}^{1/2}\) ذکر شده در مراجع قرار دارد).}
-
-\subsubsection*{گام سوم: محاسبه تغییر ولتاژ آستانه (\(\Delta V_t\))}
-مقادیر \(\phi_s = 0.855\text{\lr{ V}}\)، \(V_{SB} = 4\text{\lr{ V}}\) و \(\gamma = 0.746\text{\lr{ V}}^{1/2}\) را جایگذاری می‌کنیم:
-\[\sqrt{\phi_s + V_{SB}} = \sqrt{0.855 + 4} = \sqrt{4.855} \approx 2.2034\text{\lr{ V}}^{1/2}\]
-\[\sqrt{\phi_s} = \sqrt{0.855} \approx 0.9247\text{\lr{ V}}^{1/2}\]
-
-اختلاف ترم‌های رادیکالی:
-\[\sqrt{\phi_s + V_{SB}} - \sqrt{\phi_s} = 2.2034 - 0.9247 = 1.2787\text{\lr{ V}}^{1/2}\]
-
-میزان افزایش ولتاژ آستانه:
-\[\Delta V_t = \gamma \left( \sqrt{\phi_s + V_{SB}} - \sqrt{\phi_s} \right) = 0.746 \times 1.2787 \approx \mathbf{0.954\text{\lr{ V}}}\]
-
-ولتاژ آستانه جدید ترانزیستور برابر است با:
-\[V_t = V_{t0} + \Delta V_t = 0.7 + 0.954 = \mathbf{1.654\text{\lr{ V}}}\]
-
-\subsection*{۴. مقایسه با تقریب خطی (\lr{Linear Approximation})}
-
-در اسلایدها و بخش 2.4.3.1 کتاب، تقریب خطی اثر بدنه به‌صورت زیر معرفی شده است:
-\[V_t \approx V_{t0} + k_\gamma V_{SB}\]
-که در آن ضریب حساسیت خطی برابر است با:
-\[k_\gamma = \frac{\gamma}{2\sqrt{\phi_s}} = \frac{0.746}{2 \times 0.9247} \approx 0.403\]
-
-\begin{itemize}
-\item با استفاده از تقریب خطی برای \(V_{SB} = 4\text{\lr{ V}}\):
-\[\Delta V_{t,linear} \approx 0.403 \times 4 = 1.61\text{\lr{ V}}\]
-\item \textbf{نکته تحلیلی:} تقریب خطی تنها برای ولتاژهای کوچک سورس-بدنه (\(V_{SB} \ll \phi_s\)) معتبر است. برای ولتاژ بزرگی نظیر \(V_{SB} = 4\text{\lr{ V}}\)، شیب تابع رادیکالی با افزایش ولتاژ به‌طور محسوسی کاهش می‌یابد؛ بنابراین تقریب خطی خطا داشته و رابطه کامل غیرخطی الزامی است.
-
-\end{itemize}
-
-\subsection*{۵. نتیجه نهایی}
-مقدار ولتاژ آستانه به اندازه \textbf{\(0.954\text{\lr{ V}}\)} (حدود \textbf{\(0.95\text{\lr{ V}}\)}) افزایش می‌یابد و از \(0.7\text{\lr{ V}}\) به \textbf{\(1.654\text{\lr{ V}}\)} می‌رسد.
+\subsection*{کنترل اعتبار تقریب خطی}
+خطی‌سازی رابطه اثر بدنه در اطراف \(V_{SB}=0\) می‌دهد
+\cite[رابطه \exnum{۲.۳۸}]{weste}\cite[اسلاید ۱۷]{nonideal}
+\begin{equation}
+ k_\gamma=\left.\frac{\partial V_t}{\partial V_{SB}}\right|_{V_{SB}=0}
+ =\frac{\gamma}{2\sqrt{\phi_s}}\approx0.4033,
+ \qquad \Delta V_{t,\mathrm{lin}}\approx k_\gamma V_{SB}\approx\qty{1.61}{\volt}.
+ \label{eq:numeric-linear-check}
+\end{equation}
+شرط اعتبار این تقریب، \(V_{SB}\ll\phi_s\)، در این مسئله برقرار نیست؛ نسبت این دو کمیت حدود \num{4.7} است.
+تقریب خطی، تغییر آستانه را حدود ۶۹ درصد بیش‌برآورد می‌کند.
+علت، مقعر بودن تابع ریشه دوم و کاهش شیب آن با افزایش بایاس است؛ خود آستانه در مدل رادیکالی به مقدار ثابت اشباع نمی‌شود.
+ازاین‌رو، پاسخ این مسئله باید از رابطه کامل غیرخطی به دست آید.

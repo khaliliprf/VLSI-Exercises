@@ -1,0 +1,24 @@
+این Notebook به درس Advanced VLSI Design در مقطع کارشناسی ارشد مهندسی کامپیوتر، گرایش معماری سیستم‌های کامپیوتری، دانشگاه صنعتی امیرکبیر، نیمسال اول ۱۴۰۵، با تدریس دکتر مهدی صدیقی اختصاص دارد.
+
+هدف درس، درک عمیق رفتار MOSFET، مبانی طراحی CMOS، عوامل مؤثر بر عملکرد کوتاه‌مدت و بلندمدت مدارهای دیجیتال و ارتباط رفتار ترانزیستورها با Performance، Power، Delay و Reliability است.
+
+منبع اصلی درس کتاب CMOS VLSI Design: A Circuits and Systems Perspective, 4th Edition نوشته Weste و Harris است. اسلایدها، تمرین‌ها، مقالات علمی و توضیحات استاد نیز منابع مهم یادگیری هستند.
+
+مباحث درس مطابق سیلابس عبارت‌اند از:
+
+1. CMOS Fabrication و مبانی طراحی VLSI — Chapter 1
+2. Digital Electronics و MOSFET Fundamentals — ابتدای Chapter 2
+3. Nonideal MOSFET Behavior — Section 2.4
+4. Process Variation و Reliability — Sections 7.2 و 7.3
+5. Digital Circuit Aging — مقالات علمی مرتبط
+6. Technology Scaling — Section 7.4
+7. Logical Effort و Delay Optimization — Sections 4.4 و 4.5
+8. CMOS Combinational Circuit Design — Sections 9.1 و 9.2
+9. Advanced CMOS Circuits و Circuit Pitfalls — Section 9.3
+10. Sequential Circuit Design — Chapter 10
+11. Arithmetic Circuit Design — Chapter 11
+12. Memory Design — Chapter 12
+
+این Notebook برای یادگیری مفهومی، تحلیل رفتار ترانزیستورها، استخراج روابط ریاضی، حل مسائل، طراحی و تحلیل مدار، انجام پروژه، بررسی مقالات پژوهشی و آمادگی آزمون استفاده می‌شود.
+
+تمرکز یادگیری بر ارتباط میان Device Physics، Circuit Design و System-Level Implications، تحلیل Trade-offهای Power، Performance، Area و Reliability و تقویت توانایی حل مستقل مسائل مهندسی است.

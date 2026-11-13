@@ -1,6 +1,14 @@
 % !TeX program = xelatex
 \documentclass[12pt,a4paper]{article}
 \input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\exnum}[1]{\mbox{\beginL#1\endL}}
+\renewcommand{\exercise}[1]{\clearpage\section*{تمرین \exnum{#1}}}
+\sisetup{per-mode=power}
+% siunitx's default text micro symbol otherwise inherits the Persian font.
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={پاسخ تمرین دوم},pdfauthor={محمد خلیلی اصل}}
 % These are the only cover-page values that change for each assignment.
 \AssignmentNumber{۲}
 \AssignmentDate{۲۰ آبان ۱۴۰۵}
@@ -13,4 +21,35 @@
 \input{2/solutions/2-8}
 \input{2/solutions/2-9}
 \input{2/solutions/2-10}
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{weste}
+\lr{Neil H. E. Weste and David Money Harris},
+\lr{CMOS VLSI Design: A Circuits and Systems Perspective}،
+ویرایش چهارم، \lr{Addison-Wesley / Pearson}، ۲۰۱۱.
+صورت تمرین‌ها و شکل \exnum{۲.۳۲}: صفحات چاپی ۹۵ و ۹۶
+(صفحات ۱۲۲ و ۱۲۳ فایل \lr{PDF}).
+مدل \lr{Shockley}: بخش \exnum{۲.۲}، صفحه چاپی ۶۶؛
+مدل \lr{Velocity Saturation}: بخش \exnum{۲.۴.۱}، صفحات چاپی ۷۶ و ۷۷؛
+\lr{Body Effect}: بخش \exnum{۲.۴.۳.۱}، صفحات چاپی ۷۹ و ۸۰؛
+\lr{Subthreshold Leakage}: بخش \exnum{۲.۴.۴.۱}، صفحات چاپی ۸۱ و ۸۲؛
+\lr{GIDL}: بخش \exnum{۲.۴.۴.۳}، صفحه چاپی ۸۴؛
+بایاس بدنه: بخش \exnum{۵.۳.۴}، صفحات چاپی ۱۹۹ و ۲۰۰.
+در بخش‌های یادشده، شماره صفحه فایل برابر شماره چاپی به‌اضافه ۲۷ است.
+
+\bibitem{nonideal}
+اسلایدهای محلی درس، \lr{Nonideal Transistor Theory}،
+با سربرگ \lr{CMOS VLSI Design 4th Ed.}،
+فایل \lr{\texttt{02-nonideal Sec2.4.pdf}}.
+مدل سرعت و تفسیر آن: اسلایدهای ۹ و ۱۰؛ اثر بدنه: اسلایدهای ۱۶ و ۱۷؛
+نشتی زیرآستانه: اسلاید ۲۳؛ نشتی پیوند و \lr{GIDL}: اسلایدهای ۲۷ و ۲۸.
+شماره‌های اسلاید با شماره صفحات فایل یکسان‌اند.
+
+\bibitem{mosfet}
+اسلایدهای محلی درس، \lr{MOSFET Transistors}،
+فایل \lr{\texttt{01-MOSFET Ch2.pdf}}،
+اسلایدهای ۶ تا ۱۳ درباره تشکیل کانال و ناحیه خطی،
+به‌ویژه اسلاید ۸ درباره ارتباط بار خازنی، جریان و زمان تغییر ولتاژ.
+شماره‌های اسلاید با شماره صفحات فایل یکسان‌اند.
+\end{thebibliography}
 \end{document}

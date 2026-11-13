@@ -1,122 +1,121 @@
-% Generated from 2/2-10.md; technical content preserved.
+% !TeX root = ../main.tex
 \exercise{۲.۱۰}
-صورت \textbf{\lr{Exercise 2.10}} از فصل دوم کتاب مرجع به ارزیابی مصالحه (\lr{Trade-off}) میان سرعت و توان مصرفی از طریق کاهش ولتاژ آستانه می‌پردازد:
+\subsection*{صورت مسئله و فرض‌های مقایسه}
+ولتاژ آستانه یک ترانزیستور \lr{nMOS} از \(\qty{0.4}{\volt}\) به \(\qty{0.3}{\volt}\) کاهش می‌یابد و
+\(V_{DD}=\qty{1.2}{\volt}\) است.
+ضریب افزایش جریان اشباع ایده‌آل در \(V_{GS}=V_{DS}=V_{DD}\)،
+ضریب افزایش نشتی زیرآستانه در دمای اتاق با \(V_{GS}=0\) و \(n=1.4\)،
+و همان ضریب نشتی در دمای \(\qty{120}{\degreeCelsius}\) را بیابید.
+طبق صورت سؤال، ولتاژ آستانه مستقل از دما فرض می‌شود
+\cite[تمرین \exnum{۲.۱۰}، صفحه چاپی ۹۶]{weste}.
 
-\begin{quote}
-\textbf{صورت مسئله:}
+در هر مقایسه، ابعاد، بایاس‌ها و پارامترهای مدل جز آستانه یکسان‌اند.
+نمادهای \(\mathrm{old}\) و \(\mathrm{new}\) به‌ترتیب به آستانه قدیم و جدید اشاره دارند.
+کاهش آستانه را با قدرمطلق مثبت آن تعریف می‌کنیم:
+\begin{equation}
+ \Delta V_t\equiv V_{t,\mathrm{old}}-V_{t,\mathrm{new}}=\qty{0.100}{\volt}.
+ \label{eq:comparison-threshold-reduction}
+\end{equation}
+در بخش‌های نشتی، نسبت جدید به قدیم در همان دما محاسبه می‌شود؛ بخش ج مقایسه نشتی دو دمای متفاوت نیست.
 
-یک ترانزیستور \lr{nMOS} دارای ولتاژ آستانه \(V_t = 0.4\text{\lr{ V}}\) و ولتاژ تغذیه \(V_{DD} = 1.2\text{\lr{ V}}\) است. یک طراح مدار در حال بررسی پیشنهادی برای کاهش \(V_t\) به اندازه \(100\text{\lr{ mV}}\) جهت دستیابی به ترانزیستورهای سریع‌تر است.
+\subsection*{بخش الف: جریان اشباع ایده‌آل}
+با ثابت بودن \(\beta=\mu C_{\mathrm{ox}}W/L\)، رابطه اشباع مدل \lr{Shockley} چنین است
+\cite[رابطه \exnum{۲.۸}، صفحه چاپی ۶۶]{weste}:
+\begin{equation}
+ I_{\mathrm{sat}}=\frac{\beta}{2}(V_{GS}-V_t)^2.
+ \label{eq:comparison-saturation-model}
+\end{equation}
+ولتاژ اضافه گیت در دو حالت به‌ترتیب \(\qty{0.8}{\volt}\) و \(\qty{0.9}{\volt}\) است.
+چون \(V_{DS}=\qty{1.2}{\volt}\) از هر دو مقدار بزرگ‌تر است، شرط اشباع هر دو حالت برقرار است.
+بنابراین ضریب افزایش جریان برابر است با
+\begin{equation}
+ r_{\mathrm{on}}\equiv\frac{I_{\mathrm{sat,new}}}{I_{\mathrm{sat,old}}}
+ =\left(\frac{1.2-0.3}{1.2-0.4}\right)^2
+ =\frac{81}{64}=1.265625\approx\boxed{1.27}.
+ \label{eq:comparison-on-ratio}
+\end{equation}
+پس جریان اشباع ایده‌آل حدود \num{26.6} درصد افزایش می‌یابد.
+این عدد، به‌تنهایی ضریب تغییر سرعت مدار را تعیین نمی‌کند.
 
-\textbf{الف)} اگر ترانزیستور ایده‌آل فرض شود، جریان اشباع (در \(V_{gs} = V_{ds} = V_{DD}\)) با چه ضریبی افزایش می‌یابد؟
+برای تفسیر محدود تأخیر، اگر ظرفیت بار \(C_L\) و دامنه تغییر ولتاژ \(\Delta V\) ثابت باشند،
+مدل ساده \(t_{\mathrm{pd}}\approx C_L\Delta V/I_{\mathrm{avg}}\) قابل استفاده است؛
+\(I_{\mathrm{avg}}\) جریان مؤثر متوسط در طول گذار است
+\cite[اسلاید ۸]{mosfet}.
+فقط اگر نسبت جریان اشباع را نماینده نسبت جریان مؤثر گذار نیز فرض کنیم، خواهیم داشت
+\begin{equation}
+ \frac{t_{\mathrm{pd,new}}}{t_{\mathrm{pd,old}}}
+ \approx\frac{1}{r_{\mathrm{on}}}=\frac{64}{81}\approx0.790.
+ \label{eq:comparison-delay-conditional}
+\end{equation}
+این برآورد شرطی، حدود ۲۱ درصد کاهش تأخیر می‌دهد؛ چنین مقداری نتیجه مستقل صورت سؤال نیست.
 
-\textbf{ب)} جریان نشتی زیر آستانه (\lr{Subthreshold Leakage Current}) در دمای اتاق و در حالت خاموش (\(V_{gs} = 0\)) با چه ضریبی افزایش پیدا می‌کند؟ فرض کنید \(n = 1.4\) باشد.
+\subsection*{بخش ب: نشتی زیرآستانه در دمای اتاق}
+مدل عمومی نشتی کتاب، آستانه مرجع بایاس صفر \(V_{t0}\) را از اثرهای بدنه و درین جدا می‌کند
+\cite[رابطه \exnum{۲.۴۲}، صفحات چاپی ۸۱ و ۸۲]{weste}\cite[اسلاید ۲۳]{nonideal}:
+\begin{equation}
+ I_{\mathrm{sub}}=I_{ds0}
+ \exp\!\left(\frac{V_{GS}-V_{t0}+\eta V_{DS}-k_\gamma V_{SB}}{nv_T}\right)
+ \left(1-\exp\!\left[-\frac{V_{DS}}{v_T}\right]\right).
+ \label{eq:comparison-subthreshold-model}
+\end{equation}
+در این رابطه، \(I_{ds0}\) ضریب جریان وابسته به هندسه و فرایند،
+\(\eta\) ضریب \lr{Drain-Induced Barrier Lowering (DIBL)}،
+\(k_\gamma\) ضریب خطی اثر بدنه، \(n\) ضریب شیب زیرآستانه و \(v_T=kT/q\) ولتاژ حرارتی است.
+\(T\) دمای مطلق، \(k\) ثابت بولتزمن و \(q\) قدرمطلق بار الکترون است.
+با بایاس بدنه و اثر \lr{DIBL} یکسان، تفاوت آستانه مرجع نیز همان \(\Delta V_t\) است.
+اگر \(V_t\) شامل این اثرها باشد، نباید آن‌ها را دوباره در توان نمایی حساب کرد.
 
-\textbf{ج)} این جریان نشتی زیر آستانه در دمای \(120\ ^\circ\text{\lr{C}}\) با چه ضریبی افزایش می‌یابد؟ فرض کنید ولتاژ آستانه مستقل از دما باشد.
+در یک دمای ثابت و با ضرایب و بایاس‌های یکسان در دو حالت، عوامل مشترک در نسبت حذف می‌شوند:
+\begin{equation}
+ r_{\mathrm{sub}}(T)\equiv
+ \frac{I_{\mathrm{sub,new}}(T)}{I_{\mathrm{sub,old}}(T)}
+ =\exp\!\left(\frac{\Delta V_t}{nv_T(T)}\right).
+ \label{eq:comparison-leakage-ratio}
+\end{equation}
+برای این حذف، صفر گرفتن \(\eta\) لازم نیست؛ یکسان بودن اثر آن در دو حالت کافی است.
+در دمای اتاق، \(T\approx\qty{300}{\kelvin}\)، تقریب کتاب \(v_T\approx\qty{26}{\milli\volt}\) را به کار می‌بریم:
+\begin{equation}
+ r_{\mathrm{sub,room}}=
+ \exp\!\left(\frac{0.100}{1.4\times0.026}\right)
+ \approx\boxed{15.6}.
+ \label{eq:comparison-leakage-room}
+\end{equation}
+برای کنترل مستقل، شیب زیرآستانه از رابطه \(S=nv_T\ln10\) برابر
+\(\qty{83.8}{\milli\volt}\) به ازای یک دهه تغییر جریان است
+\cite[رابطه \exnum{۲.۴۴}]{weste}.
+بنابراین \(10^{100/83.8}\approx15.6\)، همان نسبت را می‌دهد.
 
-\end{quote}
+\subsection*{بخش ج: نشتی زیرآستانه در دمای بالاتر}
+دمای \(\qty{120}{\degreeCelsius}\) برابر \(T=\qty{393.15}{\kelvin}\) است.
+با استفاده از \(v_T=kT/q\)، ولتاژ حرارتی حدود \(\qty{33.88}{\milli\volt}\) می‌شود.
+با تقریب \(v_T\approx\qty{34}{\milli\volt}\)، رابطه \eqref{eq:comparison-leakage-ratio} می‌دهد
+\begin{equation}
+ r_{\mathrm{sub,hot}}=
+ \exp\!\left(\frac{0.100}{1.4\times0.034}\right)
+ \approx8.17\approx\boxed{8.2}.
+ \label{eq:comparison-leakage-hot}
+\end{equation}
+نتایج سه بخش، با تقریب ولتاژ حرارتی، در جدول \ref{tab:threshold-comparison} آمده‌اند.
 
-\subsection*{۱. داده‌ها و فرضیات مسئله (\lr{Givens \& Assumptions})}
-\begin{itemize}
-\item ولتاژ تغذیه: \(V_{DD} = 1.2\text{\lr{ V}}\)
-\item ولتاژ آستانه اولیه: \(V_{t1} = 0.4\text{\lr{ V}}\)
-\item کاهش ولتاژ آستانه: \(\Delta V_t = 100\text{\lr{ mV}} = 0.1\text{\lr{ V}}\)
-\item ولتاژ آستانه جدید: \(V_{t2} = V_{t1} - \Delta V_t = 0.4 - 0.1 = 0.3\text{\lr{ V}}\)
-\item ضریب شیب زیر آستانه: \(n = 1.4\)
-\item ولتاژ حرارتی در دمای اتاق (\(T = 300\text{\lr{ K}}\)): \(v_T = \frac{kT}{q} \approx 26\text{\lr{ mV}} = 0.026\text{\lr{ V}}\)
-
-\end{itemize}
-
-\subsection*{۲. بخش (الف): محاسبه ضریب افزایش جریان اشباع (\lr{Saturation Current})}
-
-\subsubsection*{رابطه حاکم:}
-برای یک ترانزیستور ایده‌آل در مدل \lr{Shockley} (بدون اشباع سرعت و بدون مدولاسیون طول کانال)، جریان اشباع در بایاس کامل (\(V_{gs} = V_{ds} = V_{DD}\)) به‌صورت مربعی با \lr{Overdrive Voltage} گیت رابطه دارد:
-\[I_{dsat} = \frac{\beta}{2} (V_{gs} - V_t)^2 = \frac{\beta}{2} (V_{DD} - V_t)^2\]
-
-\subsubsection*{محاسبه عددی:}
-\begin{itemize}
-\item جریان با ولتاژ آستانه اولیه (\(V_{t1} = 0.4\text{\lr{ V}}\)):
-\[V_{GT1} = V_{DD} - V_{t1} = 1.2 - 0.4 = 0.8\text{\lr{ V}}\]
-\[I_{dsat1} \propto (0.8)^2 = 0.64\]
-
-\item جریان با ولتاژ آستانه کاهش‌یافته (\(V_{t2} = 0.3\text{\lr{ V}}\)):
-\[V_{GT2} = V_{DD} - V_{t2} = 1.2 - 0.3 = 0.9\text{\lr{ V}}\]
-\[I_{dsat2} \propto (0.9)^2 = 0.81\]
-
-\item نسبت افزایش جریان اشباع:
-\[\text{\lr{Factor}} = \frac{I_{dsat2}}{I_{dsat1}} = \frac{(V_{DD} - V_{t2})^2}{(V_{DD} - V_{t1})^2} = \frac{(1.2 - 0.3)^2}{(1.2 - 0.4)^2} = \frac{(0.9)^2}{(0.8)^2} = \frac{0.81}{0.64} \approx \mathbf{1.266}\]
-
-\end{itemize}
-بنابراین، جریان اشباع تقریباً \textbf{\(1.27\) برابر} شده و معادل \textbf{\(26.6\%\)} (یا حدود \(26\%\)) بهبود می‌یابد.
-
-\subsection*{۳. بخش (ب): محاسبه ضریب افزایش جریان نشتی در دمای اتاق (\lr{Room Temperature})}
-
-\subsubsection*{رابطه حاکم:}
-جریان نشتی زیر آستانه در ناحیه وارونگی ضعیف طبق معادله کتاب به‌صورت زیر مدل می‌شود:
-\[I_{sub} = I_{ds0} \exp\left( \frac{V_{gs} - V_t + \eta V_{ds} - k_\gamma V_{sb}}{n v_T} \right) \left( 1 - \exp\left(-\frac{V_{ds}}{v_T}\right) \right)\]
-
-در ترانزیستور خاموش با \(V_{gs} = 0\)، \(V_{sb} = 0\) و با فرض ولتاژ درین ثابت و صرف‌نظر از \lr{DIBL}، وابستگی جریان نشتی به ولتاژ آستانه عبارت است از:
-\[I_{sub} \propto \exp\left(-\frac{V_t}{n v_T}\right)\]
-
-با کاهش ولتاژ آستانه از \(V_{t1}\) به \(V_{t2} = V_{t1} - \Delta V_t\)، نسبت افزایش جریان نشتی برابر است با:
-\[\text{\lr{Factor}}_{sub} = \frac{I_{sub2}}{I_{sub1}} = \frac{\exp\left(-\frac{V_{t2}}{n v_T}\right)}{\exp\left(-\frac{V_{t1}}{n v_T}\right)} = \exp\left(\frac{V_{t1} - V_{t2}}{n v_T}\right) = \exp\left(\frac{\Delta V_t}{n v_T}\right)\]
-
-\subsubsection*{محاسبه عددی:}
-در دمای اتاق (\(T = 300\text{\lr{ K}}\)):
-\begin{itemize}
-\item \(v_T = 26\text{\lr{ mV}}\)
-\item \(n v_T = 1.4 \times 26\text{\lr{ mV}} = 36.4\text{\lr{ mV}} = 0.0364\text{\lr{ V}}\)
-\item \(\Delta V_t = 100\text{\lr{ mV}} = 0.1\text{\lr{ V}}\)
-
-\end{itemize}
-توان رابطه نمایی:
-\[\frac{\Delta V_t}{n v_T} = \frac{100\text{\lr{ mV}}}{36.4\text{\lr{ mV}}} \approx 2.7473\]
-
-ضریب افزایش نشتی:
-\[\text{\lr{Factor}}_{sub, 300\text{\lr{ K}}} = \exp(2.7473) \approx \mathbf{15.6}\]
-
-\emph{(از دیدگاه \lr{Subthreshold Slope}، مقدار \(S = n v_T \ln(10) \approx 1.4 \times 26 \times 2.3026 \approx 83.8\text{\lr{ mV/decade}}\) است. کاهش \(100\text{\lr{ mV}}\) در \(V_t\) منجر به \(10^{100 / 83.8} = 10^{1.193} \approx 15.6\) برابر شدن نشتی می‌شود).}
-
-\subsection*{۴. بخش (ج): محاسبه ضریب افزایش جریان نشتی در دمای \(120\ ^\circ\text{\lr{C}}\)}
-
-\subsubsection*{محاسبه ولتاژ حرارتی در دمای بالا:}
-دما برحسب کلوین:
-\[T = 120 + 273.15 = 393.15\text{\lr{ K}} \approx 393\text{\lr{ K}}\]
-
-ولتاژ حرارتی جدید:
-\[v_T(T) = \frac{k T}{q} = \frac{1.3806 \times 10^{-23} \times 393.15}{1.602 \times 10^{-19}} \approx 0.03388\text{\lr{ V}} \approx \mathbf{34\text{\lr{ mV}}}\]
-یا با استفاده از تناسب دمایی نسبت به دمای اتاق:
-\[v_T = 26\text{\lr{ mV}} \times \frac{393.15}{300} \approx 34.07\text{\lr{ mV}} \approx \mathbf{34\text{\lr{ mV}}}\]
-
-\subsubsection*{محاسبه عددی ضریب افزایش نشتی:}
-با فرض ثابت بودن \(V_t\) نسبت به دما طبق فرض صورت مسئله:
-\begin{itemize}
-\item \(n v_T = 1.4 \times 34\text{\lr{ mV}} = 47.6\text{\lr{ mV}} = 0.0476\text{\lr{ V}}\)
-\item توان رابطه نمایی:
-\[\frac{\Delta V_t}{n v_T} = \frac{100\text{\lr{ mV}}}{47.6\text{\lr{ mV}}} \approx 2.1008\]
-
-\end{itemize}
-ضریب افزایش نشتی:
-\[\text{\lr{Factor}}_{sub, 120\ ^\circ\text{\lr{C}}} = \exp(2.1008) \approx \mathbf{8.17} \quad (\approx \mathbf{8.2})\]
-
-\subsubsection*{نکته تحلیلی مهم:}
-همان‌طور که در راهنمای حل کتاب اشاره شده است، اگرچه نسبت افزایش ناشی از کاهش \(100\text{\lr{ mV}}\) در دمای بالا برابر \(8.2\) برابر است (که کمتر از ضریب \(15.6\) در دمای اتاق است)، اما \textbf{مقدار مطلق} کل جریان نشتی پایه در هر دو حالت به دلیل وابستگی شدید \(I_{ds0}\) و \(v_T\) به دما، در دمای \(120\ ^\circ\text{\lr{C}}\) بسیار بزرگ‌تر از دمای اتاق است.
-
-\subsection*{۵. جمع‌بندی مقایسه‌ای نتایج}
-
-\begin{small}
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|X|>{\raggedleft\arraybackslash}X|}
-\hline
-پارامتر / شرایط & مقدار یا ضریب افزایش & درصد یا مفهوم مهندسی \\
-\hline
-\textbf{جریان اشباع (\(I_{dsat}\))} & \textbf{\(1.27\times\)} & افزایش \(26.6\%\) سرعت ترانزیستور \\
-\hline
-\textbf{جریان نشتی در \(25\ ^\circ\text{\lr{C}}\)} & \textbf{\(15.6\times\)} & افزایش بیش از ۱۵ برابری توان استاتیک در حالت \lr{Standby} \\
-\hline
-\textbf{جریان نشتی در \(120\ ^\circ\text{\lr{C}}\)} & \textbf{\(8.2\times\)} & افزایش توان نشتی بحرانی در بدترین شرایط حرارتی تراشه \\
-\hline
-
+\begin{table}[!htbp]
+\centering
+\small
+\caption{نسبت مقدار جدید به قدیم برای کاهش \(\qty{100}{\milli\volt}\) آستانه. هر نسبت نشتی در دمای همان ردیف محاسبه شده است.}
+\label{tab:threshold-comparison}
+\begin{tabularx}{\textwidth}{@{}r X c@{}}
+\toprule
+کمیت & شرایط محاسبه & نسبت جدید به قدیم \\
+\midrule
+جریان اشباع & \(V_{GS}=V_{DS}=\qty{1.2}{\volt}\)، مدل ایده‌آل & \(r_{\mathrm{on}}\approx1.27\) \\
+نشتی زیرآستانه & دمای اتاق، \(v_T\approx\qty{26}{\milli\volt}\)، \(n=1.4\) & \(r_{\mathrm{sub,room}}\approx15.6\) \\
+نشتی زیرآستانه & \(\qty{120}{\degreeCelsius}\)، \(v_T\approx\qty{34}{\milli\volt}\)، \(n=1.4\) & \(r_{\mathrm{sub,hot}}\approx8.2\) \\
+\bottomrule
 \end{tabularx}
-\end{center}
-\end{small}
-این نتیجه نشان می‌دهد که در ازای تنها حدود \textbf{\(26\%\)} بهبود سرعت، جریان نشتی بیش از \textbf{۱۵ برابر} تشدید می‌شود که انگیزه اصلی استفاده از تکنولوژی‌های \lr{Multi-Vt} در طراحی مدارهای مجتمع نانومتری است.
+\end{table}
+
+بدون گرد کردن میانی \(kT/q\)، نسبت‌ها در \(\qty{300}{\kelvin}\) و \(\qty{393.15}{\kelvin}\)
+به‌ترتیب حدود \num{15.85} و \num{8.23} هستند؛ اختلاف کوچک با پاسخ‌های جدول از تقریب ولتاژ حرارتی ناشی می‌شود.
+نسبت کوچک‌تر در دمای بالا به معنای کمتر بودن مقدار مطلق نشتی در آن دما نیست؛
+مدل کتاب افزایش نشتی با دما را توضیح می‌دهد، اما نسبت نشتی دو دما یا مقدار مطلق آن از این پاسخ‌ها به‌تنهایی به دست نمی‌آید.
+در تغذیه ثابت، ضریب تغییر توان همان مؤلفه نشتی زیرآستانه با ضریب تغییر جریان آن برابر است؛
+تعمیم آن به کل توان ایستای تراشه، به اطلاعات سایر مؤلفه‌ها نیاز دارد.

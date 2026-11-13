@@ -1,106 +1,137 @@
-% Generated from 2/2-2.md; technical content preserved.
+% !TeX root = ../main.tex
+% Final edited solution based on the revised Markdown and review.tex.
 \exercise{۲.۲}
-صورت \textbf{\lr{Exercise 2.2}} به بررسی رفتار ترانزیستورهای سری در مدل لانگ‌چنل (\lr{Shockley model}) می‌پردازد:
+\subsection*{صورت مسئله و فرض‌ها}
+نشان دهید در مدل \lr{Shockley}، جریان دو ترانزیستور یکسان سری، هر یک با عرض \(W\) و طول \(L\)، با جریان یک ترانزیستور با عرض \(W\) و طول \(2L\) برابر است.
+خواسته اصلی، اثبات برابری در ناحیه \lr{Linear} با شرایط
+\(V_{DD}>V_t\) و \mbox{\(0\le V_{DS}<V_{DD}-V_t\)} است؛ کتاب به برقراری نتیجه در ناحیه \lr{Saturation} نیز اشاره می‌کند
+\cite[صفحه چاپی ۹۵، شکل \exnum{۲.۳۲}]{weste}.
 
-\begin{quote}
-\textbf{صورت مسئله:}
+در هر دو مدار، سورس پایین به زمین و گیت‌ها به \(V_{DD}\) متصل‌اند؛ ولتاژ درین بالایی نسبت به زمین \(V_{DS}\) است.
+ولتاژ گره میانی ساختار سری را \(V_1\) می‌نامیم.
+تحرک حامل‌ها \(\mu\)، ظرفیت اکسید بر واحد سطح \(C_{\mathrm{ox}}\) و ولتاژ آستانه \(V_t\) برای ترانزیستورها یکسان‌اند.
+از \lr{Body Effect} و \lr{Channel Length Modulation} صرف‌نظر می‌شود؛ بنابراین \(V_t\) ثابت و \(\lambda=0\) است.
+مدارهای مقایسه‌شده در شکل \ref{fig:series-transistors} بازترسیم شده‌اند.
 
-نشان دهید که جریان عبوری از دو ترانزیستور سری، برابر با جریان یک ترانزیستور منفرد با دو برابر طول کانال (\(2L\)) است، به شرطی که رفتار ترانزیستورها با مدل \textbf{\lr{Shockley}} به خوبی توصیف شود.
+\begin{figure}[!htbp]
+\centering
+\begin{LTR}
+\begin{circuitikz}[scale=0.92,transform shape]
+ \draw (1.8,1.8) node[nmos] (single) {};
+ \draw (single.S) -- (1.8,0.5) node[ground] {};
+ \draw (single.D) -- (1.8,3.8) node[ocirc] {} node[above] {$V_{DS}$};
+ \draw (single.G) -- (0,1.8) node[ocirc] {} node[left] {$V_{DD}$};
+ \node[right] at (2.2,1.8) {$W/(2L)$};
+ \draw[->] (2.55,3.5) -- (2.55,2.8) node[midway,right] {$I_{DS1}$};
+ \node at (1.6,-0.6) {\rl{(الف) ترانزیستور منفرد}};
+ \draw (7.6,1.3) node[nmos] (bottom) {};
+ \draw (7.6,3.2) node[nmos] (top) {};
+ \draw (bottom.S) -- (7.6,0.5) node[ground] {};
+ \draw (bottom.D) -- (top.S);
+ \draw (top.D) -- (7.6,4.5) node[ocirc] {} node[above] {$V_{DS}$};
+ \draw (bottom.G) -- (5.9,1.3) -- (5.9,3.2) -- (top.G);
+ \draw (5.9,2.25) -- (5,2.25) node[ocirc] {} node[left] {$V_{DD}$};
+ \draw (7.6,2.25) node[circ] {} -- (8.5,2.25) node[right] {$V_1$};
+ \node[right] at (8,1.3) {$W/L$};
+ \node[right] at (8,3.2) {$W/L$};
+ \draw[->] (8.5,4.4) -- (8.5,3.8) node[midway,right] {$I_{DS2}$};
+ \node at (7.3,-0.6) {\rl{(ب) دو ترانزیستور سری}};
+\end{circuitikz}
+\end{LTR}
+\caption{مدارهای مقایسه جریان؛ بازترسیم شکل \exnum{۲.۳۲} کتاب \cite[صفحه چاپی ۹۵]{weste}. در هر دو مدار، بدنه‌ها به زمین متصل‌اند؛ اثر بدنه در این تمرین نادیده گرفته می‌شود.}
+\label{fig:series-transistors}
+\end{figure}
 
-به‌طور مشخص نشان دهید که در \textbf{\lr{Figure 2.32}}، در ناحیه خطی (\lr{Linear region}) یعنی به ازای \(V_{DS} < V_{DD} - V_t\) و \(V_{DD} > V_t\)، رابطه \(I_{DS1} = I_{DS2}\) برقرار است.
+برای کوتاه شدن روابط، کمیت‌های کمکی را به‌صورت زیر تعریف می‌کنیم:
+\begin{equation}
+ A=V_{DD}-V_t>0,\qquad D=V_{DS},\qquad x=V_1,
+ \qquad \beta=\mu C_{\mathrm{ox}}\frac{W}{L}.
+ \label{eq:stack-definitions}
+\end{equation}
+پارامتر ترانزیستور منفرد \(\beta/2\) است؛ ازاین‌رو، جریان آن در \(0\le D<A\)، مطابق مدل خطی کتاب، برابر است با
+\cite[رابطه \exnum{۲.۵}، صفحه چاپی ۶۶]{weste}
+\begin{equation}
+ I_{DS1}=\frac{\beta}{2}\left(AD-\frac{D^2}{2}\right).
+ \label{eq:stack-single}
+\end{equation}
 
-\emph{(راهنمایی کتاب: جریان ترانزیستورهای سری را برحسب ولتاژ گره میانی \(V_1\) بنویسید و \(V_1\) را به دست آورید.)}
+\subsection*{اثبات در ناحیه خطی و تعیین ولتاژ گره میانی}
+ابتدا فرض می‌کنیم هر دو ترانزیستور سری در ناحیه خطی‌اند؛ پس از حل، سازگاری این فرض بررسی می‌شود.
+برای ترانزیستور پایین، ولتاژهای گیت‌ـ‌سورس و درین‌ـ‌سورس به‌ترتیب \(V_{DD}\) و \(x\) هستند.
+برای ترانزیستور بالا، این ولتاژها به‌ترتیب \(V_{DD}-x\) و \(D-x\) هستند.
+بنابراین جریان‌های پایین و بالا عبارت‌اند از
+\begin{align}
+ I_{\mathrm{b}}&=\beta\left(Ax-\frac{x^2}{2}\right),
+ \label{eq:stack-bottom}\\
+ I_{\mathrm{t}}&=\beta\left[(A-x)(D-x)-\frac{(D-x)^2}{2}\right]\notag\\
+ &=\beta\left(AD-Ax-\frac{D^2}{2}+\frac{x^2}{2}\right).
+ \label{eq:stack-top}
+\end{align}
+در حالت ماندگار، قانون جریان کیرشهف یا \lr{Kirchhoff's Current Law (KCL)} در گره میانی می‌دهد
+\(I_{\mathrm{b}}=I_{\mathrm{t}}=I_{DS2}\).
+با جمع روابط \eqref{eq:stack-bottom} و \eqref{eq:stack-top}، جمله‌های وابسته به \(x\) حذف می‌شوند:
+\begin{equation}
+ 2I_{DS2}=\beta\left(AD-\frac{D^2}{2}\right)
+ \quad\Longrightarrow\quad
+ \boxed{I_{DS2}=\frac{\beta}{2}\left(AD-\frac{D^2}{2}\right)=I_{DS1}.}
+ \label{eq:stack-equality}
+\end{equation}
+رابطه \eqref{eq:stack-equality} برابری جریان‌ها را نشان می‌دهد. برای تعیین \(V_1\) طبق راهنمای کتاب، دو جریان را برابر قرار می‌دهیم:
+\begin{align}
+ Ax-\frac{x^2}{2}&=AD-Ax-\frac{D^2}{2}+\frac{x^2}{2},\notag\\
+ x^2-2Ax+AD-\frac{D^2}{2}&=0.
+ \label{eq:stack-quadratic}
+\end{align}
+ریشه‌های معادله \eqref{eq:stack-quadratic} برابرند با
+\begin{equation}
+ x_{\pm}=A\pm\sqrt{A^2-AD+\frac{D^2}{2}}.
+ \label{eq:stack-roots}
+\end{equation}
+در بایاس مثبت \(0<D<A\)، ترتیب فیزیکی ولتاژ گره‌ها ایجاب می‌کند \(0<x<D\) باشد.
+برای بررسی ریشه‌ها، توجه می‌کنیم که
+\begin{equation}
+ (A-D)^2<A^2-AD+\frac{D^2}{2}<A^2.
+ \label{eq:stack-root-bounds}
+\end{equation}
+هر دو نامساوی از \(D(A-D/2)>0\) نتیجه می‌شوند.
+بنابراین \(A-D<\sqrt{A^2-AD+D^2/2}<A\) است.
+ریشه مثبت \(x_+>A>D\) پذیرفتنی نیست؛ ریشه منفی در بازه مجاز قرار دارد:
+\begin{equation}
+ \boxed{V_1=A-\sqrt{A^2-AD+\frac{D^2}{2}},\qquad 0<V_1<D.}
+ \label{eq:stack-physical-root}
+\end{equation}
+برای این ریشه، ترانزیستور پایین شرط \(x<A\) و ترانزیستور بالا شرط \(D-x<A-x\) را دارد.
+شرط دوم همان \(D<A\) است؛ همچنین \(A-x>0\) برقرار است.
+پس هر دو ترانزیستور روشن و در ناحیه خطی‌اند و فرض آغاز حل تأیید می‌شود.
+از خود معادله \eqref{eq:stack-quadratic} نیز داریم
+\(Ax-x^2/2=(AD-D^2/2)/2\)؛ جایگذاری آن در رابطه \eqref{eq:stack-bottom}، نتیجه \eqref{eq:stack-equality} را مستقلاً بازتولید می‌کند.
 
-\end{quote}
+برای کنترل رفتار حدی، بسط ریشه در \(D/A\ll1\) می‌دهد
+\begin{equation}
+ V_1=\frac{D}{2}-\frac{D^2}{8A}
+ +O\!\left(\frac{D^3}{A^2}\right).
+ \label{eq:stack-small-voltage}
+\end{equation}
+پس افت ولتاژ در مرتبه اول تقریباً نصف می‌شود.
+در مرز \(D=0\) نیز رابطه \eqref{eq:stack-physical-root} به \(V_1=0\) و هر دو جریان به صفر می‌رسند.
 
-\subsection*{۱. مشخصات و فرضیات مسئله (\lr{Givens \& Assumptions})}
-\begin{itemize}
-\item ترانزیستور منفرد در مدار (الف):
-\begin{itemize}
-\item عرض کانال: \(W\)
-\item طول کانال: \(2L\)
-\item پارامتر ترانزیستور:
-\[\beta_1 = \mu C_{ox} \frac{W}{2L} = \frac{\beta}{2}\]
-که در آن \(\beta = \mu C_{ox} \frac{W}{L}\) پارامتر یک ترانزیستور با ابعاد \(W/L\) است.
-\item ولتاژهای ترمینال: گیت به \(V_{DD}\)، سورس به \(GND\) و درین به \(V_{DS}\) متصل است.
-\item شرایط بایاس: \(V_{GS1} = V_{DD}\) و \(V_{DS1} = V_{DS}\). چون \(V_{DS} < V_{DD} - V_t\) فرض شده، ترانزیستور در ناحیه خطی (\lr{Linear region}) کار می‌کند.
-
-\end{itemize}
-\item دو ترانزیستور سری در مدار (ب):
-\begin{itemize}
-\item ترانزیستور پایین (\(M_{bottom}\)): ابعاد \(W/L\)، گیت متصل به \(V_{DD}\)، سورس متصل به \(GND\)، درین در پتانسیل \(V_1\).
-\item ترانزیستور بالا (\(M_{top}\)): ابعاد \(W/L\)، گیت متصل به \(V_{DD}\)، سورس در پتانسیل \(V_1\)، درین در پتانسیل \(V_{DS}\).
-\item فرض مدل \lr{Shockley} ایده‌آل و صرف‌نظر از \lr{Body Effect} (\(V_t\) برای هر دو ترانزیستور یکسان و ثابت است).
-
-\end{itemize}
-\end{itemize}
-
-\subsection*{۲. محاسبه جریان ترانزیستور منفرد (\(I_{DS1}\))}
-در مدل \lr{Shockley} برای ترانزیستور در ناحیه خطی داریم:
-\[I_{ds} = \beta \left( (V_{GS} - V_t) V_{DS} - \frac{V_{DS}^2}{2} \right)\]
-
-با تعریف \(V_{GT} = V_{GS} - V_t = V_{DD} - V_t\):
-\[I_{DS1} = \beta_1 \left( V_{GT} V_{DS} - \frac{V_{DS}^2}{2} \right) = \frac{\beta}{2} \left( V_{GT} V_{DS} - \frac{V_{DS}^2}{2} \right)\]
-
-\subsection*{۳. تحلیل ترانزیستورهای سری و محاسبه \(I_{DS2}\)}
-جریان عبوری از دو ترانزیستور سری یکسان است (\(I_{bottom} = I_{top} = I_{DS2}\)):
-
-\subsubsection*{الف) ترانزیستور پایین (\(M_{bottom}\)):}
-\begin{itemize}
-\item \(V_{GS,bot} = V_{DD} \implies V_{GT,bot} = V_{DD} - V_t = V_{GT}\)
-\item \(V_{DS,bot} = V_1\)
-\item با فرض کارکرد در ناحیه خطی:
-\[I_{bottom} = \beta \left( V_{GT} V_1 - \frac{V_1^2}{2} \right)\]
-
-\end{itemize}
-\subsubsection*{ب) ترانزیستور بالا (\(M_{top}\)):}
-\begin{itemize}
-\item \(V_{GS,top} = V_{DD} - V_1 \implies V_{GT,top} = (V_{DD} - V_1) - V_t = V_{GT} - V_1\)
-\item \(V_{DS,top} = V_{DS} - V_1\)
-\item جریان در ناحیه خطی:
-\[I_{top} = \beta \left( (V_{GT} - V_1)(V_{DS} - V_1) - \frac{(V_{DS} - V_1)^2}{2} \right)\]
-
-\end{itemize}
-
-\subsection*{۴. اثبات برابری جریان‌ها}
-
-\subsubsection*{روش اول: استفاده از ترکیب جریان‌ها (مستقیم و بسیار کارآمد)}
-با توجه به این‌که \(I_{bottom} = I_{top} = I_{DS2}\)، اگر دو رابطه را با هم جمع کنیم:
-\[2 I_{DS2} = I_{bottom} + I_{top}\]
-
-عبارت‌های داخل پرانتز را بسط می‌دهیم:
-\[I_{bottom} / \beta = V_{GT} V_1 - \frac{V_1^2}{2}\]
-
-\[I_{top} / \beta = (V_{GT} - V_1)(V_{DS} - V_1) - \frac{V_{DS}^2 - 2V_{DS}V_1 + V_1^2}{2}\]
-\[= V_{GT}V_{DS} - V_{GT}V_1 - V_1 V_{DS} + V_1^2 - \frac{V_{DS}^2}{2} + V_{DS}V_1 - \frac{V_1^2}{2}\]
-\[= V_{GT}V_{DS} - V_{GT}V_1 - \frac{V_{DS}^2}{2} + \frac{V_1^2}{2}\]
-
-حالا دو رابطه را جمع می‌کنیم:
-\[(I_{bottom} + I_{top}) / \beta = \left( V_{GT} V_1 - \frac{V_1^2}{2} \right) + \left( V_{GT}V_{DS} - V_{GT}V_1 - \frac{V_{DS}^2}{2} + \frac{V_1^2}{2} \right)\]
-
-جملات شامل \(V_1\) و \(V_1^2\) دقیقاً یکدیگر را حذف می‌کنند:
-\[\frac{2 I_{DS2}}{\beta} = V_{GT} V_{DS} - \frac{V_{DS}^2}{2}\]
-
-بنابراین:
-\[I_{DS2} = \frac{\beta}{2} \left( V_{GT} V_{DS} - \frac{V_{DS}^2}{2} \right)\]
-
-که دقیقاً برابر با رابطه \(I_{DS1}\) است:
-\[I_{DS1} = I_{DS2}\]
-
-\subsubsection*{روش دوم: محاسبه صریح ولتاژ گره میانی (\(V_1\)) طبق راهنمایی مسئله}
-اگر \(I_{bottom} = I_{top}\) قرار دهیم:
-\[V_{GT} V_1 - \frac{V_1^2}{2} = V_{GT}V_{DS} - V_{GT}V_1 - \frac{V_{DS}^2}{2} + \frac{V_1^2}{2}\]
-
-همه جملات را به یک طرف می‌آوریم:
-\[V_1^2 - 2 V_{GT} V_1 + \left( V_{GT} V_{DS} - \frac{V_{DS}^2}{2} \right) = 0\]
-
-این یک معادله درجه دوم برحسب \(V_1\) است. با حل آن:
-\[V_1 = V_{GT} \pm \sqrt{V_{GT}^2 - 2\left(V_{GT} V_{DS} - \frac{V_{DS}^2}{2}\right)} = V_{GT} - \sqrt{(V_{GT} - V_{DS})^2}\]
-
-چون در ناحیه خطی \(V_{DS} < V_{GT}\) است، مقدار داخل رادیکال مثبت بوده و ریشه فیزیکی قابل‌قبول (با توجه به شرط \(V_1 < V_{DS}\)) علامت منفی است:
-\[V_1 = V_{GT} - (V_{GT} - V_{DS}) = V_{GT} - V_{GT} + \dots\]
-در واقع با بازنویسی عبارت زیر رادیکال:
-\[V_{GT}^2 - 2V_{GT}V_{DS} + V_{DS}^2 = (V_{GT} - V_{DS})^2\]
-بنابراین:
-\[V_1 = V_{GT} - (V_{GT} - V_{DS}) \implies \text{\rl{در تقریب درجه اول}}\]
-اگر \(V_1\) را مستقیماً در \(I_{bottom}\) قرار دهیم، مجدداً به همان عبارت \(I_{DS2} = I_{DS1}\) می‌رسیم.
+\subsection*{تکمیل نتیجه در ناحیه اشباع}
+برای \(D\ge A\)، جریان اشباع ترانزیستور منفرد برابر \(\beta A^2/4\) است.
+در ساختار سری، ترانزیستور بالا را در اشباع و ترانزیستور پایین را خطی در نظر می‌گیریم.
+برابری جریان‌های این دو ترانزیستور می‌دهد
+\begin{equation}
+ \beta\left(Ax-\frac{x^2}{2}\right)=\frac{\beta}{2}(A-x)^2
+ \quad\Longrightarrow\quad
+ x=A\left(1-\frac{1}{\sqrt{2}}\right).
+ \label{eq:stack-saturation-root}
+\end{equation}
+ریشه دیگر از \(A\) بزرگ‌تر است و کنار گذاشته می‌شود.
+ریشه انتخاب‌شده شرط خطی بودن پایین، یعنی \(0<x<A\)، و شرط اشباع بالا، یعنی \(D-x\ge A-x\)، را برآورده می‌کند.
+جریان شاخه در نتیجه برابر است با
+\begin{equation}
+ \boxed{I_{DS2}=\frac{\beta}{2}(A-x)^2
+ =\frac{\beta A^2}{4}=I_{DS1,\mathrm{sat}}.}
+ \label{eq:stack-saturation-current}
+\end{equation}
+در \(D=A\)، ولتاژ گره و جریان با مقادیر ناحیه خطی پیوسته‌اند.
+بنابراین برابری جریان‌ها در هر دو ناحیه و در چارچوب فرض‌های مدل \lr{Shockley} برقرار است.
