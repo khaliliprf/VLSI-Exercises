@@ -1,0 +1,140 @@
+% !TeX root = ../main.tex
+\exercise{۲.۱۷}\label{sec:ex17}
+
+\subsection*{صورت مسئله و تعریف سطوح منطقی}
+
+طبق صورت تمرین، \(V_{\mathrm{DD}}=\qty{1.0}{\volt}\)، \(V_{tn}=|V_{tp}|=V_t=\qty{0.35}{\volt}\) و \(\beta_n=\beta_p\) است \cite[صفحه چاپی ۹۷]{weste}. مدل و شرایط تحلیل همان فرض‌های تمرین \exnum{۲.۱۶} هستند؛ شرط \(V_{\mathrm{DD}}>2V_t\) نیز برقرار است. برابری \(\beta\) بیانگر برابری ضریب جریان است و برابری ابعاد \lr{nMOS} و \lr{pMOS} را الزام نمی‌کند.
+
+مطابق تعریف کتاب و اسلایدها، \(V_{\mathrm{IL}}\) و \(V_{\mathrm{IH}}\) در دو نقطه \lr{Unity Gain} با شیب \(-1\) تعیین می‌شوند. حداقل خروجی \lr{HIGH} و حداکثر خروجی \lr{LOW} متناظر با بدترین ورودی‌های مجاز عبارت‌اند از \cite[بخش \exnum{۲.۵.۳}]{weste} و \cite[اسلایدهای ۹ و ۱۰]{dcslides}:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-1}
+V_{\mathrm{OH}}=V_{\mathrm{out}}(V_{\mathrm{IL}}),\qquad
+V_{\mathrm{OL}}=V_{\mathrm{out}}(V_{\mathrm{IH}}).
+\end{equation}
+
+بنابراین، تعریف \lr{Noise Margin} برای این سطوح چنین است:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-2}
+NM_{\mathrm{L}}=V_{\mathrm{IL}}-V_{\mathrm{OL}},\qquad
+NM_{\mathrm{H}}=V_{\mathrm{OH}}-V_{\mathrm{IH}}.
+\end{equation}
+
+مقادیر \(V_{\mathrm{OH}}\) و \(V_{\mathrm{OL}}\) در این تعریف، به‌ترتیب با \(V_{\mathrm{DD}}\) و صفر جایگزین نمی‌شوند؛ ورودیِ نزدیک مرز مجاز، اندکی افت خروجی ایجاد می‌کند.
+
+\subsection*{استخراج نقاط \lr{Unity Gain}}
+
+از رابطه~\eqref{eq:ex16-6} برای شاخه \lr{B} در تمرین \exnum{۲.۱۶}، مشتق خروجی برابر است با:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-3}
+\frac{dV_{\mathrm{out}}}{dV_{\mathrm{in}}}
+=1-\sqrt{\frac{V_{\mathrm{DD}}-2V_t}{V_{\mathrm{DD}}-2V_{\mathrm{in}}}}.
+\end{equation}
+
+با قرار دادن مشتق برابر \(-1\) در \(V_{\mathrm{in}}=V_{\mathrm{IL}}\)، ریشه مثبت باید برابر ۲ باشد. در نتیجه:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-4}
+V_{\mathrm{DD}}-2V_{\mathrm{IL}}
+=\frac{V_{\mathrm{DD}}-2V_t}{4},
+\qquad
+\boxed{V_{\mathrm{IL}}=\frac{3V_{\mathrm{DD}}+2V_t}{8}}.
+\end{equation}
+
+برای شاخه \lr{D} نیز داریم:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-5}
+\frac{dV_{\mathrm{out}}}{dV_{\mathrm{in}}}
+=1-\sqrt{\frac{V_{\mathrm{DD}}-2V_t}{2V_{\mathrm{in}}-V_{\mathrm{DD}}}}.
+\end{equation}
+
+اعمال شرط شیب \(-1\) در \(V_{\mathrm{in}}=V_{\mathrm{IH}}\) می‌دهد:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-6}
+2V_{\mathrm{IH}}-V_{\mathrm{DD}}
+=\frac{V_{\mathrm{DD}}-2V_t}{4},
+\qquad
+\boxed{V_{\mathrm{IH}}=\frac{5V_{\mathrm{DD}}-2V_t}{8}}.
+\end{equation}
+
+اعتبار استفاده از شاخه‌های \lr{B} و \lr{D} را می‌توان مستقیماً بررسی کرد:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-7}
+V_{\mathrm{IL}}-V_t
+=V_{\mathrm{DD}}-V_t-V_{\mathrm{IH}}
+=\frac{3(V_{\mathrm{DD}}-2V_t)}{8}>0,
+\end{equation}
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-8}
+\frac{V_{\mathrm{DD}}}{2}-V_{\mathrm{IL}}
+=V_{\mathrm{IH}}-\frac{V_{\mathrm{DD}}}{2}
+=\frac{V_{\mathrm{DD}}-2V_t}{8}>0.
+\end{equation}
+
+پس دو نقطه درون نواحی فرض‌شده قرار دارند و از مرز عمودی ناحیه \lr{C} جدا هستند.
+
+\subsection*{استخراج سطوح خروجی و \lr{Noise Margin}}
+
+در دو نقطه \lr{Unity Gain}، مقدار رادیکالِ رابطه خروجی برابر \((V_{\mathrm{DD}}-2V_t)/2\) است. جایگذاری آن در شاخه‌های \lr{B} و \lr{D} می‌دهد:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-9}
+V_{\mathrm{OH}}
+=V_{\mathrm{IL}}+V_t+\frac{V_{\mathrm{DD}}-2V_t}{2}
+=\frac{7V_{\mathrm{DD}}+2V_t}{8},
+\end{equation}
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-10}
+V_{\mathrm{OL}}
+=V_{\mathrm{IH}}-V_t-\frac{V_{\mathrm{DD}}-2V_t}{2}
+=\frac{V_{\mathrm{DD}}-2V_t}{8}.
+\end{equation}
+
+بنابراین، حاشیه‌های بالا و پایین برابرند:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-11}
+\boxed{
+NM_{\mathrm{L}}=NM_{\mathrm{H}}
+=\frac{V_{\mathrm{DD}}+2V_t}{4}
+}.
+\end{equation}
+
+این برابری از تقارن \lr{VTC} ناشی می‌شود و با \(V_{\mathrm{IL}}+V_{\mathrm{IH}}=V_{\mathrm{DD}}\) و \(V_{\mathrm{OL}}+V_{\mathrm{OH}}=V_{\mathrm{DD}}\) نیز سازگار است.
+
+\clearpage
+\subsection*{نتایج عددی و شیوه گزارش}
+
+با جایگذاری داده‌های مسئله، مقادیر جدول~\ref{tab:noise} حاصل می‌شوند. ارقام اعشاری برای امکان بازبینی محاسبات مدل حفظ شده‌اند و بیانگر دقت فیزیکی یک فناوری واقعی نیستند.
+
+\begin{table}[htbp]\centering
+\caption{نتایج محاسبات سطوح منطقی و حاشیه نویز}
+\label{tab:noise}
+\begin{tabularx}{\linewidth}{ccX}\toprule
+کمیت & رابطه تحلیلی & مقدار محاسباتی در مدل\\
+\midrule
+\(V_{\mathrm{IL}}\) & \((3V_{\mathrm{DD}}+2V_t)/8\) & \(\qty{0.4625}{\volt}\)\\
+\(V_{\mathrm{IH}}\) & \((5V_{\mathrm{DD}}-2V_t)/8\) & \(\qty{0.5375}{\volt}\)\\
+\(V_{\mathrm{OL}}\) & \((V_{\mathrm{DD}}-2V_t)/8\) & \(\qty{0.0375}{\volt}\)\\
+\(V_{\mathrm{OH}}\) & \((7V_{\mathrm{DD}}+2V_t)/8\) & \(\qty{0.9625}{\volt}\)\\
+\(NM_{\mathrm{L}}\) & \((V_{\mathrm{DD}}+2V_t)/4\) & \(\qty{0.425}{\volt}\)\\
+\(NM_{\mathrm{H}}\) & \((V_{\mathrm{DD}}+2V_t)/4\) & \(\qty{0.425}{\volt}\)\\
+\bottomrule\end{tabularx}\end{table}
+
+پس پاسخ نهایی در مدل مسئله چنین است:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex17-12}
+\boxed{NM_{\mathrm{L}}=NM_{\mathrm{H}}=\qty{0.425}{\volt}
+=0.425V_{\mathrm{DD}}}.
+\end{equation}
+
+این مقدار برابر \num{42.5} درصد ولتاژ تغذیه است. در صورت نیاز به گزارش با دو رقم اعشار و با قاعده گردکردن نیم‌به‌بالا، مقدار \(\qty{0.43}{\volt}\) گزارش می‌شود.
+
+\lr{Solution Manual} محلی، چهار سطح ولتاژ را به‌صورت \(0.46\)، \(0.54\)، \(0.04\) و \(\qty{0.96}{\volt}\) و حاشیه‌ها را \(\qty{0.42}{\volt}\) آورده است \cite{manual}. تفاضل سطوح خروجی و ورودیِ ازپیش‌گردشده نیز همین مقدار اخیر را می‌دهد؛ بااین‌حال، روش تقریب در آن منبع تصریح نشده است. برای جلوگیری از خطای گردکردن میانی، پاسخ اصلی اینجا همان \(\qty{0.425}{\volt}\) باقی می‌ماند.
+

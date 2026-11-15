@@ -1,0 +1,143 @@
+% !TeX root = ../main.tex
+\exercise{۲.۱۶}\label{sec:ex16}
+
+\subsection*{صورت مسئله و فرض‌ها}
+
+صورت تمرین در صفحه چاپی ۹۷ کتاب، استخراج \(V_{\mathrm{out}}\) برحسب \(V_{\mathrm{in}}\) را برای نواحی \lr{B} و \lr{D} اینورتر \lr{CMOS} با \(\beta_n=\beta_p\) و \(V_{tn}=|V_{tp}|\) می‌خواهد \cite{weste}. در این پاسخ، مطابق تحلیل بخش \exnum{۲.۵.۱}، از مدل \lr{Long-channel} یا \lr{Shockley} استفاده می‌کنیم. فرض‌ها عبارت‌اند از:
+
+\begin{itemize}
+\item \(V_{tn}=|V_{tp}|=V_t>0\)، \(\beta_n=\beta_p=\beta>0\) و \(V_{\mathrm{DD}}>2V_t\)؛ شرط آخر وجود بازه هم‌زمان روشن‌بودن دو ترانزیستور را تضمین می‌کند.
+\item \lr{Channel-length Modulation} و \lr{Leakage} در مدل منظور نمی‌شوند.
+\item بدنه \lr{nMOS} به زمین و بدنه \lr{pMOS} به \(V_{\mathrm{DD}}\) متصل است؛ بنابراین در این اینورتر \(V_{\mathrm{SB}}=0\) است.
+\item تحلیل \lr{DC} است و خروجی جریان بار \lr{DC} ندارد؛ در نتیجه، \lr{KCL} در گره خروجی به \(I_{dsn}=|I_{dsp}|\) می‌انجامد \cite[بخش \exnum{۲.۵.۱}]{weste} و \cite[اسلاید ۳]{dcslides}.
+\end{itemize}
+
+پارامتر \(\beta=\mu C_{\mathrm{ox}}W/L\) ضریب جریان است. برابری \(\beta_n\) و \(\beta_p\) به معنی برابری ابعاد دو ترانزیستور نیست؛ تفاوت \lr{Mobility} معمولاً با انتخاب نسبت ابعاد مناسب جبران می‌شود \cite[صفحه چاپی ۸۸]{weste}.
+
+ولتاژهای مورد استفاده در روابط جریان چنین‌اند:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-1}
+V_{gsn}=V_{\mathrm{in}},\qquad V_{dsn}=V_{\mathrm{out}},
+\end{equation}
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-2}
+V_{sgp}=V_{\mathrm{DD}}-V_{\mathrm{in}},\qquad
+V_{sdp}=V_{\mathrm{DD}}-V_{\mathrm{out}}.
+\end{equation}
+
+استفاده از \(V_{sgp}\) و \(V_{sdp}\) مثبت، علامت جریان \lr{pMOS} را از اندازه آن جدا می‌کند.
+
+\subsection*{ناحیه \lr{B}: \lr{nMOS} در \lr{Saturation} و \lr{pMOS} در \lr{Linear}}
+
+درون این ناحیه، \(V_t<V_{\mathrm{in}}<V_{\mathrm{DD}}/2\) است. شرایط \lr{Operating Region} عبارت‌اند از \(V_{\mathrm{out}}\ge V_{\mathrm{in}}-V_t\) برای \lr{nMOS} و \(V_{\mathrm{out}}>V_{\mathrm{in}}+V_t\) برای \lr{pMOS} \cite[جدول‌های \exnum{۲.۲} و \exnum{۲.۳}]{weste} و \cite[اسلایدهای ۵ تا ۷]{dcslides}. برابری جریان‌ها در مدل \lr{Shockley} می‌دهد:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-3}
+\frac{\beta}{2}(V_{\mathrm{in}}-V_t)^2
+=\beta\left[
+(V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t)(V_{\mathrm{DD}}-V_{\mathrm{out}})
+-\frac{(V_{\mathrm{DD}}-V_{\mathrm{out}})^2}{2}
+\right].
+\end{equation}
+
+با تعریف \(Y=V_{\mathrm{DD}}-V_{\mathrm{out}}\)، معادله درجه دوم زیر به دست می‌آید:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-4}
+Y^2-2(V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t)Y
++(V_{\mathrm{in}}-V_t)^2=0.
+\end{equation}
+
+دو ریشه این معادله عبارت‌اند از:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-5}
+Y=V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t
+\pm\sqrt{(V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t)^2-(V_{\mathrm{in}}-V_t)^2}.
+\end{equation}
+
+شرط \lr{Linear} بودن \lr{pMOS}، یعنی \(Y<V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t\)، ریشه دارای علامت منفی را انتخاب می‌کند. با استفاده از همانی تفاضل دو مربع، نتیجه نهایی چنین است:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-6}
+\boxed{
+V_{\mathrm{out}}
+=V_{\mathrm{in}}+V_t
++\sqrt{(V_{\mathrm{DD}}-2V_{\mathrm{in}})(V_{\mathrm{DD}}-2V_t)}
+}.
+\end{equation}
+
+در بازه مشخص‌شده، عبارت زیر رادیکال مثبت است؛ بنابراین \(V_{\mathrm{out}}>V_{\mathrm{in}}+V_t\) و هر دو شرط \lr{Operating Region} برقرارند. همچنین، با \(a=V_{\mathrm{in}}-V_t\) و \(b=V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t\)، داریم \(0<a<b\) و \(Y=b-\sqrt{b^2-a^2}\in(0,b)\)؛ پس خروجی از محدوده تغذیه خارج نمی‌شود.
+
+در مرز \(V_{\mathrm{in}}=V_t\)، رابطه به \(V_{\mathrm{out}}=V_{\mathrm{DD}}\) می‌رسد؛ این نقطه مرز \lr{Cutoff} و روشن‌شدن \lr{nMOS} است. حد یک‌طرفه خروجی در مرز ناحیه \lr{C} نیز برابر است با:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-7}
+\lim_{V_{\mathrm{in}}\to(V_{\mathrm{DD}}/2)^-}V_{\mathrm{out}}
+=\frac{V_{\mathrm{DD}}}{2}+V_t.
+\end{equation}
+
+\subsection*{ناحیه \lr{D}: \lr{nMOS} در \lr{Linear} و \lr{pMOS} در \lr{Saturation}}
+
+درون این ناحیه، \(V_{\mathrm{DD}}/2<V_{\mathrm{in}}<V_{\mathrm{DD}}-V_t\) است. شرایط \lr{Operating Region} عبارت‌اند از \(V_{\mathrm{out}}<V_{\mathrm{in}}-V_t\) برای \lr{nMOS} و \(V_{\mathrm{out}}\le V_{\mathrm{in}}+V_t\) برای \lr{pMOS} \cite[جدول‌های \exnum{۲.۲} و \exnum{۲.۳}]{weste}. از برابری جریان‌ها داریم:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-8}
+\beta\left[(V_{\mathrm{in}}-V_t)V_{\mathrm{out}}
+-\frac{V_{\mathrm{out}}^2}{2}\right]
+=\frac{\beta}{2}(V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t)^2.
+\end{equation}
+
+مرتب‌کردن این رابطه می‌دهد:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-9}
+V_{\mathrm{out}}^2-2(V_{\mathrm{in}}-V_t)V_{\mathrm{out}}
++(V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t)^2=0.
+\end{equation}
+
+برای رعایت شرط \lr{Linear} بودن \lr{nMOS}، باید ریشه کوچک‌تر انتخاب شود. بنابراین:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-10}
+\boxed{
+V_{\mathrm{out}}
+=V_{\mathrm{in}}-V_t
+-\sqrt{(2V_{\mathrm{in}}-V_{\mathrm{DD}})(V_{\mathrm{DD}}-2V_t)}
+}.
+\end{equation}
+
+با \(a=V_{\mathrm{in}}-V_t\) و \(b=V_{\mathrm{DD}}-V_{\mathrm{in}}-V_t\)، درون این ناحیه \(0<b<a\) و \(V_{\mathrm{out}}=a-\sqrt{a^2-b^2}\in(0,a)\) است. پس خروجی نامنفی است و هر دو شرط \lr{Operating Region} برقرارند.
+
+در مرز \(V_{\mathrm{in}}=V_{\mathrm{DD}}-V_t\)، خروجی صفر ولت می‌شود. حد یک‌طرفه در مرز دیگر نیز برابر است با:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-11}
+\lim_{V_{\mathrm{in}}\to(V_{\mathrm{DD}}/2)^+}V_{\mathrm{out}}
+=\frac{V_{\mathrm{DD}}}{2}-V_t.
+\end{equation}
+
+\subsection*{تفسیر ناحیه \lr{C} و کنترل تقارن}
+
+در \(V_{\mathrm{in}}=V_{\mathrm{DD}}/2\)، هر دو ترانزیستور در \lr{Saturation} قرار دارند و جریان‌های مدل ایدئال برای هر خروجی در بازه زیر برابرند:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-12}
+\frac{V_{\mathrm{DD}}}{2}-V_t
+\le V_{\mathrm{out}}\le
+\frac{V_{\mathrm{DD}}}{2}+V_t.
+\end{equation}
+
+بنابراین، مدل \lr{DC} ایدئال در این ورودی، خروجی یکتایی تعیین نمی‌کند. دو حد محاسبه‌شده، انتهای بالایی و پایینی این پاره‌خط عمودی‌اند؛ نسبت‌دادن یک خروجی یکتا به کل ناحیه \lr{C} دقیق نیست. \lr{Channel-length Modulation} در ترانزیستور واقعی، شیب انتقال را محدود می‌کند \cite[صفحه چاپی ۸۸]{weste}.
+
+دو شاخه به‌دست‌آمده در روابط~\eqref{eq:ex16-6} و~\eqref{eq:ex16-10} تقارن مورد انتظار را نیز دارند:
+
+\nopagebreak[3]
+\begin{equation}\label{eq:ex16-13}
+V_{\mathrm{out,D}}(V_{\mathrm{DD}}-V_{\mathrm{in}})
+=V_{\mathrm{DD}}-V_{\mathrm{out,B}}(V_{\mathrm{in}}).
+\end{equation}
+
+این رابطه یک کنترل مستقل برای علامت رادیکال و سازگاری دو جواب است.
+
