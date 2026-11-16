@@ -14,10 +14,14 @@
 - `2/*.md`: پاسخ‌های بازبینی‌شدهٔ واردشده توسط کاربر؛ چند نکتهٔ باقی‌مانده در نسخهٔ نهایی LaTeX اصلاح شده است.
 - `2/review.tex`: گزارش بازبینی اولیه، بدون تغییر.
 - `2/review-followup.md`: تطبیق سؤال‌به‌سؤال پاسخ‌های جدید با بازبینی و شرح اصلاحات نسخهٔ نهایی.
+- `3/main.tex` و `3/solutions/*.tex`: پاسخ‌های نهایی LaTeX تمرین‌های ۲.۱۶، ۲.۱۷ و ۲.۲۰.
+- `3/HW03-403131033.pdf`: نسخهٔ نهایی یازده‌صفحه‌ای سری دوم تمرین‌های فصل دو.
+- `3/review.md`: گزارش بررسی فنی، بیلد و بازبینی تصویری این سری.
+- `scripts/verify-assignment3.js`: کنترل مستقل KCL، نواحی کاری، Noise Margin، ارجاع‌ها و خروجی بیلد سری سوم.
 - `scripts/convert-exercise-markdown.js`: تبدیل متن‌های Markdown تمرین ۲ به فایل‌های LaTeX بدون بازنویسی محتوای فنی.
 - `build/`: فایل‌های PDF و خروجی‌های کامپایل.
 
-نسخهٔ نهایی قابل تحویل، `build/main.pdf` است و از `2/main.tex` ساخته می‌شود.
+فایل `build/main.pdf` خروجی آخرین بیلد است و هنگام ساخت هرکدام از `2/main.tex` یا `3/main.tex` بازنویسی می‌شود. نسخه‌های محفوظ قابل تحویل در `2/HW02-403131033.pdf` و `3/HW03-403131033.pdf` قرار دارند.
 فایل‌های `2/solutions/*.tex` ویرایش علمی و نگارشی شده‌اند؛ اجرای دوبارهٔ اسکریپت تبدیل قدیمی، این ویرایش‌ها را با تبدیل خام Markdown جایگزین می‌کند و برای ساخت نسخهٔ نهایی لازم نیست.
 
 ## کامپایل
@@ -27,9 +31,10 @@
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Document 2/main.tex
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Document 3/main.tex
 ```
 
-هر دستور دو بار XeLaTeX را اجرا می‌کند تا ارجاع‌ها تکمیل شوند. خروجی‌ها به‌ترتیب `build/setup-check.pdf` و `build/main.pdf` هستند.
+هر دستور دو بار XeLaTeX را اجرا می‌کند تا ارجاع‌ها تکمیل شوند. خروجی دستور اول `build/setup-check.pdf` و خروجی هریک از دو دستور بعدی `build/main.pdf` است.
 
 برای هر سری تمرین، فقط این دو مقدار را در فایل اصلی آن تغییر دهید:
 
