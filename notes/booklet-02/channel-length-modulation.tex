@@ -1,0 +1,215 @@
+% !TeX root = booklet-02.tex
+\subsection{\lr{Channel Length Modulation}}
+\label{sec:clm}
+\subsubsection*{ناحیه تخلیه و کوتاه‌شدن طول مؤثر}
+پیوند \lr{Drain} و \lr{Body} در شرایط معمول \lr{nMOS}، معکوس بایاس
+است. در اطراف این پیوند، ناحیه‌ای با حامل متحرک کمتر شکل می‌گیرد که
+\lr{Depletion Region} نام دارد. با افزایش بایاس معکوس، پهنای این ناحیه
+زیاد می‌شود. گسترش آن در نزدیکی انتهای کانال، طول مؤثر کانال را کاهش
+می‌دهد \cite[بخش \secnum{۲.۴.۲} و شکل \secnum{۲.۱۸}]{weste}
+\cite[اسلاید ۱۳]{nonideal}. اگر سهم طولی این گسترش را \(L_d\) بنامیم،
+مدل هندسی مرجع چنین است
+\begin{equation}
+ L_{\mathrm{eff}}=L-L_d.
+ \label{eq:effective-length}
+\end{equation}
+برای دامنه معتبر این بیان، \(0\le L_d<L\) است. کاهش
+\(L_{\mathrm{eff}}\) در ضریب جریان متناسب با \(1/L_{\mathrm{eff}}\)،
+باعث افزایش جریان می‌شود.
+
+ولتاژ تعیین‌کننده بایاس پیوند، \(V_{DB}=V_D-V_B\) است. چون
+\(V_{DB}=V_{DS}+V_{SB}\)، با اتصال \lr{Source} و \lr{Body} داریم
+\(V_{DB}=V_{DS}\). کتاب برای ساده‌کردن تحلیل، نزدیک‌بودن پتانسیل این
+دو پایانه را فرض می‌کند \cite[صفحه چاپی ۷۸]{weste}. بنابراین در این
+تحلیل، افزایش \(V_{DS}\) با افزایش بایاس معکوس پیوند و افزایش \(L_d\)
+همراه است.
+
+برای فهم رابطه هندسی، جریان مرجع با طول \(L\) را
+\(I_0\) بگیریم. اگر تنها طول مؤثر تغییر کند، نسبت جریان‌ها چنین است
+\begin{equation}
+ \frac{I}{I_0}=\frac{L}{L-L_d}
+ =\frac{1}{1-L_d/L}.
+ \label{eq:length-current-ratio}
+\end{equation}
+برای \(L_d/L\ll1\)، تقریب مرتبه نخست
+\(I/I_0\approx1+L_d/L\) به دست می‌آید. برای نمونه فرضی
+\(L_d/L=0.05\)، مقدار دقیق \(1/0.95\approx1.0526\) و تقریب
+\(1.05\) است. این تحلیل آموزشی منشأ افزایش جریان را توضیح می‌دهد.
+برای برازش جریان برحسب ولتاژ، کتاب از پارامتر تجربی مستقل استفاده می‌کند.
+
+\subsubsection*{مدل \lr{Early Voltage} و قرارداد اسلاید}
+کتاب جریان اشباع مدل مربعی را در یک عامل وابسته به بایاس ضرب می‌کند
+\cite[رابطه \secnum{۲.۳۴}]{weste}
+\begin{equation}
+ I_{DS}=\frac{\beta}{2}V_{GT}^2
+ \left(1+\frac{V_{DS}}{V_A}\right),
+ \qquad V_{GT}>0,\quad V_{DS}\ge V_{GT}.
+ \label{eq:clm-early}
+\end{equation}
+در این بیان، \(V_A>0\) بزرگی \lr{Early Voltage} با واحد ولت است.
+اسلاید ۱۴ همان عامل را به‌صورت \(1+\lambda V_{DS}\) می‌نویسد
+\begin{equation}
+ \lambda=\frac{1}{V_A},\qquad
+ I_0=\frac{\beta}{2}V_{GT}^2,\qquad
+ \boxed{I_{DS}=I_0(1+\lambda V_{DS})}.
+ \label{eq:clm-lambda}
+\end{equation}
+واحد \(\lambda\)، \(\unit{\per\volt}\) است تا حاصل‌ضرب
+\(\lambda V_{DS}\) بی‌بعد باشد. در قواعد \lr{Layout}، نماد \(\lambda\)
+برای یک طول مرجع هندسی نیز استفاده می‌شود. در این بخش، \(\lambda\)
+پارامتر برازش \lr{Channel Length Modulation} است
+\cite[اسلاید ۱۴]{nonideal}.
+
+در \eqref{eq:clm-lambda}، ولتاژ \(V_{DS}\) با همان قرارداد کتاب و اسلاید
+وارد شده است. پارامتر \(I_0\)، جریان مرجع مدل پیش از اعمال این عامل است.
+برای استخراج آن از داده‌ها، امتداد خط اشباع به \(V_{DS}=0\) استفاده
+می‌شود. خود مدل اشباع در نزدیکی صفر ولتاژ درین، شرط ناحیه کاری را
+برآورده نمی‌کند.
+
+کتاب \(V_A\) را در یک توصیف تقریبی متناسب با طول کانال در نظر می‌گیرد.
+در یک فرایند و شرایط مقایسه مشابه، کانال کوتاه‌تر می‌تواند \(V_A\)
+کوچک‌تر و \(\lambda\) بزرگ‌تر داشته باشد. همین کتاب محدودیت دقت مدل
+خطی را یادآور می‌شود \cite[صفحه چاپی ۷۸]{weste}. برازش دقیق افزاره
+واقعی به پارامترها و مدل کامل فناوری وابسته است.
+
+\subsubsection*{مثال آموزشی افزایش جریان در اشباع}
+فرض کنید \(\beta=\qty{200}{\micro\ampere\per\volt\squared}\)،
+\(V_{GS}=\qty{1.2}{\volt}\)، \(V_t=\qty{0.4}{\volt}\) و
+\(\lambda=\qty{0.08}{\per\volt}\) باشند. اتصال \lr{Source} و
+\lr{Body} و ثابت‌بودن پارامترها را فرض می‌کنیم. ابتدا داریم
+\begin{equation}
+ V_{GT}=\qty{0.8}{\volt},\qquad
+ I_0=\frac{200}{2}(0.8)^2\,\unit{\micro\ampere}
+ =\qty{64}{\micro\ampere},\qquad
+ V_A=\frac{1}{0.08}=\qty{12.5}{\volt}.
+ \label{eq:clm-example-base}
+\end{equation}
+در \(V_{DS}=\qty{1.0}{\volt}\) و \(\qty{1.5}{\volt}\)، شرط
+\(V_{DS}\ge V_{GT}\) برقرار است. بنابراین
+\begin{align}
+ I_1&=64[1+0.08(1.0)]\,\unit{\micro\ampere}
+ =\qty{69.12}{\micro\ampere},\notag\\
+ I_2&=64[1+0.08(1.5)]\,\unit{\micro\ampere}
+ =\qty{71.68}{\micro\ampere}.
+ \label{eq:clm-example-currents}
+\end{align}
+تغییر جریان برابر \(\qty{2.56}{\micro\ampere}\) و نسبت آن به جریان
+نقطه نخست برابر \(2.56/69.12\approx0.0370\) است. افزایش جریان بین دو
+بایاس حدود \num{3.70} درصد می‌شود. عامل افزایش نسبت به \(I_0\) در دو
+نقطه، به‌ترتیب \(1.08\) و \(1.12\) است. مبنای نسبت در هر محاسبه باید
+مشخص باشد.
+
+شکل \ref{fig:clm-curves} برای سه مقدار فرضی \(V_{GT}\) رسم شده است.
+بخش افقی خط‌چین، مدل مرجع بدون این اثر را نشان می‌دهد و بخش پیوسته،
+رشد جریان با \(V_{DS}\) را در ناحیه اشباع بیان می‌کند.
+\begin{figure}[!htbp]
+\centering
+\begin{latin}
+\PersianMathDigits
+\begin{tikzpicture}[x=4.6cm,y=0.065cm]
+ \draw[->] (0,0)--(1.85,0) node[right] {\(V_{DS}\;(\mathrm{V})\)};
+ \draw[->] (0,0)--(0,85) node[above] {\(I_{DS}\;(\mathrm{\mu A})\)};
+ \foreach \a/\base in {0.4/16,0.6/36,0.8/64} {
+  \draw[densely dashed,gray] (\a,\base)--(1.65,\base);
+  \draw[thick,domain=\a:1.65,samples=30] plot (\x,{\base*(1+0.08*\x)});
+  \node[right] at (1.65,{\base*(1+0.08*1.65)}) {\(V_{GT}=\a\)};
+ }
+ \foreach \x in {0,0.5,1,1.5} {\draw (\x,0)--(\x,-1) node[below] {\(\x\)};}
+ \foreach \y in {20,40,60,80} {\draw (0,\y)--(-0.02,\y) node[left] {\(\y\)};}
+\end{tikzpicture}
+\end{latin}
+\caption{نمودار آموزشی شاخه‌های اشباع در مدل \eqref{eq:clm-lambda} با
+\(\beta=\qty{200}{\micro\ampere\per\volt\squared}\) و
+\(\lambda=\qty{0.08}{\per\volt}\). فقط دامنه اشباع هر منحنی رسم شده است.}
+\label{fig:clm-curves}
+\end{figure}
+
+\subsubsection*{استخراج پارامتر از دو نقطه منحنی}
+در گیت ثابت، \eqref{eq:clm-lambda} را به شکل خط می‌نویسیم
+\begin{equation}
+ I_{DS}=b+mV_{DS},\qquad b=I_0,\quad m=\lambda I_0.
+ \label{eq:clm-line}
+\end{equation}
+اگر دو نقطه \((D_1,I_1)\) و \((D_2,I_2)\) در دامنه اشباع همین مدل
+قرار داشته باشند و \(D_2\ne D_1\)، شیب و عرض از مبدأ برابرند با
+\begin{equation}
+ m=\frac{I_2-I_1}{D_2-D_1},\qquad
+ b=I_1-mD_1,\qquad
+ \lambda=\frac{m}{b},\qquad V_A=\frac{b}{m}.
+ \label{eq:clm-extraction}
+\end{equation}
+دو رابطه آخر برای \(b>0,m>0\) نوشته شده‌اند. اگر \(m=0\) باشد،
+\(\lambda=0\) و حد \(V_A\to\infty\) حاصل می‌شود.
+این استخراج، نتیجه جبری مدل کتاب و اسلاید است.
+
+با داده‌های \eqref{eq:clm-example-currents}، شیب و عرض از مبدأ
+به‌ترتیب محاسبه می‌شوند.
+\[
+ \begin{aligned}
+ m&=\frac{71.68-69.12}{1.5-1.0}=\qty{5.12}{\micro\ampere\per\volt},\\
+ b&=69.12-5.12(1)=\qty{64}{\micro\ampere}.
+ \end{aligned}
+\]
+در نتیجه، پارامترهای مدل بازیابی می‌شوند.
+\[
+ \lambda=\frac{5.12}{64}=\qty{0.08}{\per\volt},\qquad
+ V_A=\qty{12.5}{\volt}.
+\]
+اگر خط را تا جریان صفر امتداد دهیم،
+\(V_{DS}=-b/m=-V_A\) به دست می‌آید. علامت منفی، محل برخورد امتداد
+خط با محور ولتاژ را مشخص می‌کند و \(V_A\) در قرارداد این جزوه مثبت است.
+
+\subsubsection*{شیب خروجی، مقاومت خروجی و معنای مشتق}
+برای توضیح اثر روی مدار، تغییر کوچک ولتاژ درین را در گیت ثابت بررسی
+می‌کنیم. با مشتق‌گیری از \eqref{eq:clm-lambda} و ثابت گرفتن
+\(I_0\) و \(\lambda\)، داریم
+\begin{equation}
+ g_{ds}=\left.\frac{\partial I_{DS}}{\partial V_{DS}}\right|_{V_{GS}}
+ =\lambda I_0,\qquad
+ r_o=\frac{1}{g_{ds}}=\frac{1}{\lambda I_0}.
+ \label{eq:output-conductance}
+\end{equation}
+نماد \(\partial\) یعنی هنگام تغییر یک متغیر، متغیر دیگر ثابت نگه داشته
+می‌شود. \(g_{ds}\) رسانایی خروجی با واحد زیمنس و \(r_o\) مقاومت خروجی
+با واحد اهم است. این دو کمیت، توصیف تغییر کوچک جریان در اطراف نقطه کارند.
+رابطه \(r_o\) از معکوس شیب خط مدل به دست آمده است.
+
+چون \(I_{DS}=I_0(1+V_{DS}/V_A)\)، می‌توان همان مقاومت را برحسب جریان
+نقطه کار نوشت
+\begin{equation}
+ r_o=\frac{V_A+V_{DS}}{I_{DS}}
+ \approx\frac{V_A}{I_{DS}},\qquad V_{DS}\ll V_A.
+ \label{eq:output-resistance-current}
+\end{equation}
+تقریب آخر با کوچک‌گرفتن \(V_{DS}/V_A\) حاصل می‌شود. در مثال عددی،
+\(g_{ds}=\qty{5.12}{\micro\siemens}\) و
+\(r_o=\qty{195.3}{\kilo\ohm}\) است. در نقطه
+\(V_{DS}=\qty{1}{\volt}\)، رابطه دقیق
+\((12.5+1)/(69.12\times10^{-6})\) همین مقدار را می‌دهد. تقریب
+\(12.5/(69.12\times10^{-6})\approx\qty{180.8}{\kilo\ohm}\) حدود
+\num{7.41} درصد کوچک‌تر است.
+
+در حد \(\lambda\to0\)، شیب به صفر و \(r_o\) به بی‌نهایت نزدیک
+می‌شود. جریان اشباع مدل ایده‌آل نیز به \(V_{DS}\) وابسته نیست.
+کتاب اهمیت این اثر در کاهش بهره مدارهای \lr{Analog} را توضیح می‌دهد
+\cite[بخش \secnum{۲.۴.۲}]{weste}. در تحلیل حاضر، حاصل قابل مشاهده،
+شیب مثبت منحنی اشباع و تغییر جریان در بایاس گیت ثابت است.
+
+\subsubsection*{ارتباط با مدل‌های میدان قوی و قرارداد \lr{pMOS}}
+رابطه \eqref{eq:clm-early} بر پایه جریان اشباع مربعی مرجع نوشته شده است.
+اگر در یک مدل ترکیبی آموزشی، جریان اشباع مدل میدان قوی را در عامل
+\(1+\lambda V_{DS}\) ضرب کنیم، \(\lambda\) و جریان مرجع باید برای همان
+مدل انتخاب یا برازش شوند. در مثال‌های این بخش، فقط قرارداد
+\eqref{eq:clm-lambda} استفاده شده است. برهم‌کنش واقعی اثرها در مدل کامل
+افزاره و پارامترهای فناوری بررسی می‌شود \cite[صفحات چاپی ۷۵ و ۷۸]{weste}.
+
+برای \lr{pMOS}، همین رابطه با بزرگی‌های مثبت قابل نوشتن است
+\begin{equation}
+ |I_{DS,p}|=\frac{\beta_p}{2}(V_{SG}-V_{TP})^2
+ (1+\lambda_p V_{SD}),\qquad
+ V_{SD}\ge V_{SG}-V_{TP}>0.
+ \label{eq:clm-pmos}
+\end{equation}
+در این قرارداد، \(\beta_p,\lambda_p>0\) هستند. در قرارداد علامت‌دار
+درین به سورس، \(V_{DS}<0\) و \(I_{DS,p}<0\) است. بزرگی مثبت
+\(V_{SD}\) در عامل افزایش جریان \eqref{eq:clm-pmos} به کار می‌رود.

@@ -1,0 +1,562 @@
+% !TeX root = booklet-02.tex
+\subsection{\lr{Mobility Degradation} و \lr{Velocity Saturation}}
+\label{sec:high-field}
+\subsubsection*{دو میدان با دو نقش فیزیکی}
+میدان عمودی، حامل‌های متحرک را نزدیک فصل مشترک \lr{Silicon} و اکسید
+نگه می‌دارد. افزایش این میدان، پراکندگی حامل‌ها در نزدیکی فصل مشترک را
+شدیدتر می‌کند و \lr{Mobility} مؤثر کاهش می‌یابد. میدان طولی در امتداد کانال،
+حرکت رانشی ایجاد می‌کند. در میدان طولی بزرگ، سرعت با افزایش میدان به یک
+حد نزدیک می‌شود. این دو پدیده در کتاب و اسلایدها به‌ترتیب
+\lr{Mobility Degradation} و \lr{Velocity Saturation} نامیده شده‌اند
+\cite[صفحات چاپی ۷۴ تا ۷۶]{weste}\cite[اسلایدهای ۶ تا ۹]{nonideal}.
+
+برای برآورد مرتبه بزرگی، اسلاید ۶ از دو رابطه استفاده می‌کند
+\begin{equation}
+ E_{\mathrm{vert}}\sim\frac{V_{GS}}{t_{\mathrm{ox}}},\qquad
+ \overline E_{\mathrm{lat}}=\frac{V_{DS}}{L}.
+ \label{eq:fields-estimate}
+\end{equation}
+رابطه اول نمایش تقریبی وابستگی میدان عمودی به بایاس و ضخامت است.
+افت واقعی ولتاژ اکسید و میدان مؤثر حامل‌ها به ساختار و توزیع بار وابسته‌اند.
+رابطه دوم، میانگین میدان طولی روی طول کانال را می‌دهد. در استخراج رابطه
+جریان، میدان محلی \(E(x)\) را دنبال می‌کنیم.
+
+\subsubsection*{مدل تجربی کاهش \lr{Mobility}}
+در رابطه \secnum{۲.۲۳} کتاب و اسلاید ۸، \lr{Mobility} مؤثر با یک مدل تجربی
+برحسب بایاس گیت و ضخامت اکسید نوشته شده است. برای \lr{nMOS} و
+\lr{pMOS}، روابط را با قرارداد بزرگی مثبت ولتاژها چنین بازنویسی می‌کنیم
+\begin{align}
+ \mu_{\mathrm{eff},n}
+ &=\frac{\qty{540}{\centi\metre\squared\per\volt\per\second}}
+ {1+\left[\dfrac{V_{GS}+V_{tn}}
+ {\bigl(\qty{0.54}{\volt\per\nano\metre}\bigr)t_{\mathrm{ox}}}\right]^{1.85}},
+ \label{eq:mobility-n}\\[3pt]
+ \mu_{\mathrm{eff},p}
+ &=\frac{\qty{185}{\centi\metre\squared\per\volt\per\second}}
+ {1+\dfrac{\left|V_{SG}+1.5V_{TP}\right|}
+ {\bigl(\qty{0.338}{\volt\per\nano\metre}\bigr)t_{\mathrm{ox}}}}.
+ \label{eq:mobility-p}
+\end{align}
+در \eqref{eq:mobility-p}، \(V_{TP}=|V_{tp}|\) است. کتاب در این رابطه،
+ولتاژهای \lr{pMOS} را به‌صورت بزرگی مثبت به کار می‌برد
+\cite[رابطه \secnum{۲.۲۳} و مثال \secnum{۲.۳}]{weste}. صورت هر کسر،
+مقیاس \lr{Mobility} در همان مدل تجربی است. اعداد ۵۴۰ و ۱۸۵ به همراه
+واحدشان پارامترهای مدل‌اند. این ضرایب از برازش داده‌های افزاره به دست آمده‌اند.
+
+در مخرج \eqref{eq:mobility-n}، ضریب
+\(\qty{0.54}{\volt\per\nano\metre}\) در ضخامت ضرب می‌شود و نتیجه ولتاژ
+است. نسبت دو ولتاژ بی‌بعد است و توان \(1.85\) به همین نسبت اعمال می‌شود.
+اگر ضخامت را با واحد \(\unit{\nano\metre}\) وارد می‌کنیم، مقدار عددی
+\(1.05\) برای ضخامت \(\qty{1.05}{\nano\metre}\) به کار می‌رود.
+برای محاسبه کاملاً \lr{SI}، ضریب متناظر
+\(\qty{5.4e8}{\volt\per\metre}\) است.
+
+با ثابت بودن آستانه و ضخامت، افزایش \(V_{GS}\) در دامنه هدایت
+\lr{nMOS}، مخرج \eqref{eq:mobility-n} را بزرگ‌تر و \(\mu_{\mathrm{eff},n}\)
+را کوچک‌تر می‌کند. این نتیجه، کاهش \lr{Mobility} در مدل را نشان می‌دهد.
+جریان هم‌زمان به مقدار بار کانال وابسته است و افزایش گیت می‌تواند با وجود
+کاهش \lr{Mobility}، جریان را افزایش دهد. سهم هر عامل باید در رابطه کامل
+جریان بررسی شود.
+
+\subsubsection*{حل مرحله‌به‌مرحله مثال \secnum{۲.۳} کتاب}
+مثال کتاب از \(V_{GS}=V_{SG}=\qty{1.0}{\volt}\)،
+\(V_{tn}=V_{TP}=\qty{0.3}{\volt}\) و
+\(t_{\mathrm{ox}}=\qty{1.05}{\nano\metre}\) استفاده می‌کند
+\cite[صفحه چاپی ۷۶]{weste}. ابتدا بخش بی‌بعد مخرج را حساب می‌کنیم
+\begin{align}
+ a_n&=\frac{1.0+0.3}{0.54\times1.05}\approx2.293,
+ &a_n^{1.85}&\approx4.642,\notag\\
+ a_p&=\frac{1.0+1.5(0.3)}{0.338\times1.05}\approx4.086.
+ \label{eq:mobility-example-ratios}
+\end{align}
+جایگذاری این اعداد در دو رابطه \lr{Mobility} نتیجه می‌دهد
+\begin{align}
+ \mu_{\mathrm{eff},n}
+ &\approx\frac{540}{1+4.642}
+ \approx\qty{95.7}{\centi\metre\squared\per\volt\per\second},\notag\\
+ \mu_{\mathrm{eff},p}
+ &\approx\frac{185}{1+4.086}
+ \approx\qty{36.4}{\centi\metre\squared\per\volt\per\second}.
+ \label{eq:mobility-example-results}
+\end{align}
+اعداد گرد‌شده کتاب، به‌ترتیب ۹۶ و ۳۶ با واحد
+\(\unit{\centi\metre\squared\per\volt\per\second}\) هستند. در مثال
+ولتاژ بحرانی از همین گردکردن استفاده می‌کنیم. برای محاسبات چندمرحله‌ای،
+نگهداری رقم‌های بیشتر تا انتهای محاسبه خطای گردکردن را محدود می‌کند.
+
+مثال \secnum{۲.۱} کتاب برای مدل ایده‌آل یک مقدار ثابت
+\(\qty{80}{\centi\metre\squared\per\volt\per\second}\) به \lr{Mobility}
+الکترون نسبت می‌دهد. رابطه تجربی \eqref{eq:mobility-n} مجموعه پارامترهای
+دیگری دارد. برای مقایسه کنترل‌شده اثر \lr{Velocity Saturation} در این جزوه،
+\lr{Mobility} مؤثر را در دو محاسبه یکسان می‌گیریم. تفسیر کاهش \lr{Mobility}
+در \eqref{eq:mobility-n} بر اساس صورت ۵۴۰ و وابستگی به بایاس همان مدل
+انجام می‌شود \cite[مثال‌های \secnum{۲.۱} و \secnum{۲.۳}]{weste}.
+
+\subsubsection*{مدل سرعت و دلیل ضریب دو در میدان بحرانی}
+در میدان کوچک، سرعت رانش با میدان متناسب است و \(v=\mu_{\mathrm{eff}}E\).
+در میدان بزرگ، سرعت متوسط به \(v_{\mathrm{sat}}\) نزدیک می‌شود. مدل قطعه‌ای
+کتاب این رفتار را چنین تقریب می‌زند
+\cite[روابط \secnum{۲.۲۴} و \secnum{۲.۲۵}]{weste}\cite[اسلاید ۹]{nonideal}
+\begin{equation}
+ v(E)=\begin{cases}
+ \dfrac{\mu_{\mathrm{eff}}E}{1+E/E_c},&0\le E<E_c,\\[5pt]
+ v_{\mathrm{sat}},&E\ge E_c.
+ \end{cases}
+ \label{eq:velocity-model}
+\end{equation}
+نماد \(E_c\) میدان بحرانی است. در مرز \(E=E_c\)، حد شاخه اول برابر
+\(\mu_{\mathrm{eff}}E_c/2\) است. برای پیوستگی سرعت، این مقدار باید با
+\(v_{\mathrm{sat}}\) برابر باشد. ازاین‌رو
+\begin{equation}
+ \frac{\mu_{\mathrm{eff}}E_c}{2}=v_{\mathrm{sat}}
+ \quad\Longrightarrow\quad
+ \boxed{E_c=\frac{2v_{\mathrm{sat}}}{\mu_{\mathrm{eff}}}}.
+ \label{eq:critical-field}
+\end{equation}
+ضریب دو از شکل مشخص شاخه اول در \eqref{eq:velocity-model} به دست آمده است.
+برای \(E\ll E_c\)، مخرج تقریباً یک است و قانون میدان کوچک بازیابی می‌شود.
+نمودار بی‌بعد شکل \ref{fig:velocity-normalized} همین اتصال دو شاخه را نشان
+می‌دهد. با تعریف \(u=E/E_c\)، شاخه اول برابر
+\(v/v_{\mathrm{sat}}=2u/(1+u)\) می‌شود.
+
+\begin{figure}[!htbp]
+\centering
+\begin{latin}
+\PersianMathDigits
+\begin{tikzpicture}[x=3.2cm,y=2.5cm]
+ \draw[->] (0,0)--(2.15,0) node[right] {\(E/E_c\)};
+ \draw[->] (0,0)--(0,2.15) node[above] {\(v/v_{\mathrm{sat}}\)};
+ \draw[densely dashed,gray] (0,0)--(1,2) node[above right] {\(v=\mu_{\mathrm{eff}}E\)};
+ \draw[thick,domain=0:1,samples=70] plot (\x,{2*\x/(1+\x)});
+ \draw[thick] (1,1)--(2,1);
+ \draw[dotted] (1,0)--(1,1)--(0,1);
+ \foreach \x in {0,1,2} {\draw (\x,0)--(\x,-0.03) node[below] {\(\x\)};}
+ \foreach \y in {1,2} {\draw (0,\y)--(-0.03,\y) node[left] {\(\y\)};}
+\end{tikzpicture}
+\end{latin}
+\caption{نمودار آموزشی مدل سرعت \eqref{eq:velocity-model}. خط‌چین امتداد قانون میدان کوچک و خط پیوسته مدل قطعه‌ای کتاب را نشان می‌دهد.}
+\label{fig:velocity-normalized}
+\end{figure}
+
+در کتاب، \(v_{\mathrm{sat},n}\approx\qty{e7}{\centi\metre\per\second}\)
+و \(v_{\mathrm{sat},p}\approx\qty{8e6}{\centi\metre\per\second}\) ذکر
+شده‌اند \cite[صفحه چاپی ۷۶]{weste}. این مقادیر و ضرایب \lr{Mobility}،
+پارامترهای مدل مورد استفاده مرجع‌اند. در اسلاید ۹، استقلال \(E_c\) از
+\(V_{DS}\) و \(L\) در مدل بیان شده است. با ثابت بودن بایاس گیت و پارامترهای
+ماده، \eqref{eq:critical-field} نیز همین رفتار را دارد. هنگام تغییر
+\(V_{GS}\)، \(\mu_{\mathrm{eff}}\) می‌تواند تغییر کند و مقدار \(E_c\)
+باید سازگار با آن به‌روزرسانی شود.
+
+\subsubsection*{ولتاژ بحرانی و حل مثال \secnum{۲.۴}}
+ولتاژ بحرانی را با استفاده از طول کانال تعریف می‌کنیم
+\begin{equation}
+ V_c=E_cL=\frac{2v_{\mathrm{sat}}L}{\mu_{\mathrm{eff}}}.
+ \label{eq:critical-voltage}
+\end{equation}
+واحد \(E_cL\) برابر ولت است. در مثال کتاب، \(L=\qty{50}{\nano\metre}
+=\qty{5e-6}{\centi\metre}\) است. جایگذاری مقادیر گرد‌شده
+\eqref{eq:mobility-example-results} می‌دهد
+\begin{align}
+ E_{c,n}&=\frac{2\times10^7}{96}
+ \approx\qty{2.08e5}{\volt\per\centi\metre},
+ &V_{c,n}&\approx(2.08\times10^5)(5\times10^{-6})\,\unit{\volt}
+ \approx\qty{1.04}{\volt},\notag\\
+ E_{c,p}&=\frac{2(8\times10^6)}{36}
+ \approx\qty{4.44e5}{\volt\per\centi\metre},
+ &V_{c,p}&\approx\qty{2.22}{\volt}.
+ \label{eq:critical-example}
+\end{align}
+این نتایج با مثال \secnum{۲.۴} کتاب و اسلاید ۱۲ تطبیق دارند
+\cite{weste,nonideal}. در این نمونه، \(V_c\) در \lr{pMOS} بزرگ‌تر است و
+برای اضافه‌ولتاژ گیت یکسان، اثر محدودشدن سرعت ضعیف‌تر خواهد بود. نسبت
+\(V_{GT}/V_c\) در جریان استخراج‌شده این تفاوت را کمّی می‌کند.
+
+تعریف \(V_c\) با میدان متوسط، مقیاسی برای مقایسه بایاس‌هاست. میدان محلی
+نزدیک \lr{Drain} می‌تواند زودتر از میدان متوسط به \(E_c\) برسد.
+ولتاژ شروع اشباع جریان، \(V_{\mathrm{dsat}}\)، در ادامه از شرط مرزی همان
+مدل تعیین می‌شود.
+
+\subsubsection*{استخراج رابطه جریان با میدان محلی}
+محور \(x\) را از \lr{Source} به \lr{Drain} می‌گیریم و \(V(x)\) را
+پتانسیل کانال نسبت به \lr{Source} تعریف می‌کنیم. کران‌ها
+\(V(0)=0\) و \(V(L)=V_{DS}\) هستند. برای اختصار،
+\(A=V_{GT}>0\) و \(D=V_{DS}\) می‌گذاریم. بزرگی بار متحرک بر واحد
+طول کانال در مدل تدریجی برابر است با
+\begin{equation}
+ q'(x)=WC_{\mathrm{ox}}[A-V(x)].
+ \label{eq:local-charge}
+\end{equation}
+این بیان بار، همان مبنای بخش \secnum{۲.۲} کتاب است. تغییر این استخراج،
+استفاده از رابطه سرعت \eqref{eq:velocity-model} است
+\cite[بخش‌های \secnum{۲.۲} و \secnum{۲.۴.۱}]{weste}.
+
+پیش از رسیدن میدان انتهای کانال به \(E_c\)، با
+\(E(x)=\mathrm{d}V/\mathrm{d}x\)، جریان در هر مقطع چنین نوشته می‌شود
+\begin{equation}
+ I=WC_{\mathrm{ox}}(A-V)
+ \frac{\mu_{\mathrm{eff}}\,\mathrm{d}V/\mathrm{d}x}
+ {1+(\mathrm{d}V/\mathrm{d}x)/E_c}.
+ \label{eq:current-local}
+\end{equation}
+در محاسبه برای یک بایاس گیت ثابت، \(\mu_{\mathrm{eff}}\) را در طول کانال
+ثابت می‌گیریم. جریان \lr{DC} نیز در همه مقاطع یکسان است. ابتدا دو طرف را
+در مخرج و سپس در \(\mathrm{d}x\) ضرب می‌کنیم
+\begin{align}
+ I+\frac{I}{E_c}\frac{\mathrm{d}V}{\mathrm{d}x}
+ &=\mu_{\mathrm{eff}}WC_{\mathrm{ox}}(A-V)
+ \frac{\mathrm{d}V}{\mathrm{d}x},\notag\\
+ I\,\mathrm{d}x
+ &=\left[\mu_{\mathrm{eff}}WC_{\mathrm{ox}}(A-V)-\frac{I}{E_c}\right]
+ \mathrm{d}V.
+ \label{eq:current-separated}
+\end{align}
+اکنون سمت چپ روی طول کانال و سمت راست روی اختلاف پتانسیل جمع می‌شود.
+با استفاده از انتگرال‌های مرور پیش‌نیاز داریم
+\begin{align}
+ IL&=\mu_{\mathrm{eff}}WC_{\mathrm{ox}}
+ \int_0^D(A-V)\,\mathrm{d}V-\frac{I}{E_c}\int_0^D\mathrm{d}V,\notag\\
+ IL&=\mu_{\mathrm{eff}}WC_{\mathrm{ox}}\left(AD-\frac{D^2}{2}\right)
+ -\frac{ID}{E_c},\notag\\
+ I\left(L+\frac{D}{E_c}\right)
+ &=\mu_{\mathrm{eff}}WC_{\mathrm{ox}}\left(AD-\frac{D^2}{2}\right).
+ \label{eq:current-integrated}
+\end{align}
+با تقسیم بر \(L\)، استفاده از \(E_cL=V_c\) و تعریف
+\(\beta_{\mathrm{eff}}=\mu_{\mathrm{eff}}C_{\mathrm{ox}}W/L\)، نتیجه می‌شود
+\begin{equation}
+ \boxed{I_{\mathrm{lin}}=
+ \frac{\beta_{\mathrm{eff}}\left(V_{GT}V_{DS}-V_{DS}^2/2\right)}
+ {1+V_{DS}/V_c}},\qquad 0\le V_{DS}<V_{\mathrm{dsat}}.
+ \label{eq:high-field-linear}
+\end{equation}
+این رابطه با شاخه نخست رابطه \secnum{۲.۲۶} کتاب برابر است. مخرج بی‌بعد،
+اثر کاهش سرعت نسبت به قانون میدان کوچک را در جریان وارد می‌کند. اگر
+\(V_{DS}/V_c\) کوچک باشد، مخرج به یک نزدیک می‌شود.
+
+\subsubsection*{شرط انتهای کانال و اثبات تمرین \secnum{۲.۶}}
+تمرین \secnum{۲.۶}، اثبات رابطه \secnum{۲.۲۷} کتاب را می‌خواهد
+\cite[صفحه چاپی ۹۶]{weste}. در مرز اشباع این مدل، میدان محلی انتهای کانال
+به \(E_c\) و سرعت به \(v_{\mathrm{sat}}\) می‌رسد. اگر
+\(s=V_{\mathrm{dsat}}\) باشد، رابطه \eqref{eq:local-charge} بار بر واحد
+طول انتهای کانال را برابر \(WC_{\mathrm{ox}}(A-s)\) می‌دهد. بنابراین
+\begin{equation}
+ I_{\mathrm{sat}}=WC_{\mathrm{ox}}(A-s)v_{\mathrm{sat}}.
+ \label{eq:drain-saturation-current}
+\end{equation}
+در این مدل، برای \(V_{DS}\ge s\)، افزایش بایاس \lr{Drain} با ناحیه
+میدان قوی انتهای کانال همراه است و جریان را به همین مقدار محدود می‌کنیم
+\cite[رابطه \secnum{۲.۲۶}]{weste}.
+
+در مرز، دو شاخه باید یک جریان بدهند. از \eqref{eq:critical-voltage}،
+\(v_{\mathrm{sat}}=\mu_{\mathrm{eff}}V_c/(2L)\) است. جایگذاری می‌دهد
+\begin{equation}
+ \frac{\mu_{\mathrm{eff}}WC_{\mathrm{ox}}}{L}
+ \frac{(A-s/2)s}{1+s/V_c}
+ =WC_{\mathrm{ox}}(A-s)\frac{\mu_{\mathrm{eff}}V_c}{2L}.
+ \label{eq:boundary-equality}
+\end{equation}
+عامل \(\mu_{\mathrm{eff}}WC_{\mathrm{ox}}/L\) در دو طرف مثبت و مشترک است.
+آن را حذف می‌کنیم و دو طرف را در \(2(1+s/V_c)\) ضرب می‌کنیم
+\begin{align}
+ 2(A-s/2)s&=(A-s)(V_c+s),\notag\\
+ 2As-s^2&=AV_c+As-V_cs-s^2,\notag\\
+ As+V_cs&=AV_c,\notag\\
+ (A+V_c)s&=AV_c.
+ \label{eq:saturation-algebra}
+\end{align}
+جمله‌های \(-s^2\) از دو طرف حذف می‌شوند. چون \(A+V_c>0\)، تقسیم بر آن
+مجاز است و جواب یکتا به دست می‌آید
+\begin{equation}
+ \boxed{V_{\mathrm{dsat}}=\frac{V_{GT}V_c}{V_{GT}+V_c}}.
+ \label{eq:high-field-saturation-voltage}
+\end{equation}
+صورت، واحد ولت به توان دو و مخرج، واحد ولت دارد. پس جواب ولتاژ است.
+برای \(V_{GT}>0,V_c>0\)، دو نسبت زیر را می‌نویسیم
+\begin{equation}
+ \frac{V_{\mathrm{dsat}}}{V_{GT}}=\frac{V_c}{V_{GT}+V_c}<1,\qquad
+ \frac{V_{\mathrm{dsat}}}{V_c}=\frac{V_{GT}}{V_{GT}+V_c}<1.
+ \label{eq:saturation-bounds}
+\end{equation}
+در نتیجه، \(0<V_{\mathrm{dsat}}<\min(V_{GT},V_c)\) و بار انتهای کانال
+در مرز مثبت است. شکل جبری \(ab/(a+b)\) در فرمول دو مقاومت موازی نیز
+دیده می‌شود. در اینجا دو عامل \(V_{GT},V_c\) هر دو ولتاژند.
+
+با جایگذاری \eqref{eq:high-field-saturation-voltage} در
+\eqref{eq:drain-saturation-current}، ابتدا اختلاف \(A-s\) را ساده می‌کنیم
+\[
+ A-s=A-\frac{AV_c}{A+V_c}=\frac{A^2}{A+V_c}.
+\]
+بنابراین جریان اشباع به شکل زیر نوشته می‌شود
+\begin{equation}
+ \boxed{I_{\mathrm{sat}}
+ =WC_{\mathrm{ox}}v_{\mathrm{sat}}\frac{V_{GT}^2}{V_{GT}+V_c}}.
+ \label{eq:high-field-saturation-current}
+\end{equation}
+این نتیجه همان رابطه \secnum{۲.۲۸} کتاب است. ضرب
+\(WC_{\mathrm{ox}}\) در یک ولتاژ و یک سرعت، واحد آمپر می‌دهد.
+
+\subsubsection*{حدهای مدل و تفاوت دو معنای \lr{Saturation}}
+برای آشکارشدن حد کانال بلند، از \(v_{\mathrm{sat}}=
+\mu_{\mathrm{eff}}V_c/(2L)\) استفاده می‌کنیم
+\begin{equation}
+ I_{\mathrm{sat}}=
+ \frac{\beta_{\mathrm{eff}}V_{GT}^2}{2}
+ \frac{1}{1+V_{GT}/V_c}.
+ \label{eq:current-reduction-factor}
+\end{equation}
+اگر \(V_{GT}\ll V_c\)، عامل آخر به یک و
+\(V_{\mathrm{dsat}}\) به \(V_{GT}\) نزدیک می‌شود. جریان مربعی مدل
+\lr{Long-channel} با همان \lr{Mobility} مؤثر به دست می‌آید. اگر
+\(V_{GT}\gg V_c\)، با تقسیم صورت و مخرج
+\eqref{eq:high-field-saturation-current} بر \(V_{GT}\) داریم
+\begin{equation}
+ I_{\mathrm{sat}}=
+ WC_{\mathrm{ox}}v_{\mathrm{sat}}V_{GT}
+ \frac{1}{1+V_c/V_{GT}}
+ \approx WC_{\mathrm{ox}}v_{\mathrm{sat}}V_{GT}.
+ \label{eq:velocity-saturated-limit}
+\end{equation}
+در این حد، جریان تقریباً با \(V_{GT}\) متناسب و
+\(V_{\mathrm{dsat}}\approx V_c\) است
+\cite[روابط \secnum{۲.۲۸} و \secnum{۲.۲۹}]{weste}.
+
+واژه \lr{Saturation} برای ناحیه کاری جریان به کار می‌رود.
+\lr{Velocity Saturation} محدودشدن سرعت حامل‌ها را توصیف می‌کند.
+مدل کانال بلند نیز ناحیه \lr{Saturation} دارد. در مدل حاضر، میدان بحرانی
+محلی شرط مرز را تعیین کرده است و می‌تواند جریان را در ولتاژی کوچک‌تر از
+\(V_{GT}\) به اشباع برساند \cite[پانوشت صفحه چاپی ۷۵]{weste}.
+
+برای استفاده از \eqref{eq:high-field-linear}، ابتدا باید
+\(V_{\mathrm{dsat}}\) حساب شود. شاخه \lr{Linear} فقط تا این مرز معتبر
+است. اتصال دو شاخه مدل قطعه‌ای پیوستگی جریان را برقرار می‌کند. شیب دو
+شاخه در مرز می‌تواند متفاوت باشد، زیرا مدل سرعت نیز در \(E_c\) اتصال
+قطعه‌ای دارد. تعیین مرز از شرط میدان انتهای کانال با همین فرض‌ها سازگار است.
+
+\subsubsection*{مثال آموزشی جریان و کنترل ناحیه کاری}
+پارامترهای هندسی و اکسید مثال \secnum{۲.۱} کتاب را با \lr{Mobility} مؤثر
+گرد‌شده مثال \secnum{۲.۳} به کار می‌بریم. فرض‌ها در جدول
+\ref{tab:high-field-data} آمده‌اند. این محاسبه، کاربرد آموزشی مدل
+\eqref{eq:high-field-linear} و \eqref{eq:high-field-saturation-current} است.
+
+\begin{table}[!htbp]
+\centering
+\caption{پارامترهای مثال آموزشی جریان. بایاس بدنه و آستانه ثابت فرض شده‌اند.}
+\label{tab:high-field-data}
+\begin{tabular}{cc@{\qquad}cc}
+\toprule
+کمیت & مقدار & کمیت & مقدار\\
+\midrule
+\(W\) & \(\qty{100}{\nano\metre}\) & \(L\) & \(\qty{50}{\nano\metre}\)\\
+\(t_{\mathrm{ox}}\) & \(\qty{1.05}{\nano\metre}\) & \(V_t\) & \(\qty{0.3}{\volt}\)\\
+\(V_{GS}\) & \(\qty{1.0}{\volt}\) & \(v_{\mathrm{sat}}\) & \(\qty{e5}{\metre\per\second}\)\\
+\(\mu_{\mathrm{eff}}\) & \(\qty{0.0096}{\metre\squared\per\volt\per\second}\) & \(\varepsilon_{\mathrm{ox}}\) & \(3.9\varepsilon_0\)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+با ثابت \lr{Permittivity} خلأ
+\(\varepsilon_0\approx\qty{8.85e-12}{\farad\per\metre}\)، نخست
+ظرفیت بر واحد سطح و ضریب جریان را می‌یابیم
+\begin{align}
+ C_{\mathrm{ox}}&=\frac{3.9(8.85\times10^{-12})}{1.05\times10^{-9}}
+ \approx\qty{0.03287}{\farad\per\metre\squared},\notag\\
+ \beta_{\mathrm{eff}}&=(0.0096)(0.03287)\frac{100}{50}
+ \approx\qty{631.1}{\micro\ampere\per\volt\squared},\notag\\
+ V_{GT}&=\qty{0.7}{\volt},\qquad
+ V_c\approx\qty{1.0417}{\volt},\qquad
+ V_{\mathrm{dsat}}=\frac{0.7(1.0417)}{0.7+1.0417}\,\unit{\volt}
+ \approx\qty{0.4187}{\volt}.
+ \label{eq:high-field-example-parameters}
+\end{align}
+برای \(V_{DS}=\qty{0.1}{\volt}\)، شرط شاخه \lr{Linear} برقرار است.
+جریان و عامل کاهش آن برابرند با
+\begin{equation}
+ I_{DS}\approx\frac{631.1[0.7(0.1)-(0.1)^2/2]}{1+0.1/1.0417}
+ \,\unit{\micro\ampere}
+ \approx\qty{37.4}{\micro\ampere}.
+ \label{eq:high-field-example-linear}
+\end{equation}
+اگر در همین بایاس مخرج را یک بگیریم، جریان حدود
+\(\qty{41.0}{\micro\ampere}\) می‌شود. نسبت دو جریان
+\(1/(1+0.1/1.0417)\approx0.912\) است.
+
+برای \(V_{DS}=\qty{1.0}{\volt}\)، شرط
+\(V_{DS}>V_{\mathrm{dsat}}\) برقرار است. از رابطه اشباع به دست می‌آوریم
+\begin{equation}
+ I_{DS}\approx(100\times10^{-9})(0.03287)(10^5)
+ \frac{0.7^2}{0.7+1.0417}\,\unit{\ampere}
+ \approx\qty{92.5}{\micro\ampere}.
+ \label{eq:high-field-example-sat}
+\end{equation}
+مرجع مقایسه با همان \(\mu_{\mathrm{eff}}\)، جریان مربعی
+\(\beta_{\mathrm{eff}}V_{GT}^2/2\approx\qty{154.6}{\micro\ampere}\)
+است. نسبت \eqref{eq:current-reduction-factor} حدود \(0.598\) می‌شود.
+پس محدودشدن سرعت در این مقایسه کنترل‌شده، جریان را حدود \num{40.2} درصد
+کاهش می‌دهد. تغییرات \lr{Mobility} و اثرهای آستانه در این مقایسه ثابت‌اند.
+
+شکل \ref{fig:high-field-current} دو شاخه مدل همین مثال را نشان می‌دهد.
+افزایش ولتاژ در ناحیه اشباع این مدل، جریان را ثابت نگه می‌دارد. در بخش
+\ref{sec:clm}، اثر افزایش طول ناحیه تخلیه بر شیب جریان بررسی می‌شود.
+\begin{figure}[!htbp]
+\centering
+\begin{latin}
+\PersianMathDigits
+\begin{tikzpicture}[x=8cm,y=0.035cm]
+ \draw[->] (0,0)--(1.1,0) node[right] {\(V_{DS}\;(\mathrm{V})\)};
+ \draw[->] (0,0)--(0,175) node[above] {\(I_{DS}\;(\mathrm{\mu A})\)};
+ \draw[densely dashed,gray,domain=0:0.7,samples=80] plot (\x,{631.1314*(0.7*\x-\x*\x/2)});
+ \draw[densely dashed,gray] (0.7,154.6272)--(1,154.6272);
+ \draw[thick,domain=0:0.4186603,samples=80] plot (\x,{631.1314*(0.7*\x-\x*\x/2)/(1+\x/1.0416667)});
+ \draw[thick] (0.4186603,92.4804)--(1,92.4804);
+ \draw[dotted] (0.4186603,0)--(0.4186603,92.4804);
+ \node[above] at (0.82,154.6272) {\(\mu_{\mathrm{eff}}\) fixed};
+ \node[above] at (0.78,92.4804) {velocity model};
+ \foreach \x in {0,0.5,1} {\draw (\x,0)--(\x,-2) node[below] {\(\x\)};}
+ \foreach \y in {50,100,150} {\draw (0,\y)--(-0.012,\y) node[left] {\(\y\)};}
+\end{tikzpicture}
+\end{latin}
+\caption{مقایسه آموزشی مدل میدان قوی با مدل مربعی، با \lr{Mobility} مؤثر یکسان و پارامترهای جدول \ref{tab:high-field-data}.}
+\label{fig:high-field-current}
+\end{figure}
+
+\subsubsection*{مدل \lr{Alpha-power law} و معنای پارامترهای آن}
+برای برازش ساده‌تر منحنی‌ها، کتاب و اسلاید ۱۱ مدل \lr{Alpha-power law}
+را معرفی می‌کنند. \(\alpha\) توان تجربی وابستگی جریان به اضافه‌ولتاژ گیت
+است. در توصیف مرجع، مقدار آن از حدود دو در رفتار کانال بلند به حدود یک
+در محدودیت شدید سرعت تغییر می‌کند
+\cite[روابط \secnum{۲.۳۰} و \secnum{۲.۳۱}]{weste}\cite[اسلایدهای ۱۰ و ۱۱]{nonideal}.
+با \(V_{GT}>0\)، دو پارامتر شاخه‌ها چنین تعریف می‌شوند
+\begin{equation}
+ I_{\mathrm{dsat}}=\frac{\beta P_c}{2}V_{GT}^{\alpha},\qquad
+ V_{\mathrm{dsat},\alpha}=P_vV_{GT}^{\alpha/2}.
+ \label{eq:alpha-parameters}
+\end{equation}
+نماد \(P_c\) ضریب برازش جریان و \(P_v\) ضریب برازش ولتاژ است. جریان
+کل با خط مستقیم در شاخه \lr{Linear} تقریب زده می‌شود
+\begin{equation}
+ I_{DS}=\begin{cases}
+ 0,&V_{GT}\le0,\\[2pt]
+ I_{\mathrm{dsat}}\dfrac{V_{DS}}{V_{\mathrm{dsat},\alpha}},
+ &V_{GT}>0,\quad 0\le V_{DS}<V_{\mathrm{dsat},\alpha},\\[5pt]
+ I_{\mathrm{dsat}},&V_{GT}>0,\quad V_{DS}\ge V_{\mathrm{dsat},\alpha}.
+ \end{cases}
+ \label{eq:alpha-piecewise}
+\end{equation}
+در مرز دو شاخه، عامل \(V_{DS}/V_{\mathrm{dsat},\alpha}=1\) و جریان
+پیوسته است. مقدار \(V_{\mathrm{dsat},\alpha}\) باید از پارامترهای همین
+برازش محاسبه شود. مرز \eqref{eq:high-field-saturation-voltage} متعلق به
+مدل سرعت بخش قبل است. کاربرد هر دو مرز در یک محاسبه به بازبرازش سازگار
+نیاز دارد.
+
+اگر \(\beta\) واحد \(\unit{\ampere\per\volt\squared}\) داشته باشد،
+سازگاری ابعادی \eqref{eq:alpha-parameters} ایجاب می‌کند
+\begin{equation}
+ [P_c]=\mathrm{V}^{\,2-\alpha},\qquad
+ [P_v]=\mathrm{V}^{\,1-\alpha/2}.
+ \label{eq:alpha-dimensions}
+\end{equation}
+برای \(\alpha=2\)، هر دو ضریب بی‌بعد می‌شوند. برای توان دیگر، مقدار عددی
+آن‌ها به قرارداد واحد ولتاژ وابسته است. می‌توان با یک ولتاژ مرجع مثبت
+\(V_0\)، بیان بی‌بعد زیر را به کار برد
+\begin{equation}
+ I_{\mathrm{dsat}}=K_I\left(\frac{V_{GT}}{V_0}\right)^\alpha,\qquad
+ V_{\mathrm{dsat},\alpha}=K_V
+ \left(\frac{V_{GT}}{V_0}\right)^{\alpha/2}.
+ \label{eq:alpha-normalized}
+\end{equation}
+در این بیان، \(K_I\) جریان و \(K_V\) ولتاژ هستند و
+\(K_I=\beta P_cV_0^\alpha/2\)، \(K_V=P_vV_0^{\alpha/2}\).
+این بازنویسی آموزشی، همان مدل را با واحدهای آشکار بیان می‌کند.
+
+\subsubsection*{مثال آموزشی برازش توان و استفاده از مدل}
+فرض کنید دو مقدار جریان اشباع برای یک افزاره فرضی در یک دما و هندسه
+ثابت در اختیار داریم. در \(V_{GT,1}=\qty{0.4}{\volt}\)، جریان
+\(I_1=\qty{120}{\micro\ampere}\) و در
+\(V_{GT,2}=\qty{0.8}{\volt}\)، جریان
+\(I_2=\qty{300}{\micro\ampere}\) است. فرض می‌کنیم هر دو نقطه در ناحیه
+اشباع و در دامنه معتبر یک برازش مشترک قرار دارند. با تقسیم دو رابطه
+جریان در \eqref{eq:alpha-normalized}، \(K_I\) حذف می‌شود
+\begin{align}
+ \frac{I_2}{I_1}&=\left(\frac{V_{GT,2}}{V_{GT,1}}\right)^\alpha,\notag\\
+ \alpha&=\frac{\ln(I_2/I_1)}{\ln(V_{GT,2}/V_{GT,1})}
+ =\frac{\ln(2.5)}{\ln2}\approx1.322.
+ \label{eq:alpha-fit}
+\end{align}
+نسبت جریان‌ها و نسبت ولتاژها هر دو بی‌بعدند. برای \(V_0=\qty{1}{\volt}\)،
+ضریب جریان از نقطه نخست به دست می‌آید.
+\[
+ K_I=\frac{120}{(0.4)^{1.322}}\approx\qty{402.9}{\micro\ampere}.
+\]
+پیش‌بینی همین برازش در \(V_{GT}=\qty{0.6}{\volt}\)،
+حدود \(\qty{205.1}{\micro\ampere}\) است. برای تعیین مرز اشباع، هنوز
+داده‌ای برای \(K_V\) لازم است.
+
+در مثال فرضی مستقل دیگری، \(\alpha=1.3\)،
+\(K_I=\qty{400}{\micro\ampere}\)، \(K_V=\qty{0.4}{\volt}\) و
+\(V_0=\qty{1}{\volt}\) را معلوم می‌گیریم. در
+\(V_{GT}=\qty{0.5}{\volt}\)، داریم
+\begin{align}
+ I_{\mathrm{dsat}}&=400(0.5)^{1.3}\,\unit{\micro\ampere}
+ \approx\qty{162.5}{\micro\ampere},\notag\\
+ V_{\mathrm{dsat},\alpha}&=0.4(0.5)^{0.65}\,\unit{\volt}
+ \approx\qty{0.2549}{\volt}.
+ \label{eq:alpha-example}
+\end{align}
+اگر \(V_{DS}=\qty{0.1}{\volt}\) باشد، جریان شاخه \lr{Linear} برابر
+\(162.5(0.1/0.2549)\approx\qty{63.7}{\micro\ampere}\) است.
+در \(V_{DS}=\qty{0.7}{\volt}\)، جریان برابر مقدار اشباع
+\(\qty{162.5}{\micro\ampere}\) می‌شود. شکل \secnum{۲.۱۶} کتاب نشان
+می‌دهد که دقت این تقریب خطی در ولتاژهای کوچک \lr{Drain} محدود است
+\cite[صفحه چاپی ۷۸]{weste}. ضرایب این دو مثال آموزشی از داده یک فناوری
+واقعی استخراج نشده‌اند.
+
+\subsubsection*{جریان روشن، ولتاژ تغذیه و تقریب خطی ناحیه روشن}
+جریان روشن در اسلاید ۵ با بایاس \(V_{GS}=V_{DS}=V_{DD}\) تعریف شده
+است. در مدل توان، با ثابت بودن ضرایب و آستانه و برقرار بودن اشباع، داریم
+\begin{equation}
+ I_{\mathrm{on}}\propto(V_{DD}-V_t)^\alpha.
+ \label{eq:on-current-alpha}
+\end{equation}
+عبارت \(I_{DS}\propto V_{DD}^{\alpha}\) در اسلاید ۱۰، وابستگی ساده‌شده
+به تغذیه را بیان می‌کند. برای محاسبه عددی با آستانه معلوم، اضافه‌ولتاژ
+\(V_{DD}-V_t\) در \eqref{eq:on-current-alpha} وارد می‌شود.
+برای مثال آموزشی، کاهش تغذیه از \(\qty{1.0}{\volt}\) به
+\(\qty{0.8}{\volt}\)، با \(V_t=\qty{0.3}{\volt}\) و \(\alpha=1.3\)،
+نسبت جریان \((0.5/0.7)^{1.3}\approx0.646\) می‌دهد. نسبت
+\((0.8/1.0)^{1.3}\approx0.748\) متناظر با حذف آستانه از این وابستگی است.
+
+برای ارتباط با تأخیر گیت، ظرفیت بار خروجی را \(C_L\) و جریان متوسط
+گذار را \(I_{\mathrm{avg}}\) می‌نامیم. برآورد
+\(t_{\mathrm{sw}}\approx C_LV_{DD}/I_{\mathrm{avg}}\) از تقسیم بار
+\(C_LV_{DD}\) بر جریان متوسط به دست می‌آید
+\cite[بخش \secnum{۱.۹}]{weste}. اگر ظرفیت بار ثابت باشد و نسبت جریان
+روشن را تقریب نسبت جریان متوسط گذار بگیریم، در همین مثال نسبت تأخیر
+\(0.8/0.646\approx1.24\) می‌شود. کاهش دامنه ولتاژ و کاهش جریان در
+این برآورد با یکدیگر رقابت می‌کنند و تأخیر حدود ۲۴ درصد افزایش می‌یابد.
+این محاسبه به فرض ثابت‌بودن بار، آستانه و ضرایب برازش و تقریب جریان
+متوسط وابسته است.
+
+کتاب برای ناحیه به‌اندازه کافی روشن، یک تقریب خطی دیگر نیز معرفی می‌کند
+\cite[رابطه \secnum{۲.۳۲} و شکل \secnum{۲.۱۷}]{weste}
+\begin{equation}
+ I_{DS}\approx k(V_{GS}-V_t^*),\qquad V_{DS}=V_{GS}.
+ \label{eq:linear-on-fit}
+\end{equation}
+در این رابطه، \(k\) شیب برازش با واحد
+\(\unit{\ampere\per\volt}\) و \(V_t^*\) محل برخورد امتداد خط با محور
+ولتاژ است. این کمیت از برازش ناحیه جریان زیاد تعیین می‌شود.
+آستانه \(V_t\) در مدل تشکیل کانال جداگانه تعریف شده است.
+
+برای مثال آموزشی، فرض کنید جریان در \(V_{GS}=\qty{0.7}{\volt}\) برابر
+\(\qty{0.48}{\milli\ampere}\) و در
+\(V_{GS}=\qty{0.9}{\volt}\) برابر \(\qty{0.72}{\milli\ampere}\) باشد.
+در هر دو نقطه، \(V_{DS}=V_{GS}\) است. شیب و عرض از محور ولتاژ چنین‌اند
+\begin{equation}
+ k=\frac{0.72-0.48}{0.9-0.7}
+ =\qty{1.2}{\milli\ampere\per\volt},\qquad
+ V_t^*=0.7-\frac{0.48}{1.2}=\qty{0.3}{\volt}.
+ \label{eq:linear-on-example}
+\end{equation}
+پیش‌بینی خط در \(V_{GS}=\qty{0.8}{\volt}\)، جریان
+\(\qty{0.60}{\milli\ampere}\) است. اعتبار این برازش به همان بازه بایاس
+محدود است. در نزدیکی خاموشی، مدل جریان زیرآستانه باید جداگانه بررسی شود.

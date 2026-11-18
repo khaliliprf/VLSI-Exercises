@@ -1,0 +1,102 @@
+% !TeX root = booklet-01-preview.tex
+\section*{هدف و روش مطالعه}
+این جزوه برای دانشجویی تنظیم می‌شود که درس الکترونیک دیجیتال را نگذرانده است.
+پیش‌نیازهای مدار، منطق و ریاضی در محل مناسب آموزش داده می‌شوند؛ بنابراین آشنایی قبلی
+با تحلیل ترانزیستور، مشتق یا انتگرال فرض نمی‌شود. هدف، رسیدن از شناخت کمیت‌های مدار
+به فهم روابط جریان و ظرفیت \lr{MOSFET} است.
+
+\textbf{وضعیت این نسخه:} فقط فهرست تفصیلی پیشنهادی و یک نمونه آموزشی نوشته شده است.
+عنوان‌های فهرست، به معنای تکمیل آن درس‌ها نیستند. نمونه، میزان توضیح و شیوه ارائه را
+نشان می‌دهد؛ آموزش کامل پیش‌نیازها در نسخه نهایی گسترده‌تر خواهد بود.
+
+دامنه جزوه اول، کل فصل ۱ و بخش‌های \secnum{۲.۱} تا \secnum{۲.۳} کتاب است \cite{weste}.
+اسلایدهای \lr{00} و \lr{01} راهنمای ترتیب و تاکید درس‌اند \cite{intro,mos}؛
+مطالب کتاب که در اسلایدها کوتاه شده‌اند نیز با ارجاع روشن پوشش داده می‌شوند.
+مثال‌های تکمیلی با عنوان «مثال آموزشی» از مثال‌های کتاب متمایز خواهند بود.
+
+\section*{فهرست تفصیلی پیشنهادی جزوه اول}
+\subsection*{بخش آغازین: پیش‌نیازهای ضروری}
+\begin{enumerate}
+\item \textbf{کمیت‌ها و واحدها:} بار، جریان، ولتاژ، انرژی و توان؛ جهت مرجع؛
+\lr{Ground} و اختلاف پتانسیل؛ واحدهای \lr{SI} و پیشوندها.
+\item \textbf{ریاضی محاسبات مدار:} کسر و نسبت، توان و نماد علمی، تبدیل واحد،
+جابه‌جایی جمله‌ها، پرانتز، معادله خطی و درجه‌دو؛ انتخاب جواب سازگار با مسئله.
+\item \textbf{مدارهای پایه:} مقاومت و \lr{Ohm's Law}، مدار باز و اتصال کوتاه،
+\lr{Node} و \lr{Branch}؛ اتصال \lr{Series} و \lr{Parallel}؛
+\lr{Kirchhoff's Current Law (KCL)} و \lr{Kirchhoff's Voltage Law (KVL)}.
+\item \textbf{خازن و زمان:} بار ذخیره‌شده، رابطه بار و ولتاژ، شارژ و دشارژ؛
+تفاوت حالت ماندگار و گذرا؛ مقدمه نرخ تغییر و شیب با نمودار.
+\item \textbf{منطق دیجیتال:} تفاوت \lr{Analog} و \lr{Digital}؛
+سطح ولتاژ و مقدار منطقی؛ \lr{Truth Table} و گیت‌های
+\lr{NOT, AND, OR, NAND, NOR, XOR, XNOR}.
+\item \textbf{جبر و ساختار منطق:} \lr{Boolean Algebra} و \lr{De Morgan's Laws}؛
+ساخت گیت از \lr{Switch}؛ تفاوت \lr{Combinational} و \lr{Sequential}؛
+مفهوم حافظه و \lr{Clock}، با مثال ساده.
+\end{enumerate}
+
+\clearpage
+\subsection*{فصل اول: از ترانزیستور تا فرایند طراحی}
+ترتیب زیر تمام بخش‌های \secnum{۱.۱} تا \secnum{۱.۱۲} را پوشش می‌دهد؛ مرزها با فهرست کتاب تطبیق
+داده شده‌اند \cite{weste}. هر درس شامل توضیح، مثال و پرسش با پاسخ خواهد بود.
+\begin{enumerate}
+\item \textbf{بخش‌های \secnum{۱.۱} و \secnum{۱.۲}:} تاریخچه \lr{IC} و \lr{VLSI}،
+\lr{Moore's Law} و مسیر کلی طراحی؛ خواندن رشد نمایی و نمودار نیمه‌لگاریتمی.
+آمار تاریخی منبع، با تاریخ خود آن گزارش می‌شود.
+\item \textbf{بخش \secnum{۱.۳}:} ساختار ابتدایی \lr{MOS}، چهار پایانه،
+کنترل مسیر جریان با ولتاژ \lr{Gate}، مقایسه \lr{nMOS} و \lr{pMOS} و مدل \lr{Switch}.
+\item \textbf{بخش \secnum{۱.۴}:} طراحی \lr{Inverter}، \lr{NAND} و \lr{NOR}؛
+شبکه‌های \lr{Pull-up} و \lr{Pull-down} و گیت‌های \lr{Compound}؛
+\lr{Pass Transistor}، \lr{Transmission Gate}، \lr{Tristate}،
+\lr{Multiplexer} و مدارهای \lr{Sequential}.
+\item \textbf{بخش \secnum{۱.۵}:} مقطع \lr{Inverter}، مراحل \lr{Fabrication}،
+\lr{Layout Design Rules}، \lr{Gate Layout} و \lr{Stick Diagram}؛
+ارتباط نمای مداری و فیزیکی با شکل‌های خوانا.
+\item \textbf{بخش \secnum{۱.۶}:} \lr{Design Partitioning}، \lr{Abstraction}،
+\lr{Hierarchy}، \lr{Regularity} و \lr{Modularity}؛
+دامنه‌های \lr{Behavioral}، \lr{Structural} و \lr{Physical}.
+\item \textbf{بخش \secnum{۱.۷}:} معرفی مقدمات لازم برای مثال \lr{MIPS}،
+تفاوت \lr{Architecture} و \lr{Microarchitecture} و اجرای چندچرخه‌ای؛
+ساختار پردازنده پیش از تحلیل مثال کتاب معرفی می‌شود.
+\item \textbf{بخش \secnum{۱.۸}:} \lr{Logic Design}، رابط‌های سطح بالا، نمودار بلوکی،
+سلسله‌مراتب و \lr{Hardware Description Language (HDL)}؛
+خواندن مثال‌های کتاب بدون فرض آشنایی قبلی با کدنویسی سخت‌افزار.
+\item \textbf{بخش \secnum{۱.۹}:} \lr{Circuit Design}؛ مقدمه معیارهای
+\lr{Delay}، \lr{Power} و \lr{Area} در حد همین فصل و پیوند آن‌ها با ترانزیستور.
+\item \textbf{بخش \secnum{۱.۱۰}:} \lr{Floorplanning}، \lr{Standard Cell}،
+\lr{Pitch Matching}، \lr{Slice Plan}، \lr{Array} و برآورد مساحت.
+\item \textbf{بخش‌های \secnum{۱.۱۱} و \secnum{۱.۱۲}:} هدف و سطوح \lr{Verification}؛
+\lr{Fabrication}، \lr{Packaging} و \lr{Testing} و تفاوت نقش آن‌ها.
+\end{enumerate}
+
+\clearpage
+\subsection*{ابتدای فصل دوم: از ساختار فیزیکی تا مدل ریاضی}
+\begin{enumerate}
+\item \textbf{بخش \secnum{۲.۱}:} ساختار \lr{Silicon}، \lr{Doping}،
+\lr{Electron} و \lr{Hole}، پیوند \lr{PN} و بایاس آن؛
+ساختار \lr{MOS} و حالت‌های \lr{Accumulation}، \lr{Depletion} و \lr{Inversion}؛
+تعریف \lr{Threshold Voltage} و ولتاژهای پایانه‌ها.
+\item \textbf{بخش \secnum{۲.۲}، مقدمات:} نقش \(W\)، \(L\)، \(t_{\mathrm{ox}}\)،
+\(\mu\) و \(C_{\mathrm{ox}}\)؛ تفاوت ظرفیت و ظرفیت بر واحد سطح؛
+میدان الکتریکی و سرعت حامل، با کنترل واحدها.
+\item \textbf{بخش \secnum{۲.۲}، استخراج:} بار کانال، جریان \lr{Long-Channel} و
+مفهوم انتگرال به‌عنوان جمع سهم‌های کوچک؛ استخراج روابط \lr{Linear} و
+\lr{Saturation} و پیوستگی مرز؛ قرارداد علامت‌ها در \lr{pMOS}؛
+حل مثال با تعیین ناحیه پیش و پس از محاسبه.
+\item \textbf{بخش \secnum{۲.۳.۱}:} مدل ساده \lr{Gate Capacitance} و
+\lr{Diffusion Capacitance}؛ اثر هندسه و اشتراک ناحیه‌های \lr{Diffusion}.
+\item \textbf{بخش \secnum{۲.۳.۲}:} مدل تفصیلی ظرفیت \lr{Gate}، سهم پایانه‌ها،
+\lr{Overlap} و وابستگی ظرفیت‌ها به ناحیه عملکرد.
+\item \textbf{بخش \secnum{۲.۳.۳}:} مدل تفصیلی ظرفیت پیوند، سهم مساحت و محیط جانبی،
+وابستگی به بایاس و مفهوم ظرفیت موثر در تغییر ولتاژ.
+\end{enumerate}
+
+\subsection*{جمع‌بندی و پیوند با دو جزوه بعدی}
+در پایان جزوه، جدول نمادها و واحدها، نقشه انتخاب مدل، فرمول‌ها همراه با شرط اعتبار،
+خطاهای رایج و پرسش‌های ترکیبی با پاسخ تشریحی قرار می‌گیرند.
+بخش \secnum{۲.۴} به جزوه دوم و بخش \secnum{۲.۵} به جزوه سوم تعلق دارد؛ در جزوه اول فقط
+ضرورت آن‌ها معرفی می‌شود. مشتق‌گیری تفصیلی برای \lr{Noise Margin} در جزوه سوم
+آموزش داده خواهد شد.
+
+\textbf{معیار پوشش:} برای هر عنوان کتاب در دامنه تعیین‌شده، توضیح آموزشی و ارجاع
+قابل‌ردیابی ارائه می‌شود. منظور، بازنویسی آموزشی مفاهیم و استدلال‌هاست؛
+متن کتاب یا تمام تمرین‌های پایان فصل عیناً بازتولید نمی‌شوند.

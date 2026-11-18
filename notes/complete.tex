@@ -1,0 +1,39 @@
+% !TeX program = xelatex
+% Compile from the project root with build.ps1 -Document notes/complete.tex.
+\documentclass[12pt,a4paper,oneside,openany]{report}
+\input{notes/common/settings}
+\CompleteNotestrue
+\setcounter{tocdepth}{3}
+\makeatletter
+\renewcommand{\@pnumwidth}{3em}
+\renewcommand{\@tocrmarg}{4em}
+\makeatother
+% PDF bookmarks need literal Persian digits independently of font digit mapping.
+\makeatletter
+\newcommand{\PersianBookmarkCounter}[1]{%
+  \expandafter\PersianBookmarkDigits\number\value{#1}\@nil
+}
+\def\PersianBookmarkDigits#1{%
+  \ifx#1\@nil
+  \else
+    \ifcase#1۰\or۱\or۲\or۳\or۴\or۵\or۶\or۷\or۸\or۹\fi
+    \expandafter\PersianBookmarkDigits
+  \fi
+}
+\makeatother
+\renewcommand{\thechapter}{\texorpdfstring{\arabic{chapter}}{\PersianBookmarkCounter{chapter}}}
+\renewcommand{\thesection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}}}{\PersianBookmarkCounter{chapter}.\PersianBookmarkCounter{section}}}
+\renewcommand{\thesubsection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}.\arabic{subsection}}}{\PersianBookmarkCounter{chapter}.\PersianBookmarkCounter{section}.\PersianBookmarkCounter{subsection}}}
+\renewcommand{\thesubsubsection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}}{\PersianBookmarkCounter{chapter}.\PersianBookmarkCounter{section}.\PersianBookmarkCounter{subsection}.\PersianBookmarkCounter{subsubsection}}}
+\hypersetup{pdftitle={جزوه جامع مبانی CMOS VLSI، فصل اول و بخش‌های ۲.۱ تا ۲.۵},pdfauthor={محمد خلیلی اصل},bookmarksnumbered=true}
+\AssignmentNumber{جزوه جامع، مبانی \lr{CMOS VLSI}}
+\AssignmentDate{فصل ۱ و بخش‌های \secnum{۲.۱} تا \secnum{۲.۵} کتاب}
+\begin{document}
+\MakeAssignmentCover
+\input{notes/common/complete-reading-guide}
+\tableofcontents
+\input{notes/booklet-01/content}
+\input{notes/booklet-02/content}
+\input{notes/booklet-03/content}
+\input{notes/common/complete-bibliography}
+\end{document}

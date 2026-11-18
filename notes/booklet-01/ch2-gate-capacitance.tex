@@ -1,0 +1,270 @@
+\section{مدل تفصیلی ظرفیت \lr{Gate}}
+\subsection{سهم \lr{Intrinsic} و وابستگی صفحه پایین به ناحیه کاری}
+در مدل تفصیلی بخش \secnum{۲.۳.۲}، ظرفیت \lr{Gate} شامل سهم روی کانال و سهم
+هم‌پوشانی با \lr{Source} و \lr{Drain} است. سهم روی کانال، \lr{Intrinsic}
+نام دارد. ظرفیت هندسی مرجع را به صورت
+\begin{equation}
+ C_0=WLC_{\mathrm{ox}}
+ \label{eq:cv-czero}
+\end{equation}
+تعریف می‌کنیم. این کمیت مرجع برای مقایسه ناحیه‌هاست. تقسیم ظرفیت میان پایانه‌ها
+به محل بار پاسخ‌دهنده به \lr{Gate} بستگی دارد
+\cite[صفحه ۷۰، شکل \secnum{۲.۹}]{weste}.
+
+در \lr{Cutoff}، کانال \lr{Strong Inversion} وجود ندارد. تغییر بار \lr{Gate}
+عمدتاً با تغییر بار \lr{Body} جبران می‌شود. سهم مربوط، \(C_{GB,i}\) است.
+در \lr{Accumulation}، حامل‌های غالب نزدیک سطح‌اند و این ظرفیت تقریباً
+\(C_0\) است. در \lr{Depletion}، ناحیه کم‌حامل مانند فاصله اضافی میان بارهای
+پاسخ‌دهنده عمل می‌کند و ظرفیت مؤثر کاهش می‌یابد.
+
+برای درک مدل سری، \(C_{\mathrm{dep}}\) را ظرفیت کل ناحیه \lr{Depletion}
+زیر \lr{Gate} می‌نامیم. چون در دو بخش سری، بزرگی تغییر بار یکسان و تغییرهای
+ولتاژ جمع‌شونده‌اند، داریم
+\begin{equation}
+ \frac1{C_{GB,i}}\approx\frac1{C_0}+\frac1{C_{\mathrm{dep}}}
+ \quad\Longrightarrow\quad
+ C_{GB,i}\approx\frac{C_0C_{\mathrm{dep}}}{C_0+C_{\mathrm{dep}}}.
+ \label{eq:cv-depletion-series}
+\end{equation}
+این توضیح تکمیلی، کاهش ظرفیت نشان‌داده‌شده در شکل \secnum{۲.۹} کتاب را بیان
+می‌کند. اگر هر دو ظرفیت سری برابر \qty{6}{\femto\farad} باشند، حاصل
+\(36/12=\qty{3}{\femto\farad}\) است.
+افزایش پهنای ناحیه کم‌حامل، ظرفیت آن را کم می‌کند و ظرفیت سری نیز کاهش می‌یابد.
+
+در \lr{Linear} با \(V_{GS}>V_{tn}\) و \(V_{DS}\) نزدیک صفر، کانال به هر دو
+\lr{Source} و \lr{Drain} متصل است. مدل تقریبی کتاب سهم را برابر تقسیم می‌کند
+\begin{equation}
+ C_{GS,i}\approx\frac{C_0}{2},\qquad
+ C_{GD,i}\approx\frac{C_0}{2},\qquad C_{GB,i}\approx0.
+ \label{eq:cv-linear-partition}
+\end{equation}
+با افزایش \(V_{DS}\) در همان ناحیه، بار کانال نزدیک \lr{Drain} کمتر می‌شود.
+سهم منتسب به \lr{Source} افزایش و سهم منتسب به \lr{Drain} کاهش می‌یابد.
+جدول ساده کتاب، مقادیر نزدیک \(V_{DS}=0\) را برای ناحیه \lr{Linear} نمایندگی می‌کند.
+
+در \lr{Saturation}، انتهای کانال از \lr{Drain} جدا شده و در این تقریب،
+\(C_{GD,i}\approx0\) و \(C_{GB,i}\approx0\) هستند. ظرفیت مؤثر ذاتی به
+\lr{Source} نسبت داده می‌شود و مقدار آن
+\begin{equation}
+ C_{GS,i}\approx\frac23C_0
+ \label{eq:cv-sat-cap}
+\end{equation}
+است \cite[صفحه ۷۰ و جدول \secnum{۲.۱}]{weste}.
+در مدل پیوسته، تغییر مؤلفه‌ها با نزدیک‌شدن به مرز نرم است.
+جدول قطعه‌ای، این تغییر را برای تخمین دستی خلاصه می‌کند.
+
+\clearpage
+\subsection{استخراج ضریب دوسوم از بار کانال}
+برای فهم ضریب \(2/3\)، از مدل بار موضعی بخش \secnum{۲.۲} استفاده می‌کنیم.
+در این مدل، \(x\) فاصله از \lr{Source} و \(V(x)\) ولتاژ محلی کانال نسبت به
+\lr{Source} است. اضافه‌ولتاژ گیت را با شرط مثبت‌بودن آن تعریف می‌کنیم.
+\[
+ V_{GT}=V_{GS}-V_{tn},\qquad V_{GT}>0.
+\]
+بزرگی بار متحرک قطعه‌ای به طول \(dx\)
+برابر \(WC_{\mathrm{ox}}[V_{GT}-V(x)]dx\) است.
+رابطه جریان محلی با \lr{Mobility} و آستانه ثابت، پس از انتگرال از صفر تا \(x\)، می‌دهد
+\begin{equation}
+ I_{DS}x=\mu_nWC_{\mathrm{ox}}
+ \left[V_{GT}V(x)-\frac{V(x)^2}{2}\right].
+ \label{eq:cv-potential-profile}
+\end{equation}
+در اشباع بلندکانال، \(I_{DS}=\mu_nC_{\mathrm{ox}}(W/2L)V_{GT}^2\) است.
+با جای‌گذاری و تقسیم دو طرف بر \(\mu_nWC_{\mathrm{ox}}V_{GT}^2/2\)، نتیجه می‌شود
+\begin{equation}
+ \frac{x}{L}=2\frac{V(x)}{V_{GT}}-
+ \left(\frac{V(x)}{V_{GT}}\right)^2,
+ \qquad
+ 1-\frac{x}{L}=\left(1-\frac{V(x)}{V_{GT}}\right)^2.
+ \label{eq:cv-square-profile}
+\end{equation}
+چون \(0\le V(x)\le V_{GT}\)، ریشه نامنفی را می‌گیریم، پس
+\begin{equation}
+ V_{GT}-V(x)=V_{GT}\sqrt{1-\frac{x}{L}}.
+ \label{eq:cv-root-profile}
+\end{equation}
+بار متحرک در نزدیکی \lr{Source} بیشینه و در انتهای مدل کانال صفر است.
+جمع بار همه قطعه‌ها، با تغییر متغیر بی‌بعد \(u=x/L\)، می‌دهد
+\begin{align}
+ Q_{\mathrm{ch}}
+ &=WC_{\mathrm{ox}}V_{GT}\int_0^L\sqrt{1-\frac{x}{L}}\,dx\notag\\
+ &=WLC_{\mathrm{ox}}V_{GT}\int_0^1\sqrt{1-u}\,du
+ =\frac23 C_0V_{GT}.
+ \label{eq:cv-sat-charge}
+\end{align}
+انتگرال آخر مساحت زیر منحنی \(\sqrt{1-u}\) است. برای محاسبه مرحله‌ای،
+پادمشتق آن \(-\tfrac23(1-u)^{3/2}\) است. مقدار در انتهای بازه صفر و در
+ابتدای بازه \(-2/3\) می‌شود. تفاضل دو مقدار، \(2/3\) است.
+عامل \(2/3\) از شکل توزیع بار در کانال حاصل می‌شود.
+
+در این مدل، بخش متغیر بار \lr{Gate} با بزرگی بار کانال متناظر است.
+با ثابت‌گرفتن آستانه و سایر بایاس‌های لازم در تقریب ذاتی، تغییر \(V_{GS}\)
+همان تغییر \(V_{GT}\) است. بنابراین
+\begin{equation}
+ C_{GS,i}\approx\frac{dQ_G}{dV_{GS}}
+ =\frac{d[(2/3)C_0(V_{GS}-V_{tn})]}{dV_{GS}}
+ =\frac23 C_0.
+ \label{eq:cv-sat-derivative}
+\end{equation}
+این استخراج تکمیلی، مقدار جدول کتاب را در فرض‌های ایدئال توضیح می‌دهد.
+مدل دقیق‌تر مبتنی بر بار پایانه‌ها، تغییرات بار و جریان را با روش سازگار مدل
+فناوری محاسبه می‌کند. کتاب در پایان این زیربخش به \lr{Charge-based Model} اشاره دارد.
+
+\subsection{جدول ناحیه‌ها و تفسیر \lr{Cutoff}}
+جدول \ref{tab:cv-intrinsic} مؤلفه‌های ذاتی را یکجا نشان می‌دهد.
+مؤلفه‌های \lr{Overlap} در این جدول به صورت جداگانه در نظر گرفته خواهند شد.
+\begin{table}[ht]
+\centering
+\caption{مدل تقریبی ظرفیت ذاتی، با روشن‌کردن شرط‌های جدول \secnum{۲.۱} کتاب.}
+\label{tab:cv-intrinsic}
+\begin{tabular}{cccc}
+\toprule
+کمیت & \lr{Cutoff} & \lr{Linear} با \(V_{DS}\approx0\) & \lr{Saturation}\\
+\midrule
+\(C_{GB,i}\) & \(\le C_0\) & \(0\) & \(0\)\\
+\(C_{GS,i}\) & \(0\) & \(C_0/2\) & \(2C_0/3\)\\
+\(C_{GD,i}\) & \(0\) & \(C_0/2\) & \(0\)\\
+\(C_{gc}=C_{GB,i}+C_{GS,i}+C_{GD,i}\) & \(\le C_0\) & \(C_0\) & \(2C_0/3\)\\
+\bottomrule
+\end{tabular}
+\end{table}
+در سطر آخر جدول کتاب، برای \lr{Cutoff} مقدار ساده‌شده \(C_0\) آمده است،
+درحالی‌که سطر \(C_{GB}\) و متن صفحه ۷۰، کاهش ظرفیت در \lr{Depletion} را بیان
+می‌کنند. مقدار \(C_0\) با تقریب \lr{Accumulation} سازگار است.
+در این جزوه، علامت \(\le\) در سطر مجموع حفظ شده تا وابستگی بایاس آشکار بماند.
+کتاب هشدار می‌دهد که استفاده همیشگی از \(C_0\)، ظرفیت افزاره نزدیک زیر آستانه
+را به‌طور قابل‌توجهی بیش‌برآورد می‌کند \cite[صفحه ۷۲]{weste}.
+
+در \lr{Cutoff}، جریان هدایت کانال در مدل مرتبه اول صفر است، اما با تغییر
+ولتاژ، بار \lr{Gate} و ناحیه‌های پیوندی می‌تواند تغییر کند.
+به همین دلیل، مدار خاموش نیز در تحلیل گذرا ظرفیت دارد.
+
+\subsection{\lr{Overlap}، \lr{Fringing} و ظرفیت کل}
+در افزاره واقعی، \lr{Gate} بخشی از ناحیه‌های \lr{Source} و \lr{Drain} را
+می‌پوشاند و میدان‌های لبه‌ای، یا \lr{Fringing Fields}، نیز روی آن‌ها ختم می‌شوند.
+این سهم‌ها در مدل کتاب به ظرفیت‌های \lr{Overlap} افزوده می‌شوند.
+ضریب بر واحد عرض آن‌ها را \(c_{GS,\mathrm{ov}}\) و
+\(c_{GD,\mathrm{ov}}\) می‌نامیم. این دو نماد متناظر با ضرایب
+\(C_{gsol}\) و \(C_{gdol}\) در رابطه \secnum{۲.۱۵} کتاب هستند.
+ظرفیت کل هر سهم چنین است
+\begin{equation}
+ C_{GS,\mathrm{ov}}=c_{GS,\mathrm{ov}}W,\qquad
+ C_{GD,\mathrm{ov}}=c_{GD,\mathrm{ov}}W.
+ \label{eq:cv-overlap}
+\end{equation}
+کتاب مقادیر معمول آن مثال‌ها را حدود \num{0.2} تا
+\qty{0.4}{\femto\farad\per\micro\metre} بیان می‌کند
+\cite[صفحه ۷۱، شکل \secnum{۲.۱۰}]{weste}.
+در مدل ضرایب ثابت این بخش، سهم \lr{Overlap} با عرض رشد می‌کند.
+
+با قرارداد این جزوه، جمع سهم ذاتی و هم‌پوشانی به صورت زیر است
+\begin{equation}
+ C_{GS}=C_{GS,i}+C_{GS,\mathrm{ov}},\qquad
+ C_{GD}=C_{GD,i}+C_{GD,\mathrm{ov}},\qquad
+ C_{GB}\approx C_{GB,i}.
+ \label{eq:cv-total-components}
+\end{equation}
+در اشباع، \(C_{GD,i}\) در جدول ایدئال صفر است و \(C_{GD}\) می‌تواند سهم
+\lr{Overlap} داشته باشد. اگر برای هر دو سمت ضریب یکسان \(c_{\mathrm{ov}}\)
+به کار رود، تقریب کلی کتاب برای تخمین تأخیر
+\(C_g\approx C_0+2c_{\mathrm{ov}}W\) است.
+برای تحلیل ناحیه‌ای با پایانه‌های ثابت، سهم ذاتی همان ناحیه جایگزین \(C_0\) می‌شود.
+
+مثال فرضی \(C_0=\qty{6}{\femto\farad}\)، \(W=\qty{2}{\micro\metre}\)
+و \(c_{\mathrm{ov}}=\qty{0.3}{\femto\farad\per\micro\metre}\) را در نظر بگیرید.
+هر سهم \lr{Overlap} برابر \qty{0.6}{\femto\farad} می‌شود.
+در \lr{Linear} کم‌ولتاژ، دو ظرفیت برابرند.
+\[
+ C_{GS}=C_{GD}=3+0.6=\qty{3.6}{\femto\farad}.
+\]
+مجموع ظرفیت‌ها \qty{7.2}{\femto\farad} است. در اشباع، داریم
+\[
+ C_{GS}=4+0.6=\qty{4.6}{\femto\farad},\qquad
+ C_{GD}=\qty{0.6}{\femto\farad}.
+\]
+مجموع ظرفیت‌های این حالت \qty{5.2}{\femto\farad} است.
+در \lr{Accumulation}، مجموع تقریباً \(6+1.2=\qty{7.2}{\femto\farad}\) می‌شود.
+در \lr{Depletion} فرضی با \(C_{\mathrm{dep}}=\qty{3}{\femto\farad}\)،
+ظرفیت ذاتی از مدل سری به دست می‌آید.
+\[
+ C_{GB,i}=\frac{6(3)}{6+3}=\qty{2}{\femto\farad}.
+\]
+پس مجموع ظرفیت‌ها \qty{3.2}{\femto\farad} است.
+
+\subsection{حرکت \lr{Source} و \lr{Drain} و ظرفیت مؤثر ورودی}
+برای یک سهم ثابت \(C_{GX}\) میان \lr{Gate} و پایانه \(X\)، تغییر بار
+\lr{Gate} برابر است با
+\begin{equation}
+ \Delta Q_G=C_{GX}(\Delta V_G-\Delta V_X).
+ \label{eq:cv-moving-terminal}
+\end{equation}
+اگر \(\Delta V_G\ne0\)، با تقسیم بر تغییر ولتاژ ورودی، سهم مؤثر آن به دست می‌آید
+\begin{equation}
+ C_{\mathrm{eff},G}=C_{GX}\left(1-\frac{\Delta V_X}{\Delta V_G}\right).
+ \label{eq:cv-miller-simple}
+\end{equation}
+در مدل خازن ثابت، برای پایانه ثابت، ضریب یک است.
+اگر دو پایانه به یک اندازه و هم‌جهت حرکت کنند، اختلاف ولتاژ خازن تغییر نمی‌کند
+و سهم جابه‌جایی بار آن در این گذار صفر است.
+اگر هم‌اندازه و خلاف‌جهت حرکت کنند، ضریب دو می‌شود.
+این تحلیل ساده، منشأ اثر حرکت پایانه دوم را نشان می‌دهد.
+
+برای مثال، خازن \qty{1}{\femto\farad} میان دو گره را در نظر بگیرید.
+\lr{Gate} از صفر به \qty{1}{\volt} می‌رود. اگر گره دیگر صفر بماند، تغییر بار
+\qty{1}{\femto\coulomb} است. اگر گره دیگر از \qty{1}{\volt} به صفر برود،
+تغییر اختلاف ولتاژ \qty{2}{\volt} و تغییر بار \qty{2}{\femto\coulomb} است.
+اگر گره دیگر نیز از صفر به \qty{1}{\volt} برود، تغییر بار همین خازن صفر می‌شود.
+
+کتاب در شکل \secnum{۲.۱۱} هفت ترکیب حرکت \lr{Source} و \lr{Drain} را برای
+یک فرآیند \qty{0.35}{\micro\metre} گزارش می‌کند.
+جدول \ref{tab:cv-data-dependent} داده‌های آن شکل را بازنویسی می‌کند.
+در همه حالت‌ها، \lr{Gate} از صفر به یک می‌رود و \(C_g/C_0\) نسبت مؤثر گزارش‌شده
+همان شکل است. این اعداد به افزاره و مسیر گذار مورد بررسی وابسته‌اند.
+\begin{table}[ht]
+\centering
+\caption{وابستگی ظرفیت مؤثر \lr{Gate} به حرکت پایانه‌ها در شکل
+\secnum{۲.۱۱} کتاب. پیکان، جهت گذار و عدد، مقدار منطقی ثابت را نشان می‌دهد \cite{weste}.}
+\label{tab:cv-data-dependent}
+\begin{tabular}{cccc}
+\toprule
+حالت شکل کتاب & \lr{Drain} & \lr{Source} & \(C_g/C_0\)\\
+\midrule
+۱ & \(\downarrow\) & \(\downarrow\) & \(1.3\)\\
+۲ & \(\downarrow\) & \(0\) & \(1.1\)\\
+۳ & \(0\) & \(0\) & \(1.0\)\\
+۴ & \(1\) & \(0\) & \(0.80\)\\
+۵ & \(1\) & \(1\) & \(0.42\)\\
+۶ & \(1\) & \(\uparrow\) & \(0.31\)\\
+۷ & \(\uparrow\) & \(\uparrow\) & \(0.13\)\\
+\bottomrule
+\end{tabular}
+\end{table}
+در ترانزیستور، مؤلفه‌های ظرفیت طی گذار نیز تغییر می‌کنند.
+برای محاسبه دقیق‌تر باید بار پایانه‌ها در مسیر واقعی بایاس محاسبه شود.
+مثال خازن ثابت، وابستگی به جهت حرکت را توضیح می‌دهد و اعداد جدول از مدل افزاره
+و گذارِ منبع آمده‌اند. کتاب برای تخمین تأخیر، استفاده از ظرفیت مؤثر استخراج‌شده
+از شبیه‌سازی را نیز مطرح می‌کند \cite[صفحات ۷۱ و ۷۲]{weste}.
+
+\subsection{تمرین‌های پاسخ‌دار \lr{Gate Capacitance}}
+\textbf{تمرین ۴.} برای \(C_0=\qty{9}{\femto\farad}\)، مؤلفه‌های ذاتی در
+\lr{Linear} با \(V_{DS}\approx0\) و در اشباع چیست؟ در حالت اول،
+\(C_{GS,i}=C_{GD,i}=\qty{4.5}{\femto\farad}\) و \(C_{GB,i}=0\) است.
+در اشباع، \(C_{GS,i}=\qty{6}{\femto\farad}\) و دو سهم دیگر صفرند.
+
+\textbf{تمرین ۵.} در تمرین قبل، \(W=\qty{3}{\micro\metre}\) و ضریب هر
+\lr{Overlap} برابر \qty{0.2}{\femto\farad\per\micro\metre} باشد.
+در اشباع، ظرفیت‌های کل و مجموعشان چقدر است؟ هر هم‌پوشانی
+\qty{0.6}{\femto\farad} است. پس \(C_{GS}=\qty{6.6}{\femto\farad}\)،
+\(C_{GD}=\qty{0.6}{\femto\farad}\) و مجموع \qty{7.2}{\femto\farad} می‌شود.
+
+\textbf{تمرین ۶.} خازن ثابت \qty{2}{\femto\farad} به \lr{Gate} با تغییر
+\qty{1}{\volt} متصل است. پایانه دیگر \qty{0.25}{\volt} هم‌جهت تغییر می‌کند.
+ظرفیت مؤثر از دید \lr{Gate} چیست؟ از \eqref{eq:cv-miller-simple}، مقدار
+\(2(1-0.25)=\qty{1.5}{\femto\farad}\) و تغییر بار
+\qty{1.5}{\femto\coulomb} می‌شود.
+
+\textbf{تمرین ۷.} در مدل سری \lr{Depletion}، \(C_0=\qty{8}{\femto\farad}\)
+و \(C_{\mathrm{dep}}=\qty{8}{\femto\farad}\) باشد. اگر ظرفیت دوم نصف شود،
+\(C_{GB,i}\) چه تغییری می‌کند؟ ابتدا \(64/16=\qty{4}{\femto\farad}\) است.
+پس از تغییر، \(8(4)/(8+4)\approx\qty{2.67}{\femto\farad}\) می‌شود.
+\clearpage

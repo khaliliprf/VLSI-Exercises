@@ -1,0 +1,56 @@
+% Shared typesetting settings for the study booklets. Build from the project root.
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\texorpdfstring{\mbox{\beginL#1\endL}}{#1}}
+\newcommand{\code}[1]{\lr{\texttt{#1}}}
+% Keep hierarchical counters in logical left-to-right order with localized digits.
+\renewcommand{\thesection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}}}{\arabic{chapter}.\arabic{section}}}
+\renewcommand{\thesubsection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}.\arabic{subsection}}}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}}
+\renewcommand{\thesubsubsection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}}
+\renewcommand{\theequation}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{equation}}}{\arabic{chapter}.\arabic{equation}}}
+\renewcommand{\thefigure}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{figure}}}{\arabic{chapter}.\arabic{figure}}}
+\renewcommand{\thetable}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{table}}}{\arabic{chapter}.\arabic{table}}}
+\makeatletter
+\renewcommand{\@pnumwidth}{2.5em}
+\renewcommand{\@tocrmarg}{3.5em}
+\makeatother
+% Preserve the reviewed fragments while nesting their teaching units under the source section.
+\newcommand{\BookletSubsections}[1]{%
+  \begingroup
+  \let\section\subsection
+  \let\subsection\subsubsection
+  \input{#1}%
+  \endgroup
+}
+\setlength{\emergencystretch}{3em}
+\widowpenalty=10000
+\clubpenalty=10000
+\setcounter{secnumdepth}{3}
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\input{notes/common/references}
+
+% The complete edition continues textbook chapter 2 across all three booklets.
+\newif\ifCompleteNotes
+% Unnumbered review chapters become sections inside the complete edition.
+\newcommand{\BookletReview}[1]{%
+  \ifCompleteNotes
+    \begingroup
+    \let\chapter\section
+    \let\section\subsection
+    \let\subsection\subsubsection
+    \let\BookletAddContentsLine\addcontentsline
+    \renewcommand{\addcontentsline}[3]{%
+      \ifstrequal{##2}{chapter}
+        {\BookletAddContentsLine{##1}{section}{##3}}
+        {\ifstrequal{##2}{section}
+          {\BookletAddContentsLine{##1}{subsection}{##3}}
+          {\BookletAddContentsLine{##1}{##2}{##3}}}%
+    }%
+    \input{#1}%
+    \endgroup
+  \else
+    \input{#1}%
+  \fi
+}

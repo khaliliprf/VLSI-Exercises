@@ -1,0 +1,45 @@
+% !TeX program = xelatex
+% Build from the repository root with build.ps1.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+% Preserve logical order of dotted Persian section identifiers.
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdftitle={جزوه اول؛ فهرست تفصیلی و نمونه آموزشی}}
+% Reuse the canonical cover without changing its shared definition.
+\AssignmentNumber{جزوه اول؛ فهرست و نمونه آموزشی}
+\AssignmentDate{نسخه مقدماتی برای بررسی}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\input{notes/booklet-01/previews/outline}
+\clearpage
+\input{notes/booklet-01/previews/sample}
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective}.
+\end{latin}
+ویرایش چهارم، \lr{Pearson}، ۲۰۱۱.
+فهرست فصل‌های اول و دوم: صفحات چاپی هفت و هشت با شماره‌گذاری رومی
+(صفحات ۸ و ۹ فایل \lr{PDF}).
+مدل \lr{Switch}: بخش \secnum{۱.۳}، صفحه چاپی ۸؛
+\lr{Inverter}: بخش \secnum{۱.۴.۱}، صفحه چاپی ۹؛
+حالت‌های خروجی شبکه‌ها: صفحه چاپی ۱۰.
+در این بخش از کتاب، شماره صفحه فایل برابر شماره چاپی به‌اضافه ۲۷ است.
+\bibitem{intro}
+اسلایدهای محلی درس، \lr{Introduction}، فایل \lr{00-introduction.pdf}؛
+اسلایدهای ۲۱ تا ۲۳: مدل \lr{Switch}، اتصال‌ها و \lr{CMOS Inverter}.
+شماره اسلاید با شماره صفحه فایل یکسان است.
+مطابق اسلاید ۲، یادداشت‌های اصلی متعلق به \lr{David Money Harris}، سال ۲۰۱۱،
+و نسخه محلی اقتباس‌شده از آن‌هاست. شکل نمونه این جزوه بازترسیم آموزشی نویسنده است.
+\bibitem{mos}
+اسلایدهای محلی درس، \lr{MOSFET Transistors}، فایل \lr{01-MOSFET Ch2.pdf}؛
+اسلایدهای ۵ تا ۸: ساختار و عملکرد؛ اسلایدهای ۱۰ تا ۱۹: ولتاژ پایانه‌ها و روابط جریان؛
+اسلایدهای ۲۳ و ۲۴: \lr{Capacitance}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,63 @@
+% !TeX root = booklet-01.tex
+\clearpage
+\setcounter{chapter}{-1}
+\chapter{پیش‌نیازهای ریاضی، مدار و منطق دیجیتال}
+\label{chap:foundations}
+این فصل، پایه لازم برای خواندن درس بدون گذراندن \lr{Digital Electronics} را
+فراهم می‌کند. ابتدا محاسبه و واحد، سپس قوانین مدار و در پایان منطق دیجیتال
+آموزش داده می‌شود. مثال‌ها و پاسخ‌ها را به ترتیب دنبال کنید.
+\input{notes/booklet-01/foundations-math}
+\input{notes/booklet-01/foundations-circuits}
+\input{notes/booklet-01/foundations-logic}
+
+\chapter{از ترانزیستور تا طراحی و ساخت تراشه}
+\label{chap:introduction}
+عنوان‌های اصلی این فصل با بخش‌های \secnum{۱.۱} تا \secnum{۱.۱۲} مرجع هماهنگ‌اند.
+زیربخش‌های آموزشی برای توضیح پیش‌نیاز و حل مثال گسترش یافته‌اند.
+\input{notes/booklet-01/ch1-intro-mos}
+\input{notes/booklet-01/ch1-static-logic}
+\BookletSubsections{notes/booklet-01/ch1-pass-mux}
+\BookletSubsections{notes/booklet-01/ch1-storage}
+\section{ساخت و \lr{Layout} مدارهای \lr{CMOS}}
+\label{sec:book-fabrication}
+این بخش، زیربخش‌های \secnum{۱.۵.۱} تا \secnum{۱.۵.۵} کتاب را پوشش می‌دهد.
+فرآیند \lr{n-well CMOS} و قواعد هندسی، مدل آموزشی مرجع هستند.
+\BookletSubsections{notes/booklet-01/ch1-fabrication}
+\BookletSubsections{notes/booklet-01/ch1-layout-rules}
+\BookletSubsections{notes/booklet-01/ch1-layout-examples}
+\input{notes/booklet-01/ch1-partitioning}
+\section{مثال پردازنده آموزشی \lr{MIPS}}
+\label{sec:book-mips}
+در زیرمجموعه آموزشی کتاب، داده و \lr{PC} هشت‌بیتی و دستور ۳۲ بیتی است.
+هر جا قرارداد با معماری کامل متفاوت باشد، فرض مثال در متن مشخص می‌شود.
+\BookletSubsections{notes/booklet-01/ch1-mips-architecture}
+\BookletSubsections{notes/booklet-01/ch1-mips-microarchitecture}
+\section{از رابط بلوک‌ها تا \lr{Logic Design} و \lr{HDL}}
+\label{sec:book-logic-design}
+\BookletSubsections{notes/booklet-01/ch1-logic-hdl}
+\input{notes/booklet-01/ch1-circuit-design}
+\input{notes/booklet-01/ch1-physical-design}
+\input{notes/booklet-01/ch1-verification}
+\input{notes/booklet-01/ch1-manufacturing-test}
+\input{notes/booklet-01/ch1-design-objectives}
+
+\chapter{مدل جریان و ظرفیت ترانزیستور \lr{MOS}}
+\label{chap:mos-theory}
+در این فصل، بخش‌های \secnum{۲.۱} تا \secnum{۲.۳} کتاب با استخراج روابط و
+کنترل شرط‌های اعتبار مطالعه می‌شوند. نمادهای کوچک \(V_{gs},I_{ds}\) در بحث
+مقدماتی و نمادهای \(V_{GS},I_{DS}\) در استخراج تفصیلی، به یک کمیت اشاره دارند.
+برای \lr{pMOS}، قرارداد بزرگی مثبت و قرارداد علامت‌دار به‌صراحت معرفی می‌شوند.
+\input{notes/booklet-01/ch2-introduction}
+\input{notes/booklet-01/ch2-long-channel}
+\section{مشخصه‌های ظرفیت و ولتاژ، \lr{C-V}}
+\label{sec:book-cv}
+در مدل تفصیلی این بخش، پسوند \(i\) سهم \lr{Intrinsic} و پسوند
+\(\mathrm{ov}\) سهم \lr{Overlap} را مشخص می‌کند.
+\(C_0=WLC_{\mathrm{ox}}\) ظرفیت هندسی مرجع است.
+نماد بدون این پسوندها، در مدار معادل کامل، مجموع سهم‌های دو پایانه مربوط را
+نشان می‌دهد. ظرفیت مؤثر گذار، علاوه بر بایاس به حرکت پایانه دیگر نیز وابسته است.
+\BookletSubsections{notes/booklet-01/ch2-capacitance-basics}
+\BookletSubsections{notes/booklet-01/ch2-gate-capacitance}
+\BookletSubsections{notes/booklet-01/ch2-diffusion-capacitance}
+\BookletReview{notes/booklet-01/final-review}
+

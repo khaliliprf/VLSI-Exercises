@@ -1,0 +1,86 @@
+% !TeX program = xelatex
+% Compile from the project root; this increment contains prerequisites only.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\setlength{\emergencystretch}{3em}
+% Keep SI micro upright in the Latin font; B Nazanin lacks U+00B5.
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\widowpenalty=10000
+\clubpenalty=10000
+\hypersetup{pdftitle={جزوه اول؛ پیش‌نیازهای مدار، ریاضی و منطق دیجیتال}}
+\AssignmentNumber{جزوه اول؛ پیش‌نیازهای ضروری}
+\AssignmentDate{بخش آغازین؛ نسخه قابل بررسی}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\section*{راهنمای مطالعه و دامنه این بخش}
+این بخش برای شروع درس بدون گذراندن الکترونیک دیجیتال نوشته شده است.
+آشنایی قبلی با قوانین مدار، گیت‌های منطقی یا ریاضیات تحلیل ترانزیستور فرض نمی‌شود.
+ابتدا زبان محاسبات، سپس مدار و سرانجام منطق دیجیتال آموزش داده می‌شود.
+در خواندن نخست، مثال‌ها را با قلم دوباره محاسبه کنید؛ در پایان هر درس، پاسخ پرسش‌ها
+را پیش از خواندن توضیح آن‌ها بنویسید.
+
+این نسخه فقط پیش‌نیازهای جزوه اول است. آموزش کامل فصل ۱ و بخش‌های
+\secnum{۲.۱} تا \secnum{۲.۳} کتاب در ادامه تهیه می‌شود.
+بنابراین این فایل، جزوه کامل فصل‌های کتاب یا جایگزین دو جزوه بعدی نیست.
+نمونه قبلی برای تایید سبک نگارش حفظ شده است؛ مطالب مقدماتی آن در این بخش گسترش یافته‌اند.
+
+مبنای درس، کتاب \lr{Weste} و \lr{Harris} و اسلایدهای محلی است
+\cite{weste,intro,mos}. برای مبانی مدار که کتاب درس آن‌ها را پیش‌فرض می‌گیرد،
+از \lr{University Physics, Volume 2} استفاده شده است
+\cite{current,resistors,kirchhoff,capacitors}.
+توضیح‌های ریاضی و مثال‌های با عنوان «مثال آموزشی»، برای این جزوه تنظیم شده‌اند؛
+مقادیر آن‌ها مشخصات فناوری یا نتیجه شبیه‌سازی نیستند.
+
+\tableofcontents
+\clearpage
+\input{notes/booklet-01/foundations-math}
+\input{notes/booklet-01/foundations-circuits}
+\input{notes/booklet-01/foundations-logic}
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective}, Fourth Edition,
+Pearson, 2011.
+\end{latin}
+بخش \secnum{۱.۳}، صفحات چاپی ۶ تا ۸؛ بخش \secnum{۱.۴}، صفحات ۹ تا ۱۸؛
+بخش \secnum{۱.۹}، صفحات ۴۲ و ۴۳. در این محدوده شماره صفحه فایل
+\lr{PDF} برابر شماره چاپی به‌اضافه ۲۷ است.
+\bibitem{intro}
+اسلایدهای محلی \lr{Introduction}، فایل \lr{00-introduction.pdf}،
+اسلایدهای ۲۱ تا ۲۷. طبق اسلاید ۲، اصل یادداشت‌ها متعلق به
+\lr{David Money Harris}، سال ۲۰۱۱، و نسخه محلی اقتباس‌شده است.
+\bibitem{mos}
+اسلایدهای محلی \lr{MOSFET Transistors}، فایل \lr{01-MOSFET Ch2.pdf}،
+اسلاید ۸ و اسلایدهای ۲۳ و ۲۴، درباره ارتباط جریان، ظرفیت و تغییر ولتاژ.
+شماره صفحات فایل‌های اسلاید با شماره اسلایدها یکسان است.
+\bibitem{current}
+\begin{latin}
+OpenStax, \textit{University Physics, Volume 2}, Section 9.1,
+\href{https://openstax.org/books/university-physics-volume-2/pages/9-1-electrical-current}{Electrical Current}.
+\end{latin}
+منبع تکمیلی تعریف جریان و جهت قراردادی آن.
+\bibitem{resistors}
+\begin{latin}
+OpenStax, \textit{University Physics, Volume 2}, Section 10.2,
+\href{https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel}{Resistors in Series and Parallel}.
+\end{latin}
+منبع تکمیلی مدل مقاومت و اتصال‌های آن.
+\bibitem{kirchhoff}
+\begin{latin}
+OpenStax, \textit{University Physics, Volume 2}, Section 10.3,
+\href{https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules}{Kirchhoff's Rules}.
+\end{latin}
+منبع تکمیلی قوانین گره و حلقه.
+\bibitem{capacitors}
+\begin{latin}
+OpenStax, \textit{University Physics, Volume 2}, Section 8.1,
+\href{https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance}{Capacitors and Capacitance}.
+\end{latin}
+منبع تکمیلی ساختار خازن و تعریف ظرفیت.
+\end{thebibliography}
+\end{document}

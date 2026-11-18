@@ -48,8 +48,12 @@
 - Use appropriate mathematics packages such as `amsmath` and `amssymb`. Keep symbols, subscripts, units, and quantity names consistent throughout each exercise.
 - Keep multiline equations aligned and readable. Use `\label`, `\ref`, and `\eqref` for numbering and references instead of hard-coded numbers.
 - Insert Persian text within mathematics using mechanisms compatible with `xepersian`, such as `\text{\rl{...}}`, and verify its direction in the output.
+- For identifiers with decimal points, preserve the complete number as one left-to-right unit and use Persian digits in Persian text and headings, for example `\secnum{۲.۲}`. Verify that dots and digits render in the intended order.
+- Move long or condition-heavy inline formulas to display math. For piecewise operating conditions, place the principal expression on the left and the conditions on the right, with aligned rows where needed.
+- Use the same symbol meanings, subscripts, sign conventions, and notation across related notes and exercise solutions. Define any necessary variation explicitly.
 
 ## Academic quality and presentation
+- In exercise solutions and study booklets, avoid the Persian word "محلی" and workspace-relative descriptions such as "نسخه محلی" or "اسلایدهای محلی". Identify each cited resource for an external reader by its verified title, author or organization, edition or version, year when known, and relevant section, page, or slide. Do not invent missing bibliographic metadata.
 - Clearly distinguish the problem statement, assumptions, solution steps, and final result. Explain the solution sufficiently for the reasoning to be followed.
 - Do not fabricate data, technology specifications, parameter values, simulation results, or references. State necessary assumptions explicitly and raise ambiguities that affect the answer.
 - Keep page layout, spacing, headings, tables, and figures clean and consistent throughout the project. Avoid unnecessary decoration.
@@ -67,6 +71,8 @@
 - Slide 2 of `assets/00-introduction.pdf` attributes the original lecture notes to David Money Harris (2011) and states that they were adapted. Preserve the original attribution when reusing or adapting slide material; distinguish course adaptations from the original textbook and slides.
 - `assets/Academic Assistant Guidelines.txt` contains existing learning preferences. Apply its relevant guidance: Persian explanations, English technical terms, source-grounded reasoning, meaningful derivations, and no emojis. Adapt depth to the user's request; do not require a guided-question format when a full solution is requested.
 - Cite consulted sources accurately by document title and section or page when available. Distinguish PDF page indices from printed page numbers when they differ. Never claim to have inspected unread PDFs, images, or videos, and report access or extraction limitations.
+- In exercise and course-note documents, never use the Persian word `محلی` or labels such as `نسخه محلی` and `اسلایدهای محلی`. Write for readers receiving the document independently of this workspace; storage location is not a source identity.
+- Identify every file and source in the references by its verified bibliographic identity: actual title, author or responsible institution, edition or version and date when known, and relevant page, section, or slide. Preserve attribution for adapted material. A filename or workspace path must not substitute for a proper reference; explicitly acknowledge unknown metadata rather than inventing it.
 - The two solution-manual PDFs in `assets/`, labeled fourth edition (2011) and fifth edition (2022), have identical SHA-256 hashes. Their internal opening identifies them as `Solutions`, `Version 2.0 completed 12/23/04`; neither filename establishes the actual edition. Do not treat them as independent sources or use their numbering without matching the actual exercise statement.
 - Treat existing Markdown solutions as drafts to verify against original statements and independent algebra before converting them to LaTeX. Repair escaped math delimiters when converting; do not copy doubled backslashes from Markdown into LaTeX math delimiters.
 - Assignment 2's finalized editable solutions are `2/solutions/*.tex`, assembled by `2/main.tex`. They include scientific and editorial corrections beyond `2/*.md`; `2/review-followup.md` records that reconciliation. `2/review.tex` is the earlier review, not a list of necessarily unresolved defects in the final version. Do not run `scripts/convert-exercise-markdown.js` over the finalized fragments as a routine build step: it performs a raw conversion and would replace the reviewed edits.
@@ -79,15 +85,21 @@
 - The cover page has no printed page number. Reset numbering so the first content page is page 1.
 - The shared preamble loads the bundled `assets/B-NAZANIN.TTF`. This font has no separate bold face, lacks combining hamza U+0654, and lacks Arabic percent U+066A. The preamble explicitly synthesizes bold and uses locally installed Arial only for localized digits and their required punctuation; Persian prose remains B Nazanin. Avoid unsupported glyphs in document prose (rephrase or use an appropriate supported Persian spelling), and investigate any missing-character warnings rather than silently ignoring them.
 - Build from the project root with `powershell -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 -Document 2/main.tex`. Working PDFs, compiler outputs, extracted source text, and preview images belong in `build/`; user-designated final submission PDFs may also be archived in the corresponding assignment directory. `setup-check.tex` is only a typesetting diagnostic, not a submitted solution.
-- The user-designated final submission for assignment 2 is `2/HW02-403131033.pdf`. It was verified byte-for-byte identical to `build/main.pdf` when registered. Preserve its filename and contents during routine builds and source maintenance; update a finalized submission only as part of a requested revision or replacement. Do not assume future builds remain identical: compare their contents or hashes before reporting that the archived PDF matches the latest build.
+- The final submissions for the first and second Chapter 2 exercise series are `exercises/2/HW01-403131033.pdf` and `exercises/3/HW02-403131033.pdf`, respectively. The number after `HW` identifies the exercise series. Preserve the submission filenames and contents during routine builds and source maintenance. Update a finalized submission only as part of a requested revision or replacement. Compare contents or hashes before reporting that an archived PDF matches a build.
 - When creating or modifying LaTeX files, compile with XeLaTeX if the tools are available, and resolve compilation errors, unresolved references, and significant layout problems.
 - Repeat compilation when needed to resolve references, or use `latexmk -xelatex`.
 - When possible, inspect the PDF for correct B Nazanin rendering, Persian and Latin text direction, inline and display mathematics, and overflowing content.
 - Inspect every generated PDF for accidental Latin digits in Persian contexts and for presentation-form Arabic glyphs. Treat either as a typesetting defect unless it falls under an explicit Latin-context exception above.
 - If missing tools or fonts prevent compilation or visual inspection, report the limitation explicitly. Do not claim that an unperformed check passed.
+- Keep chapter source files in their designated subfolders under `notes/`, with shared settings in `notes/common/`. Build `notes/complete.tex` from those same fragments so the standalone booklets and complete edition remain synchronized.
+- Keep exercise series in `exercises/2/` and `exercises/3/`. Update project documentation and build or verification entry points when files move, and verify that referenced inputs exist.
 
 ## Normative writing and typesetting references
 - For Persian spelling and orthography, use the Academy of Persian Language and Literature's current *Persian Orthography* (`دستور خط فارسی`) as the primary reference.
 - For Persian/Latin directionality, digit localization, counters, and XeLaTeX behavior, use the documentation for the installed `xepersian` version and verify the rendered PDF.
 - For scientific quantities, symbols, numerical values, and units, follow the current BIPM *SI Brochure* and implement the conventions through `siunitx` where possible.
 - Prefer current primary or official standards and documentation. If a style requirement is uncertain, verify it before editing submission files and record any new persistent project convention in this file.
+
+## Source discovery workflow
+- Use focused text search and direct inspection of the textbook, slides, notes, and exercise sources for project work.
+- Graphify is paused for this project. Use or rebuild its graph only when the user explicitly requests it.

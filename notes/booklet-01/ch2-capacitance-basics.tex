@@ -1,0 +1,177 @@
+\section{ظرفیت وابسته به ولتاژ و مدل ساده \lr{MOS}}
+\subsection{معنای \lr{C-V} و تغییر بار}
+ظرفیت بیان می‌کند که برای تغییر اختلاف ولتاژ دو رسانا، چه مقدار بار باید جابه‌جا
+شود. برای خازن خطی با ظرفیت ثابت \(C\)، تغییر بار و اختلاف ولتاژ متناسب‌اند
+\begin{equation}
+ \Delta Q=C\Delta V.
+ \label{eq:cv-linear-charge}
+\end{equation}
+در افزاره \lr{MOS}، وضعیت کانال و ضخامت ناحیه \lr{Depletion} با بایاس تغییر
+می‌کنند. در نتیجه، ظرفیت نیز به ولتاژ وابسته است. نام \lr{C-V Characteristics}
+همین وابستگی را بیان می‌کند \cite[آغاز بخش \secnum{۲.۳}]{weste}.
+
+برای ظرفیت غیرخطی، شیب نمودار بار نسبت به ولتاژ در نقطه کار را تعریف می‌کنیم
+\begin{equation}
+ C(V)=\frac{dQ}{dV},\qquad dQ=C(V)\,dV.
+ \label{eq:cv-differential}
+\end{equation}
+مشتق \(dQ/dV\) یعنی نسبت تغییر بسیار کوچک بار به تغییر بسیار کوچک ولتاژ.
+واحد آن \unit{\coulomb\per\volt}، برابر \unit{\farad} است.
+برای تغییر کوچک پیرامون \(V_0\)، رابطه
+\(\Delta Q\approx C(V_0)\Delta V\) کاربرد دارد.
+برای تغییر بزرگ، باید ظرفیت همه بخش‌های مسیر ولتاژ را در نظر گرفت.
+
+اگر ولتاژ از \(V_1\) به \(V_2\) تغییر کند، جمع پیوسته تغییرهای بار می‌دهد
+\begin{equation}
+ \Delta Q=\int_{V_1}^{V_2}C(V)\,dV,\qquad
+ C_{\mathrm{eff},Q}=\frac{\Delta Q}{V_2-V_1}
+ =\frac1{V_2-V_1}\int_{V_1}^{V_2}C(V)\,dV.
+ \label{eq:cv-charge-equivalent}
+\end{equation}
+\(C_{\mathrm{eff},Q}\) یک ظرفیت ثابت معادل از نظر بار جابه‌جاشده در همین بازه است.
+این استخراج از تعریف ظرفیت است. کتاب برای تخمین دستی نیز از ظرفیت متوسط
+طی گذار استفاده می‌کند. تغییر بازه یا حرکت هم‌زمان پایانه دیگر می‌تواند مقدار
+معادل را تغییر دهد.
+
+برای مثال فرضی \(C(V)=C_a(1-aV)\)، \(C_a=\qty{2}{\femto\farad}\)،
+\(a=\qty{0.2}{\per\volt}\) و بازه صفر تا \qty{1}{\volt}، ظرفیت در ابتدا
+\qty{2}{\femto\farad} و در انتها \qty{1.6}{\femto\farad} است.
+با جمع مساحت زیر خط، میانگین \qty{1.8}{\femto\farad} و تغییر بار
+\qty{1.8}{\femto\coulomb} می‌شود. چون در این مثال \(C(V)\) خطی است، میانگین
+دو مقدار انتهایی با میانگین انتگرالی برابر است.
+در رابطه غیرخطی، میانگین دو سر بازه یک تقریب است.
+
+\subsection{مدار معادل پنج ظرفیت و پایانه مرجع}
+کتاب در شکل \secnum{۲.۱۳} پنج ظرفیت عمده را نشان می‌دهد. سه سهم
+\(C_{GS},C_{GD},C_{GB}\) به \lr{Gate}، و دو سهم \(C_{SB},C_{DB}\)
+به پیوندهای \lr{Diffusion} و \lr{Body} مربوط‌اند.
+شکل \ref{fig:cv-network} این ارتباط را بدون جزئیات ترانزیستور بازترسیم می‌کند.
+این نمایش، مدل خازنی آموزشی بایاس‌شده است \cite[صفحه ۷۳]{weste}.
+\begin{figure}[ht]
+\centering
+\begin{latin}
+\begin{circuitikz}[font=\small]
+\draw (0,3) node[circ] (G) {} node[above] {Gate};
+\draw (-3,0) node[circ] (S) {} node[left] {Source};
+\draw (3,0) node[circ] (D) {} node[right] {Drain};
+\draw (0,-3) node[circ] (B) {} node[below] {Body};
+\draw (G) to[C,l=$C_{GS}$] (S);
+\draw (G) to[C,l_=$C_{GD}$] (D);
+\draw (S) to[C,l=$C_{SB}$] (B);
+\draw (D) to[C,l_=$C_{DB}$] (B);
+\draw (G) to[C,l=$C_{GB}$] (B);
+\end{circuitikz}
+\end{latin}
+\caption{ارتباط پایانه‌ای ظرفیت‌های اصلی در مدل آموزشی کتاب.
+سهم‌های \lr{Intrinsic} و \lr{Overlap} در \(C_{GS}\) و \(C_{GD}\) جمع شده‌اند
+\cite[شکل \secnum{۲.۱۳}]{weste}.}
+\label{fig:cv-network}
+\end{figure}
+
+برای یک خازن ثابت میان گره \(A\) و گره \(B\)، بار سمت \(A\) برابر
+\(Q_A=C(V_A-V_B)\) و جریان ورودی آن سمت برابر است با
+\begin{equation}
+ i_A=C\left(\frac{dV_A}{dt}-\frac{dV_B}{dt}\right).
+ \label{eq:cv-two-terminal-current}
+\end{equation}
+اگر \(B\) ثابت بماند، \(dV_B/dt=0\) و ظرفیت مانند بار متصل به مرجع ثابت دیده
+می‌شود. اتصال \lr{Body} به تغذیه ثابت نیز برای تحلیل تغییرات ولتاژ چنین نقشی دارد.
+اگر هر دو گره حرکت کنند، اختلاف تغییرهای آن‌ها در جریان مؤثر است.
+
+ظرفیت‌های متصل به یک گره را هنگامی مستقیم جمع می‌کنیم که سمت دیگرشان در تحلیل
+مورد نظر مرجع ثابت باشد یا اثر حرکت آن جداگانه منظور شده باشد.
+برای نمونه، ظرفیت \lr{Drain} به \lr{Body} ثابت، سهمی از بار خروجی است.
+ظرفیت \lr{Gate} مرحله بعد، از دید خروجی مرحله قبل بار ورودی آن مرحله محسوب می‌شود.
+
+\subsection{مدل صفحه‌ای \lr{Gate} و ظرفیت بر واحد عرض}
+در مدل ساده بخش \secnum{۲.۳.۱}، ظرفیت \lr{Gate} روی کانال از رابطه
+\begin{equation}
+ C_g\approx C_0=WLC_{\mathrm{ox}},\qquad
+ C_{\mathrm{ox}}=\frac{\varepsilon_{\mathrm{ox}}}{t_{\mathrm{ox}}}
+ \label{eq:cv-simple-gate}
+\end{equation}
+تخمین زده می‌شود. \(C_{\mathrm{ox}}\) ظرفیت بر واحد سطح و \(C_g\) ظرفیت کل است.
+کانال پایانه مستقل بیرونی ندارد. کتاب برای تخمین مقدماتی، صفحه پایین خازن را
+به \lr{Source} نسبت می‌دهد و از \(C_{GS}\) استفاده می‌کند. در مدل تفصیلی،
+این نسبت‌دادن به ناحیه کاری وابسته خواهد بود
+\cite[رابطه \secnum{۲.۱۲} و اسلاید ۲۴]{weste,mos}.
+
+در فناوری با طول ثابت، می‌توان \(L\) را در ضریب ظرفیت بر واحد عرض جذب کرد
+\begin{equation}
+ c_w=C_{\mathrm{ox}}L
+ =\frac{\varepsilon_{\mathrm{ox}}L}{t_{\mathrm{ox}}},\qquad C_g\approx c_wW.
+ \label{eq:cv-width-coefficient}
+\end{equation}
+نماد \(c_w\) همان \(C_{\mathrm{permicron}}\) در کتاب است، با واحد رایج
+\unit{\femto\farad\per\micro\metre}.
+اگر \(c_w=\qty{2}{\femto\farad\per\micro\metre}\) و
+\(W=\qty{0.6}{\micro\metre}\) باشند، ظرفیت \(C_g\approx\qty{1.2}{\femto\farad}\)
+می‌شود. واحد طول در ضرب حذف می‌شود.
+
+از نظر تبدیل واحد، \(\qty{1}{\femto\farad\per\micro\metre}=10^{-9}\,
+\unit{\farad\per\metre}\) است. برای نمونه فرضی،
+\(C_{\mathrm{ox}}=\qty{4}{\femto\farad\per\micro\metre\squared}\) و
+\(L=\qty{0.25}{\micro\metre}\) ضریب \(c_w=\qty{1}{\femto\farad\per\micro\metre}\)
+می‌دهند. با \(W=\qty{2}{\micro\metre}\)، ظرفیت \qty{2}{\femto\farad} است.
+
+اگر \(L\) و \(t_{\mathrm{ox}}\) با ضریب یکسان کوچک شوند و گذردهی ثابت بماند،
+نسبت \(L/t_{\mathrm{ox}}\) و در نتیجه \(c_w\) ثابت می‌ماند.
+اگر عرض نیز با همان ضریب کوچک شود، ظرفیت کل به نسبت عرض کاهش می‌یابد.
+کتاب مقدار حدود \qty{2}{\femto\farad\per\micro\metre} را برای فرآیندهای
+قدیمی‌تر و حدود \qty{1}{\femto\farad\per\micro\metre} را در نمونه‌های
+\qty{90}{\nano\metre} و \qty{65}{\nano\metre} ذکر می‌کند.
+این اعداد تخمین‌های تاریخی همان مرجع هستند \cite[روابط \secnum{۲.۱۳} و \secnum{۲.۱۴}]{weste}.
+
+\subsection{مدل ساده \lr{Diffusion} و ارتباط با بار خروجی}
+پیوند \lr{p-n} میان \lr{Source} یا \lr{Drain} و \lr{Body} در بایاس معکوس
+ناحیه \lr{Depletion} دارد. دو ناحیه رسانا در دو سوی این ناحیه کم‌حامل، رفتار
+خازنی ایجاد می‌کنند. پهنای ناحیه با ولتاژ تغییر می‌کند، بنابراین ظرفیت به بایاس
+وابسته است \cite[اسلاید ۲۳ و صفحه ۶۹]{mos,weste}.
+اصطلاح \lr{Diffusion Capacitance} در این فصل نام رایج طراحان مدار برای همین
+ظرفیت پیوندی \lr{Depletion} است. این کاربرد در پانوشت صفحه ۶۹ توضیح داده شده است.
+
+کتاب برای تخمین دستی، \(C_{SB}\) و \(C_{DB}\) ناحیه‌های دارای \lr{Contact}
+را هم‌مرتبه ظرفیت \lr{Gate} می‌گیرد و در بسیاری از مثال‌ها ضریب حدود
+\qty{1}{\femto\farad\per\micro\metre} به‌ازای عرض را به کار می‌برد.
+ضریب مناسب هر فناوری و هندسه باید از داده همان مدل برداشته شود.
+هندسه ناحیه مشترک و بدون \lr{Contact} در تحلیل دقیق اثر دارد
+\cite[صفحه ۷۰]{weste}.
+
+در مثال فرضی، یک \lr{Inverter} خروجیِ متصل به دو \lr{Inverter} مشابه بعدی دارد.
+عرض‌ها \(W_n=\qty{1}{\micro\metre}\)، \(W_p=\qty{2}{\micro\metre}\) و
+تمام ضریب‌های ساده \lr{Gate} و \lr{Drain} برابر
+\qty{1}{\femto\farad\per\micro\metre} فرض می‌شوند. ظرفیت سیم
+\qty{0.5}{\femto\farad} است. هر ورودی بعدی \qty{3}{\femto\farad} و مجموع
+\lr{Drain}های خروجی راه‌انداز نیز \qty{3}{\femto\farad} می‌دهد. پس
+\begin{equation}
+ C_L\approx2(1+2)+(1+2)+0.5=\qty{9.5}{\femto\farad}.
+ \label{eq:cv-load-example}
+\end{equation}
+اعداد داخل جمع، ظرفیت در واحد \unit{\femto\farad} هستند.
+\lr{Source}های راه‌انداز به ریل ثابت متصل‌اند و در این مدل، سهم پیوندی مستقیم
+خروجی از \lr{Drain}های آن می‌آید. با ولتاژ تغییر \qty{1}{\volt} و جریان متوسط
+فرضی \qty{100}{\micro\ampere}، تخمین \(C_L\Delta V/I\) برابر
+\qty{95}{\pico\second} می‌شود. این تخمین از ضریب‌های ساده و مرجع‌های ثابت استفاده می‌کند.
+
+\subsection{تمرین‌های پاسخ‌دار مدل ساده}
+\textbf{تمرین ۱.} اگر \(C_{\mathrm{ox}}=\qty{5}{\femto\farad\per\micro\metre\squared}\)،
+\(L=\qty{0.2}{\micro\metre}\) و \(W=\qty{0.8}{\micro\metre}\) باشند،
+ظرفیت چقدر است؟ ابتدا ضریب بر واحد عرض و سپس ظرفیت کل را می‌یابیم.
+\[
+ \begin{aligned}
+ c_w&=5(0.2)=\qty{1}{\femto\farad\per\micro\metre},\\
+ C_g&=1(0.8)=\qty{0.8}{\femto\farad}.
+ \end{aligned}
+\]
+
+\textbf{تمرین ۲.} در مقیاس‌بندی ایدئال، \(L\)، \(W\) و ضخامت اکسید هر یک
+نصف شوند. نسبت ظرفیت جدید به قبلی چیست؟ \(C_{\mathrm{ox}}\) دو برابر و
+\(WL\) یک‌چهارم می‌شود، پس \(C_g\) نصف خواهد شد.
+این نتیجه به فرض ثابت‌بودن گذردهی و مدل صفحه‌ای وابسته است.
+
+\textbf{تمرین ۳.} سه ظرفیت \qty{2}{\femto\farad}، \qty{3}{\femto\farad} و
+\qty{1}{\femto\farad} از یک گره به مرجع ثابت وصل‌اند. برای تغییر
+\qty{0.8}{\volt}، بار جابه‌جاشده چقدر است؟ ظرفیت کل
+\(2+3+1=\qty{6}{\femto\farad}\) و تغییر بار
+\(6(0.8)=\qty{4.8}{\femto\coulomb}\) می‌شود.
+\clearpage

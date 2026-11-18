@@ -1,0 +1,57 @@
+% !TeX program = xelatex
+% Approved increment: textbook sections 1.9 through 1.12.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\newcommand{\code}[1]{\lr{\texttt{#1}}}
+\setlength{\emergencystretch}{3em}
+\widowpenalty=10000
+\clubpenalty=10000
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\hypersetup{pdftitle={جزوه اول، از Circuit Design تا ساخت و آزمون}}
+\AssignmentNumber{جزوه اول، از مدار تا تراشه}
+\AssignmentDate{بخش‌های \secnum{۱.۹} تا \secnum{۱.۱۲} کتاب}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\section*{هدف و مسیر مطالعه}
+در این بخش، توصیف منطقی به شبکه ترانزیستور، هندسه روی سیلیکون و در پایان
+تراشه قابل‌آزمون تبدیل می‌شود. برای دنبال‌کردن متن، مفهوم ولتاژ، جریان، خازن،
+گیت منطقی و جمع‌کننده کافی است. روابط لازم با تفسیر فیزیکی و محاسبه مرحله‌ای مرور می‌شوند.
+هدف، درک وابستگی عملکرد، سرعت، توان و مساحت به انتخاب‌های طراحی است.
+
+دامنه متن، بخش‌های \secnum{۱.۹} تا \secnum{۱.۱۲} کتاب، صفحات چاپی ۴۲ تا ۵۵ است
+\cite{weste}. اسلاید ۱۷ مجموعه \lr{00} جایگاه این مراحل را در سطوح طراحی نشان می‌دهد
+\cite{intro}. محاسبه‌های افزوده، شکل‌های شماتیک و تمرین‌های پاسخ‌دار جزوه آموزشی‌اند.
+اعداد فناوری، چگالی، ابعاد و روش‌های ساخت برگرفته از کتاب با زمان و زمینه همان مرجع تفسیر می‌شوند.
+هر جا داده فرضی به کار رود، فرض در متن معرفی می‌شود.
+
+ابتدا تأخیر و توان و مثال \lr{Carry} را بررسی می‌کنیم. سپس \lr{Floorplan}،
+\lr{Standard Cell}، \lr{Pitch Matching}، \lr{Slice Plan} و تخمین مساحت را می‌آموزیم.
+در ادامه، روش‌های \lr{Verification} و مسیر \lr{Tapeout} تا \lr{Packaging} و \lr{Testing}
+شرح داده می‌شوند. تمرین‌های پایانی هر بخش، پاسخ تشریحی دارند.
+\tableofcontents
+\clearpage
+\input{notes/booklet-01/ch1-circuit-design}
+\input{notes/booklet-01/ch1-physical-design}
+\input{notes/booklet-01/ch1-verification}
+\input{notes/booklet-01/ch1-manufacturing-test}
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective},
+Fourth Edition, Pearson, 2011.
+\end{latin}
+بخش \secnum{۱.۹} در صفحات چاپی ۴۲ تا ۴۵، بخش \secnum{۱.۱۰} در صفحات ۴۵ تا ۵۳،
+بخش \secnum{۱.۱۱} در صفحه ۵۳ و بخش \secnum{۱.۱۲} در صفحات ۵۴ و ۵۵ بررسی شده‌اند.
+شماره صفحه فایل \lr{PDF} برابر شماره چاپی به‌اضافه ۲۷ است.
+شکل‌های \secnum{۱.۶۰} تا \secnum{۱.۷۳} و جدول \secnum{۱.۱۰} مبنای تطبیق‌اند.
+شکل‌های جزوه بازترسیم آموزشی با شماره مستقل هستند.
+\bibitem{intro}
+اسلایدهای محلی \lr{Introduction}، فایل \lr{00-introduction.pdf}، اسلاید ۱۷ درباره سطوح طراحی.
+اصل یادداشت‌ها طبق اسلاید ۲ متعلق به \lr{David Money Harris}، سال ۲۰۱۱، و نسخه محلی اقتباس‌شده است.
+\end{thebibliography}
+\end{document}

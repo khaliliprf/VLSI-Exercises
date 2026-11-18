@@ -1,0 +1,525 @@
+% !TeX root = booklet-02.tex
+\subsection{جریان‌های نشتی}
+\label{sec:leakage}
+در افزاره واقعی، بایاس خاموش نیز با جریان‌های کوچکی همراه است. کتاب
+سه مسیر اصلی را معرفی می‌کند. \lr{Subthreshold Leakage} در مسیر سورس
+و درین، \lr{Gate Leakage} از راه عایق گیت و \lr{Junction Leakage} در
+پیوندهای ناحیه‌های \lr{Diffusion} و بدنه جریان دارند
+\cite[بخش \secnum{۲.۴.۴} و شکل \secnum{۲.۱۹}]{weste}
+\cite[اسلایدهای ۲۱ و ۲۲]{nonideal}. بایاس، دما، هندسه و ساختار فرایند،
+سهم هر مسیر را تعیین می‌کنند.
+
+در روایت فناوری کتاب سال ۲۰۱۱، نشتی در نمونه‌های با ابعاد بالاتر از
+\(\qty{180}{\nano\metre}\) معمولاً سهم کوچکی داشته است. برای نمونه‌های
+\(\qty{90}{\nano\metre}\) و \(\qty{65}{\nano\metre}\)، جریان‌های
+زیرآستانه در مرتبه یک تا چند ده نانوآمپر برای هر ترانزیستور گزارش
+شده‌اند. در نمونه‌های \(\qty{45}{\nano\metre}\)، نازک‌شدن عایق، نشتی
+گیت را نیز مهم می‌کند و مرجع نقش عایق‌های \lr{High-k} را مطرح می‌کند
+\cite[صفحه ۸۱]{weste}. این اعداد به نمونه‌ها و زمان مرجع مربوط‌اند.
+
+\subsubsection{\lr{Subthreshold Leakage}}
+\label{sec:subthreshold-leakage}
+\paragraph*{وارونگی ضعیف و معنای خاموشی}
+در \lr{Weak Inversion}، ولتاژ گیت زیر آستانه است و مقدار جریان به‌صورت
+نمایی با ولتاژ گیت تغییر می‌کند. در توصیف کتاب، عبور حرارتی حامل‌ها
+از سد پتانسیل، جریان زیرآستانه را ایجاد می‌کند
+\cite[بخش \secnum{۲.۴.۴.۱}]{weste}. در مدل سوئیچی، خروجی منطقی بر
+اساس مسیرهای روشن و خاموش تحلیل می‌شود. مدل نشتی، مقدار جریان کوچک
+مسیر خاموش و اثر آن بر توان و نگهداری بار را نیز محاسبه می‌کند.
+
+\paragraph*{پیش‌نیاز تابع نمایی و لگاریتم ده‌دهی}
+عدد \(e\approx2.71828\) پایه لگاریتم طبیعی است. تابع
+\(\exp(x)=e^x\) برای هر \(x\) مثبت است. برای نمونه،
+\(e^0=1\)، \(e^1\approx2.718\)، \(e^{-1}=1/e\approx0.368\) و
+\(e^{-3}\approx0.0498\). منفی‌ترشدن توان، مقدار تابع را کوچک‌تر می‌کند.
+قانون \(e^{a+b}=e^ae^b\) و در نتیجه \(e^a/e^b=e^{a-b}\) در محاسبه
+نسبت نشتی‌ها به کار می‌روند.
+
+لگاریتم ده‌دهی \(\log_{10}x\)، توانی از ده است که عدد \(x>0\) را
+می‌سازد. مثلاً \(\log_{10}1000=3\) و \(\log_{10}0.01=-2\).
+یک \lr{Decade} تغییر جریان یعنی ضرب یا تقسیم آن در ده.
+برای تبدیل پایه از رابطه \(\log_{10}x=\ln x/\ln10\) استفاده می‌کنیم.
+همچنین \(e^x=10^{x/\ln10}\) است. نسبت‌های داخل لگاریتم و توان تابع
+نمایی باید بی‌بعد باشند.
+
+\paragraph*{مدل جریان و تعریف همه پارامترها}
+رابطه \secnum{۲.۴۲} کتاب و اسلاید ۲۳ برای \lr{nMOS} با
+\(V_{DS}\ge0\) چنین بازنویسی می‌شود
+\begin{equation}
+ I_{\mathrm{sub}}=I_{ds0}
+ \exp\!\left(\frac{V_{GS}-V_{t0}+\eta V_{DS}-k_\gamma V_{SB}}{nv_T}\right)
+ \left(1-e^{-V_{DS}/v_T}\right).
+ \label{eq:leakage-subthreshold-model}
+\end{equation}
+در این رابطه، \(V_{t0}\) آستانه مرجع، \(\eta\) ضریب \lr{DIBL} و
+\(k_\gamma\) ضریب خطی اثر بدنه از
+\eqref{eq:body-linearization} هستند. \(n>0\) ضریب وابسته به فرایند
+است که مرجع مقدار معمول آن را حدود \num{1.3} تا \num{1.7} می‌گیرد.
+\(v_T=kT/q\) ولتاژ حرارتی است. \(I_{ds0}\) ضریب جریان وابسته به
+فرایند و هندسه است \cite[صفحات ۸۱ و ۸۲]{weste}.
+
+صورت کسر داخل نمایی، یک ولتاژ است. مخرج \(nv_T\) نیز ولتاژ است، پس
+توان بی‌بعد می‌شود. عامل آخر هم بی‌بعد است و واحد کل جریان از
+\(I_{ds0}\) به دست می‌آید. برای استفاده از آستانه مؤثر، می‌توان
+\(V_{t,\mathrm{eff}}=V_{t0}-\eta V_{DS}+k_\gamma V_{SB}\) را تعریف کرد
+و صورت توان را \(V_{GS}-V_{t,\mathrm{eff}}\) نوشت.
+این صورت از تقریب خطی بایاس بدنه استفاده می‌کند و دامنه آن با
+\eqref{eq:body-linear-error} سنجیده می‌شود.
+
+مدل مرجع، ضریب جریان را با رابطه تجربی زیر نیز تقریب می‌زند
+\begin{equation}
+ I_{ds0}=\beta v_T^2e^{1.8},\qquad
+ \beta=\mu C_{\mathrm{ox}}\frac{W}{L}.
+ \label{eq:leakage-current-prefactor}
+\end{equation}
+عدد \(1.8\) ضریب تجربی همان مدل است
+\cite[رابطه \secnum{۲.۴۳}]{weste}. حاصل‌ضرب
+\(\beta\) با واحد \(\unit{\ampere\per\volt\squared}\) و \(v_T^2\)،
+واحد آمپر دارد. در شرایطی که صورت توان صفر و
+\(V_{DS}\gg v_T\) باشد، جریان به \(I_{ds0}\) نزدیک می‌شود.
+پارامترهای این رابطه می‌توانند با دما و فرایند تغییر کنند.
+
+\paragraph*{عامل درین و معیار تقریب آن}
+برای بررسی عامل آخر، \(D=V_{DS}\) و
+\(F(D)=1-e^{-D/v_T}\) را تعریف می‌کنیم. در \(D=0\)، عامل \(F\)
+صفر و جریان مدل نیز صفر است. با افزایش \(D>0\)، این عامل به یک
+نزدیک می‌شود. چند مقدار در جدول \ref{tab:leakage-drain-factor}
+آمده‌اند.
+\begin{table}[!htbp]
+\centering
+\small
+\caption{عامل درین در مدل زیرآستانه و فاصله نسبی آن از یک.}
+\label{tab:leakage-drain-factor}
+\begin{tabular}{cccc}
+\toprule
+\(D/v_T\) & \(e^{-D/v_T}\) & \(F(D)\) & فاصله از یک، درصد\\
+\midrule
+\num{1} & \num{0.3679} & \num{0.6321} & \num{36.79}\\
+\num{2} & \num{0.1353} & \num{0.8647} & \num{13.53}\\
+\num{3} & \num{0.0498} & \num{0.9502} & \num{4.98}\\
+\num{5} & \num{0.00674} & \num{0.99326} & \num{0.674}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+برای فاصله حداکثر ۱ درصد از یک، باید
+\(e^{-D/v_T}\le0.01\) باشد. با لگاریتم‌گیری،
+\(D\ge-v_T\ln0.01\approx4.605v_T\) به دست می‌آید.
+در \(v_T=\qty{26}{\milli\volt}\)، این شرط حدود
+\(D\ge\qty{120}{\milli\volt}\) است. در
+\(D=\qty{50}{\milli\volt}\)، عامل برابر \(0.8538\) و در
+\(D=\qty{100}{\milli\volt}\)، برابر \(0.9786\) است.
+در استفاده از تعبیر «چند برابر ولتاژ حرارتی» در متن مرجع، دقت مورد
+نیاز محاسبه تعیین‌کننده انتخاب تقریب است.
+
+در \(D\ll v_T\)، تقریب \(e^{-D/v_T}\approx1-D/v_T\) می‌دهد
+\(F(D)\approx D/v_T\). ازاین‌رو، جریان در نزدیکی درین صفر با
+\(D\) متناسب می‌شود. در \(D\gg v_T\)، عامل \(F\) تقریباً ثابت
+است، اما جمله \(\eta D\) در توان هنوز می‌تواند با افزایش درین،
+نشتی را افزایش دهد.
+
+\paragraph*{مثال آموزشی مقدار جریان و اثر گیت}
+فرض کنید \(\beta=\qty{1}{\milli\ampere\per\volt\squared}\)،
+\(n=1.4\)، \(v_T=\qty{0.026}{\volt}\)،
+\(V_{t0}=\qty{0.35}{\volt}\)، \(\eta=0.05\)،
+\(V_{DS}=\qty{1}{\volt}\) و \(V_{SB}=0\) باشند.
+این پارامترها برای یک مثال آموزشی فرض شده‌اند. ابتدا داریم
+\begin{equation}
+ I_{ds0}=(10^{-3})(0.026)^2e^{1.8}\,\unit{\ampere}
+ \approx\qty{4.090}{\micro\ampere}.
+ \label{eq:leakage-prefactor-example}
+\end{equation}
+در \(V_{GS}=0\)، صورت توان
+\(-0.35+0.05(1)=-\qty{0.30}{\volt}\) و مخرج
+\(1.4(0.026)=\qty{0.0364}{\volt}\) است.
+چون \(F(\qty{1}{\volt})\approx1\)، جریان برابر است با
+\begin{equation}
+ I_{\mathrm{off}}\approx(4.090\times10^{-6})e^{-0.30/0.0364}
+ \approx\qty{1.077}{\nano\ampere}.
+ \label{eq:leakage-absolute-example}
+\end{equation}
+اگر فقط گیت به \(\qty{0.1}{\volt}\) برسد، نسبت دو جریان از قانون
+تقسیم توابع نمایی به دست می‌آید
+\begin{equation}
+ \frac{I(\qty{0.1}{\volt})}{I(0)}
+ =e^{0.1/0.0364}\approx15.60,
+ \qquad I(\qty{0.1}{\volt})\approx\qty{16.81}{\nano\ampere}.
+ \label{eq:leakage-gate-ratio-example}
+\end{equation}
+آستانه مؤثر در هر دو نقطه \(\qty{0.30}{\volt}\) است و هر دو بایاس
+گیت در دامنه زیرآستانه قرار دارند.
+
+\paragraph*{استخراج \lr{Subthreshold Slope} و خواندن نمودار لگاریتمی}
+در بایاس درین، بدنه و دمای ثابت، تمام عامل‌های مستقل از گیت را در یک
+ضریب ثابت جمع می‌کنیم. برای یک جریان مرجع ثابت \(I_r>0\)، از
+\eqref{eq:leakage-subthreshold-model} نتیجه می‌شود
+\begin{equation}
+ y=\log_{10}\!\left(\frac{I_{\mathrm{sub}}}{I_r}\right)
+ =c+\frac{V_{GS}}{nv_T\ln10}.
+ \label{eq:leakage-log-line}
+\end{equation}
+نماد \(c\) یک مقدار ثابت در این مقایسه است. پس نمودار \(y\) برحسب
+\(V_{GS}\) خطی است و شیب آن \(1/(nv_T\ln10)\) می‌شود.
+کتاب معکوس این شیب را \lr{Subthreshold Slope} می‌نامد
+\begin{equation}
+ \boxed{S=\left[\frac{\mathrm{d}\log_{10}(I_{\mathrm{sub}}/I_r)}
+ {\mathrm{d}V_{GS}}\right]^{-1}=nv_T\ln10}.
+ \label{eq:leakage-subthreshold-slope}
+\end{equation}
+این رابطه با \secnum{۲.۴۴} کتاب و اسلاید ۲۳ متناظر است
+\cite{weste,nonideal}. \(S\) تغییر گیت لازم برای ده‌برابرشدن جریان
+است و معمولاً با واحد \(\unit{\milli\volt}\) به ازای یک
+\lr{Decade} بیان می‌شود. در مثال قبل،
+\(S=1.4(0.026)\ln10\approx\qty{83.81}{\milli\volt}\) است.
+افزایش گیت به اندازه \(2S\)، جریان را صد برابر می‌کند.
+
+شکل \ref{fig:leakage-semilog} نسبت جریان به مقدار گیت صفر را برای
+همین \(S\) نشان می‌دهد. فاصله برابر روی محور عمودی لگاریتمی، به معنای
+ضریب برابر در جریان است. برای \(n\) بین \num{1.3} و \num{1.7} و
+\(v_T=\qty{26}{\milli\volt}\)، مقدار \(S\) حدود
+\(\qty{77.8}{\milli\volt}\) تا \(\qty{101.8}{\milli\volt}\) به ازای هر دهه است.
+\begin{figure}[!htbp]
+\centering
+\begin{latin}
+\PersianMathDigits
+\begin{tikzpicture}[x=22cm,y=1.05cm]
+ \draw[->] (-0.12,-1.5)--(0.24,-1.5) node[right] {\(V_{GS}\;(\mathrm{V})\)};
+ \draw[->] (-0.12,-1.5)--(-0.12,2.8) node[above] {\(I/I_{\mathrm{off}}\)};
+ \foreach \x in {-0.1,0,0.1,0.2} {\draw (\x,-1.5)--(\x,-1.56) node[below] {\(\x\)};}
+ \foreach \y/\value in {-1/0.1,0/1,1/10,2/100} {
+  \draw (-0.12,\y)--(-0.125,\y) node[left] {\(\value\)};
+ }
+ \draw[thick,domain=-0.1:0.2,samples=50] plot (\x,{\x/0.0838141});
+ \draw[dotted] (0,0)--(0.0838141,0)--(0.0838141,1)--(0,1);
+ \draw[<->] (0,0.15)--(0.0838141,0.15) node[midway,above] {\(S\)};
+\end{tikzpicture}
+\end{latin}
+\caption{نمودار آموزشی زیرآستانه با محور عمودی لگاریتمی و
+\(S=\qty{83.81}{\milli\volt}\) به ازای هر دهه. گیت به اندازه \(S\)
+تغییر می‌کند و نسبت جریان از یک به ده می‌رسد. بایاس‌های دیگر ثابت‌اند.}
+\label{fig:leakage-semilog}
+\end{figure}
+
+در شکل \secnum{۲.۲۰} کتاب، محور عمودی جریان بر واحد عرض با واحد
+\(\unit{\ampere\per\micro\metre}\) است. برای نمونه
+\(\qty{65}{\nano\metre}\) در دمای \(\qty{70}{\degreeCelsius}\)،
+مقادیر حدود \(\qty{27}{\nano\ampere\per\micro\metre}\) و
+\(\qty{2}{\nano\ampere\per\micro\metre}\) در گیت صفر و دو بایاس
+درین \(\qty{1.0}{\volt}\) و \(\qty{0.1}{\volt}\) مشخص شده‌اند.
+نسبت آن‌ها حدود \(13.5\) است. بخش تقریباً خطی منحنی زیرآستانه و
+بالارفتن جریان در گیت بسیار منفی، به‌ترتیب رفتار نمایی و اثر
+\lr{GIDL} را نشان می‌دهند \cite[صفحه ۸۱]{weste}.
+
+\paragraph*{بازنویسی دقیق نسبت به \(I_{\mathrm{off}}\)}
+جریان مرجع را در گیت و بایاس بدنه صفر و درین \(V_{DD}>0\) تعریف
+می‌کنیم. از \eqref{eq:leakage-subthreshold-model} داریم
+\begin{equation}
+ I_{\mathrm{off}}=I_{ds0}
+ e^{(-V_{t0}+\eta V_{DD})/(nv_T)}F(V_{DD}).
+ \label{eq:leakage-off-definition}
+\end{equation}
+تقسیم رابطه جریان بر رابطه مرجع، عامل \(I_{ds0}\) و آستانه مرجع را
+حذف می‌کند. با استفاده از \(S=nv_T\ln10\)، نتیجه برابر است با
+\begin{equation}
+ \boxed{I_{\mathrm{sub}}=I_{\mathrm{off}}
+ 10^{[V_{GS}+\eta(V_{DS}-V_{DD})-k_\gamma V_{SB}]/S}
+ \frac{F(V_{DS})}{F(V_{DD})}}.
+ \label{eq:leakage-off-normalized}
+\end{equation}
+در بایاس مرجع، توان صفر و نسبت دو عامل \(F\) برابر یک است و جریان
+مرجع دقیقاً بازیابی می‌شود. در بازنویسی رابطه \secnum{۲.۴۵} کتاب،
+عامل مخرج با فرض \(V_{DD}\gg v_T\) تقریباً یک گرفته شده است.
+برای نگه‌داشتن همه عامل‌ها در بایاس درین کوچک، از
+\eqref{eq:leakage-off-normalized} استفاده می‌کنیم.
+
+این نسبت برای هندسه، دما و پارامترهای یکسان نوشته شده است.
+در یک دمای ثابت، افزایش \(V_{t0}\) به اندازه \(\Delta V_t>0\)،
+جریان را در عامل \(e^{-\Delta V_t/(nv_T)}\) ضرب می‌کند.
+افزایش بایاس بدنه در تقریب خطی، عامل
+\(e^{-k_\gamma\Delta V_{SB}/(nv_T)}\) و تغییر درین، هم عامل نمایی
+\lr{DIBL} و هم نسبت دو \(F\) را وارد می‌کند.
+برای \lr{pMOS} با قرارداد بزرگی‌های مثبت، همین ساختار با
+\(V_{SG},V_{SD},V_{BS}\)، بزرگی آستانه و پارامترهای آن افزاره به کار
+می‌رود.
+
+\paragraph*{حل مثال \secnum{۲.۶} کتاب و نسبت هزاربرابری}
+مثال مرجع می‌خواهد جریان گیت صفر، هزار برابر کوچک‌تر از جریان در
+گیت برابر آستانه باشد. در یک بایاس درین ثابت با \(V_{DS}\gg v_T\)،
+بایاس بدنه صفر و با قرارداد آستانه همان مقایسه، نسبت جریان‌ها چنین است
+\begin{equation}
+ \frac{I(0)}{I(V_t)}=e^{-V_t/(nv_T)}=10^{-3}.
+ \label{eq:leakage-three-decades}
+\end{equation}
+از دو طرف لگاریتم می‌گیریم. با \(\ln10^{-3}=-3\ln10\)، داریم
+\begin{equation}
+ -\frac{V_t}{nv_T}=-3\ln10
+ \quad\Longrightarrow\quad V_t=3nv_T\ln10=3S.
+ \label{eq:leakage-minimum-threshold}
+\end{equation}
+پس برای \(n=1.5\) و \(v_T=\qty{26}{\milli\volt}\)،
+\(S\approx\qty{89.8}{\milli\volt}\) و
+\(V_t\approx\qty{269.4}{\milli\volt}\) است. گردکردن مرجع حدود
+\(\qty{270}{\milli\volt}\) می‌دهد. برای نمونه \lr{Silicon-on-Insulator
+(SOI)} مثال با \(n=1.3\)، مقدار \(S\approx\qty{77.8}{\milli\volt}\)
+و \(V_t\approx\qty{233.5}{\milli\volt}\) می‌شود
+\cite[مثال \secnum{۲.۶}، صفحه ۸۲]{weste}.
+شرط حداقل آستانه برای نسبت حداکثر \(10^{-3}\)، همان
+\(V_t\ge3S\) است.
+
+\paragraph*{اثر بر توان و نگهداری بار}
+توان ایستای دریافت‌شده از یک منبع ثابت از
+\(P_{\mathrm{static}}=V_{DD}I_{\mathrm{supply}}\) به دست می‌آید.
+در یک مثال فرضی با \(10^8\) ترانزیستور، کسر خاموش \(0.8\)، نشتی
+متوسط هر ترانزیستور خاموش \(\qty{1}{\nano\ampere}\) و تغذیه
+\(\qty{1}{\volt}\)، اگر این جریان‌ها سهم جمع‌پذیر همان منبع باشند،
+جریان کل \(\qty{0.08}{\ampere}\) و توان \(\qty{80}{\milli\watt}\)
+می‌شود. برای مدار مشخص، اتصال مسیرها و جریان دریافتی از هر منبع با
+\lr{KCL} محاسبه می‌شود.
+
+نشتی همچنین بار گره خازنی را در طول زمان تغییر می‌دهد. با جریان
+تقریباً ثابت \(I\)، تغییر ولتاژ \(\Delta V\) روی ظرفیت \(C\) در زمان
+\(t\approx C\Delta V/I\) رخ می‌دهد. مثلاً
+\(C=\qty{10}{\femto\farad}\)، \(I=\qty{1}{\nano\ampere}\) و
+\(\Delta V=\qty{0.2}{\volt}\)، زمان حدود \(\qty{2}{\micro\second}\)
+می‌دهند. این برآورد آموزشی، حساسیت گره‌های ذخیره بار و نیاز به
+\lr{Refresh} در حافظه پویا را توضیح می‌دهد
+\cite[صفحه ۸۲]{weste}.
+
+\subsubsection{\lr{Gate Leakage}}
+\label{sec:gate-leakage}
+\paragraph*{تونل‌زنی و دو سازوکار مرجع}
+در عایق بسیار نازک، احتمال عبور کوانتومی حامل از سد عایق، جریان
+تونل‌زنی ایجاد می‌کند. برای بیان مقیاس، کتاب عایق‌های نازک‌تر از حدود
+\(\qty{1.5}{\nano\metre}\) تا \(\qty{2.0}{\nano\metre}\) را در این
+بحث مطرح می‌کند. کتاب دو سازوکار \lr{Fowler-Nordheim (FN)
+Tunneling} و \lr{Direct Tunneling} را معرفی می‌کند.
+اولی در ولتاژ زیاد و ضخامت متوسط اهمیت پیدا می‌کند و در برنامه‌ریزی
+\lr{EEPROM} به کار می‌رود. دومی در عایق نازک و ولتاژ پایین‌تر اهمیت
+دارد \cite[بخش \secnum{۲.۴.۴.۲}]{weste}.
+
+برای \lr{Direct Tunneling}، رابطه \secnum{۲.۴۷} کتاب و اسلاید ۲۴ را
+با نام‌گذاری ضرایب مستقل می‌نویسیم
+\begin{equation}
+ I_{\mathrm{gate}}=WA_g
+ \left(\frac{V_{DD}}{t_{\mathrm{ox}}}\right)^2
+ \exp\!\left(-B_g\frac{t_{\mathrm{ox}}}{V_{DD}}\right).
+ \label{eq:gate-tunneling-model}
+\end{equation}
+\(A_g,B_g\) همان ثابت‌های فناوری \(A,B\) در مرجع هستند.
+زیرنویس‌ها برای تشخیص آن‌ها از ضرایب مدل پیوند به کار رفته‌اند.
+\(W\) عرض و \(t_{\mathrm{ox}}\) ضخامت فیزیکی عایق در مدل است.
+این مدل تجربی در شرایط بایاس و پارامترهای مربوط به برازش استفاده
+می‌شود \cite[صفحه ۸۳]{weste}\cite[اسلاید ۲۴]{nonideal}.
+
+با دستگاه طول متر، بی‌بعدبودن توان ایجاب می‌کند
+\([B_g]=\unit{\volt\per\metre}\). چون
+\(W(V_{DD}/t_{\mathrm{ox}})^2\) واحد
+\(\mathrm{V}^2/\mathrm{m}\) دارد،
+\([A_g]=\mathrm{A\,m\,V^{-2}}\) است. اگر ضرایب با نانومتر برازش
+شده‌اند، ضخامت و واحد ضرایب نیز با همان قرارداد وارد می‌شوند.
+
+\paragraph*{حساسیت ضخامت و مثال نسبت جریان}
+در ولتاژ، عرض و ضرایب ثابت، برای دو ضخامت مثبت \(t_1,t_2\)، تقسیم
+دو رابطه \eqref{eq:gate-tunneling-model} می‌دهد
+\begin{equation}
+ \frac{I_2}{I_1}=\left(\frac{t_1}{t_2}\right)^2
+ \exp\!\left[\frac{B_g(t_1-t_2)}{V_{DD}}\right].
+ \label{eq:gate-thickness-ratio}
+\end{equation}
+کاهش ضخامت، هم عامل مربعی و هم عامل نمایی را افزایش می‌دهد.
+در مثال فرضی \(t_1=\qty{1.1}{\nano\metre}\)،
+\(t_2=\qty{1.0}{\nano\metre}\)، \(V_{DD}=\qty{1}{\volt}\) و
+\(B_g=\qty{10}{\volt\per\nano\metre}\)، نسبت برابر
+\((1.1/1.0)^2e^1\approx3.29\) است. مقدار \(B_g\) در این مثال
+آموزشی فرض شده است. برای جریان مطلق، مقدار \(A_g\) نیز لازم است.
+با ثابت بودن دیگر پارامترها، دوبرابرشدن عرض در همین مدل جریان را
+دو برابر می‌کند.
+
+در متن مرجع، برای داده‌های مورد بحث، افزایش جریان حداقل با ضریب
+حدود \(2.7\) به ازای کاهش یک آنگستروم ضخامت گزارش شده است.
+کتاب مقیاس ضخامت \(\qty{1.05}{\nano\metre}\)، معادل \num{10.5} آنگستروم، و چگالی جریان
+\(\qty{100}{\ampere\per\centi\metre\squared}\) و ضخامت حدود
+\(\qty{0.3}{\nano\metre}\) برای هر لایه اتمی \lr{SiO2} را در توضیح
+نمونه‌های همان دوره مطرح می‌کند \cite[صفحه ۸۳]{weste}.
+این اعداد همراه ماده و شرایط نمودار مرجع تفسیر می‌شوند.
+
+\paragraph*{ولتاژ، چگالی جریان و عایق \lr{High-k}}
+در ضخامت ثابت، نسبت جریان در دو ولتاژ مثبت چنین است
+\begin{equation}
+ \frac{I(V_2)}{I(V_1)}=
+ \left(\frac{V_2}{V_1}\right)^2
+ \exp\!\left[B_gt_{\mathrm{ox}}
+ \left(\frac{1}{V_1}-\frac{1}{V_2}\right)\right].
+ \label{eq:gate-voltage-ratio}
+\end{equation}
+برای \(V_2>V_1\)، هر دو عامل نسبت را افزایش می‌دهند.
+در شکل \secnum{۲.۲۱} کتاب، محور عمودی چگالی جریان گیت
+\(J_G=I_{\mathrm{gate}}/A_{\mathrm{gate}}\) با واحد
+\(\unit{\ampere\per\centi\metre\squared}\) است.
+برای چگالی یکنواخت، جریان از ضرب چگالی در مساحت به دست می‌آید.
+مثلاً \(J_G=\qty{1}{\ampere\per\centi\metre\squared}\) و مساحت
+فرضی \(\qty{0.005}{\micro\metre\squared}
+=\qty{5e-11}{\centi\metre\squared}\)، جریان
+\(\qty{50}{\pico\ampere}\) می‌دهند.
+در شکل زیرآستانه \secnum{۲.۲۰}، نرمال‌سازی با عرض انجام شده است.
+واحد محور هر شکل، نحوه تبدیل به جریان کل را تعیین می‌کند.
+
+برای جریان روشن زیاد، ظرفیت اکسید بر واحد سطح بزرگ مطلوب است.
+از \(C_{\mathrm{ox}}=\varepsilon/t\)، افزایش \lr{Permittivity} عایق
+امکان استفاده از ضخامت فیزیکی بیشتر را در ظرفیت یکسان فراهم می‌کند.
+ضخامت معادل اکسید از \(\mathrm{EOT}=t\varepsilon_{\mathrm{ox}}/
+\varepsilon\) به دست می‌آید. تونل‌زنی به ضخامت فیزیکی و ویژگی سد
+ماده وابسته است، پس ضرایب نشتی نیز باید با ماده عایق سازگار باشند.
+در نمونه‌های \lr{SiO2} مورد بحث کتاب، نشتی گیت \lr{nMOS} می‌تواند
+در مرتبه ده برابر \lr{pMOS} باشد، زیرا حامل‌ها سدهای انرژی متفاوتی
+دارند. مرجع وابستگی این رفتار به نوع عایق را یادآور می‌شود
+\cite[صفحه ۸۳]{weste}.
+
+\subsubsection{\lr{Junction Leakage}}
+\label{sec:junction-leakage}
+\paragraph*{مدل دیود و علامت ولتاژ پیوند}
+پیوند ناحیه‌های \lr{Diffusion} با بدنه یا \lr{Well} و پیوند
+\lr{Well} با \lr{Substrate} مانند دیود عمل می‌کنند.
+در بایاس معمول، بدنه و \lr{Well} به زمین یا تغذیه متصل می‌شوند تا
+پیوندها در بایاس صفر یا معکوس قرار گیرند
+\cite[بخش \secnum{۲.۴.۴.۳} و شکل \secnum{۲.۲۲}]{weste}.
+مدل دیود کتاب را با نماد \(I_{\mathrm{dio}}\) برای جریان و
+\(I_{\mathrm{rev}}>0\) برای ضریب جریان معکوس بازنویسی می‌کنیم
+\begin{equation}
+ I_{\mathrm{dio}}=I_{\mathrm{rev}}
+ \left(e^{V_{\mathrm{dio}}/v_T}-1\right),\qquad
+ V_{\mathrm{dio}}=V_{\mathrm{anode}}-V_{\mathrm{cathode}}.
+ \label{eq:junction-diode-model}
+\end{equation}
+این دو جریان با \(I_D,I_S\) رابطه \secnum{۲.۴۸} کتاب متناظرند.
+نمادهای مرجع در این رابطه به جریان دیود و ضریب جریان معکوس اشاره
+دارند \cite[صفحه ۸۴ و پانوشت آن]{weste}\cite[اسلاید ۲۶]{nonideal}.
+
+در پیوند \lr{nMOS}، بدنه \lr{p-type} آند و ناحیه
+\lr{n-type Diffusion} کاتد است. بنابراین برای پیوند درین و بدنه،
+\(V_{\mathrm{dio}}=V_B-V_D=-V_{DB}\) است.
+اگر \(V_{DB}>0\)، ولتاژ دیود منفی و جریان آن در قرارداد آند به
+کاتد منفی می‌شود. در بایاس معکوس بزرگ‌تر از چند برابر \(v_T\)،
+جمله نمایی به صفر نزدیک و
+\(I_{\mathrm{dio}}\approx-I_{\mathrm{rev}}\) است.
+جریان معکوس در این قرارداد از ناحیه درین به بدنه می‌رود.
+در بایاس صفر نیز \(I_{\mathrm{dio}}=0\) حاصل می‌شود.
+
+ضریب \(I_{\mathrm{rev}}\) به ناخالصی، مساحت و محیط ناحیه
+\lr{Diffusion} وابسته است. کتاب برای مؤلفه معمول دیود، مرتبه
+\(\qty{0.01}{\femto\ampere\per\micro\metre\squared}\) تا
+\(\qty{0.1}{\femto\ampere\per\micro\metre\squared}\) را در
+نمونه‌های مورد بحث ذکر می‌کند \cite[صفحه ۸۴]{weste}.
+در مثال فرضی با چگالی \(\qty{0.1}{\femto\ampere\per\micro\metre\squared}\)،
+مساحت \(\qty{0.2}{\micro\metre\squared}\) و صرف‌نظر از سهم محیط،
+\(I_{\mathrm{rev}}=\qty{0.02}{\femto\ampere}\) می‌شود.
+در بایاس معکوس \(\qty{1}{\volt}\) و
+\(v_T=\qty{0.026}{\volt}\)، جریان حدود
+\(-\qty{0.02}{\femto\ampere}\) است.
+
+\paragraph*{\lr{Band-to-Band Tunneling} و نقش ناخالصی}
+در پیوندهای با ناخالصی زیاد، میدان قوی می‌تواند
+\lr{Band-to-Band Tunneling (BTBT)} ایجاد کند.
+مرجع اثر \lr{Halo Doping}، یعنی افزایش ناخالصی نزدیک انتهای کانال
+برای کنترل آستانه، را بر افزایش این نشتی توضیح می‌دهد.
+وجود تله‌های ناشی از نقص ماده نیز می‌تواند
+\lr{Trap-Assisted Tunneling (TAT)} را تقویت کند.
+در توصیف کتاب، سهم مهمی از این جریان نزدیک دیواره پیوند رو به
+کانال رخ می‌دهد \cite[صفحه ۸۴]{weste}\cite[اسلاید ۲۷]{nonideal}.
+
+رابطه تجربی \secnum{۲.۴۹} کتاب برای بزرگی جریان چنین است
+\begin{equation}
+ I_{\mathrm{BTBT}}=WX_j A_b\frac{E_j}{E_g^{1/2}}V_{DD}
+ \exp\!\left(-B_b\frac{E_g^{3/2}}{E_j}\right).
+ \label{eq:junction-btbt-model}
+\end{equation}
+\(X_j\) عمق پیوند، \(E_j\) بزرگی میدان پیوند و \(A_b,B_b\)
+ثابت‌های فناوری هستند. کتاب \(E_g\) را ولتاژ متناظر با گاف انرژی
+تعریف می‌کند. اگر انرژی گاف برحسب ژول معلوم باشد، تقسیم آن بر
+\(q\) مقدار \(E_g\) را برحسب ولت می‌دهد.
+توان‌های \(1/2\) و \(3/2\) روی همین کمیت اعمال می‌شوند.
+در قرارداد طول متر، بی‌بعدبودن توان و واحد آمپر نتیجه می‌دهند
+\begin{equation}
+ [B_b]=\mathrm{m}^{-1}\mathrm{V}^{-1/2},\qquad
+ [A_b]=\mathrm{A\,m}^{-1}\mathrm{V}^{-3/2}.
+ \label{eq:junction-btbt-units}
+\end{equation}
+ضرایب \(A_b,B_b\) با \(A_g,B_g\) مدل گیت جداگانه تعریف و برازش
+می‌شوند.
+
+\paragraph*{میدان پیوند و یک محاسبه آموزشی}
+در بایاس معکوس \(V_{DD}\)، رابطه \secnum{۲.۵۰} کتاب میدان را با
+ناخالصی \lr{Halo} و \lr{Source/Drain} مرتبط می‌کند
+\begin{equation}
+ E_j=\sqrt{\frac{2qN_{\mathrm{halo}}N_{\mathrm{sd}}}
+ {\varepsilon_{\mathrm{si}}(N_{\mathrm{halo}}+N_{\mathrm{sd}})}
+ \left[V_{DD}+v_T\ln\!\left(
+ \frac{N_{\mathrm{halo}}N_{\mathrm{sd}}}{n_i^2}\right)\right]}.
+ \label{eq:junction-field-model}
+\end{equation}
+همه غلظت‌ها باید با واحد یکسان و \(\varepsilon_{\mathrm{si}}\) با
+واحد طول سازگار وارد شوند. برای دنبال‌کردن محاسبه،
+دو کمیت کمکی را تعریف می‌کنیم
+\begin{equation}
+ N_{\mathrm{eff}}=\frac{N_{\mathrm{halo}}N_{\mathrm{sd}}}
+ {N_{\mathrm{halo}}+N_{\mathrm{sd}}},\qquad
+ \phi_{\mathrm{bi}}=v_T\ln\!\left(
+ \frac{N_{\mathrm{halo}}N_{\mathrm{sd}}}{n_i^2}\right).
+ \label{eq:junction-field-parameters}
+\end{equation}
+با جایگذاری آن‌ها، رابطه میدان به شکل ساده‌تر زیر تبدیل می‌شود
+\[
+ E_j=\sqrt{\frac{2qN_{\mathrm{eff}}}{\varepsilon_{\mathrm{si}}}
+ (V_{DD}+\phi_{\mathrm{bi}})}.
+\]
+\(\phi_{\mathrm{bi}}\) واحد ولت دارد و عبارت زیر رادیکال، واحد
+\(\mathrm{V}^2/\mathrm{m}^2\) یا شکل سازگار سانتی‌متری آن را دارد.
+
+در مثال فرضی، \(N_{\mathrm{halo}}=\qty{e18}{\per\centi\metre\cubed}\)،
+\(N_{\mathrm{sd}}=\qty{e20}{\per\centi\metre\cubed}\)،
+\(n_i=\qty{1.45e10}{\per\centi\metre\cubed}\)،
+\(v_T=\qty{0.026}{\volt}\) و
+\(\varepsilon_{\mathrm{si}}=11.7(\qty{8.85e-14}{\farad\per\centi\metre})\)
+هستند. محاسبه می‌دهد
+\begin{align}
+ N_{\mathrm{eff}}&\approx\qty{9.901e17}{\per\centi\metre\cubed},
+ &\phi_{\mathrm{bi}}&\approx\qty{1.0583}{\volt},\notag\\
+ E_j(V_{DD}=\qty{0.8}{\volt})&\approx\qty{7.541e5}{\volt\per\centi\metre},
+ &E_j(V_{DD}=\qty{1.2}{\volt})&\approx\qty{8.313e5}{\volt\per\centi\metre}.
+ \label{eq:junction-field-example}
+\end{align}
+برای مشاهده حساسیت نمایی، حاصل‌ضرب فرضی
+\(B_bE_g^{3/2}=\qty{3e6}{\volt\per\centi\metre}\) را ثابت می‌گیریم.
+تقسیم دو جریان \eqref{eq:junction-btbt-model} با هندسه و گاف یکسان
+می‌دهد
+\begin{equation}
+ \frac{I_2}{I_1}=
+ \frac{1.2}{0.8}\frac{E_{j2}}{E_{j1}}
+ \exp\!\left[3\times10^6
+ \left(\frac{1}{E_{j1}}-\frac{1}{E_{j2}}\right)\right]
+ \approx2.39.
+ \label{eq:junction-btbt-ratio-example}
+\end{equation}
+در این جایگذاری عددی، میدان‌ها برحسب
+\(\unit{\volt\per\centi\metre}\) وارد شده‌اند.
+برای جریان مطلق، ثابت \(A_b\) و دیگر پارامترهای همان فناوری لازم‌اند.
+
+\paragraph*{\lr{Gate-Induced Drain Leakage}}
+\lr{Gate-Induced Drain Leakage (GIDL)} نزدیک ناحیه هم‌پوشانی گیت و
+درین رخ می‌دهد. درین بالا و گیت پایین، میدان این ناحیه را تقویت
+می‌کنند. در \lr{nMOS}، منفی‌ترکردن گیت در درین بالا می‌تواند این
+مسیر را شدیدتر کند. جریان به ناحیه هم‌پوشانی و در نتیجه به عرض
+افزاره وابسته است \cite[صفحات ۸۴ و ابتدای ۸۵]{weste}
+\cite[اسلاید ۲۸]{nonideal}.
+در توصیف نمونه‌های کتاب، سهم این مسیر در
+\(|V_{GD}|\le V_{DD}\) معمولاً کوچک است و با راندن گیت بیرون ریل
+تغذیه برجسته می‌شود.
+
+برای مثال، در \(V_D=\qty{1}{\volt}\)، تغییر گیت از صفر به
+\(-\qty{0.3}{\volt}\)، ولتاژ \(V_{DG}=V_D-V_G\) را از
+\(\qty{1}{\volt}\) به \(\qty{1.3}{\volt}\) می‌رساند.
+در مدل زیرآستانه، گیت منفی جریان سورس و درین را کاهش می‌دهد، اما
+میدان درین و گیت در همین تغییر افزایش می‌یابد.
+شکل \secnum{۲.۲۰} کتاب بالا رفتن جریان در سمت گیت منفی را نشان
+می‌دهد. برای محاسبه کل نشتی در آن بایاس، همه مسیرهای مربوط به
+بایاس و جریان دریافتی از منبع باید در مدل مدار لحاظ شوند.

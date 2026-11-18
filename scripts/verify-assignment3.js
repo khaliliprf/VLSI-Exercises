@@ -1,7 +1,7 @@
-// Run after building 3/main.tex and extracting build/hw03-pdf.txt.
+// Run after building exercises/3/main.tex and extracting build/hw03-pdf.txt.
 const fs = require('node:fs');
 const assert = require('node:assert/strict');
-const files = ['3/main.tex', ...['2-16', '2-17', '2-20'].map(n => `3/solutions/${n}.tex`)];
+const files = ['exercises/3/main.tex', ...['2-16', '2-17', '2-20'].map(n => `exercises/3/solutions/${n}.tex`)];
 const source = files.map(f => fs.readFileSync(f, 'utf8')).join('\n');
 assert(!/[\ufb50-\ufdff\ufe70-\ufeff\u0654\u066a]/u.test(source));
 assert(!source.includes('$$') && !source.includes('\\\\('));

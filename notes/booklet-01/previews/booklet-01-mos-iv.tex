@@ -1,0 +1,67 @@
+% !TeX program = xelatex
+% Approved increment: textbook sections 2.1 and 2.2.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\setlength{\emergencystretch}{3em}
+\widowpenalty=10000
+\clubpenalty=10000
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\hypersetup{pdftitle={جزوه اول، ساختار MOS و روابط Long-channel I-V}}
+\AssignmentNumber{جزوه اول، ساختار و جریان \lr{MOS}}
+\AssignmentDate{بخش‌های \secnum{۲.۱} و \secnum{۲.۲} کتاب}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\section*{هدف و مسیر مطالعه}
+در مدل سوئیچی، روشن یا خاموش‌بودن ترانزیستور را بررسی کردیم. اکنون مقدار جریان
+و شرط اعتبار رابطه آن را از ساختمان افزاره به دست می‌آوریم. آشنایی قبلی با
+فیزیک نیمه‌رسانا، \lr{Digital Electronics} یا انتگرال‌گیری فرض نمی‌شود.
+پیش‌نیاز لازم در محل استفاده توضیح داده می‌شود. بار، ولتاژ و جریان را با معنا،
+علامت و واحدشان دنبال می‌کنیم.
+
+مبنای این بخش، صفحات چاپی ۶۱ تا ۶۸ کتاب و اسلایدهای ۲ تا ۲۲ مجموعه \lr{01}
+است \cite{weste,mos}. صفحه ۶۸ کتاب شامل شکل مشخصه‌های مربوط به بخش
+\secnum{۲.۲} و آغاز بخش \secnum{۲.۳} است. تحلیل خازن‌های وابسته به ولتاژ در گام
+بعدی تکمیل می‌شود. استخراج تکمیلی با بار موضعی کانال و تمرین‌های افزوده، توضیح
+آموزشی روابط همان مدل‌اند.
+
+نماد \(V_{GS}\) در این جزوه با \(V_{gs}\) کتاب و اسلایدها یک کمیت را نشان می‌دهد.
+\(I_{DS}\) جریان قراردادی از \lr{Drain} به \lr{Source} و \(Q_{\mathrm{ch}}\)
+بزرگی بار متحرک کانال است. برای بار علامت‌دار الکترون‌ها از \(Q_i\) استفاده می‌کنیم.
+در \lr{pMOS}، ابتدا با ولتاژهای مثبت \(V_{SG},V_{SD}\) و بزرگی جریان کار می‌کنیم،
+سپس ارتباط آن را با قرارداد علامت‌دار کتاب نشان می‌دهیم.
+
+مدل مورد استفاده، \lr{Long-channel} با \lr{Mobility} ثابت و \lr{Threshold Voltage}
+ثابت است. مثال فناوری کوچک کتاب نیز با همین مدل آموزشی محاسبه می‌شود.
+دقت پیش‌بینی جریان افزاره واقعی به مدل و پارامترهای فناوری وابسته است.
+تمام مثال‌های افزوده با فرض‌هایشان معرفی می‌شوند.
+\tableofcontents
+\clearpage
+\input{notes/booklet-01/ch2-introduction}
+\input{notes/booklet-01/ch2-long-channel}
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective},
+Fourth Edition, Pearson, 2011.
+\end{latin}
+بخش \secnum{۲.۱} در صفحات چاپی ۶۱ تا ۶۴، بخش \secnum{۲.۲} در صفحات ۶۴ تا ۶۷
+و شکل \secnum{۲.۷} در صفحه ۶۸ بررسی شده‌اند. صفحات فایل \lr{PDF} متناظر، شماره
+چاپی به‌اضافه ۲۷ هستند. شکل‌های \secnum{۲.۱} تا \secnum{۲.۷}، روابط
+\secnum{۲.۱} تا \secnum{۲.۱۱} و مثال \secnum{۲.۱} مبنای تطبیق‌اند.
+شکل‌ها و شماره‌گذاری روابط این جزوه مستقل‌اند.
+\bibitem{mos}
+اسلایدهای محلی \lr{MOSFET Transistors}، فایل \lr{01-MOSFET Ch2.pdf}، اسلایدهای
+۲ تا ۲۲. شماره صفحه فایل و شماره اسلاید یکسان‌اند.
+اسلایدهای ۲ تا ۷ پیش‌نیاز ساختار، ۹ تا ۱۳ ناحیه‌های کاری، ۱۴ تا ۱۹ استخراج مدل،
+۲۰ مثال فناوری و ۲۱ و ۲۲ مدل \lr{pMOS} را پوشش می‌دهند.
+در اسلاید ۱۵ برخی روابط در متن استخراج‌شده وجود دارند، اما در تصویر صفحه جای
+خالی دارند. روابط بار و خازن در این جزوه با متن و روابط اصلی کتاب تطبیق داده شده‌اند.
+اصل یادداشت‌های این مجموعه، طبق اسلاید ۲ مجموعه \lr{00-introduction.pdf}، به
+\lr{David Money Harris} در سال ۲۰۱۱ نسبت داده شده و نسخه محلی اقتباس‌شده است.
+\end{thebibliography}
+\end{document}

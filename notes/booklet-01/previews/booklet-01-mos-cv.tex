@@ -1,0 +1,64 @@
+% !TeX program = xelatex
+% Approved increment: textbook section 2.3, including its detailed models.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\setlength{\emergencystretch}{3em}
+\widowpenalty=10000
+\clubpenalty=10000
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\hypersetup{pdftitle={جزوه اول، مدل‌های MOS Capacitance و مشخصه C-V}}
+\AssignmentNumber{جزوه اول، ظرفیت‌های \lr{MOS}}
+\AssignmentDate{بخش \secnum{۲.۳} کتاب}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\section*{هدف و مسیر مطالعه}
+در تحلیل جریان، رابطه بار کانال و ولتاژ \lr{Gate} را به کار بردیم.
+اکنون تغییر بار پایانه‌ها را دنبال می‌کنیم تا بار ورودی گیت و ظرفیت‌های ناخواسته
+خروجی را تخمین بزنیم. معنای مشتق و میانگین‌گیری در محل استفاده توضیح داده می‌شود.
+با درنظرگرفتن نگذرانده‌بودن \lr{Digital Electronics}، مدل مدار معادل و شرایط
+جمع‌کردن ظرفیت‌ها نیز با مثال معرفی می‌شوند.
+
+دامنه این متن، بخش \secnum{۲.۳} کتاب در صفحات چاپی ۶۸ تا ۷۳ و اسلایدهای ۲۳ و ۲۴
+مجموعه \lr{01} است \cite{weste,mos}. هر سه زیربخش مدل ساده، مدل تفصیلی
+\lr{Gate} و مدل تفصیلی \lr{Diffusion} پوشش داده می‌شوند.
+استخراج ضریب \(2/3\)، توضیح ظرفیت معادل بر پایه تغییر بار و تمرین‌های افزوده،
+بسط آموزشی مدل‌های مرجع هستند. در شکل‌ها و مثال‌های افزوده، فرض‌های عددی مشخص می‌شوند.
+
+نماد \(C_0=WLC_{\mathrm{ox}}\) ظرفیت هندسی اکسید روی کانال است.
+\(C_{GS,i},C_{GD,i},C_{GB,i}\) مؤلفه‌های \lr{Intrinsic} مدل کتاب را نشان می‌دهند.
+پسوند \(\mathrm{ov}\) سهم \lr{Overlap} و نماد بدون پسوند \(i\)، در مدار معادل
+کامل این جزوه، مجموع سهم‌های همان دو پایانه را نشان می‌دهد.
+این تفکیک مانع جمع‌کردن دوباره یک سهم در مدل‌های با دقت متفاوت می‌شود.
+
+جدول‌ها و فرمول‌ها از مدل‌های آموزشی کتاب استفاده می‌کنند. برای کاربرد عددی در
+فناوری واقعی، پارامترها و روش استخراج مدل همان فناوری لازم است.
+\tableofcontents
+\clearpage
+\input{notes/booklet-01/ch2-capacitance-basics}
+\input{notes/booklet-01/ch2-gate-capacitance}
+\input{notes/booklet-01/ch2-diffusion-capacitance}
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective},
+Fourth Edition, Pearson, 2011.
+\end{latin}
+بخش \secnum{۲.۳}، صفحات چاپی ۶۸ تا ۷۳، روابط \secnum{۲.۱۲} تا
+\secnum{۲.۲۲}، جدول \secnum{۲.۱}، شکل‌های \secnum{۲.۸} تا \secnum{۲.۱۳}
+و مثال \secnum{۲.۲} بررسی شده‌اند. شماره صفحه فایل \lr{PDF} با افزودن ۲۷ به
+شماره چاپی به دست می‌آید. شماره شکل‌ها و روابط جزوه مستقل‌اند.
+شرح بار موضعی برای استخراج ضریب \(2/3\)، بر پایه مدل \lr{Long-channel}
+بخش \secnum{۲.۲} همین کتاب بسط داده شده است.
+\bibitem{mos}
+اسلایدهای محلی \lr{MOSFET Transistors}، فایل \lr{01-MOSFET Ch2.pdf}،
+اسلایدهای ۲۳ و ۲۴ درباره منشأ ظرفیت‌ها و مدل ساده \lr{Gate}.
+شماره اسلاید و صفحه فایل یکسان‌اند. اصل یادداشت‌ها طبق اسلاید ۲ مجموعه
+\lr{00-introduction.pdf} متعلق به \lr{David Money Harris}، سال ۲۰۱۱، و نسخه
+محلی اقتباس‌شده است.
+\end{thebibliography}
+\end{document}

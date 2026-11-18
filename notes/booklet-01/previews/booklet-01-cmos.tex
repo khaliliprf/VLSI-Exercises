@@ -1,0 +1,64 @@
+% !TeX program = xelatex
+% This approved increment covers textbook sections 1.1 through 1.4 only.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\setlength{\emergencystretch}{3em}
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\widowpenalty=10000
+\clubpenalty=10000
+\hypersetup{pdftitle={جزوه اول؛ معرفی VLSI و منطق CMOS}}
+\AssignmentNumber{جزوه اول؛ معرفی و منطق \lr{CMOS}}
+\AssignmentDate{بخش‌های \secnum{۱.۱} تا \secnum{۱.۴} کتاب}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\section*{مسیر مطالعه و محدوده این بخش}
+در بخش پیش‌نیازها، کمیت‌های مدار، قوانین گره و حلقه، خازن و عملگرهای منطقی
+آموزش داده شدند. اکنون می‌خواهیم ببینیم این عملگرها چگونه از ترانزیستور ساخته می‌شوند.
+ابتدا انگیزه \lr{VLSI} و ساختار مقدماتی \lr{MOS} معرفی می‌شود؛ سپس مسیر
+\lr{Inverter}، گیت‌های چندورودی، انتخاب داده و ذخیره یک بیت را دنبال می‌کنیم.
+
+این فایل، بخش‌های \secnum{۱.۱} تا \secnum{۱.۴} کتاب مرجع را پوشش می‌دهد
+\cite{weste}. جزوه کامل فصل اول یا تحلیل کمی فصل دوم هنوز نیست.
+برای کنترل جهت و معنای روابط، هر شرط هدایت از تابع خروجی جدا نوشته می‌شود.
+مثال‌های تکمیلی و نمودارهای آموزشی این جزوه، نتیجه شبیه‌سازی یا داده یک فناوری نیستند.
+شکل‌های مداری بازترسیم آموزشی‌اند؛ اتصال‌هایشان باید همراه با توضیح متن خوانده شود.
+
+اسلاید \lr{00} مدل \lr{Switch} و گیت‌های پایه را عرضه می‌کند؛
+موضوعات پیشرفته‌تر بخش \secnum{۱.۴} از کتاب تکمیل شده‌اند.
+اشاره اسلاید به لایه‌های طراحی در اینجا فقط مقدمه است؛ بخش‌های \secnum{۱.۵}
+تا \secnum{۱.۱۲} در گام بعدی جزوه اول خواهند آمد.
+\tableofcontents
+\clearpage
+\input{notes/booklet-01/ch1-intro-mos}
+\input{notes/booklet-01/ch1-static-logic}
+\input{notes/booklet-01/ch1-pass-mux}
+\input{notes/booklet-01/ch1-storage}
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective},
+Fourth Edition, Pearson, 2011.
+\end{latin}
+بخش \secnum{۱.۱}: صفحات چاپی ۱ تا ۶؛ بخش \secnum{۱.۲}: صفحه ۶؛
+بخش \secnum{۱.۳}: صفحات ۶ تا ۸؛ بخش \secnum{۱.۴}: صفحات ۹ تا ابتدای ۱۹.
+در این محدوده، شماره صفحه فایل \lr{PDF} برابر شماره چاپی به‌اضافه ۲۷ است.
+شکل‌های اصلی مرتبط عبارت‌اند از \secnum{۱.۹} تا \secnum{۱.۳۳}؛
+شماره شکل‌های داخل این جزوه مستقل از کتاب است.
+\bibitem{intro}
+اسلایدهای محلی \lr{Introduction}، فایل \lr{00-introduction.pdf}:
+اسلایدهای ۴ تا ۱۲ برای تاریخچه و رشد، ۱۵ تا ۲۰ برای مقدمه سطوح طراحی،
+و ۲۱ تا ۲۷ برای مدل \lr{Switch} و گیت‌ها.
+مطابق اسلاید ۲، اصل یادداشت‌ها متعلق به \lr{David Money Harris}، سال ۲۰۱۱،
+و نسخه محلی اقتباس‌شده است. شماره اسلاید با صفحه فایل یکسان است.
+\bibitem{mos}
+اسلایدهای محلی \lr{MOSFET Transistors}، فایل \lr{01-MOSFET Ch2.pdf}،
+اسلایدهای ۲ تا ۸ برای مقدمات ساختار و تشکیل کانال؛
+اسلایدهای ۱۰ تا ۱۳ برای معنای اختلاف ولتاژهای کنترل.
+این ارجاع‌ها مقدمه فصل دوم‌اند؛ استخراج روابط جریان در بخش بعدی جزوه اول انجام می‌شود.
+\end{thebibliography}
+\end{document}

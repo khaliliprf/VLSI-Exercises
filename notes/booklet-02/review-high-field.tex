@@ -1,0 +1,162 @@
+% !TeX root = booklet-02.tex
+\chapter*{مرور مدل‌های میدان قوی و \lr{CLM}}
+\addcontentsline{toc}{chapter}{مرور مدل‌های میدان قوی و \lr{CLM}}
+\section*{مسیر انتخاب رابطه}
+ابتدا \(V_{GS},V_{DS}\) و \(V_{GT}\) را با قرارداد پایانه‌ها حساب کنید.
+سپس مدل داده‌شده در مسئله را مشخص کنید. اگر مدل سرعت کتاب داده شده است،
+\(\mu_{\mathrm{eff}}\)، \(V_c\) و
+\(V_{\mathrm{dsat}}\) از روابط \eqref{eq:mobility-n}،
+\eqref{eq:critical-voltage} و \eqref{eq:high-field-saturation-voltage}
+به دست می‌آیند. برای مدل \lr{Alpha-power law}، مرز و جریان اشباع از
+\eqref{eq:alpha-parameters} یا \eqref{eq:alpha-normalized} تعیین می‌شوند.
+در مدل مربعی با \lr{Channel Length Modulation}، رابطه
+\eqref{eq:clm-lambda} در ناحیه اشباع به کار می‌رود.
+
+هنگام مقایسه دو نتیجه، پارامترهای ثابت را بنویسید. تغییر \lr{Mobility}،
+آستانه، هندسه و بایاس، هر کدام می‌توانند نتیجه را تغییر دهند.
+پس از محاسبه، واحد جواب، شرط ناحیه کاری و رفتار حدی را کنترل کنید.
+در مدل سرعت، باید \(0<V_{\mathrm{dsat}}<\min(V_{GT},V_c)\) باشد.
+در مدل \lr{CLM} با \(\lambda>0\)، شیب جریان در گیت ثابت مثبت است.
+
+\section*{راهنمای نمادهای این گام}
+در جدول \ref{tab:nonideal-symbols} نمادهای اصلی گردآوری شده‌اند.
+\(C_{\mathrm{ox}}\) ظرفیت بر واحد سطح و \(q'\) بار بر واحد طول است.
+برای دنبال‌کردن استخراج، توجه به همین واحدها مفید است.
+\begin{table}[!htbp]
+\centering
+\small
+\caption{نمادها و واحدهای اصلی در مدل‌های این گام.}
+\label{tab:nonideal-symbols}
+\begin{tabularx}{\linewidth}{c>{\raggedleft\arraybackslash}Xc}
+\toprule
+نماد & تعریف & واحد\\
+\midrule
+\(V_{GT}\) & اضافه‌ولتاژ گیت \(V_{GS}-V_t\) & \(\unit{\volt}\)\\
+\(\mu_{\mathrm{eff}}\) & \lr{Mobility} مؤثر در بایاس مشخص & \(\unit{\metre\squared\per\volt\per\second}\)\\
+\(E(x),E_c\) & میدان محلی و میدان بحرانی & \(\unit{\volt\per\metre}\)\\
+\(v,v_{\mathrm{sat}}\) & بزرگی سرعت و سرعت اشباع & \(\unit{\metre\per\second}\)\\
+\(V_c\) & مقیاس ولتاژ بحرانی \(E_cL\) & \(\unit{\volt}\)\\
+\(V_{\mathrm{dsat}}\) & مرز اشباع در مدل انتخاب‌شده & \(\unit{\volt}\)\\
+\(q'\) & بزرگی بار متحرک بر واحد طول & \(\unit{\coulomb\per\metre}\)\\
+\(\beta_{\mathrm{eff}}\) & ضریب جریان با \lr{Mobility} مؤثر & \(\unit{\ampere\per\volt\squared}\)\\
+\(\alpha\) & توان تجربی مدل جریان & بی‌بعد\\
+\(L_d,L_{\mathrm{eff}}\) & سهم طولی ناحیه تخلیه و طول مؤثر & \(\unit{\metre}\)\\
+\(V_A,\lambda\) & \lr{Early Voltage} و معکوس آن & \(\unit{\volt},\unit{\per\volt}\)\\
+\(g_{ds},r_o\) & رسانایی و مقاومت خروجی & \(\unit{\siemens},\unit{\ohm}\)\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section*{تمرین‌های آموزشی و پاسخ تشریحی}
+\textbf{تمرین ۱.}
+در مدل سرعت، \(\mu_{\mathrm{eff}}=\qty{0.02}{\metre\squared\per\volt\per\second}\)،
+\(v_{\mathrm{sat}}=\qty{e5}{\metre\per\second}\)،
+\(L=\qty{100}{\nano\metre}\)، \(V_{GT}=\qty{0.5}{\volt}\) و
+\(\beta_{\mathrm{eff}}=\qty{400}{\micro\ampere\per\volt\squared}\)
+هستند. \(V_c\)، مرز اشباع و جریان در
+\(V_{DS}=\qty{0.2}{\volt}\) و \(\qty{0.6}{\volt}\) را بیابید.
+
+\textbf{پاسخ.}
+از \eqref{eq:critical-field}، میدان و ولتاژ بحرانی را می‌یابیم.
+\[
+ E_c=\frac{2(10^5)}{0.02}=\qty{e7}{\volt\per\metre},\qquad
+ V_c=E_cL=\qty{1}{\volt}.
+\]
+سپس رابطه \eqref{eq:high-field-saturation-voltage} مرز اشباع را می‌دهد.
+\[
+ V_{\mathrm{dsat}}=\frac{0.5(1)}{0.5+1}=\qty{0.3333}{\volt}.
+\]
+بایاس نخست در \lr{Linear} است و رابطه \eqref{eq:high-field-linear}
+می‌دهد
+\[
+ I=\frac{400[0.5(0.2)-0.2^2/2]}{1+0.2}
+ \approx\qty{26.67}{\micro\ampere}.
+\]
+بایاس دوم در اشباع است. از \eqref{eq:current-reduction-factor}،
+جریان چنین محاسبه می‌شود.
+\[
+ I=\frac{(400/2)(0.5)^2}{1+0.5}=\qty{33.33}{\micro\ampere}.
+\]
+مرز به دست آمده هم از \(\qty{0.5}{\volt}\) و هم از
+\(\qty{1}{\volt}\) کوچک‌تر است.
+
+\textbf{تمرین ۲.}
+در تمرین ۱، اگر طول کانال دو برابر و سایر پارامترهای ماده، عرض و بایاس‌ها
+ثابت باشند، جریان اشباع چه تغییری می‌کند؟
+
+\textbf{پاسخ.}
+از \(V_c=E_cL\)، ولتاژ بحرانی به \(\qty{2}{\volt}\) می‌رسد.
+از \(\beta_{\mathrm{eff}}=\mu_{\mathrm{eff}}C_{\mathrm{ox}}W/L\)،
+ضریب جریان به \(\qty{200}{\micro\ampere\per\volt\squared}\) کاهش
+می‌یابد. در نتیجه، مرز اشباع و جریان جدید عبارت‌اند از
+\[
+ \begin{aligned}
+ V_{\mathrm{dsat}}&=\frac{0.5(2)}{0.5+2}=\qty{0.4}{\volt},\\
+ I_{\mathrm{sat}}&=\frac{(200/2)(0.5)^2}{1+0.5/2}=\qty{20}{\micro\ampere}.
+ \end{aligned}
+\]
+نسبت جریان جدید به قدیم برابر \(0.6\)
+است. در این محاسبه، عامل کاهش ناشی از سرعت نیز با طول تغییر کرده است.
+
+\textbf{تمرین ۳.}
+در یک مدل \lr{Alpha-power law}، اگر \(\alpha=1.5\) و آستانه ثابت باشد،
+افزایش \(V_{GT}\) از \(\qty{0.4}{\volt}\) به \(\qty{0.6}{\volt}\)،
+جریان و مرز اشباع را با چه ضریبی تغییر می‌دهد؟
+
+\textbf{پاسخ.}
+با ثابت بودن ضرایب برازش، نسبت جریان
+\((0.6/0.4)^{1.5}\approx1.837\) و نسبت مرز اشباع
+\((0.6/0.4)^{0.75}\approx1.355\) است. برای استفاده از مقدار جریان
+اشباع در یک بایاس \lr{Drain} مشخص، شرط مرز هر دو حالت باید بررسی شود.
+
+\textbf{تمرین ۴.}
+در گیت ثابت، دو نقطه فرضی از شاخه اشباع عبارت‌اند از
+\((\qty{1}{\volt},\qty{110}{\micro\ampere})\) و
+\((\qty{2}{\volt},\qty{120}{\micro\ampere})\).
+با مدل \lr{CLM}، \(I_0\)، \(\lambda\)، \(V_A\) و \(r_o\) را بیابید.
+
+\textbf{پاسخ.}
+ابتدا شیب و عرض از مبدأ را به دست می‌آوریم.
+\[
+ \begin{aligned}
+ m&=\frac{120-110}{2-1}=\qty{10}{\micro\siemens},\\
+ b&=110-10(1)=\qty{100}{\micro\ampere}.
+ \end{aligned}
+\]
+پس پارامترهای خواسته‌شده چنین‌اند.
+\[
+ \begin{aligned}
+ I_0&=\qty{100}{\micro\ampere},&
+ \lambda&=m/b=\qty{0.1}{\per\volt},\\
+ V_A&=\qty{10}{\volt},&
+ r_o&=1/m=\qty{100}{\kilo\ohm}.
+ \end{aligned}
+\]
+جریان پیش‌بینی‌شده در \(V_{DS}=\qty{1.5}{\volt}\) برابر
+\(\qty{115}{\micro\ampere}\) است. این استخراج بر فرض اشباع و ثابت
+بودن گیت در هر دو نقطه تکیه دارد.
+
+\textbf{تمرین ۵.}
+برای \lr{pMOS}، \(V_{SG}=\qty{1.0}{\volt}\)،
+\(V_{TP}=\qty{0.3}{\volt}\)، \(V_{SD}=\qty{0.9}{\volt}\)،
+\(\beta_p=\qty{100}{\micro\ampere\per\volt\squared}\) و
+\(\lambda_p=\qty{0.1}{\per\volt}\) داده شده‌اند.
+بزرگی جریان مدل مربعی با \lr{CLM} را به دست آورید.
+
+\textbf{پاسخ.}
+اضافه‌ولتاژ گیت \(\qty{0.7}{\volt}\) و
+\(V_{SD}=\qty{0.9}{\volt}\) است، پس شرط اشباع برقرار است.
+رابطه \eqref{eq:clm-pmos} می‌دهد
+\[
+ |I_{DS,p}|=(100/2)(0.7)^2[1+0.1(0.9)]
+ =\qty{26.705}{\micro\ampere}.
+\]
+با قرارداد جریان درین به سورس، جواب علامت‌دار
+\(I_{DS,p}\approx-\qty{26.7}{\micro\ampere}\) است.
+
+\section*{پیوند با ادامه جزوه دوم}
+در بخش \ref{sec:threshold-effects}، تغییر \(V_t\) با بایاس بدنه، بایاس
+درین و طول کانال بررسی شده است و بخش \ref{sec:leakage} مسیرهای نشتی
+را توضیح می‌دهد. دو فصل تمرین بعدی، کاربرد این روابط را نشان می‌دهند.
+وابستگی دما و هندسه در بخش‌های \ref{sec:temperature-dependence} و
+\ref{sec:geometry-dependence} آمده است.

@@ -9,20 +9,22 @@
 - `assets/aut-logo.png`: نسخهٔ اصلی نشان رسمی دانشگاه.
 - `assets/aut-logo-black.png`: نسخهٔ تک‌رنگ مشکی نشان که در صفحهٔ عنوان استفاده می‌شود.
 - `setup-check.tex`: نمونهٔ آزمایشی فارسی، انگلیسی، ریاضی و مدار.
-- `2/main.tex`: سند اصلی تمرین ۲ با صفحهٔ عنوان و هفت پاسخ.
-- `2/solutions/*.tex`: نسخهٔ LaTeX پاسخ‌های ۲.۲، ۲.۳ و ۲.۶ تا ۲.۱۰.
-- `2/*.md`: پاسخ‌های بازبینی‌شدهٔ واردشده توسط کاربر؛ چند نکتهٔ باقی‌مانده در نسخهٔ نهایی LaTeX اصلاح شده است.
-- `2/review.tex`: گزارش بازبینی اولیه، بدون تغییر.
-- `2/review-followup.md`: تطبیق سؤال‌به‌سؤال پاسخ‌های جدید با بازبینی و شرح اصلاحات نسخهٔ نهایی.
-- `3/main.tex` و `3/solutions/*.tex`: پاسخ‌های نهایی LaTeX تمرین‌های ۲.۱۶، ۲.۱۷ و ۲.۲۰.
-- `3/HW03-403131033.pdf`: نسخهٔ نهایی یازده‌صفحه‌ای سری دوم تمرین‌های فصل دو.
-- `3/review.md`: گزارش بررسی فنی، بیلد و بازبینی تصویری این سری.
+- `exercises/2/main.tex`: سند اصلی تمرین ۲ با صفحهٔ عنوان و هفت پاسخ.
+- `exercises/exercises/2/solutions/*.tex`: نسخهٔ LaTeX پاسخ‌های ۲.۲، ۲.۳ و ۲.۶ تا ۲.۱۰.
+- `exercises/2/*.md`: پاسخ‌های بازبینی‌شدهٔ واردشده توسط کاربر؛ چند نکتهٔ باقی‌مانده در نسخهٔ نهایی LaTeX اصلاح شده است.
+- `exercises/2/review.tex`: گزارش بازبینی اولیه، بدون تغییر.
+- `exercises/2/review-followup.md`: تطبیق سؤال‌به‌سؤال پاسخ‌های جدید با بازبینی و شرح اصلاحات نسخهٔ نهایی.
+- `exercises/3/main.tex` و `exercises/3/solutions/*.tex`: پاسخ‌های نهایی LaTeX تمرین‌های ۲.۱۶، ۲.۱۷ و ۲.۲۰.
+- `exercises/2/HW01-403131033.pdf`: نسخهٔ نهایی سری اول تمرین‌های فصل ۲.
+- `exercises/3/HW02-403131033.pdf`: نسخهٔ نهایی یازده‌صفحه‌ای سری دوم تمرین‌های فصل ۲.
+- `notes/complete.tex` و `notes/complete.pdf`: نسخهٔ کامل تجمیعی جزوه‌ها؛ فایل‌های هر جزوه در `notes/booklet-NN/` و تنظیمات مشترک در `notes/common/` هستند.
+- `exercises/3/review.md`: گزارش بررسی فنی، بیلد و بازبینی تصویری این سری.
 - `scripts/verify-assignment3.js`: کنترل مستقل KCL، نواحی کاری، Noise Margin، ارجاع‌ها و خروجی بیلد سری سوم.
 - `scripts/convert-exercise-markdown.js`: تبدیل متن‌های Markdown تمرین ۲ به فایل‌های LaTeX بدون بازنویسی محتوای فنی.
 - `build/`: فایل‌های PDF و خروجی‌های کامپایل.
 
-فایل `build/main.pdf` خروجی آخرین بیلد است و هنگام ساخت هرکدام از `2/main.tex` یا `3/main.tex` بازنویسی می‌شود. نسخه‌های محفوظ قابل تحویل در `2/HW02-403131033.pdf` و `3/HW03-403131033.pdf` قرار دارند.
-فایل‌های `2/solutions/*.tex` ویرایش علمی و نگارشی شده‌اند؛ اجرای دوبارهٔ اسکریپت تبدیل قدیمی، این ویرایش‌ها را با تبدیل خام Markdown جایگزین می‌کند و برای ساخت نسخهٔ نهایی لازم نیست.
+فایل `build/main.pdf` خروجی آخرین بیلد است و هنگام ساخت هرکدام از `exercises/2/main.tex` یا `exercises/3/main.tex` بازنویسی می‌شود. نسخه‌های محفوظ قابل تحویل در `exercises/2/HW01-403131033.pdf` و `exercises/3/HW02-403131033.pdf` قرار دارند. عدد بعد از `HW` شمارهٔ سری تمرین است.
+فایل‌های `exercises/exercises/2/solutions/*.tex` ویرایش علمی و نگارشی شده‌اند؛ اجرای دوبارهٔ اسکریپت تبدیل قدیمی، این ویرایش‌ها را با تبدیل خام Markdown جایگزین می‌کند و برای ساخت نسخهٔ نهایی لازم نیست.
 
 ## کامپایل
 
@@ -30,8 +32,8 @@
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
-powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Document 2/main.tex
-powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Document 3/main.tex
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Document exercises/2/main.tex
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -Document exercises/3/main.tex
 ```
 
 هر دستور دو بار XeLaTeX را اجرا می‌کند تا ارجاع‌ها تکمیل شوند. خروجی دستور اول `build/setup-check.pdf` و خروجی هریک از دو دستور بعدی `build/main.pdf` است.

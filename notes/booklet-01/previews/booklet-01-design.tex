@@ -1,0 +1,63 @@
+% !TeX program = xelatex
+% Approved increment: textbook sections 1.6, 1.7, and 1.8.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\newcommand{\code}[1]{\lr{\texttt{#1}}}
+\setlength{\emergencystretch}{3em}
+\widowpenalty=10000
+\clubpenalty=10000
+\hypersetup{pdftitle={جزوه اول؛ سازمان‌دهی طراحی، MIPS و Logic Design}}
+\AssignmentNumber{جزوه اول؛ سازمان‌دهی طراحی و مثال \lr{MIPS}}
+\AssignmentDate{بخش‌های \secnum{۱.۶} تا \secnum{۱.۸} کتاب}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\section*{هدف و مسیر مطالعه}
+پس از شناخت گیت و \lr{Layout}، مسئله تازه مدیریت یک طراحی بزرگ است.
+در این بخش، سطوح طراحی و تقسیم کار را می‌شناسیم، سپس مثال پردازنده کتاب را
+از تعریف داده و دستور تا منطق کنترل دنبال می‌کنیم.
+آشنایی قبلی با معماری کامپیوتر یا \lr{HDL} فرض نمی‌شود؛
+اصطلاح‌ها و ریاضی لازم پیش از استفاده معرفی می‌شوند.
+
+دامنه متن، بخش‌های \secnum{۱.۶} تا \secnum{۱.۸} کتاب است
+\cite{weste}. اسلایدهای ۱۵ تا ۲۰ مجموعه \lr{00}، مقدمه سطوح طراحی و
+توصیف سخت‌افزار را فراهم می‌کنند \cite{intro}؛ جزئیات پردازنده و برنامه از کتاب تکمیل شده‌اند.
+منظور از \lr{MIPS} در این مثال، زیرمجموعه آموزشی مشخص کتاب است:
+داده و \lr{PC} هشت‌بیتی‌اند، اما دستورها ۳۲ بیت دارند.
+نباید آن را پیاده‌سازی کامل معماری \lr{MIPS32} دانست.
+
+مثال‌های عددی افزوده‌شده آموزشی‌اند. جدول کنترل، برنامه و کدگذاری کتاب با
+شناسه اصلی حفظ می‌شوند؛ کد \lr{HDL} پایانی یک بازنویسی آموزشی قابل‌خواندن
+از ایده جمع‌کننده سلسله‌مراتبی است، نه کد کامل پردازنده.
+کنترل رفتاری مستقل از اجرای واقعی روی تراشه، شبیه‌سازی زمان‌بندی و \lr{Synthesis} متمایز است.
+\tableofcontents
+\clearpage
+\input{notes/booklet-01/ch1-partitioning}
+\input{notes/booklet-01/ch1-mips-architecture}
+\input{notes/booklet-01/ch1-mips-microarchitecture}
+\input{notes/booklet-01/ch1-logic-hdl}
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective},
+Fourth Edition, Pearson, 2011.
+\end{latin}
+بخش \secnum{۱.۶}: صفحات چاپی ۲۹ تا ۳۲؛ بخش \secnum{۱.۷}: صفحات ۳۳ تا ابتدای ۳۸؛
+بخش \secnum{۱.۸}: صفحات ۳۸ تا ابتدای ۴۲.
+صفحات متناظر فایل \lr{PDF} با افزودن ۲۷ به شماره چاپی به دست می‌آیند.
+شکل‌های \secnum{۱.۴۸} تا \secnum{۱.۵۹} و جدول‌های \secnum{۱.۷} تا \secnum{۱.۹}
+مبنای تطبیق مثال‌ها بوده‌اند. شکل‌های جزوه، شماره‌گذاری داخلی مستقل دارند.
+شکل‌های اصلی \lr{Datapath} و \lr{FSM} در کتاب با اقتباس از منابع \lr{Patterson}
+و \lr{Harris} و مجوز \lr{Elsevier} معرفی شده‌اند؛ نمودارهای این جزوه بازنمایی آموزشی فشرده‌اند.
+\bibitem{intro}
+اسلایدهای محلی \lr{Introduction}، فایل \lr{00-introduction.pdf}،
+اسلایدهای ۱۵ تا ۲۰، درباره \lr{Structured Design}، سطوح طراحی،
+نمودار \lr{Y} و مثال \lr{Verilog}.
+اصل یادداشت‌ها طبق اسلاید ۲ متعلق به \lr{David Money Harris}، سال ۲۰۱۱،
+و نسخه محلی اقتباس‌شده است. شماره اسلاید و صفحه فایل یکسان‌اند.
+\end{thebibliography}
+\end{document}

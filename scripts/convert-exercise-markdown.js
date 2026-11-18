@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const outputDir = path.join(root, '2', 'solutions');
+const outputDir = path.join(root, 'exercises', '2', 'solutions');
 fs.mkdirSync(outputDir, { recursive: true });
 
 function formatInline(raw) {
@@ -112,7 +112,7 @@ function convert(source) {
 }
 
 for (const number of ['2-2', '2-3', '2-6', '2-7', '2-8', '2-9', '2-10']) {
-  const markdown = fs.readFileSync(path.join(root, '2', `${number}.md`), 'utf8');
+  const markdown = fs.readFileSync(path.join(root, 'exercises', '2', `${number}.md`), 'utf8');
   const fragment = `% Generated from 2/${number}.md; technical content preserved.\n` +
     `\\exercise{${number.replace('2-', '۲.').replace(/[0-9]/g, n => '۰۱۲۳۴۵۶۷۸۹'[Number(n)])}}\n` +
     convert(markdown);

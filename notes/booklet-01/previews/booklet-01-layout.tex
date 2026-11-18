@@ -1,0 +1,67 @@
+% !TeX program = xelatex
+% Approved increment: textbook section 1.5; previous parts remain independent.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\mbox{\beginL#1\endL}}
+\setlength{\emergencystretch}{3em}
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\widowpenalty=10000
+\clubpenalty=10000
+\hypersetup{pdftitle={جزوه اول؛ Fabrication و Layout}}
+\AssignmentNumber{جزوه اول؛ \lr{Fabrication} و \lr{Layout}}
+\AssignmentDate{بخش \secnum{۱.۵} کتاب}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+\begin{document}
+\MakeAssignmentCover
+\section*{هدف و مرز این بخش}
+در بخش قبلی، تابع منطقی را به شبکه ترانزیستور تبدیل کردیم.
+اکنون می‌خواهیم بدانیم همین شبکه چگونه با ناحیه‌های مواد و اتصال‌ها ساخته و
+در نمای بالا خوانده می‌شود. پیش‌نیاز این بخش، شناخت پایانه‌های \lr{MOS}،
+عملکرد \lr{Inverter} و اتصال سری و موازی است؛ مفاهیم تازه ساخت و هندسه
+در همین متن معرفی می‌شوند.
+
+دامنه این فایل، تمام زیربخش‌های \secnum{۱.۵.۱} تا \secnum{۱.۵.۵} کتاب
+\lr{Weste} و \lr{Harris} است \cite{weste}.
+اسلایدهای محلی \lr{00} و \lr{01} زمینه ساختار ترانزیستور و گیت‌ها را فراهم کرده‌اند
+\cite{intro,mos}؛ جزئیات ساخت، قواعد عددی و مثال‌های این بخش از خود کتاب گرفته شده‌اند.
+شماره‌های بخش و شکل کتاب با شماره‌گذاری داخلی این جزوه متفاوت‌اند.
+
+مدل فرایند این فصل، یک فرایند ساده آموزشی \lr{n-well CMOS} است؛
+نباید آن را دستور ساخت کامل فناوری روز دانست.
+شکل‌های توپولوژی ابعاد قابل ساخت را تضمین نمی‌کنند؛ شکل‌های اندازه‌دار نیز
+فقط قواعد صریحاً ذکرشده در همین مدل را نشان می‌دهند.
+در این گام، \lr{CAD}، \lr{Design Rule Checking (DRC)} یا
+\lr{Layout Versus Schematic (LVS)} واقعی اجرا نشده است.
+
+\tableofcontents
+\clearpage
+\input{notes/booklet-01/ch1-fabrication}
+\input{notes/booklet-01/ch1-layout-rules}
+\input{notes/booklet-01/ch1-layout-examples}
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective},
+Fourth Edition, Pearson, 2011.
+\end{latin}
+بخش \secnum{۱.۵}: صفحات چاپی ۱۹ تا ابتدای ۲۹؛ صفحات ۴۶ تا ۵۶ فایل \lr{PDF}.
+مقطع و مجموعه ماسک: شکل‌های \secnum{۱.۳۴} و \secnum{۱.۳۵}؛
+مراحل ساخت: \secnum{۱.۳۶} تا \secnum{۱.۳۸}؛ قواعد و ابعاد:
+\secnum{۱.۳۹} و \secnum{۱.۴۰}؛ گیت‌ها و تخمین مساحت:
+\secnum{۱.۴۱} تا \secnum{۱.۴۷}.
+شکل‌های این جزوه بازترسیم آموزشی و دارای شماره داخلی مستقل‌اند.
+\bibitem{intro}
+اسلایدهای محلی \lr{Introduction}، فایل \lr{00-introduction.pdf}،
+اسلایدهای ۲۱ تا ۲۷، درباره مدل \lr{Switch} و گیت‌ها.
+طبق اسلاید ۲، یادداشت‌های اصلی متعلق به \lr{David Money Harris}، سال ۲۰۱۱،
+و نسخه محلی اقتباس‌شده است.
+\bibitem{mos}
+اسلایدهای محلی \lr{MOSFET Transistors}، فایل \lr{01-MOSFET Ch2.pdf}،
+اسلایدهای ۵ تا ۷ برای ساختار مقدماتی؛ اسلایدهای ۱۵ و ۲۴ برای
+جهت‌های \(W,L\) و ارتباط هندسه با ظرفیت.
+در فایل‌های اسلاید، شماره صفحه و شماره اسلاید یکسان است.
+\end{thebibliography}
+\end{document}
