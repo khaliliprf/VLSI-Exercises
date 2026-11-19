@@ -126,13 +126,12 @@
 تغییر ولتاژ لازم برای جبران بار اضافه روی ظرفیت اکسید از رابطه
 \(\Delta V=\Delta\sigma/C_{\mathrm{ox}}\) به دست می‌آید.
 بنابراین تغییر آستانه برابر است با
-\begin{align}
+\begin{align*}
  \Delta V_t&=\frac{\sigma_{\mathrm{dep}}(V_{SB})-
- \sigma_{\mathrm{dep}}(0)}{C_{\mathrm{ox}}},\notag\\
+ \sigma_{\mathrm{dep}}(0)}{C_{\mathrm{ox}}},\\
  &=\frac{B_Q}{C_{\mathrm{ox}}}
  \left(\sqrt{\phi_s+V_{SB}}-\sqrt{\phi_s}\right).
- \label{eq:threshold-charge-derivation}
-\end{align}
+\end{align*}
 با جایگذاری \(B_Q/C_{\mathrm{ox}}=\gamma\)، رابطه کامل اثر بدنه بازیابی
 می‌شود. در این استخراج، افزایش بایاس بدنه از مسیر افزایش بار تخلیه به
 افزایش آستانه مرتبط شده است.
@@ -162,25 +161,23 @@
 \end{align}
 ضخامت اکسید در واحد سانتی‌متر،
 \(\qty{1.05e-7}{\centi\metre}\) است. پس
-\begin{align}
+\begin{align*}
  C_{\mathrm{ox}}&=\frac{3.9(8.85\times10^{-14})}{1.05\times10^{-7}}
- \approx\qty{3.2871e-6}{\farad\per\centi\metre\squared},\notag\\
+ \approx\qty{3.2871e-6}{\farad\per\centi\metre\squared},\\
  B_Q&=\sqrt{2(1.6\times10^{-19})(11.7)(8.85\times10^{-14})(8\times10^{17})}
- \notag\\
- &\approx\qty{5.1485e-7}{\coulomb\per\centi\metre\squared\per\volt\tothe{0.5}},\notag\\
+ \\
+ &\approx\qty{5.1485e-7}{\coulomb\per\centi\metre\squared\per\volt\tothe{0.5}},\\
  \gamma&=\frac{B_Q}{C_{\mathrm{ox}}}
  \approx\qty{0.15663}{\volt\tothe{0.5}}.
- \label{eq:body-book-example-gamma}
-\end{align}
+\end{align*}
 با \(V_{SB}=\qty{0.6}{\volt}\)، اکنون دو ریشه را جداگانه ارزیابی
 می‌کنیم و تفاضل آن‌ها را در \(\gamma\) ضرب می‌کنیم
-\begin{align}
+\begin{align*}
  \Delta V_t&\approx0.15663\left(\sqrt{0.92695+0.6}-\sqrt{0.92695}\right)
- \,\unit{\volt}\notag\\
+ \,\unit{\volt}\\
  &\approx\qty{0.04275}{\volt},\qquad
  V_t\approx\qty{0.34275}{\volt}.
- \label{eq:body-book-example-result}
-\end{align}
+\end{align*}
 گردکردن به دقت متن مرجع، افزایش حدود \(\qty{0.04}{\volt}\) و آستانه
 \(\qty{0.34}{\volt}\) را می‌دهد. رقم‌های بیشتر برای دنبال‌کردن محاسبه
 میانی آورده شده‌اند. کتاب در توضیح عمومی \(\gamma\)، بازه معمول
@@ -346,22 +343,20 @@
 \(\gamma=\qty{0.5}{\volt\tothe{0.5}}\)،
 \(\phi_s=\qty{0.8}{\volt}\) و \(\eta=0.1\) می‌گیریم.
 ابتدا اختلاف ولتاژهای پایانه‌ها را حساب می‌کنیم
-\begin{equation}
+\begin{equation*}
  V_{GS}=\qty{0.8}{\volt},\qquad V_{DS}=\qty{0.8}{\volt},\qquad
  V_{SB}=\qty{0.2}{\volt}.
- \label{eq:combined-terminal-voltages}
-\end{equation}
+\end{equation*}
 سهم بدنه، سهم درین و آستانه نهایی برابرند با
-\begin{align}
+\begin{align*}
  \Delta V_{t,\mathrm{body}}
  &=0.5\left(\sqrt{0.8+0.2}-\sqrt{0.8}\right)\,\unit{\volt}
- \approx\qty{0.05279}{\volt},\notag\\
+ \approx\qty{0.05279}{\volt},\\
  \Delta V_{t,\mathrm{DIBL}}&=-0.1(0.8)\,\unit{\volt}
- =-\qty{0.080}{\volt},\notag\\
+ =-\qty{0.080}{\volt},\\
  V_{t,\mathrm{eff}}&\approx0.4+0.05279-0.080
  =\qty{0.37279}{\volt}.
- \label{eq:combined-threshold-example}
-\end{align}
+\end{align*}
 برای این اعداد، کاهش ناشی از درین از افزایش ناشی از بدنه بزرگ‌تر است.
 با \(\beta=\qty{200}{\micro\ampere\per\volt\squared}\)،
 \(V_{GT}\approx\qty{0.42721}{\volt}\) و شرط اشباع

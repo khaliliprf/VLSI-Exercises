@@ -27,9 +27,9 @@
 دستورها ۳۲ بیت و رابط داده حافظه هشت‌بیتی است
 \cite[بخش \secnum{۱.۷.۱}]{weste}.
 بنابراین ذخیره یک دستور در \lr{IR}، به چهار بایت هشت‌بیتی نیاز دارد:
-\begin{equation}\label{eq:mips-fetch-width}
+\begin{equation*}
 N_{\mathrm{bytes}}=\frac{32\ \mathrm{bits}}{8\ \mathrm{bits/byte}}=4\ \mathrm{bytes}.
-\end{equation}
+\end{equation*}
 این نسبت، تعداد انتقال را می‌دهد؛ فرض شده هر چرخه یک بایت در دسترس است.
 در طراحی دارای انتظار حافظه، تعداد چرخه می‌تواند بیشتر شود.
 
@@ -99,12 +99,11 @@ N_{\mathrm{bytes}}=\frac{32\ \mathrm{bits}}{8\ \mathrm{bits/byte}}=4\ \mathrm{by
 \cite[شکل \secnum{۱.۴۹}]{weste}.
 
 شمارش طول فیلدها، یک کنترل ساده بر کدگذاری است:
-\begin{align}
-\mathrm{R}:&\quad 6+5+5+5+5+6=32,\notag\\
-\mathrm{I}:&\quad 6+5+5+16=32,\notag\\
+\begin{align*}
+\mathrm{R}:&\quad 6+5+5+5+5+6=32,\\
+\mathrm{I}:&\quad 6+5+5+16=32,\\
 \mathrm{J}:&\quad 6+26=32.
-\label{eq:mips-fields}
-\end{align}
+\end{align*}
 دستورهای \lr{R} این مثال همگی \code{op=000000} دارند و \code{funct}
 عملیات را جدا می‌کند؛ مثلاً \code{100000} برای جمع و \code{100010} برای تفریق.
 قالب ۳۲بیتی را نباید به دلیل داده هشت‌بیتی به قالب کوتاه‌تر تبدیل کرد.

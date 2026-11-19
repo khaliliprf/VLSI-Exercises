@@ -91,7 +91,7 @@
 - When possible, inspect the PDF for correct B Nazanin rendering, Persian and Latin text direction, inline and display mathematics, and overflowing content.
 - Inspect every generated PDF for accidental Latin digits in Persian contexts and for presentation-form Arabic glyphs. Treat either as a typesetting defect unless it falls under an explicit Latin-context exception above.
 - If missing tools or fonts prevent compilation or visual inspection, report the limitation explicitly. Do not claim that an unperformed check passed.
-- Keep chapter source files in their designated subfolders under `notes/`, with shared settings in `notes/common/`. Build `notes/complete.tex` from those same fragments so the standalone booklets and complete edition remain synchronized.
+- Publish the course notes as one comprehensive PDF assembled from `notes/complete.tex`. Keep editable sources in topic or chapter subfolders under `notes/` and shared settings in `notes/common/`. The subfolders support editing and navigation. Apply `notes/AGENTS.md` to the structure and verification of the course notes.
 - Keep exercise series in `exercises/2/` and `exercises/3/`. Update project documentation and build or verification entry points when files move, and verify that referenced inputs exist.
 
 ## Normative writing and typesetting references

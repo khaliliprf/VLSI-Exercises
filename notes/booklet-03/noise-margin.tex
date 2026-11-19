@@ -97,12 +97,11 @@
 \(v_n\ge0\) به آن اضافه شود، ولتاژ دریافتی در این حالت
 \(V_{\mathrm{OL}}+v_n\) می‌شود. برای باقی‌ماندن در بازه
 \lr{LOW} گیرنده، باید
-\begin{equation}
+\begin{equation*}
  V_{\mathrm{OL}}+v_n\le V_{\mathrm{IL}}
  \quad\Longrightarrow\quad
  v_n\le V_{\mathrm{IL}}-V_{\mathrm{OL}}.
- \label{eq:noise-low-inequality}
-\end{equation}
+\end{equation*}
 پس رابطه \secnum{۲.۵۸} کتاب چنین تعریف می‌شود
 \begin{equation}
  \boxed{NM_L=V_{\mathrm{IL}}-V_{\mathrm{OL}}}.
@@ -111,12 +110,11 @@
 برای حالت بالا، بدترین خروجی مجاز
 \(V_{\mathrm{OH}}\) است. نویز نامطلوب، ولتاژ را کاهش می‌دهد.
 شرط باقی‌ماندن ورودی در بازه \lr{HIGH} برابر است با
-\begin{equation}
+\begin{equation*}
  V_{\mathrm{OH}}-v_n\ge V_{\mathrm{IH}}
  \quad\Longrightarrow\quad
  v_n\le V_{\mathrm{OH}}-V_{\mathrm{IH}}.
- \label{eq:noise-high-inequality}
-\end{equation}
+\end{equation*}
 در نتیجه، رابطه \secnum{۲.۵۹} کتاب چنین است
 \begin{equation}
  \boxed{NM_H=V_{\mathrm{OH}}-V_{\mathrm{IH}}}.
@@ -311,13 +309,12 @@
  \label{eq:noise-vih}
 \end{align}
 برای کنترل دامنه، تفاضل با مرزهای شاخه را محاسبه می‌کنیم
-\begin{align}
+\begin{align*}
  V_{\mathrm{IL}}-V_t
- &=V_{DD}-V_t-V_{\mathrm{IH}}=\frac{3K}{8}>0,\notag\\
+ &=V_{DD}-V_t-V_{\mathrm{IH}}=\frac{3K}{8}>0,\\
  \frac{V_{DD}}{2}-V_{\mathrm{IL}}
  &=V_{\mathrm{IH}}-\frac{V_{DD}}{2}=\frac{K}{8}>0.
- \label{eq:noise-unity-domains}
-\end{align}
+\end{align*}
 پس \(V_{\mathrm{IL}}\) واقعاً داخل \lr{B} و
 \(V_{\mathrm{IH}}\) داخل \lr{D} است. هیچ‌یک روی پاره‌خط
 عمودی ناحیه \lr{C} قرار ندارد.
@@ -374,25 +371,23 @@
 \]
 پس فرض وجود شاخه‌های \lr{B} و \lr{D} برقرار است.
 با جای‌گذاری در روابط استخراج‌شده، داریم
-\begin{align}
+\begin{align*}
  V_{\mathrm{IL}}&=\frac{3(1.0)+2(0.35)}{8}
- =\qty{0.4625}{\volt},\notag\\
+ =\qty{0.4625}{\volt},\\
  V_{\mathrm{IH}}&=\frac{5(1.0)-2(0.35)}{8}
- =\qty{0.5375}{\volt},\notag\\
+ =\qty{0.5375}{\volt},\\
  V_{\mathrm{OH}}&=\frac{7(1.0)+2(0.35)}{8}
- =\qty{0.9625}{\volt},\notag\\
+ =\qty{0.9625}{\volt},\\
  V_{\mathrm{OL}}&=\frac{1.0-2(0.35)}{8}
  =\qty{0.0375}{\volt}.
- \label{eq:noise-ex17-levels}
-\end{align}
+\end{align*}
 ارقام اعشاری برای بازبینی محاسبه مدل حفظ شده‌اند.
 این تعداد رقم، دقت فیزیکی یک فناوری را تعیین نمی‌کند.
 تفاضل‌های لازم می‌دهند
-\begin{equation}
+\begin{equation*}
  \boxed{NM_L=0.4625-0.0375=\qty{0.425}{\volt}},\qquad
  \boxed{NM_H=0.9625-0.5375=\qty{0.425}{\volt}}.
- \label{eq:noise-ex17-answer}
-\end{equation}
+\end{equation*}
 هر حاشیه \num{42.5} درصد تغذیه است.
 در صورت گزارش با دو رقم اعشار و قاعده گردکردن نیم‌به‌بالا،
 \(\qty{0.43}{\volt}\) حاصل می‌شود. محاسبه اصلی با مقادیر

@@ -62,10 +62,9 @@
 \(V_{DD}\) وصل باشند و خروجی از صفر شارژ شود.
 در طول شارژ، خروجی پایانه کم‌ولتاژتر و نقش \lr{Source} است.
 با \(y=V_{\mathrm{out}}\)، اضافه‌ولتاژ برابر است با
-\begin{equation}
+\begin{equation*}
  V_{GS}-V_{tn}=V_{DD}-y-V_{tn}.
- \label{eq:pass-n-overdrive}
-\end{equation}
+\end{equation*}
 با افزایش \(y\)، این اضافه‌ولتاژ کم می‌شود. اگر
 \(V_{DD}>V_{tn}\)، حد هدایت قوی با صفرشدن آن به دست می‌آید
 \begin{equation}
@@ -94,10 +93,9 @@
 
 برای \lr{pMOS} با \lr{Gate} صفر و ورودی زمین، خروجی در
 دشارژ از بالا نقش \lr{Source} دارد. شرط روشن‌بودن چنین است
-\begin{equation}
+\begin{equation*}
  V_{SG}>V_{TP}\quad\Longrightarrow\quad y>V_{TP}.
- \label{eq:pass-p-overdrive}
-\end{equation}
+\end{equation*}
 پس حد دشارژ با آستانه ثابت برابر است با
 \begin{equation}
  \boxed{y_{p,\mathrm{lim}}=V_{TP}}.
@@ -172,12 +170,11 @@
 برای حذف ریشه، \(z=\sqrt{\phi_n+y}\) تعریف می‌کنیم.
 در نتیجه، \(y=z^2-\phi_n\) و برای خروجی نامنفی،
 \(z\ge\sqrt{\phi_n}\) است. جای‌گذاری و جمع جمله‌ها می‌دهد
-\begin{align}
- z^2-\phi_n&=V_G-V_{tn0}-\gamma_n z+\gamma_n\sqrt{\phi_n},\notag\\
+\begin{align*}
+ z^2-\phi_n&=V_G-V_{tn0}-\gamma_n z+\gamma_n\sqrt{\phi_n},\\
  z^2+\gamma_nz
   -\left(\phi_n+V_G-V_{tn0}+\gamma_n\sqrt{\phi_n}\right)&=0.
- \label{eq:pass-body-quadratic}
-\end{align}
+\end{align*}
 فرمول درجه دوم، ریشه فیزیکی را به صورت زیر می‌دهد
 \begin{equation}
  z=\frac{-\gamma_n+
@@ -211,11 +208,10 @@
 \(\phi_n=\qty{0.93}{\volt}\) و
 \(\gamma_n=0.16\,\unit{\volt}^{1/2}\).
 رابطه \eqref{eq:pass-body-root} می‌دهد
-\begin{equation}
+\begin{equation*}
  y\approx\qty{0.6530}{\volt},\qquad
  V_{tn}(y)\approx\qty{0.3470}{\volt}.
- \label{eq:pass-body-example}
-\end{equation}
+\end{equation*}
 کنترل \(y+V_{tn}(y)\approx\qty{1}{\volt}\) و
 \(0<y<\qty{0.7}{\volt}\) برقرار است.
 کتاب برای نمونه فناوری خود در تغذیه \(\qty{1}{\volt}\)،
@@ -250,10 +246,9 @@
 می‌دهند \cite{weste,dcslides}. در مدل آستانه ثابت، نخستین
 افزاره حد \(V_{DD}-V_{tn}\) را تولید می‌کند.
 افزاره بعدی با گیت کامل، از \eqref{eq:pass-n-min-rule} می‌دهد
-\begin{equation}
+\begin{equation*}
  \min(V_{DD}-V_{tn},V_{DD}-V_{tn})=V_{DD}-V_{tn}.
- \label{eq:pass-series-same-gates}
-\end{equation}
+\end{equation*}
 پس برای هر واحد بعدی با همان گیت کامل، حد انتقال همان است.
 تعداد واحدها می‌تواند جریان، مقاومت مسیر و زمان شارژ را عوض
 کند. تحلیل حاضر، حد ولتاژ بدون بار \lr{DC} را تعیین می‌کند.
@@ -473,10 +468,9 @@
 با \(V_{DD}>V_{tn}\)، افزاره اول، \(X\) را تا صفر دشارژ
 می‌کند. افزاره دوم نیز مسیر هدایت برای تخلیه \(Y\) به
 همان صفر دارد. بنابراین،
-\begin{equation}
+\begin{equation*}
  \boxed{V_X=0,\qquad V_Y=0}.
- \label{eq:pass-ex20-a}
-\end{equation}
+\end{equation*}
 در حد نهایی، هر دو \(V_{DS}=0\) دارند و روشن‌بودن مسیر
 با جریان صفر سازگار است. سری‌شدن دو واحد، افت آستانه‌ای
 به سطح پایین اضافه نمی‌کند.
@@ -487,18 +481,16 @@
 در دشارژ \(X\) از ولتاژ بالا، \(X\) پایانه با ولتاژ بیشتر
 و در نتیجه سورس افزاره اول است. شرط هدایت
 \(V_X-0>V_{TP}\) است. حد دشارژ گره کنترل برابر می‌شود با
-\begin{equation}
+\begin{equation*}
  V_{X,\mathrm{lim}}=V_{TP}.
- \label{eq:pass-ex20-b-control}
-\end{equation}
+\end{equation*}
 پایانه ورودی افزاره دوم نیز زمین است، اما گیت آن در
 \(V_X\) قرار دارد. برای دشارژ خروجی از بالا، شرط هدایت
 \(V_Y-V_X>V_{TP}\) است. با رسیدن گره کنترل به حد خود،
 حد خروجی می‌شود
-\begin{equation}
+\begin{equation*}
  \boxed{V_{Y,\mathrm{lim}}=V_X+V_{TP}=2V_{TP}}.
- \label{eq:pass-ex20-b}
-\end{equation}
+\end{equation*}
 برای این تعبیر، \(V_{DD}>2V_{TP}\) را فرض می‌کنیم تا
 خروجی بتواند از ولتاژ اولیه بالاتر به این حد دشارژ شود.
 در حد نهایی، \(V_{SG}\) هر دو افزاره برابر \(V_{TP}\)
@@ -517,10 +509,9 @@
 اگر \(V_{DD}-V_{TP}>V_{tn}\)، در نزدیکی حد نهایی،
 این افزاره همچنان روشن است و اختلاف ولتاژ \(X\) و \(Y\)
 را به صفر می‌رساند. بنابراین،
-\begin{equation}
+\begin{equation*}
  \boxed{V_{Y,\mathrm{lim}}=V_{TP}}.
- \label{eq:pass-ex20-c}
-\end{equation}
+\end{equation*}
 شرط تغذیه معادل \(V_{DD}>V_{TP}+V_{tn}\) است.
 در حد نهایی، افزاره اول به آستانه رسیده و افزاره دوم با
 اضافه‌ولتاژ مثبت، اختلاف درین و سورس صفر دارد.
@@ -533,10 +524,9 @@
 \(V_{DD}\) شارژ می‌کند. ورودی و گیت \lr{nMOS} دوم در
 این حد هر دو \(V_{DD}\) هستند. در شارژ \(Y\) از پایین،
 اضافه‌ولتاژ آن \(V_{DD}-V_Y-V_{tn}\) است. پس
-\begin{equation}
+\begin{equation*}
  \boxed{V_X=V_{DD},\qquad V_{Y,\mathrm{lim}}=V_{DD}-V_{tn}}.
- \label{eq:pass-ex20-d}
-\end{equation}
+\end{equation*}
 در این حد، \lr{pMOS} روشن و اختلاف دو پایانه کانال آن صفر
 است. \lr{nMOS} به مرز آستانه رسیده است.
 

@@ -54,13 +54,12 @@
 برای نمونه فرضی \(t_{\mathrm{ox}}=\qty{10}{\nano\metre}\)،
 \(W=\qty{1}{\micro\metre}\) و \(L=\qty{0.5}{\micro\metre}\)، ابتدا همه طول‌ها
 را به متر می‌بریم. چون \(\qty{10}{\nano\metre}=10^{-8}\,\unit{\metre}\)، داریم
-\begin{align}
+\begin{align*}
  C_{\mathrm{ox}}&=\frac{3.9(8.85\times10^{-12})}{10^{-8}}
- =3.4515\times10^{-3}\,\unit{\farad\per\metre\squared},\notag\\
+ =3.4515\times10^{-3}\,\unit{\farad\per\metre\squared},\\
  C_g&=(3.4515\times10^{-3})(10^{-6})(0.5\times10^{-6})\,\unit{\farad}
  \approx\qty{1.73}{\femto\farad}.
- \label{eq:mos-cap-example}
-\end{align}
+\end{align*}
 ضریب تبدیل مساحت از \unit{\micro\metre\squared} به \unit{\metre\squared}
 برابر \(10^{-12}\) است، زیرا هر دو بعد در \(10^{-6}\) ضرب می‌شوند.
 این ظرفیت صفحه‌ای، پایه استخراج جریان است. تقسیم آن میان پایانه‌ها در بخش
@@ -122,11 +121,10 @@
 برای فهم واحد \(\mu\)، میدان واحد \unit{\volt\per\metre} دارد و سرعت واحد
 \unit{\metre\per\second}. پس واحد ضریب تناسب
 \unit{\metre\squared\per\volt\per\second} است. تبدیل واحد رایج کتاب چنین است
-\begin{equation}
+\begin{equation*}
  \qty{1}{\centi\metre\squared\per\volt\per\second}
  =10^{-4}\,\unit{\metre\squared\per\volt\per\second}.
- \label{eq:mos-mobility-units}
-\end{equation}
+\end{equation*}
 کتاب برای الکترون در میدان کم حدود \num{500} تا
 \qty{700}{\centi\metre\squared\per\volt\per\second}
 را ذکر می‌کند و سپس کاهش \lr{Mobility} در میدان‌های قوی را یادآور می‌شود
@@ -201,19 +199,17 @@
 همه مقطع‌ها یکسان است. دو طرف را در \(dx\) ضرب و در طول کانال جمع می‌کنیم.
 نماد انتگرال، جمع پیوسته سهم قطعه‌های کوچک است. با تغییر متغیر از مکان به
 پتانسیل، جمع از صفر تا \(V_{DS}\) انجام می‌شود
-\begin{equation}
+\begin{equation*}
  \int_0^L I_{DS}\,dx
  =W\mu_nC_{\mathrm{ox}}\int_0^{V_{DS}}(V_{GT}-V)\,dV.
- \label{eq:mos-integral}
-\end{equation}
+\end{equation*}
 سمت چپ چون جریان ثابت است، \(I_{DS}L\) می‌شود. در سمت راست، مساحت زیر خط
 \(V_{GT}-V\) در بازه صفر تا \(V_{DS}\)، مساحت یک مستطیل به ارتفاع \(V_{GT}\)
 منهای مساحت مثلث به ارتفاع و قاعده \(V_{DS}\) است. پس
-\begin{equation}
+\begin{equation*}
  I_{DS}L=W\mu_n C_{\mathrm{ox}}
  \left(V_{GT}V_{DS}-\frac12V_{DS}^2\right).
- \label{eq:mos-integrated-current}
-\end{equation}
+\end{equation*}
 تقسیم بر \(L\)، دقیقاً رابطه \eqref{eq:mos-linear} را در فرض‌های مدل به دست
 می‌دهد. عامل یک‌دوم از تغییر بار در امتداد کانال ناشی می‌شود. شرط
 \(V_{DS}\le V_{GT}\) تضمین می‌کند بار موضعی در سراسر کانال نامنفی باقی بماند.
@@ -317,13 +313,12 @@
 با واحد متر، \(\mu_n=0.035\,\unit{\metre\squared\per\volt\per\second}\)
 و \(C_{\mathrm{ox}}=3.4515\times10^{-3}\,\unit{\farad\per\metre\squared}\) است.
 بنابراین
-\begin{align}
+\begin{align*}
  k'_n&=(0.035)(3.4515\times10^{-3})\,
  \unit{\ampere\per\volt\squared}
- \approx\qty{120.8}{\micro\ampere\per\volt\squared},\notag\\
+ \approx\qty{120.8}{\micro\ampere\per\volt\squared},\\
  \beta_n&=k'_n\frac WL\approx\qty{241.6}{\micro\ampere\per\volt\squared}.
- \label{eq:mos-slide-beta}
-\end{align}
+\end{align*}
 اسلاید ضریب \(k'_n\) را حدود \qty{120}{\micro\ampere\per\volt\squared}
 گزارش می‌کند. برای هماهنگی با دقت همان مثال، در ادامه
 \(\beta_n=\qty{240}{\micro\ampere\per\volt\squared}\) می‌گیریم.
@@ -593,12 +588,11 @@
  V_D=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
 \]
 با \(a=0.5,b=-1,c=0.36\)، داخل رادیکال \(1-0.72=0.28\) می‌شود، پس
-\begin{equation}
+\begin{equation*}
  V_D=1\pm\sqrt{0.28},\qquad
  V_{D,1}\approx\qty{0.471}{\volt},\qquad
  V_{D,2}\approx\qty{1.529}{\volt}.
- \label{eq:mos-load-roots}
-\end{equation}
+\end{equation*}
 شرط ناحیه انتخاب‌شده \(0\le V_D<\qty{0.8}{\volt}\) است.
 فقط ریشه \qty{0.471}{\volt} این شرط را دارد. ریشه دوم از ادامه ریاضی رابطه
 \lr{Linear} به بیرون بازه معتبر آن به دست آمده است. با ریشه پذیرفته‌شده،

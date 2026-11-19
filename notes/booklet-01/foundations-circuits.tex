@@ -69,7 +69,7 @@ v=Ri,\qquad i=\frac{v}{R}.
 از \(p=vi\) و رابطه \eqref{eq:foundation-ohm} نتیجه می‌گیریم
 \(p=Ri^2=v^2/R\ge0\). پس مقاومت مثبت در این مدل انرژی تولید نمی‌کند.
 ترانزیستور را نباید در تمام ناحیه‌های عملکرد، یک مقاومت ثابت فرض کرد؛
-رابطه جریان آن در ادامه جزوه استخراج خواهد شد.
+رابطه جریان آن در بخش \hyperref[sec:book-mos-current]{مدل جریان \lr{Long-channel}} استخراج می‌شود.
 
 \subsection{قانون گره: \lr{KCL}}
 در مدل مدار متمرکز، با حساب‌کردن جریان تمام شاخه‌ها از جمله شاخه‌های خازنی،
@@ -189,13 +189,12 @@ I_{\mathrm{avg}}=C\frac{\Delta v}{\Delta t},
 به خازن \(C=\qty{20}{\femto\farad}\) وارد شود و ولتاژ آن از
 \(\qty{0.2}{\volt}\) به \(\qty{0.8}{\volt}\) برسد. تغییر ولتاژ
 \(\Delta v=\qty{0.6}{\volt}\) است. پس:
-\begin{align}
+\begin{align*}
 \Delta t&=\frac{C\Delta v}{I}
 =\frac{(20\times10^{-15}\,\mathrm{F})(0.6\,\mathrm{V})}
-{10\times10^{-6}\,\mathrm{A}}\notag\\
+{10\times10^{-6}\,\mathrm{A}}\\
 &=1.2\times10^{-9}\,\mathrm{s}=\qty{1.2}{\nano\second}.
-\label{eq:foundation-charge-time}
-\end{align}
+\end{align*}
 واحد \(\mathrm{F}\,\mathrm{V}/\mathrm{A}\) برابر ثانیه است.
 در این مدل، دو برابر شدن ظرفیت، زمان را دو برابر و دو برابر شدن جریان، زمان را نصف می‌کند.
 این نتیجه برای جریان ثابت است؛ جریان ترانزیستور واقعی عموماً طی تغییر ولتاژ ثابت نیست.

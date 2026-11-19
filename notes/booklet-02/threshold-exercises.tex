@@ -72,12 +72,11 @@
 جریان هر ترانزیستور نصف این مجموع و برابر \(I_1\) است.
 
 با برابرکردن دو جریان و جمع‌کردن جمله‌های هم‌نوع، داریم
-\begin{align}
- Ax-\frac{x^2}{2}&=AD-\frac{D^2}{2}-Ax+\frac{x^2}{2},\notag\\
- x^2-2Ax+AD-\frac{D^2}{2}&=0,\notag\\
+\begin{align*}
+ Ax-\frac{x^2}{2}&=AD-\frac{D^2}{2}-Ax+\frac{x^2}{2},\\
+ x^2-2Ax+AD-\frac{D^2}{2}&=0,\\
  x&=A\pm\sqrt{A^2-AD+\frac{D^2}{2}}.
- \label{eq:body-stack-reference-roots}
-\end{align}
+\end{align*}
 ولتاژ فیزیکی گره میانی باید در بازه \(0<x<D\) قرار گیرد.
 ریشه با علامت مثبت از \(A>D\) بزرگ‌تر می‌شود. ریشه پذیرفته‌شده چنین است
 \begin{equation}
@@ -147,11 +146,10 @@
 برای محاسبه با اثر بدنه، مقدار آزمایشی \(x\) را در
 \(f(x)\) و جریان بالایی قرار می‌دهیم و با کوچک‌کردن بازه اختلاف
 جریان‌ها به نقطه برابری می‌رسیم. نتیجه عددی چنین است
-\begin{equation}
+\begin{equation*}
  x_{\mathrm{B}}\approx\qty{0.19948}{\volt},\qquad
  I_{2,\mathrm{B}}\approx\qty{35.92}{\micro\ampere}.
- \label{eq:body-stack-numeric}
-\end{equation}
+\end{equation*}
 در این نقطه، \(\delta(x_{\mathrm{B}})\approx\qty{0.05266}{\volt}\)،
 اضافه‌ولتاژ بالا حدود \(\qty{0.74786}{\volt}\) و ولتاژ درین و سورس
 آن حدود \(\qty{0.30052}{\volt}\) است. هر دو ترانزیستور در
@@ -175,52 +173,47 @@
 \(\qty{10}{\nano\metre}=\qty{e-6}{\centi\metre}\) می‌شود.
 با \(v_T\approx\qty{0.026}{\volt}\) و
 \(n_i=\qty{1.45e10}{\per\centi\metre\cubed}\)، داریم
-\begin{align}
+\begin{align*}
  \frac{N_A}{n_i}&=\frac{2\times10^{17}}{1.45\times10^{10}}
- \approx1.3793\times10^7,\notag\\
- \ln\!\left(\frac{N_A}{n_i}\right)&\approx16.4397,\notag\\
+ \approx1.3793\times10^7,\\
+ \ln\!\left(\frac{N_A}{n_i}\right)&\approx16.4397,\\
  \phi_s&\approx2(0.026)(16.4397)\,\unit{\volt}
  \approx\qty{0.85486}{\volt}.
- \label{eq:body-ex7-phi}
-\end{align}
+\end{align*}
 ظرفیت اکسید بر واحد سطح از تقسیم \lr{Permittivity} اکسید بر ضخامت
 به دست می‌آید
-\begin{equation}
+\begin{equation*}
  C_{\mathrm{ox}}=\frac{3.9(8.85\times10^{-14})}{10^{-6}}
  =\qty{3.4515e-7}{\farad\per\centi\metre\squared}.
- \label{eq:body-ex7-cox}
-\end{equation}
+\end{equation*}
 این مقدار معادل \(\qty{0.0034515}{\farad\per\metre\squared}\) است.
 
 \paragraph*{ضریب اثر بدنه و افزایش آستانه}
 از \eqref{eq:threshold-gamma}، ابتدا ضریب بار و سپس \(\gamma\) را
 حساب می‌کنیم
-\begin{align}
+\begin{align*}
  B_Q&=\sqrt{2(1.6\times10^{-19})(11.7)(8.85\times10^{-14})(2\times10^{17})}
- \notag\\
- &\approx\qty{2.57427e-7}{\coulomb\per\centi\metre\squared\per\volt\tothe{0.5}},\notag\\
+ \\
+ &\approx\qty{2.57427e-7}{\coulomb\per\centi\metre\squared\per\volt\tothe{0.5}},\\
  \gamma&=\frac{2.57427\times10^{-7}}{3.4515\times10^{-7}}
  \approx\qty{0.74584}{\volt\tothe{0.5}}.
- \label{eq:body-ex7-gamma}
-\end{align}
+\end{align*}
 واحد \(\gamma\) با کنترل ابعاد
 \eqref{eq:threshold-gamma-units} سازگار است. جایگذاری در رابطه
 کامل \eqref{eq:threshold-body} می‌دهد
-\begin{align}
+\begin{align*}
  \Delta V_t&\approx0.74584
- \left(\sqrt{0.85486+4}-\sqrt{0.85486}\right)\,\unit{\volt}\notag\\
- &\approx\qty{0.95377}{\volt},\notag\\
+ \left(\sqrt{0.85486+4}-\sqrt{0.85486}\right)\,\unit{\volt}\\
+ &\approx\qty{0.95377}{\volt},\\
  V_t&=V_{t0}+\Delta V_t\approx0.7+0.95377
  =\qty{1.65377}{\volt}.
- \label{eq:body-ex7-full-result}
-\end{align}
+\end{align*}
 رقم‌های میانی برای بازتولید محاسبه حفظ شده‌اند. پاسخ با گردکردن
 متناسب با داده‌های تقریبی چنین است
-\begin{equation}
+\begin{equation*}
  \boxed{\Delta V_t\approx\qty{0.95}{\volt},\qquad
  V_t\approx\qty{1.65}{\volt}}.
- \label{eq:body-ex7-rounded-result}
-\end{equation}
+\end{equation*}
 این آستانه نسبت به \lr{Source} تعریف می‌شود. برای شروع وارونگی با
 \(V_S=\qty{4}{\volt}\)، ولتاژ گیت نسبت به زمین در مدل به
 \(V_G=V_S+V_t\approx\qty{5.65}{\volt}\) می‌رسد.
@@ -229,12 +222,11 @@
 \paragraph*{کنترل مستقل و خطای تقریب خطی}
 برای کنترل محاسبه، از فرم دقیق
 \eqref{eq:body-rationalized-root} استفاده می‌کنیم
-\begin{equation}
+\begin{equation*}
  \Delta V_t=\frac{\gamma V_{SB}}
  {\sqrt{\phi_s+V_{SB}}+\sqrt{\phi_s}}
  \approx\qty{0.95377}{\volt}.
- \label{eq:body-ex7-independent-check}
-\end{equation}
+\end{equation*}
 همچنین \(k_\gamma=\gamma/(2\sqrt{\phi_s})\approx0.40334\) است.
 تقریب خطی می‌دهد
 \(\Delta V_{t,\mathrm{lin}}\approx0.40334(4)
@@ -338,17 +330,16 @@
 \(V_{t0}=\qty{0.4}{\volt}\)،
 \(\gamma=\qty{0.5}{\volt\tothe{0.5}}\) و
 \(\phi_s=\qty{0.8}{\volt}\) باشند، داریم
-\begin{equation}
+\begin{equation*}
  V_t=0.4+0.5\left(\sqrt{0.8+0.4}-\sqrt{0.8}\right)
  \approx\qty{0.5005}{\volt}.
- \label{eq:body-negative-bias-example}
-\end{equation}
+\end{equation*}
 افزایش آستانه حدود \(\qty{0.1005}{\volt}\) است.
 با گیت و سورس ثابت، اضافه‌ولتاژ گیت کاهش می‌یابد و جریان هدایت
 در مدل کاهش پیدا می‌کند. اندازه بایاس قابل اعمال در یک فرایند مشخص
 باید از اطلاعات همان فرایند تعیین شود.
 
-\section*{کنترل حل مسئله و ادامه جزوه}
+\section*{کنترل پاسخ در مسئله‌های اثر آستانه}
 برای مسئله‌های اثر آستانه، ابتدا اختلاف ولتاژهای پایانه‌ها و مرجع
 \(V_{t0}\) را مشخص کنید. \(N_A\) و \(n_i\) باید واحد یکسان داشته
 باشند و محاسبه \(\gamma\) به دستگاه واحد سازگار نیاز دارد.
@@ -361,6 +352,6 @@
 \lr{DIBL} در شیب خروجی را مشخص کنید. در مدار سری، ولتاژ گره میانی
 از برابری جریان‌ها به دست می‌آید و با تغییر آستانه جابه‌جا می‌شود.
 مسیرهای جریان زیرآستانه، نشتی گیت و نشتی پیوند در بخش
-\ref{sec:leakage} همین جزوه آمده‌اند. فصل بعد، تمرین مرتبط با کاهش
-آستانه و نشتی را حل می‌کند. اثر عمومی دما و هندسه در بخش‌های
+\ref{sec:leakage} آمده‌اند. تمرین \secnum{۲.۱۰} اثر کاهش آستانه بر جریان
+روشن و نشتی را نشان می‌دهد. اثر عمومی دما و هندسه در بخش‌های
 \ref{sec:temperature-dependence} و \ref{sec:geometry-dependence} بررسی شده است.

@@ -59,13 +59,12 @@
 ابعاد هر \lr{Pad} در کتاب \(750\lambda\times350\lambda\) ذکر شده‌اند.
 با کنارگذاشتن حاشیه شعاعی \(750\lambda\) در هر طرف، ضلع فضای داخلی
 \(5000-2(750)=3500\lambda\) می‌شود. پس
-\begin{align}
+\begin{align*}
  A_{\mathrm{die}}&=(5000\lambda)^2
- =25\times10^6\lambda^2=\qty{2.25}{\milli\metre\squared},\notag\\
+ =25\times10^6\lambda^2=\qty{2.25}{\milli\metre\squared},\\
  A_{\mathrm{inside}}&=(3500\lambda)^2
  =12.25\times10^6\lambda^2=\qty{1.1025}{\milli\metre\squared}.
- \label{eq:impl-die-core}
-\end{align}
+\end{align*}
 مساحت داخل قاب، ظرفیت هندسی موجود را بیان می‌کند. ابعاد بسته پردازنده، شامل دو
 بلوک و کانال میان آن‌ها، کوچک‌تر است. با ابعاد گرد‌شده \lr{Floorplan} داریم
 \begin{align}
@@ -140,10 +139,9 @@
 
 جمع عرض اجزای شکل کتاب ۳۱۹ مسیر است. با \lr{Pitch} برابر \(8\lambda\)،
 عرض \lr{Datapath} چنین محاسبه می‌شود
-\begin{equation}
+\begin{equation*}
  W_{\mathrm{data}}=319\times8\lambda=2552\lambda.
- \label{eq:impl-slice-width}
-\end{equation}
+\end{equation*}
 عدد \(2550\lambda\) در \lr{Floorplan}، مقدار گرد‌شده همین تخمین است.
 ارتفاع از هشت \lr{Bitslice}، یک ردیف \lr{Zipper} و سه ردیف \lr{Address Decoder}
 ساخته می‌شود. پس با ۱۲ ردیف و فاصله \(110\lambda\)، ارتفاع
@@ -210,14 +208,13 @@
 \(160\) تا \(500\) هزار \lr{Gate} در \unit{\milli\metre\squared} به‌ترتیب حدود
 \(1160\) تا \(370\lambda^2\) برای هر ترانزیستور می‌دهد
 \cite[صفحه ۵۳]{weste}. برای مقدار ۱۶۰ هزار، محاسبه چنین است
-\begin{equation}
+\begin{equation*}
  a_{\mathrm{tr}}\approx
  \frac{10^6\,\unit{\micro\metre\squared}}
  {160000\times6}\,
  \frac{\lambda^2}{0.03^2\,\unit{\micro\metre\squared}}
  \approx1160\lambda^2.
- \label{eq:impl-density-conversion}
-\end{equation}
+\end{equation*}
 افزایش چگالی، مساحت متناظر هر ترانزیستور را کاهش می‌دهد. مقایسه دو گزارش چگالی
 باید با تعریف یکسان \lr{Gate} و محدوده یکسان سیم‌کشی انجام شود.
 

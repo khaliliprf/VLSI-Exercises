@@ -142,13 +142,12 @@
 \(V_{DS,n}\ge V_{GS,n}-V_{tn}\) مستقیماً می‌دهد
 \(y\ge V_{\mathrm{in}}-V_{tn}\).
 برای \lr{pMOS} روشن، از بزرگی ولتاژها شروع می‌کنیم
-\begin{align}
- V_{SD,p}&\ge V_{SG,p}-V_{TP},\notag\\
- V_{DD}-y&\ge V_{DD}-V_{\mathrm{in}}-V_{TP},\notag\\
- -y&\ge -V_{\mathrm{in}}-V_{TP},\notag\\
+\begin{align*}
+ V_{SD,p}&\ge V_{SG,p}-V_{TP},\\
+ V_{DD}-y&\ge V_{DD}-V_{\mathrm{in}}-V_{TP},\\
+ -y&\ge -V_{\mathrm{in}}-V_{TP},\\
  \boxed{y\le V_{\mathrm{in}}+V_{TP}}.
- \label{eq:inverter-p-saturation-condition}
-\end{align}
+\end{align*}
 در مرحله آخر، ضرب در منفی یک، جهت نامساوی را عوض کرده است.
 با \(V_{TP}=-V_{tp}\)، این شرط برابر
 \(y\le V_{\mathrm{in}}-V_{tp}\) در قرارداد کتاب است.
@@ -331,11 +330,10 @@
 
 \paragraph*{ناحیه \lr{C} و اشباع هم‌زمان}
 وقتی هر دو افزاره در اشباع‌اند، شرط جریان می‌شود
-\begin{equation}
+\begin{equation*}
  \frac{\beta}{2}(V_{\mathrm{in}}-V_t)^2
  =\frac{\beta}{2}(V_{DD}-V_{\mathrm{in}}-V_t)^2.
- \label{eq:inverter-c-current-equality}
-\end{equation}
+\end{equation*}
 اضافه‌ولتاژهای دو طرف مثبت‌اند، پس برابرشدن مربع‌ها در این دامنه
 به برابری خود اضافه‌ولتاژها می‌انجامد. بنابراین،
 \(V_{\mathrm{in}}-V_t=V_{DD}-V_{\mathrm{in}}-V_t\) و در نتیجه
@@ -529,30 +527,28 @@ V_{\mathrm{in}}+V_t\)، پس شرط اشباع \lr{pMOS} نیز برقرار ا�
 شکل جریان برحسب ورودی، زمان و پهنای پالس را تعیین نمی‌کند.
 محاسبه جریان طی گذار، به سرعت تغییر ورودی و دینامیک خروجی نیاز دارد.
 در ورودی‌های نزدیک دو ریل، جریان ایده‌آل صفر می‌شود. در افزاره
-واقعی، نشتی‌های آموزش‌داده‌شده در جزوه دوم وجود دارند.
+واقعی، \NotesTopic{sec:leakage}{مسیرهای نشتی} می‌توانند جریان سکون ایجاد کنند.
 
 \paragraph*{محاسبه کامل یک نقطه در \lr{B}}
 پارامترهای فرضی شکل \ref{fig:inverter-current-intersection} را
 به کار ببرید. در \(V_{\mathrm{in}}=\qty{0.5}{\volt}\)،
 \(a=\qty{0.2}{\volt}\) و \(b=\qty{0.4}{\volt}\) است.
 از \eqref{eq:inverter-b-root}، افت ولتاژ \lr{pMOS} برابر است با
-\begin{equation}
+\begin{equation*}
  u=0.4-\sqrt{0.4^2-0.2^2}
    =0.4-\sqrt{0.12}\approx\qty{0.05359}{\volt},\qquad
  y\approx\qty{1.14641}{\volt}.
- \label{eq:inverter-b-numerical}
-\end{equation}
+\end{equation*}
 ریشه دیگر، \(u\approx\qty{0.74641}{\volt}\)، شرط
 \(u<b=\qty{0.4}{\volt}\) را نقض می‌کند. برای ریشه مجاز،
 \(y>\qty{0.2}{\volt}\) و \(u<\qty{0.4}{\volt}\) هستند.
 پس \lr{nMOS} در اشباع و \lr{pMOS} در \lr{Linear} است.
 محاسبه دو جریان به‌صورت مستقل می‌دهد
-\begin{align}
- I_n&=(200/2)(0.2)^2=\qty{4.000}{\micro\ampere},\notag\\
+\begin{align*}
+ I_n&=(200/2)(0.2)^2=\qty{4.000}{\micro\ampere},\\
  I_p&=200[0.4(0.0535898)-(0.0535898)^2/2]
        \approx\qty{4.000}{\micro\ampere}.
- \label{eq:inverter-b-current-check}
-\end{align}
+\end{align*}
 در سطرهای عددی، ضریب جریان برحسب
 \(\unit{\micro\ampere\per\volt\squared}\) و ولتاژها برحسب ولت
 جای‌گذاری شده‌اند. توان دریافت‌شده از تغذیه در این نقطه چنین است.

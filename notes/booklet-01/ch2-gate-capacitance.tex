@@ -64,25 +64,22 @@
 بزرگی بار متحرک قطعه‌ای به طول \(dx\)
 برابر \(WC_{\mathrm{ox}}[V_{GT}-V(x)]dx\) است.
 رابطه جریان محلی با \lr{Mobility} و آستانه ثابت، پس از انتگرال از صفر تا \(x\)، می‌دهد
-\begin{equation}
+\begin{equation*}
  I_{DS}x=\mu_nWC_{\mathrm{ox}}
  \left[V_{GT}V(x)-\frac{V(x)^2}{2}\right].
- \label{eq:cv-potential-profile}
-\end{equation}
+\end{equation*}
 در اشباع بلندکانال، \(I_{DS}=\mu_nC_{\mathrm{ox}}(W/2L)V_{GT}^2\) است.
 با جای‌گذاری و تقسیم دو طرف بر \(\mu_nWC_{\mathrm{ox}}V_{GT}^2/2\)، نتیجه می‌شود
-\begin{equation}
+\begin{equation*}
  \frac{x}{L}=2\frac{V(x)}{V_{GT}}-
  \left(\frac{V(x)}{V_{GT}}\right)^2,
  \qquad
  1-\frac{x}{L}=\left(1-\frac{V(x)}{V_{GT}}\right)^2.
- \label{eq:cv-square-profile}
-\end{equation}
+\end{equation*}
 چون \(0\le V(x)\le V_{GT}\)، ریشه نامنفی را می‌گیریم، پس
-\begin{equation}
+\begin{equation*}
  V_{GT}-V(x)=V_{GT}\sqrt{1-\frac{x}{L}}.
- \label{eq:cv-root-profile}
-\end{equation}
+\end{equation*}
 بار متحرک در نزدیکی \lr{Source} بیشینه و در انتهای مدل کانال صفر است.
 جمع بار همه قطعه‌ها، با تغییر متغیر بی‌بعد \(u=x/L\)، می‌دهد
 \begin{align}
@@ -100,12 +97,11 @@
 در این مدل، بخش متغیر بار \lr{Gate} با بزرگی بار کانال متناظر است.
 با ثابت‌گرفتن آستانه و سایر بایاس‌های لازم در تقریب ذاتی، تغییر \(V_{GS}\)
 همان تغییر \(V_{GT}\) است. بنابراین
-\begin{equation}
+\begin{equation*}
  C_{GS,i}\approx\frac{dQ_G}{dV_{GS}}
  =\frac{d[(2/3)C_0(V_{GS}-V_{tn})]}{dV_{GS}}
  =\frac23 C_0.
- \label{eq:cv-sat-derivative}
-\end{equation}
+\end{equation*}
 این استخراج تکمیلی، مقدار جدول کتاب را در فرض‌های ایدئال توضیح می‌دهد.
 مدل دقیق‌تر مبتنی بر بار پایانه‌ها، تغییرات بار و جریان را با روش سازگار مدل
 فناوری محاسبه می‌کند. کتاب در پایان این زیربخش به \lr{Charge-based Model} اشاره دارد.

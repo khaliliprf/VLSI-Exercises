@@ -8,7 +8,9 @@
 \renewcommand{\thesection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}}}{\arabic{chapter}.\arabic{section}}}
 \renewcommand{\thesubsection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}.\arabic{subsection}}}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}}
 \renewcommand{\thesubsubsection}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}}
-\renewcommand{\theequation}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{equation}}}{\arabic{chapter}.\arabic{equation}}}
+\counterwithin*{equation}{section}
+\renewcommand{\theHequation}{\arabic{chapter}.\arabic{section}.\arabic{equation}}
+\renewcommand{\theequation}{\texorpdfstring{\secnum{\theHequation}}{\theHequation}}
 \renewcommand{\thefigure}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{figure}}}{\arabic{chapter}.\arabic{figure}}}
 \renewcommand{\thetable}{\texorpdfstring{\secnum{\arabic{chapter}.\arabic{table}}}{\arabic{chapter}.\arabic{table}}}
 \makeatletter
@@ -33,19 +35,21 @@
 
 % The complete edition continues textbook chapter 2 across all three booklets.
 \newif\ifCompleteNotes
-% Unnumbered review chapters become sections inside the complete edition.
+\newcommand{\NotesTopic}[2]{%
+  \ifCompleteNotes\hyperref[#1]{#2}\else#2\fi
+}
+% Topic reviews are nested under their host section in the comprehensive notes.
 \newcommand{\BookletReview}[1]{%
   \ifCompleteNotes
     \begingroup
-    \let\chapter\section
-    \let\section\subsection
-    \let\subsection\subsubsection
+    \let\chapter\subsection
+    \let\section\subsubsection
     \let\BookletAddContentsLine\addcontentsline
     \renewcommand{\addcontentsline}[3]{%
       \ifstrequal{##2}{chapter}
-        {\BookletAddContentsLine{##1}{section}{##3}}
+        {\BookletAddContentsLine{##1}{subsection}{##3}}
         {\ifstrequal{##2}{section}
-          {\BookletAddContentsLine{##1}{subsection}{##3}}
+          {\BookletAddContentsLine{##1}{subsubsection}{##3}}
           {\BookletAddContentsLine{##1}{##2}{##3}}}%
     }%
     \input{#1}%

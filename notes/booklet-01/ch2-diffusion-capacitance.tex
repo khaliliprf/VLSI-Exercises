@@ -95,11 +95,10 @@
 
 \(T\) دمای مطلق بر حسب \unit{\kelvin}، \(k\) ثابت \lr{Boltzmann} و \(q\)
 بزرگی بار الکترون است. با ثابت‌های گرد‌شده کتاب در \(T=\qty{300}{\kelvin}\)، داریم
-\begin{equation}
+\begin{equation*}
  v_T=\frac{(1.380\times10^{-23})(300)}{1.602\times10^{-19}}
  \,\unit{\volt}\approx\qty{0.02584}{\volt}\approx\qty{26}{\milli\volt}.
- \label{eq:cv-thermal-example}
-\end{equation}
+\end{equation*}
 واحد \(kT\) انرژی و واحد \(q\) بار است. نسبت انرژی به بار، ولتاژ می‌شود.
 برای تبدیل دمای سلسیوس، \(T\) بر حسب کلوین از افزودن \num{273.15} به مقدار
 سلسیوس به دست می‌آید. مقدار \qty{300}{\kelvin} تقریب دمای اتاق در داده کتاب است.
@@ -109,14 +108,13 @@
 \(\ln(ab)=\ln a+\ln b\) و \(\ln(10^n)=n\ln10\) استفاده کرد.
 برای غلظت‌های فرضی \(N_A=10^{16}\)، \(N_D=10^{17}\) و مقدار کتاب
 \(n_i=1.45\times10^{10}\)، همگی در \unit{\per\centi\metre\cubed}، داریم
-\begin{align}
+\begin{align*}
  \frac{N_AN_D}{n_i^2}
  &=\frac{10^{33}}{(1.45)^2\times10^{20}}
- \approx4.756\times10^{12},\notag\\
- \ln(4.756\times10^{12})&=\ln4.756+12\ln10\approx29.19,\notag\\
+ \approx4.756\times10^{12},\\
+ \ln(4.756\times10^{12})&=\ln4.756+12\ln10\approx29.19,\\
  \psi_0&\approx(0.02584)(29.19)\,\unit{\volt}\approx\qty{0.754}{\volt}.
- \label{eq:cv-psi-example}
-\end{align}
+\end{align*}
 غلظت‌های فرضی این محاسبه برای توضیح لگاریتم انتخاب شده‌اند.
 در مثال کتاب، مقدار \(\psi_0\) مستقیماً داده شده و همان مقدار استفاده می‌شود.
 
@@ -132,15 +130,14 @@
 \lr{Body} به زمین وصل است و \(V_D\) ابتدا صفر و سپس \qty{1}{\volt} می‌شود
 \cite[صفحه ۷۳]{weste}.
 پارامترهای مثال چنین‌اند
-\begin{align}
+\begin{align*}
  C_J&=\qty{1.2}{\femto\farad\per\micro\metre\squared},
- &M_J&=0.33,\notag\\
+ &M_J&=0.33,\\
  C_{JSW}&=\qty{0.1}{\femto\farad\per\micro\metre},
- &C_{JSWG}&=\qty{0.36}{\femto\farad\per\micro\metre},\notag\\
+ &C_{JSWG}&=\qty{0.36}{\femto\farad\per\micro\metre},\\
  M_{JSW}&=M_{JSWG}=0.10,
  &\psi_0&=\qty{0.7}{\volt}.
- \label{eq:cv-book-parameters}
-\end{align}
+\end{align*}
 محاسبه کتاب برای کناره‌ها نیز از همین پتانسیل \qty{0.7}{\volt} استفاده می‌کند.
 برای تطبیق آن، \(\psi_{SW}=\psi_{SWG}=\psi_0\) می‌گیریم.
 هندسه ابتدا به صورت مستقل محاسبه می‌شود
@@ -153,13 +150,12 @@
 \end{align}
 در بایاس صفر، هر عامل \((1+V_R/\psi)^{-M}\) برابر یک است. با ضرب جداگانه هر
 ضریب در هندسه متناظر، ظرفیت می‌شود
-\begin{align}
+\begin{align*}
  C_{DB}(0)
- &=(0.0125)(1.2)+(0.35)(0.1)+(0.1)(0.36)\quad\unit{\femto\farad}\notag\\
+ &=(0.0125)(1.2)+(0.35)(0.1)+(0.1)(0.36)\quad\unit{\femto\farad}\\
  &=(0.015+0.035+0.036)\,\unit{\femto\farad}
  =\qty{0.086}{\femto\farad}.
- \label{eq:cv-book-zero}
-\end{align}
+\end{align*}
 در خط اول، واحد طول یا مساحت هر عدد هندسی، همان واحد داده‌شده در
 \eqref{eq:cv-book-geometry} است و در ضرب با ضریب مناسب حذف می‌شود.
 مجموع دو سهم کناره در این مثال \qty{0.071}{\femto\farad} است.
@@ -167,22 +163,20 @@
 در \(V_D=\qty{1}{\volt}\)، بایاس معکوس \(V_R=\qty{1}{\volt}\) می‌شود.
 عامل مشترک داخل پرانتز را \(r=1+1/0.7\approx2.42857\) می‌نامیم.
 سهم کف در \(r^{-0.33}\) و سهم کناره‌ها در \(r^{-0.10}\) ضرب می‌شود، پس
-\begin{align}
+\begin{align*}
  C_{DB}(1)
- &=0.015r^{-0.33}+0.071r^{-0.10}\quad\unit{\femto\farad}\notag\\
+ &=0.015r^{-0.33}+0.071r^{-0.10}\quad\unit{\femto\farad}\\
  &\approx\qty{0.0762}{\femto\farad}\approx\qty{0.076}{\femto\farad}.
- \label{eq:cv-book-one}
-\end{align}
+\end{align*}
 برای محاسبه با ماشین‌حساب، ابتدا \(r\)، سپس \(r^{0.33}\) و \(r^{0.10}\)
 را می‌یابیم و هر ضریب را بر توان مثبت مربوط تقسیم می‌کنیم.
 کاهش ظرفیت با افزایش بایاس معکوس، با تفسیر پهن‌شدن \lr{Depletion} سازگار است.
 
 کتاب برای تخمین دستی میانگین دو سر گذار را استفاده می‌کند
-\begin{equation}
+\begin{equation*}
  C_{DB,\mathrm{ends}}\approx\frac{0.086+0.076}{2}
  =\qty{0.081}{\femto\farad}.
- \label{eq:cv-book-endpoint-average}
-\end{equation}
+\end{equation*}
 این عدد، بازتولید تقریب مثال مرجع است. برای مقایسه، می‌توان معادل دقیق‌تر از
 نظر بار همین تابع غیرخطی را با \eqref{eq:cv-charge-equivalent} محاسبه کرد.
 برای هر مؤلفه \(C_a(1+V/\psi)^{-M}\) با \(M\ne1\)، انتگرال از صفر تا

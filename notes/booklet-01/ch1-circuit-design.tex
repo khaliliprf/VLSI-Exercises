@@ -37,12 +37,11 @@
 
 در مثال فرضی، \(C_L=\qty{20}{\femto\farad}\)، \(V_{DD}=\qty{1}{\volt}\)
 و \(I_{\mathrm{avg}}=\qty{100}{\micro\ampere}\) هستند. جای‌گذاری مرحله‌ای می‌دهد
-\begin{equation}
+\begin{equation*}
  t_{\mathrm{sw}}\approx
  \frac{20\times10^{-15}\times1}{100\times10^{-6}}\,\unit{\second}
  =2\times10^{-10}\,\unit{\second}=\qty{200}{\pico\second}.
- \label{eq:impl-delay-example}
-\end{equation}
+\end{equation*}
 دوبرابرشدن بار با جریان ثابت، زمان را به \qty{400}{\pico\second} می‌رساند.
 این اعداد صرفاً برای تمرین تبدیل پیشوند و تحلیل رابطه انتخاب شده‌اند.
 
@@ -147,10 +146,9 @@
 \cite{weste}. \lr{AND2} در \lr{Static CMOS} معمول، یک \lr{NAND2} چهارترانزیستوری
 و یک \lr{Inverter} دوترانزیستوری دارد. \lr{OR3} نیز از \lr{NOR3} شش‌ترانزیستوری
 و یک \lr{Inverter} ساخته می‌شود. بنابراین
-\begin{equation}
+\begin{equation*}
  N_{\mathrm{gate}}=3(4+2)+(6+2)=26.
- \label{eq:impl-count26}
-\end{equation}
+\end{equation*}
 مسیر ورودی تا خروجی از چهار مرحله وارون‌کننده منطقی عبور می‌کند.
 تأخیر هر مرحله تابع اندازه و بار آن است.
 
@@ -166,12 +164,11 @@
 شبکه \lr{Pull-up} شکل کتاب نیز پنج \lr{pMOS} دارد. شرط هدایت آن را با
 \(\bar a,\bar b,\bar c\) بیان می‌کنیم، زیرا \lr{pMOS} با ورودی صفر روشن می‌شود.
 با قانون \lr{De Morgan} و توزیع حاصل‌ضرب داریم
-\begin{align}
+\begin{align*}
  \overline F
- &=(\bar a+\bar b)(\bar c+\bar a\bar b)\notag\\
+ &=(\bar a+\bar b)(\bar c+\bar a\bar b)\\
  &=\bar c(\bar a+\bar b)+\bar a\bar b.
- \label{eq:impl-carry-pun}
-\end{align}
+\end{align*}
 جمله اول، \(c\) در سری با موازی \(a,b\)، و جمله دوم، سری \(a,b\) در شبکه
 \lr{pMOS} را مشخص می‌کند. بنابراین برای هر ورودی دودویی پایدار، یکی از شبکه‌ها
 گره \(c_n\) را به تغذیه مناسب می‌رساند. \lr{Inverter} پایانی دو ترانزیستور دیگر دارد

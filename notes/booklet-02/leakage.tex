@@ -124,28 +124,25 @@
 \(V_{t0}=\qty{0.35}{\volt}\)، \(\eta=0.05\)،
 \(V_{DS}=\qty{1}{\volt}\) و \(V_{SB}=0\) باشند.
 این پارامترها برای یک مثال آموزشی فرض شده‌اند. ابتدا داریم
-\begin{equation}
+\begin{equation*}
  I_{ds0}=(10^{-3})(0.026)^2e^{1.8}\,\unit{\ampere}
  \approx\qty{4.090}{\micro\ampere}.
- \label{eq:leakage-prefactor-example}
-\end{equation}
+\end{equation*}
 در \(V_{GS}=0\)، صورت توان
 \(-0.35+0.05(1)=-\qty{0.30}{\volt}\) و مخرج
 \(1.4(0.026)=\qty{0.0364}{\volt}\) است.
 چون \(F(\qty{1}{\volt})\approx1\)، جریان برابر است با
-\begin{equation}
+\begin{equation*}
  I_{\mathrm{off}}\approx(4.090\times10^{-6})e^{-0.30/0.0364}
  \approx\qty{1.077}{\nano\ampere}.
- \label{eq:leakage-absolute-example}
-\end{equation}
+\end{equation*}
 اگر فقط گیت به \(\qty{0.1}{\volt}\) برسد، نسبت دو جریان از قانون
 تقسیم توابع نمایی به دست می‌آید
-\begin{equation}
+\begin{equation*}
  \frac{I(\qty{0.1}{\volt})}{I(0)}
  =e^{0.1/0.0364}\approx15.60,
  \qquad I(\qty{0.1}{\volt})\approx\qty{16.81}{\nano\ampere}.
- \label{eq:leakage-gate-ratio-example}
-\end{equation}
+\end{equation*}
 آستانه مؤثر در هر دو نقطه \(\qty{0.30}{\volt}\) است و هر دو بایاس
 گیت در دامنه زیرآستانه قرار دارند.
 
@@ -246,10 +243,9 @@
 مثال مرجع می‌خواهد جریان گیت صفر، هزار برابر کوچک‌تر از جریان در
 گیت برابر آستانه باشد. در یک بایاس درین ثابت با \(V_{DS}\gg v_T\)،
 بایاس بدنه صفر و با قرارداد آستانه همان مقایسه، نسبت جریان‌ها چنین است
-\begin{equation}
+\begin{equation*}
  \frac{I(0)}{I(V_t)}=e^{-V_t/(nv_T)}=10^{-3}.
- \label{eq:leakage-three-decades}
-\end{equation}
+\end{equation*}
 از دو طرف لگاریتم می‌گیریم. با \(\ln10^{-3}=-3\ln10\)، داریم
 \begin{equation}
  -\frac{V_t}{nv_T}=-3\ln10
@@ -481,25 +477,23 @@ Tunneling} و \lr{Direct Tunneling} را معرفی می‌کند.
 \(v_T=\qty{0.026}{\volt}\) و
 \(\varepsilon_{\mathrm{si}}=11.7(\qty{8.85e-14}{\farad\per\centi\metre})\)
 هستند. محاسبه می‌دهد
-\begin{align}
+\begin{align*}
  N_{\mathrm{eff}}&\approx\qty{9.901e17}{\per\centi\metre\cubed},
- &\phi_{\mathrm{bi}}&\approx\qty{1.0583}{\volt},\notag\\
+ &\phi_{\mathrm{bi}}&\approx\qty{1.0583}{\volt},\\
  E_j(V_{DD}=\qty{0.8}{\volt})&\approx\qty{7.541e5}{\volt\per\centi\metre},
  &E_j(V_{DD}=\qty{1.2}{\volt})&\approx\qty{8.313e5}{\volt\per\centi\metre}.
- \label{eq:junction-field-example}
-\end{align}
+\end{align*}
 برای مشاهده حساسیت نمایی، حاصل‌ضرب فرضی
 \(B_bE_g^{3/2}=\qty{3e6}{\volt\per\centi\metre}\) را ثابت می‌گیریم.
 تقسیم دو جریان \eqref{eq:junction-btbt-model} با هندسه و گاف یکسان
 می‌دهد
-\begin{equation}
+\begin{equation*}
  \frac{I_2}{I_1}=
  \frac{1.2}{0.8}\frac{E_{j2}}{E_{j1}}
  \exp\!\left[3\times10^6
  \left(\frac{1}{E_{j1}}-\frac{1}{E_{j2}}\right)\right]
  \approx2.39.
- \label{eq:junction-btbt-ratio-example}
-\end{equation}
+\end{equation*}
 در این جایگذاری عددی، میدان‌ها برحسب
 \(\unit{\volt\per\centi\metre}\) وارد شده‌اند.
 برای جریان مطلق، ثابت \(A_b\) و دیگر پارامترهای همان فناوری لازم‌اند.

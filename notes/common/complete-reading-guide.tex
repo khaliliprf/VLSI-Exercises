@@ -1,7 +1,72 @@
 % !TeX root = ../complete.tex
-% Keep each original study guide together in the complete edition.
-\input{notes/booklet-01/reading-guide}
-\input{notes/booklet-02/reading-guide}
+\chapter*{راهنمای مطالعه}
+\phantomsection
+\addcontentsline{toc}{chapter}{راهنمای مطالعه}
+
+این جزوه از مبانی ریاضی، مدار و منطق دیجیتال آغاز می‌شود و به تحلیل
+ترانزیستور \lr{MOS} و رفتار مدارهای \lr{CMOS} می‌رسد. آشنایی قبلی با
+\lr{Digital Electronics} پیش‌نیاز مطالعه نیست. برای شروع، محاسبه با اعداد
+و خواندن یک تساوی ساده کافی است. فصل صفر ابزارهای لازم را با مثال آموزش می‌دهد.
+
+\subsection*{مسیر مطالعه}
+در خواندن نخست، از \hyperref[chap:foundations]{فصل صفر} آغاز کنید. در
+\hyperref[chap:introduction]{فصل ۱}، مسیر اتصال ترانزیستورها به گیت‌ها،
+بلوک‌ها و طرح فیزیکی تراشه را دنبال کنید. در \hyperref[chap:mos-theory]{فصل ۲}،
+ابتدا مدل جریان و ظرفیت را یاد بگیرید. سپس بررسی کنید اثرهای غیرایده‌آل
+چه تغییری در مدل ایجاد می‌کنند و مدل جریان چگونه رفتار \lr{Inverter}
+و \lr{Pass Transistor} را توضیح می‌دهد.
+
+پیش از خواندن پاسخ هر مثال، شکل مدار را رسم کنید، مرجع ولتاژ و جهت
+جریان را مشخص کنید و شرط‌های مدل را بنویسید. پس از حل، واحدها، علامت‌ها
+و اعتبار ناحیه‌ی کاری را بررسی کنید. هنگام مرور، از جدول تطبیق منابع
+به مبحث موردنیاز بروید و یکی از تمرین‌های همان مبحث را دوباره حل کنید.
+
+\subsection*{دانش موردنیاز و محل یادگیری}
+\begin{itemize}
+  \item \hyperref[sec:foundation-math]{ریاضی فصل صفر} از کسر، نسبت، توان،
+    نماد علمی و تبدیل واحد شروع می‌شود و به حل معادله، انتخاب ریشه‌ی
+    فیزیکی و خواندن نمودار و شیب می‌رسد. این ابزارها در محاسبه‌ی جریان
+    و ظرفیت و حل ولتاژ خروجی به کار می‌روند.
+  \item آموزش \hyperref[sec:foundation-circuits]{مدار} و منطق در فصل صفر، ولتاژ مرجع،
+    جهت جریان، تعادل گره، بار و ظرفیت، و معنای صفر و یک و گیت‌ها را
+    معرفی می‌کند. این مفاهیم برای تحلیل مسیر هدایت و تعادل جریان
+    خروجی لازم‌اند.
+  \item تغییر ولتاژ در زمان و نقش مشتق در
+    \hyperref[eq:foundation-rc-ode]{پاسخ مدار \lr{RC}} معرفی می‌شود.
+    تابع نماییِ پاسخ را می‌توان با خواندن نمودار دنبال کرد.
+    انتگرال به‌صورت جمع پیوسته در
+    \hyperref[sec:book-mos-current]{استخراج جریان \lr{Long-channel}}
+    معرفی می‌شود. \hyperref[sec:subthreshold-leakage]{تحلیل نشتی زیرآستانه}
+    تابع نمایی، لگاریتم و خواندن محور لگاریتمی را مرور می‌کند.
+    \hyperref[sec:noise-derivatives]{استخراج شیب در بحث \lr{Noise Margin}}
+    مشتق‌گیری لازم برای یافتن نقاط شیب منفی یک را توضیح می‌دهد.
+\end{itemize}
+
 \clearpage
-\input{notes/booklet-03/reading-guide}
-\clearpage
+\subsection*{تطبیق موضوع‌ها با کتاب و اسلایدها}
+جدول، مسیر دسترسی از بخش‌های کتاب \lr{Weste} و \lr{Harris} به
+موضوع‌های متن و مجموعه‌اسلایدهای مرتبط را نشان می‌دهد \cite{weste}.
+شماره‌های همراه با «کتاب» یا «اسلاید» به همان منبع تعلق دارند.
+مثال‌های آموزشی با داده‌های فرضی، روش محاسبه را نشان می‌دهند.
+پارامترهای فناوری را با فرض‌ها و زمینه‌ی همان مثال بخوانید.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{rXr}
+\toprule
+بخش کتاب & موضوع در جزوه & اسلاید مرتبط\\
+\midrule
+\secnum{۱.۱} تا \secnum{۱.۳} & \hyperref[sec:ch1-history]{تاریخچه}، مسیر طراحی و ساختار \lr{MOS} & \cite{intro,mos}\\
+\secnum{۱.۴} & \hyperref[sec:book-cmos]{گیت، انتخاب و ذخیره‌ی داده} & \cite{intro}\\
+\secnum{۱.۵} & \hyperref[sec:book-fabrication]{ساخت و \lr{Layout}} & \cite{mos}\\
+\secnum{۱.۶} & \hyperref[sec:book-partitioning]{سطوح و دامنه‌های طراحی} & \cite{intro}\\
+\secnum{۱.۷} و \secnum{۱.۸} & \hyperref[sec:book-mips]{مثال \lr{MIPS}} و \hyperref[sec:book-logic-design]{طراحی منطقی و \lr{HDL}} & \cite{intro}\\
+\secnum{۱.۹} تا \secnum{۱.۱۲} & طراحی مدار و طرح فیزیکی، بررسی و \hyperref[sec:book-manufacturing]{تولید} & تکمیل از کتاب\\
+\secnum{۲.۱} & \hyperref[sec:book-mos-structure]{ساختار ترانزیستور و تشکیل کانال} & \cite[اسلایدهای ۲ تا ۱۳]{mos}\\
+\secnum{۲.۲} & \hyperref[sec:book-mos-current]{مدل جریان \lr{Long-channel}} & \cite[اسلایدهای ۱۴ تا ۲۲]{mos}\\
+\secnum{۲.۳} & \hyperref[sec:book-cv]{ظرفیت و هندسه‌ی ترانزیستور} & \cite[اسلایدهای ۲۳ و ۲۴]{mos}\\
+\secnum{۲.۴} & \hyperref[sec:nonideal-current]{اثر میدان، تغییر طول کانال، آستانه و نشتی} & \cite[اسلایدهای ۳ تا ۳۷]{nonideal}\\
+\secnum{۲.۵} & \hyperref[sec:dc-transfer]{مشخصه‌ی انتقال \lr{DC}}، \hyperref[sec:noise-margin]{حاشیه‌ی نویز} و \hyperref[sec:pass-transistor]{انتقال ولتاژ} & \cite[اسلایدهای ۳ تا ۱۴]{dcslides}\\
+\bottomrule
+\end{tabularx}
+\end{center}
