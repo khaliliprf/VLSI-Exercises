@@ -103,3 +103,6 @@
 ## Source discovery workflow
 - Use focused text search and direct inspection of the textbook, slides, notes, and exercise sources for project work.
 - Graphify is paused for this project. Use or rebuild its graph only when the user explicitly requests it.
+
+## Academic reference descriptions
+- In exercise solutions and study booklets, avoid the Persian word "محلی" and workspace-relative descriptions such as "نسخه محلی" or "اسلایدهای محلی". Identify each cited resource for an external reader by its verified title, author or organization, edition or version, year when known, and relevant section, page, or slide. Do not invent missing bibliographic metadata.
