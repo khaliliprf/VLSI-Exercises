@@ -1,0 +1,23 @@
+% Gate delay comparison plot for the course notes.
+  \begin{latin}
+  \begin{tikzpicture}[x=2.15cm,y=0.47cm]
+    \draw[->] (0,0) -- (4.65,0) node[right] {\(h\)};
+    \draw[->] (0,0) -- (0,9.05) node[above] {\(d\)};
+    \node[below left] at (0,0) {\rl{۰}};
+    \foreach \x/\ticklabel in {1/۱,2/۲,3/۳,4/۴} {
+      \draw (\x,0.09) -- (\x,-0.09) node[below] {\rl{\ticklabel}};
+    }
+    \foreach \y/\ticklabel in {1/۱,2/۲,4/۴,6/۶,8/۸} {
+      \draw (0.04,\y) -- (-0.04,\y) node[left] {\rl{\ticklabel}};
+    }
+    \draw[gray,densely dotted] (3,0) -- (3,7);
+    \draw[thick] (0,1) -- (3.65,4.65) node[right] {\small Inverter};
+    \draw[thick,blue!70!black,dashed] (0,2) -- (3.65,{2+3.65*4/3})
+      node[right] {\small NAND2};
+    \draw[thick,red!65!black,dashdotted] (0,2) -- (3.65,{2+3.65*5/3})
+      node[right] {\small NOR2};
+    \fill (3,4) circle (1.6pt);
+    \fill[blue!70!black] (3,6) circle (1.6pt);
+    \fill[red!65!black] (3,7) circle (1.6pt);
+  \end{tikzpicture}
+  \end{latin}

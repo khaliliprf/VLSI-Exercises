@@ -4,7 +4,7 @@
 \addcontentsline{toc}{chapter}{راهنمای مطالعه}
 
 این جزوه از مبانی ریاضی، مدار و منطق دیجیتال آغاز می‌شود و به تحلیل
-ترانزیستور \lr{MOS} و رفتار مدارهای \lr{CMOS} می‌رسد. آشنایی قبلی با
+ترانزیستور \lr{MOS}، رفتار مدارهای \lr{CMOS}، تأخیر و مصرف انرژی می‌رسد. آشنایی قبلی با
 \lr{Digital Electronics} پیش‌نیاز مطالعه نیست. برای شروع، محاسبه با اعداد
 و خواندن یک تساوی ساده کافی است. فصل صفر ابزارهای لازم را با مثال آموزش می‌دهد.
 
@@ -15,6 +15,13 @@
 ابتدا مدل جریان و ظرفیت را یاد بگیرید. سپس بررسی کنید اثرهای غیرایده‌آل
 چه تغییری در مدل ایجاد می‌کنند و مدل جریان چگونه رفتار \lr{Inverter}
 و \lr{Pass Transistor} را توضیح می‌دهد.
+در \hyperref[chap:delay]{فصل ۳}، ابتدا زمان گذار را از شکل موج بخوانید،
+سپس اثر مقاومت و ظرفیت را بر تأخیر دنبال کنید. با \lr{Logical Effort}،
+توپولوژی و اندازه گیت‌ها را مقایسه کنید و در پایان ببینید
+مدل‌های \lr{Timing Analysis} چگونه شکل موج ورودی و بار را در نظر می‌گیرند.
+در \hyperref[chap:power]{فصل ۴}، انرژی یک گذار را به توان متوسط
+پیوند دهید، سپس سهم نشتی و هزینه تغییر حالت را وارد کنید. برای
+مقایسه طرح‌ها، انرژی را برای یک کار و مهلت زمانی مشخص بسنجید.
 
 پیش از خواندن پاسخ هر مثال، شکل مدار را رسم کنید، مرجع ولتاژ و جهت
 جریان را مشخص کنید و شرط‌های مدل را بنویسید. پس از حل، واحدها، علامت‌ها
@@ -40,9 +47,20 @@
     تابع نمایی، لگاریتم و خواندن محور لگاریتمی را مرور می‌کند.
     \hyperref[sec:noise-derivatives]{استخراج شیب در بحث \lr{Noise Margin}}
     مشتق‌گیری لازم برای یافتن نقاط شیب منفی یک را توضیح می‌دهد.
+  \item توان کسری و میانگین هندسی در
+    \hyperref[sec:delay-path-equal-effort]{اندازه‌گذاری مسیر چندمرحله‌ای}
+    از روی ضرب و میانگین حسابی معرفی می‌شوند. لگاریتم و مشتق را در
+    \hyperref[sec:delay-path-stage-count]{انتخاب تعداد مراحل} به کار می‌بریم.
+    با آشنایی با میانگین، می‌توان مثال
+    \hyperref[sec:delay-nldm]{درون‌یابی جدول تأخیر} را دنبال کرد.
+  \item در فصل ۴، \hyperref[sec:power-average]{انتگرال توان} از جمع انرژی
+    در بازه‌های کوتاه شروع می‌شود. \hyperref[sec:power-switching-probability]{احتمال
+    گذار} از شمارش و احتمال شرطی به دست می‌آید. در
+    \hyperref[sec:power-header-delay]{افت تغذیه} و
+    \hyperref[sec:power-edp]{مقایسه انرژی و تأخیر}، قاعده ضرب و علامت مشتق
+    به‌ترتیب برای تخمین تغییر تأخیر و یافتن نقطه کمینه توضیح داده می‌شوند.
 \end{itemize}
 
-\clearpage
 \subsection*{تطبیق موضوع‌ها با کتاب و اسلایدها}
 جدول، مسیر دسترسی از بخش‌های کتاب \lr{Weste} و \lr{Harris} به
 موضوع‌های متن و مجموعه‌اسلایدهای مرتبط را نشان می‌دهد \cite{weste}.
@@ -67,6 +85,16 @@
 \secnum{۲.۳} & \hyperref[sec:book-cv]{ظرفیت و هندسه‌ی ترانزیستور} & \cite[اسلایدهای ۲۳ و ۲۴]{mos}\\
 \secnum{۲.۴} & \hyperref[sec:nonideal-current]{اثر میدان، تغییر طول کانال، آستانه و نشتی} & \cite[اسلایدهای ۳ تا ۳۷]{nonideal}\\
 \secnum{۲.۵} & \hyperref[sec:dc-transfer]{مشخصه‌ی انتقال \lr{DC}}، \hyperref[sec:noise-margin]{حاشیه‌ی نویز} و \hyperref[sec:pass-transistor]{انتقال ولتاژ} & \cite[اسلایدهای ۳ تا ۱۴]{dcslides}\\
+\secnum{۴.۱} تا \secnum{۴.۳} & \hyperref[sec:delay-transient]{شکل موج و پاسخ گذرا}، \hyperref[sec:delay-rc-model]{مدل \lr{RC} و \lr{Elmore Delay}} & تکمیل از کتاب\\
+\secnum{۴.۴} & \hyperref[sec:delay-linear-model]{مدل خطی و \lr{Logical Effort} تک‌گیت} & \cite[اسلایدهای ۳ تا ۱۲]{logicaleffortslides}\\
+\secnum{۴.۵} & \hyperref[sec:delay-path-model]{مسیر، انشعاب و اندازه‌گذاری گیت‌ها} & \cite[اسلایدهای ۱۳ تا ۲۷]{logicaleffortslides}\\
+\secnum{۴.۶} تا \secnum{۴.۸} & \hyperref[sec:delay-timing-models]{مدل‌های \lr{Timing Analysis}}، خطاهای رایج و معیار \lr{FO4} & تکمیل از کتاب\\
+تمرین‌های فصل ۴ & \hyperref[sec:delay-exercises]{حل تمرین‌های \secnum{۴.۵} تا \secnum{۴.۱۰}} & \cite[اسلاید ۲۸]{logicaleffortslides}\\
+\secnum{۵.۱} & \hyperref[sec:power-energy]{توان و انرژی شارژ}، \hyperref[sec:power-dynamic]{مؤلفه‌های توان} & \cite[اسلایدهای ۳ تا ۱۰]{powerslides}\\
+\secnum{۵.۲} & \hyperref[sec:power-dynamic]{برآورد توان سوئیچینگ}، \hyperref[sec:power-activity]{فعالیت گره} و \hyperref[sec:power-dynamic-reduction]{کاهش توان} & \cite[اسلایدهای ۱۱ تا ۱۹]{powerslides}\\
+\secnum{۵.۳} & \hyperref[sec:power-static]{توان ساکن و نشتی}، \hyperref[sec:power-gating]{قطع تغذیه بلوک} & \cite[اسلایدهای ۲۰ تا ۲۳]{powerslides}\\
+\secnum{۵.۴} تا \secnum{۵.۷} & \hyperref[sec:power-energy-delay]{انرژی در برابر تأخیر}، \hyperref[sec:power-architecture]{معماری و حالت‌های کار} & تکمیل از کتاب\\
+تمرین‌های فصل ۵ & \hyperref[sec:power-exercises]{حل تمرین‌های \secnum{۵.۱}، \secnum{۵.۴}، \secnum{۵.۷} و \secnum{۵.۱۰}} & \cite[اسلاید ۲۴]{powerslides}\\
 \bottomrule
 \end{tabularx}
 \end{center}

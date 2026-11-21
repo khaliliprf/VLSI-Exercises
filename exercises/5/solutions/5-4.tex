@@ -1,0 +1,30 @@
+% !TeX root = ../main.tex
+\subsection{تمرین \secnum{۵.۴}، فعالیت از روی شکل موج}
+\label{sec:assignment-power-waveform}
+
+\textbf{خواسته.}
+برای سیگنال شکل \secnum{۵.۳۴} کتاب با ساعت \qty{1}{\giga\hertz}،
+\lr{Activity Factor} را تعیین کنید. شکل \ref{fig:assignment-power-waveform}
+بازه و لبه‌های صعودی را نشان می‌دهد
+\cite[تمرین \secnum{۵.۴}، صفحه ۲۰۹]{weste}.
+
+\begin{figure}[htbp]
+  \centering
+  \input{notes/booklet-05/activity-waveform}
+  \caption{بازرسم شکل \secnum{۵.۳۴} کتاب با محور ولتاژ نرمال‌شده.
+    نقطه‌ها دو گذار صعودی در بازه مشاهده را مشخص می‌کنند \cite{weste}.}
+  \label{fig:assignment-power-waveform}
+\end{figure}
+
+\textbf{حل.}
+دوره ساعت \(T_{\mathrm{clk}}=1/f=\qty{1}{\nano\second}\) است.
+در فاصله‌ی صفر تا \qty{10}{\nano\second}، ده دوره کامل داریم.
+خروجی نزدیک \qty{1}{\nano\second} و \qty{4}{\nano\second} از
+صفر به یک می‌رود. شمار گذار صعودی \(N_{\uparrow}=2\) و شمار
+دوره ساعت \(N_{\mathrm{clk}}=10\) است. بر اساس تعریف کتاب، حاصل چنین است
+\cite[بخش \secnum{۵.۱.۲}، صفحه ۱۸۴]{weste}.
+\[
+  \alpha=\frac{N_{\uparrow}}{N_{\mathrm{clk}}}=\frac{2}{10}=0.2.
+\]
+در قرارداد این فصل، هر گذار صعودی یک رویداد شارژ است و شارژها
+در صورت کسر شمرده می‌شوند.

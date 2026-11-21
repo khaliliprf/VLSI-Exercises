@@ -1,0 +1,46 @@
+% !TeX program = xelatex
+% Build from the project root with build.ps1 -Document exercises/5/main.tex.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\input{notes/common/references}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\texorpdfstring{\mbox{\beginL#1\endL}}{#1}}
+% The headings display the original textbook exercise numbers.
+\setcounter{secnumdepth}{0}
+\setlength{\emergencystretch}{3em}
+\AtBeginDocument{\DeclareSIPrefix{\micro}{\text{\lr{µ}}}{-6}}
+\hypersetup{pdftitle={تمرینات فصل ۵},pdfauthor={محمد خلیلی اصل}}
+\AssignmentNumber{تمرینات فصل ۵}
+\AssignmentDate{}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+
+\begin{document}
+\MakeAssignmentCover
+\section{حل تمرین‌های \lr{Power}}
+\label{sec:power-assignment}
+
+تمرین‌های این مجموعه در اسلاید ۲۴ درس مشخص شده‌اند. صورت‌ها از فصل
+\lr{Power} کتاب بازنویسی شده‌اند. در قرارداد کتاب، \lr{Activity Factor}
+میانگین تعداد گذارهای صعودی در هر دوره ساعت است. فرض‌های مربوط به
+استقلال ورودی‌ها و مدل افت تغذیه در حل هر تمرین آمده‌اند
+\cite[تمرین‌های فصل ۵، صفحات ۲۰۹ و ۲۱۰]{weste}
+\cite[اسلاید ۲۴]{powerslides}.
+
+\input{exercises/5/solutions/5-1}
+\input{exercises/5/solutions/5-4}
+\input{exercises/5/solutions/5-7}
+\input{exercises/5/solutions/5-10}
+
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{weste}
+\WesteReference
+فصل \lr{Power}، بخش‌های \secnum{۵.۱} تا \secnum{۵.۳} و تمرین‌ها،
+به‌ویژه جدول \secnum{۵.۱}، مثال ۵.۵ و شکل \secnum{۵.۳۴}.
+صورت تمرین‌ها در صفحات چاپی ۲۰۹ و ۲۱۰، برابر با صفحات ۲۳۶ و ۲۳۷
+فایل \lr{PDF} است. مدل وابستگی تأخیر به تغذیه در بخش
+\secnum{۴.۴.۶.۴}، صفحه چاپی ۱۶۲، معرفی شده است.
+\input{notes/booklet-05/bibliography-items}
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,17 @@
+% Shared redraw of the exercise waveform for the notes and submission.
+\begin{latin}
+\begin{tikzpicture}[x=1.08cm,y=1.30cm]
+  \draw[->] (0,-0.30) -- (10.75,-0.30) node[right] {\(t\,(\unit{\nano\second})\)};
+  \node[left] at (-0.08,1.24) {\(v/V_{DD}\)};
+  \node[left] at (-0.08,0) {\rl{۰}};
+  \node[left] at (-0.08,1) {\rl{۱}};
+  \foreach \x/\ticklabel in {0/۰,1/۱,2/۲,3/۳,4/۴,5/۵,6/۶,7/۷,8/۸,9/۹,10/۱۰} {
+    \draw (\x,-0.25) -- (\x,-0.36) node[below] {\rl{\ticklabel}};
+  }
+  \draw[gray,densely dashed] (1,-0.24) -- (1,0.50);
+  \draw[gray,densely dashed] (4,-0.24) -- (4,0.50);
+  \draw[very thick] (0,0) -- (0.75,0) -- (1.25,1) -- (1.75,1)
+    -- (2.25,0) -- (3.75,0) -- (4.25,1) -- (7.75,1) -- (8.25,0) -- (10,0);
+  \fill (1,0.50) circle (1.5pt) (4,0.50) circle (1.5pt);
+\end{tikzpicture}
+\end{latin}

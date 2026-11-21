@@ -1,0 +1,64 @@
+% !TeX root = ../main.tex
+\subsection{تمرین \secnum{۴.۵}، مقایسه شیب و عرض از مبدأ}
+\label{sec:delay-exercise-nor-plot}
+
+\textbf{خواسته.}
+نمودار تأخیر نرمال‌شده \lr{NOR} دوورودی را برحسب
+\lr{Electrical Effort} رسم کنید و شیب و عرض از مبدأ را
+با \lr{NAND} دوورودی مقایسه کنید
+\cite[تمرین \secnum{۴.۵} و شکل \secnum{۴.۲۱}،
+صفحات ۱۵۵ و ۱۷۷]{weste}.
+
+\textbf{حل.}
+محور افقی \(h=C_L/C_{\mathrm{in}}\) است که در آن \(C_L\)
+ظرفیت بار خارجی و \(C_{\mathrm{in}}\) ظرفیت یک پایه ورودی
+گیت است.
+برای مقاومت راه‌اندازی برابر، ظرفیت ورودی هر پایه در
+\lr{NOR2} برابر \(5C\) و در \lr{NAND2} برابر \(4C\)
+است. ظرفیت ورودی \lr{Inverter} مرجع برابر \(3C\) است.
+با تقریب ظرفیت‌های \lr{Diffusion} متصل به خروجی، هر دو
+گیت \(p\approx2p_{\mathrm{inv}}\) دارند. بنابراین مدل خطی
+دو رابطه زیر را می‌دهد.
+\[
+  d_{\mathrm{NOR2}}\approx\frac53 h+2p_{\mathrm{inv}},
+  \qquad
+  d_{\mathrm{NAND2}}\approx\frac43 h+2p_{\mathrm{inv}}.
+\]
+\begin{figure}[htbp]
+  \centering
+  \begin{latin}
+  \begin{tikzpicture}[x=2.15cm,y=0.47cm]
+    \draw[->] (0,0) -- (4.65,0) node[right] {\(h\)};
+    \draw[->] (0,0) -- (0,9.05) node[above] {\(d\)};
+    \node[below left] at (0,0) {\rl{۰}};
+    \foreach \x/\ticklabel in {1/۱,2/۲,3/۳,4/۴} {
+      \draw (\x,0.09) -- (\x,-0.09) node[below] {\rl{\ticklabel}};
+    }
+    \foreach \y/\ticklabel in {1/۱,2/۲,4/۴,6/۶,8/۸} {
+      \draw (0.04,\y) -- (-0.04,\y) node[left] {\rl{\ticklabel}};
+    }
+    \draw[gray,densely dotted] (3,0) -- (3,7);
+    \draw[thick] (0,1) -- (3.65,4.65) node[right] {\small Inverter};
+    \draw[thick,blue!70!black,dashed] (0,2) -- (3.65,{2+3.65*4/3})
+      node[right] {\small NAND2};
+    \draw[thick,red!65!black,dashdotted] (0,2) -- (3.65,{2+3.65*5/3})
+      node[right] {\small NOR2};
+    \fill (3,4) circle (1.6pt);
+    \fill[blue!70!black] (3,6) circle (1.6pt);
+    \fill[red!65!black] (3,7) circle (1.6pt);
+  \end{tikzpicture}
+  \end{latin}
+  \caption{تأخیر نرمال‌شده \(d\) برحسب \lr{Electrical Effort}
+  بی‌بعد \(h\)، با فرض \(p_{\mathrm{inv}}=1\).
+  نمودار بر پایه مدل خطی بخش \secnum{۴.۴} کتاب
+  \cite{weste} رسم شده است.}
+  \label{fig:delay-gate-comparison}
+\end{figure}
+در شکل \ref{fig:delay-gate-comparison}، هر دو خط از
+\((h,d)=(0,2)\) می‌گذرند، زیرا برای رسم
+\(p_{\mathrm{inv}}=1\) فرض شده است. نقطه دوم برای
+\lr{NOR2} برابر \((3,7)\) و برای \lr{NAND2} برابر
+\((3,6)\) است. پس عرض از مبدأ در این مدل برابر است و
+شیب \lr{NOR2} به اندازه \(1/3\)، یعنی ۲۵ درصد نسبت به
+شیب \lr{NAND2}، بزرگ‌تر است. این مقایسه در \(h\) یکسان
+انجام می‌شود.

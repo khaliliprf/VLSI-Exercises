@@ -1,0 +1,57 @@
+% !TeX root = ../main.tex
+\clearpage
+\subsection{تمرین \secnum{۴.۹}، اندازه‌گذاری \lr{NAND4}}
+\label{sec:delay-exercise-nand4}
+
+\textbf{خواسته.}
+\lr{NAND} چهارورودی را طوری اندازه‌گذاری کنید که مقاومت
+مؤثر مسیر صعود و افت آن با \lr{Inverter} واحد برابر باشد.
+سپس \(g\) را به دست آورید
+\cite[تمرین \secnum{۴.۹}، صفحه ۱۷۷]{weste}.
+
+\textbf{حل.}
+در شکل \ref{fig:delay-exercise-nand4}، برای افت خروجی،
+چهار \lr{nMOS} سری باید روشن باشند. اگر عرض نسبی هر کدام
+۴ باشد، مقاومت کل \(4(R/4)=R\) است. در بدترین حالت صعود،
+فقط یکی از چهار \lr{pMOS} موازی روشن است. عرض نسبی ۲
+برای هر \lr{pMOS} مقاومت مسیر صعود را به \(2R/2=R\)
+می‌رساند.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{latin}
+  \begin{circuitikz}[x=0.94cm,y=0.84cm,font=\small]
+    \draw (-0.28,1.02) -- (7.8,1.02);
+    \node[above] at (3.9,1.02) {\(V_{DD}\)};
+    \draw (0,-1.02) -- (7.8,-1.02) -- (8.55,-1.02)
+      node[right] {\(Y\)};
+    \foreach \x/\pin in {0/A,2.6/B,5.2/C,7.8/D}{
+      \node[pmos] (p\pin) at (\x,0) {};
+      \draw (p\pin.S) -- (\x,1.02)
+        (p\pin.D) -- (\x,-1.02);
+      \fill (\x,1.02) circle (1.25pt)
+        (\x,-1.02) circle (1.25pt);
+      \node[left] at (p\pin.G) {\(\pin\)};
+      \node[right] at (p\pin) {\rl{۲}};
+    }
+    \foreach \y/\pin in {-2.05/A,-3.25/B,-4.45/C,-5.65/D}{
+      \node[nmos] (n\pin) at (3.9,\y) {};
+      \node[left] at (n\pin.G) {\(\pin\)};
+      \node[right] at (n\pin) {\rl{۴}};
+    }
+    \draw (3.9,-1.02) -- (nA.D)
+      (nA.S) -- (nB.D) (nB.S) -- (nC.D) (nC.S) -- (nD.D)
+      (nD.S) -- (3.9,-6.65) node[ground] {};
+    \fill (3.9,-1.02) circle (1.35pt);
+  \end{circuitikz}
+  \end{latin}
+  \caption{ساختار ترانزیستوری \lr{NAND4} با چهار \lr{pMOS}
+  موازی و چهار \lr{nMOS} سری. حروف \(A\) تا \(D\) پایه‌های
+  ورودی‌اند و عدد کنار هر ترانزیستور عرض آن برحسب عرض واحد است.}
+  \label{fig:delay-exercise-nand4}
+\end{figure}
+
+هر ورودی، \lr{Gate} یک \lr{nMOS} با عرض ۴ و یک \lr{pMOS}
+با عرض ۲ را راه‌اندازی می‌کند. پس ظرفیت یک پایه ورودی \(6C\)
+است. با مقایسه با \(3C\) برای \lr{Inverter} هم‌قدرت،
+\(g=6C/(3C)=6/3=2\) به دست می‌آید.

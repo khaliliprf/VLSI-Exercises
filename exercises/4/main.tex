@@ -1,0 +1,55 @@
+% !TeX program = xelatex
+% Build from the project root with build.ps1 -Document exercises/4/main.tex.
+\documentclass[12pt,a4paper]{article}
+\RequirePackage{array}[=2024-06-01]
+\input{tex/preamble}
+\XeTeXgenerateactualtext=1
+\newcommand{\secnum}[1]{\texorpdfstring{\mbox{\beginL#1\endL}}{#1}}
+% Exercise titles already contain the original textbook numbers.
+\setcounter{secnumdepth}{0}
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdftitle={تمرینات فصل ۴},pdfauthor={محمد خلیلی اصل}}
+\AssignmentNumber{تمرینات فصل ۴}
+\AssignmentDate{}
+\patchcmd{\MakeAssignmentCover}{تمرین شماره \assignmentnumber}{\assignmentnumber}{}{\errmessage{Cover title replacement failed}}
+
+\begin{document}
+\MakeAssignmentCover
+\section{حل تمرین‌های \lr{Logical Effort}}
+\label{sec:delay-exercises}
+
+شماره‌های تمرین در این بخش از فصل \lr{Delay} کتاب گرفته شده‌اند.
+مجموعه تمرین‌ها در اسلاید ۲۸ مشخص شده است. در حل‌ها، \(C\)
+ظرفیت ورودی ترانزیستور واحد و \(R\) مقاومت مؤثر \lr{nMOS}
+واحد است. مقاومت \lr{pMOS} واحد را \(2R\) می‌گیریم.
+تأخیرها برحسب واحد مرجع \(\tau\) نرمال شده‌اند. در محاسبه‌های
+عددیِ تأخیر \lr{Parasitic} از فرض \(p_{\mathrm{inv}}=1\)
+استفاده می‌کنیم، مگر آنکه خود تمرین \(p_{\mathrm{inv}}\) را
+به‌صورت پارامتر داده باشد
+\cite[تمرین‌های \secnum{۴.۵} تا \secnum{۴.۱۰}، صفحه ۱۷۷]{weste}
+\cite[اسلاید ۲۸]{logicaleffortslides}.
+
+\input{exercises/4/solutions/4-5}
+\input{exercises/4/solutions/4-6}
+\input{exercises/4/solutions/4-7}
+\input{exercises/4/solutions/4-8}
+\input{exercises/4/solutions/4-9}
+\input{exercises/4/solutions/4-10}
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{weste}
+\begin{latin}
+Neil H. E. Weste and David Money Harris,
+\textit{CMOS VLSI Design: A Circuits and Systems Perspective},
+Fourth Edition, Addison-Wesley (Pearson Education), 2011.
+\end{latin}
+فصل \lr{Delay}، بخش‌های \secnum{۴.۴} و \secnum{۴.۵}،
+صفحات چاپی ۱۵۵ تا ۱۷۳. صورت تمرین‌ها و شکل \secnum{۴.۳۹}
+در صفحه چاپی ۱۷۷، برابر با صفحه ۲۰۴ فایل \lr{PDF}، آمده‌اند.
+\bibitem{logicaleffortslides}
+\lr{Review: Logical Effort}، از مجموعه اسلایدهای \lr{CMOS VLSI Design, Fourth Edition}،
+برگرفته از یادداشت‌های \lr{David Money Harris} (۲۰۱۱).
+انتساب یادداشت‌های اصلی و توضیح اقتباس در اسلاید ۲ مجموعه
+\lr{Introduction} آمده است.
+\end{thebibliography}
+\end{document}
