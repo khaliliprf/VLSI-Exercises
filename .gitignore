@@ -2,3 +2,6 @@
 /.setup/
 *.synctex.gz
 /debug.log
+/graphify-out/
+/.graphifyignore
+/.graphifyrc

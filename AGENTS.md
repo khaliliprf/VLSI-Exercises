@@ -5,6 +5,11 @@
 - Prepare submission-ready solutions and reports in LaTeX. Persian is the primary language for document text and explanations.
 - Apply these rules to all exercises and files in this project unless the user explicitly instructs otherwise for a specific case.
 
+## Exercise submissions and teaching notes
+- Maintain independent LaTeX solution text for assignment submissions and the comprehensive course notes. Keep submission solutions under the corresponding `exercises/N/solutions/` directory, one file per exercise, and keep the teaching versions under `notes/`.
+- Write submission solutions as self-contained academic answers with the problem, assumptions, derivation, and result. In the notes, introduce any prerequisite digital logic, circuit concepts, and mathematics before use. Assume no prior Digital Electronics coursework and expand intermediate reasoning where it helps the learner.
+- Verify both versions against the same original problem and assumptions. Check that their conclusions agree when the assumptions match, and explain any deliberate differences in model or scope.
+
 ## Maintaining these rules
 - Keep this file's instructions in English while preserving the Persian-language requirements for exercise documents.
 - Whenever the user explicitly establishes a rule or asks for something to be followed "always," record it here or update the relevant rule, and apply it to subsequent work.
